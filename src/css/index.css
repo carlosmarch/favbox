@@ -265,6 +265,7 @@ a.arrow:hover::after {
   display: inline-block;
   font-size: 18px;
   font-weight: 800;
+  padding-top: 8px;
 }
 
 .form {
