@@ -250,7 +250,6 @@ a.arrow:hover::after {
   width: 100%;
   background: var(--brown);
   color: var(--text);
-  height: 80px;
   position: relative;
   position: -webkit-sticky;
   position: sticky;
@@ -265,7 +264,7 @@ a.arrow:hover::after {
   display: inline-block;
   font-size: 18px;
   font-weight: 800;
-  padding-top: 8px;
+  padding-top: 12px;
 }
 
 .form {
