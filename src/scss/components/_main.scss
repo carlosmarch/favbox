@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 15px;
+    font-family: apercu-pro, "Apercu Pro", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+    font-weight: 300;
+    color: #181818;
+    -webkit-font-smoothing: antialiased;
+}
+
+:root{
+  --interaction-blue:;
+
+  --magazine-color:#D1501A;
+  --book-color:#35977E;
+  --podcast-color:#E9B806;
+  --article-color:#55808E;
+
+  --text:#181818;
+  --brown:#f4f0eb;
+  --black:#181818;
+
+
+}
