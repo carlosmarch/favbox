@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route, Link } from 'react-router-dom';
+import { Route, Link, BrowserRouter as Router } from 'react-router-dom'
+
 
 class Header extends Component {
   render() {
@@ -9,9 +10,8 @@ class Header extends Component {
           <div className="nav logo">#mequedoencasa</div>
 
           <ul className="nav menu">
-            <li><a href="/">Home</a></li>
-            <li><Link to="/recommendations" className="item">Recommendations</Link></li>
-            <li><a href="/contact">Contact</a></li>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/about">About</Link></li>
           </ul>
 
 
