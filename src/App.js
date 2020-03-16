@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter, Route, Link } from 'react-router-dom';
+
+import Recommendations from './Recommendations';
 
 import Button from './components/Button';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import Block from './components/Hero';
 import Card from './components/Card';
+import BlockTitle from './components/BlockTitle';
+
 
 
 class App extends Component {
@@ -33,31 +38,34 @@ class App extends Component {
   render() {
     return (
 
-      <div className="global">
-        <Header />
+      <BrowserRouter>
+        <div className="global">
+          <Header />
+          <Block />
 
-        <Block />
+          <main>
+            <BlockTitle title={'Destacados'} description={'Las recomendaciones mas destacadas'}/>
 
-        <main>
-          <div className="container">
-            <h3>Destacados</h3>
-            <p>Lecturas recomendadas</p>
-          </div>
 
-          <div className="card-grid">
+            <div className="card-grid">
 
-            {this.state.readings.map(records =>
-              <Card {...records.fields} />
-            )}
+              {this.state.readings.map(records =>
+                <Card {...records.fields} />
+              )}
 
-            <img className="lines" src={process.env.PUBLIC_URL + '/img/lines.svg'}/>
-          </div>
+              <img className="lines" src={process.env.PUBLIC_URL + '/img/lines.svg'}/>
+            </div>
 
-        </main>
+          </main>
 
-        <Footer />
+          <Route path="/recommendations" component={Recommendations} />
 
-      </div>
+          <Footer />
+
+        </div>
+
+      </BrowserRouter>
+
     );
   }
 }
