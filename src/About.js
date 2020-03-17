@@ -6,8 +6,9 @@ class About extends Component {
   render() {
 
     return (
+      <div className="global">
         <BlockTitle title={'About'} description={'Esto es el about'}/>
-
+      </div>
     );
   }
 }

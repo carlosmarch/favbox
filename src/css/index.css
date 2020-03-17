@@ -269,7 +269,43 @@ a.arrow:hover::after {
 
 .menu li {
   display: inline-block;
-  margin: 0 8px;
+  margin: 0 12px;
+}
+
+.menu li a {
+  display: inline-block;
+}
+
+.chevron {
+  width: 10px;
+  height: 100%;
+  display: block;
+  fill: #424241;
+  flex-shrink: 0;
+  backface-visibility: hidden;
+  margin-left: 4px;
+  margin-top: 1px;
+  display: inline-block;
+  margin-left: 8px;
+}
+
+.drop-overlay {
+  position: absolute;
+  width: 200px;
+  background: #fff;
+  padding: 12px 0;
+  border-radius: 2px;
+  box-shadow: 0px 2px 6px 0px #00000014;
+}
+
+.drop-overlay li {
+  list-style: none;
+  height: 24px;
+  padding: 4px 16px;
+}
+
+.drop-overlay li:hover {
+  background-color: #ececec;
 }
 
 .form {

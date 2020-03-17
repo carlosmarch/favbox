@@ -11,7 +11,7 @@ class App extends Component {
         <div className="global">
           <Hero />
           <main>
-            <GridCard />
+            <GridCard title={'Destacados'} description={'Las recomendaciones mas destacadas'}/>
           </main>
         </div>
     );

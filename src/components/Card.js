@@ -11,7 +11,9 @@ class Card extends Component {
           <h3 className="card-title">{this.props.title}</h3>
           <div className="card-description">{this.props.description}</div>
           <div className="card-topics">
-            {this.props.topics.map(topic => {return (<span>#{topic}</span>)})}
+
+            {this.props.topics.map((topic, key) => {return (<span key={key}>#{topic}</span>)})}
+
           </div>
           <div className="card-contributor">
             <img src={process.env.PUBLIC_URL + '/img/user_icon.png'} className="contributor-image"/>
