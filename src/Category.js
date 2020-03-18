@@ -10,17 +10,19 @@ class Category extends Component {
 
   constructor(props) {
     super(props);
-    this.url = [];
-    this.url.urlType = window.location.pathname.split("/")[1];
-    this.url.urlDetail = window.location.pathname.split("/").pop();
+    this.url = {};
+    this.url.urlType = decodeURIComponent(window.location.pathname.split("/")[1]);
+    this.url.urlDetail = decodeURIComponent(window.location.pathname.split("/").pop());
+    const maxrecords = '&maxRecords=5';
+
     this.url = {
       urlType: '',
       urlDetail: '',
       api: ['https://api.airtable.com/v0/appOyoqCMxKWB0IG8/readings?api_key=keyu0nFPUS8ZCnRmb&filterByFormula=Find(%22'+this.url.urlDetail+'%22%2C+'+this.url.urlType+')']
     };
 
-    this.url.urlType = window.location.pathname.split("/")[1];
-    this.url.urlDetail = window.location.pathname.split("/").pop();
+    this.url.urlType = decodeURIComponent(window.location.pathname.split("/")[1]);
+    this.url.urlDetail = decodeURIComponent(window.location.pathname.split("/").pop());
 
 
 
@@ -50,7 +52,7 @@ class Category extends Component {
           <main>
 
             <div id="GridCard">
-              <BlockTitle title={this.url.urlDetail} description={'Las recomendaciones de '+this.url.urlDetail+' mas destacadas'}/>
+              <BlockTitle title={this.url.urlType==='categorias' ? this.url.urlDetail+'s' : this.url.urlDetail} description={'Las recomendaciones de '+this.url.urlDetail+' mas destacadas'}/>
               <div className="grid-card">
 
                 {this.state.readings.map((records, key) =>

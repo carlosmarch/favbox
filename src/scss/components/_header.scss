@@ -20,11 +20,13 @@
 .menu li {
     display: inline-block;
     margin: 0 12px;
+    &:first-child{
+        margin-left: 0;
+    }
     a{
       display: inline-block;
     }
 }
-
 .chevron {
     width: 10px;
     height: 100%;
@@ -48,11 +50,13 @@
     top: 70px;
     z-index: 10000;
     left: 138px;
+    border: 1px solid #ececec;
     li {
         cursor: pointer;
         list-style: none;
         height: 24px;
         padding: 4px 16px;
+        font-weight: 500;
         &:hover{
             background-color: #ececec;
         }

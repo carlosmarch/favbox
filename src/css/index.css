@@ -275,6 +275,10 @@ a {
   margin: 0 12px;
 }
 
+.menu li:first-child {
+  margin-left: 0;
+}
+
 .menu li a {
   display: inline-block;
 }
@@ -302,6 +306,7 @@ a {
   top: 70px;
   z-index: 10000;
   left: 138px;
+  border: 1px solid #ececec;
 }
 
 .drop-overlay li {
@@ -309,6 +314,7 @@ a {
   list-style: none;
   height: 24px;
   padding: 4px 16px;
+  font-weight: 500;
 }
 
 .drop-overlay li:hover {
@@ -555,4 +561,8 @@ main {
   letter-spacing: 0px;
   text-transform: none;
   display: inline;
+}
+
+.block-title {
+  text-transform: capitalize;
 }

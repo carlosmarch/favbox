@@ -7,9 +7,6 @@ import BlockTitle from './components/BlockTitle';
 import Dropdown from './components/Dropdown';
 
 const api = 'https://api.airtable.com/v0/appOyoqCMxKWB0IG8/readings?api_key=keyu0nFPUS8ZCnRmb';
-const filter = '&filterByFormula=Find(%22design%22%2C+topics)';
-const maxrecords = '&maxRecords=5';
-
 
 class App extends Component {
 
@@ -74,7 +71,7 @@ class App extends Component {
 
           <Dropdown item={this.state.topics} type="temas"/>
           <Dropdown item={this.state.categories} type="categorias"/>
-
+          
         </div>
     );
   }

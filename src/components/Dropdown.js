@@ -5,7 +5,8 @@ class Dropdown extends Component {
     //object to array
     const items = Object.values(this.props.item);
     const type = Object.values(this.props.type);
-    console.log(this.props.type);
+    //console.log(this.props.type);
+    
     const listItems = items.map((topic, key) =>
       <li key={topic}>
         <Link to={`/${this.props.type}/${topic}`}>{topic}</Link>
