@@ -1,19 +1,90 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom'
 
+
+
 class Header extends Component {
 
+  constructor(){
+      super();
+      this.state = {
+          isHoveredCategorias: false,
+          isHoveredTemas: false,
+          categorias: [],
+          temas: []
+
+      };
+      this.handleHoverCategorias = this.handleHoverCategorias.bind(this);
+      this.handleHoverTemas = this.handleHoverTemas.bind(this);
+  }
+
+  handleHoverCategorias(){
+      this.setState(prevState => ({
+          isHoveredCategorias: !prevState.isHoveredCategorias
+      }));
+
+      this.setState({ categorias: window.$categories });
+      this.setState({ temas: window.$topics });
+      console.log(window.$categories, window.$topics);
+  }
+
+  handleHoverTemas(){
+      this.setState(prevState => ({
+          isHoveredTemas: !prevState.isHoveredTemas
+      }));
+      this.setState({ categorias: window.$categories });
+      this.setState({ temas: window.$topics });
+  }
+
+
   render() {
+
+
+
+
+    const hoverstateCategorias = this.state.isHoveredCategorias ? "hoverstate" : "";
+    const hoverstateTemas = this.state.isHoveredTemas ? "hoverstate" : "";
+
+
     return (
       <header className="header">
         <div className="container">
 
           <ul id="primarymenu" className="nav menu">
+
             <li><Link to="/">Inicio</Link></li>
-            <li><Link to="/">¿Qué te apetece?</Link><svg viewBox="0 0 30 30" className="chevron"><polygon points="15,17.4 4.8,7 2,9.8 15,23 28,9.8 25.2,7 "></polygon></svg></li>
-            <li><Link to="/">Temas</Link><svg viewBox="0 0 30 30" className="chevron"><polygon points="15,17.4 4.8,7 2,9.8 15,23 28,9.8 25.2,7 "></polygon></svg></li>
+
+            <li id="menuitem-categorias" className={hoverstateCategorias} onMouseEnter={this.handleHoverCategorias} onMouseLeave={this.handleHoverCategorias}>
+              <Link to="/">¿Qué te apetece?</Link>
+              <svg viewBox="0 0 30 30" className="chevron"><polygon points="15,17.4 4.8,7 2,9.8 15,23 28,9.8 25.2,7 "></polygon></svg>
+              <div id={'dropdown-categorias'} className="drop-overlay">
+                <ul>
+                  {this.state.categorias.map((categorias, key) =>
+                    <li key={key}>
+                      <Link to={`/categorias/${categorias}`}>{categorias}</Link>
+                    </li>
+                  )}
+                </ul>
+              </div>
+            </li>
+
+            <li id="menuitem-temas" className={hoverstateTemas} onMouseEnter={this.handleHoverTemas} onMouseLeave={this.handleHoverTemas}>
+              <Link to="/">Temas</Link>
+              <svg viewBox="0 0 30 30" className="chevron"><polygon points="15,17.4 4.8,7 2,9.8 15,23 28,9.8 25.2,7 "></polygon></svg>
+              <div id={'dropdown-temas'} className="drop-overlay">
+                <ul>
+                  {this.state.temas.map((temas, key) =>
+                    <li key={key}>
+                      <Link to={`/temas/${temas}`}>{temas}</Link>
+                    </li>
+                  )}
+                </ul>
+              </div>
+            </li>
+
             <li><Link to="/about">About</Link></li>
-          </ul>
+
+        </ul>
 
           <div className="form">
             <form className="email-form">

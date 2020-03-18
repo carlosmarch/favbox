@@ -20,6 +20,8 @@
 .menu li {
     display: inline-block;
     margin: 0 12px;
+    cursor: pointer;
+    position: relative;
     &:first-child{
         margin-left: 0;
     }
@@ -40,6 +42,24 @@
     margin-left: 8px;
 }
 
+div#dropdown-categorias {
+  opacity: 0;
+}
+div#dropdown-temas {
+  opacity: 0;
+}
+
+li#menuitem-categorias.hoverstate{
+  div#dropdown-categorias {
+    opacity: 1;
+  }
+}
+li#menuitem-temas.hoverstate{
+  div#dropdown-temas {
+    opacity: 1;
+  }
+}
+
 .drop-overlay{
     position: absolute;
     width: 200px;
@@ -47,16 +67,20 @@
     padding: 12px 0;
     border-radius: 2px;
     box-shadow: 0px 2px 6px 0px #00000014;
-    top: 70px;
+    top: 32px;
     z-index: 10000;
-    left: 138px;
     border: 1px solid #ececec;
+    -webkit-transition: all 120ms ease-in 0s;
+    transition: all 120ms ease-in 0s;
     li {
         cursor: pointer;
         list-style: none;
         height: 24px;
         padding: 4px 16px;
         font-weight: 500;
+        font-size: 15px;
+        display: block;
+        margin: 0;
         &:hover{
             background-color: #ececec;
         }
@@ -66,6 +90,9 @@
         width: 100%;
     }
 }
+
+
+
 
 
 .form{

@@ -13,7 +13,7 @@ class Category extends Component {
     this.url = {};
     this.url.urlType = decodeURIComponent(window.location.pathname.split("/")[1]);
     this.url.urlDetail = decodeURIComponent(window.location.pathname.split("/").pop());
-    const maxrecords = '&maxRecords=5';
+    //const maxrecords = '&maxRecords=5';
 
     this.url = {
       urlType: '',
@@ -30,6 +30,11 @@ class Category extends Component {
       readings: [],
     };
 
+    //Here ya go
+    this.props.history.listen((location, action) => {
+      console.log("on route change");
+    });
+
   }
 
   componentDidMount() {
@@ -43,7 +48,6 @@ class Category extends Component {
       // Error
     });
   }
-
 
   render() {
     return (

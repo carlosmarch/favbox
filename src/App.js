@@ -31,12 +31,14 @@ class App extends Component {
       const mergeAllTopics = Array.prototype.concat.apply([], topics);
       const uniqueTopics = mergeAllTopics.filter((val,id,array) => array.indexOf(val) === id);
       this.setState({ topics: uniqueTopics });
+      window.$topics = uniqueTopics; //global variable for the dropdown
 
       //unique categories
       var categories = data.records.map(function(item) {return item.fields.categorias;})
       const mergeAllCategories = Array.prototype.concat.apply([], categories);
       const uniqueCategories = mergeAllCategories.filter((val,id,array) => array.indexOf(val) === id);
       this.setState({ categories: uniqueCategories });
+      window.$categories = uniqueCategories; //global variable for the dropdown
 
       console.log(this.state.readings);
       //console.log(this.state.topics);
@@ -69,9 +71,6 @@ class App extends Component {
 
           </main>
 
-          <Dropdown item={this.state.topics} type="temas"/>
-          <Dropdown item={this.state.categories} type="categorias"/>
-          
         </div>
     );
   }
