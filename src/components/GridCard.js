@@ -64,7 +64,7 @@ class GridCard extends Component {
             )}
           </ul>
 
-          <img className="lines" src={process.env.PUBLIC_URL + '/img/lines.svg'}/>
+          <img className="lines" src={process.env.PUBLIC_URL + '/img/lines.svg'} alt="lines"/>
         </div>
 
       </div>

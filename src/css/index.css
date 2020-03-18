@@ -23,6 +23,10 @@ body {
   --black:#181818;
 }
 
+.global {
+  margin-top: 94px;
+}
+
 .container {
   position: relative;
   align-self: center;
@@ -209,18 +213,18 @@ a {
   background: transparent;
 }
 
-a.arrow {
+.arrow {
   font-weight: bold;
 }
 
-a.arrow::after {
+.arrow::after {
   content: "→";
   font-weight: lighter;
   margin: 0px 0px 0px 8px;
   transition: margin 0.2s ease 0s;
 }
 
-a.arrow:hover::after {
+.arrow:hover::after {
   margin-left: 12px;
 }
 
@@ -248,16 +252,15 @@ a.arrow:hover::after {
 
 .header {
   width: 100%;
-  background: var(--brown);
   color: var(--text);
   position: relative;
-  position: -webkit-sticky;
   position: sticky;
   top: 0;
   width: 100%;
   padding: 30px 40px;
   margin: 0 auto;
   z-index: 100;
+  position: absolute;
 }
 
 .nav {
@@ -296,9 +299,13 @@ a.arrow:hover::after {
   padding: 12px 0;
   border-radius: 2px;
   box-shadow: 0px 2px 6px 0px #00000014;
+  top: 70px;
+  z-index: 10000;
+  left: 138px;
 }
 
 .drop-overlay li {
+  cursor: pointer;
   list-style: none;
   height: 24px;
   padding: 4px 16px;
@@ -306,6 +313,11 @@ a.arrow:hover::after {
 
 .drop-overlay li:hover {
   background-color: #ececec;
+}
+
+.drop-overlay a {
+  display: inline-block;
+  width: 100%;
 }
 
 .form {
@@ -516,11 +528,11 @@ main {
   font-weight: 500;
 }
 
-.is-magazine {
+.is-revista {
   background-color: var(--magazine-color);
 }
 
-.is-book {
+.is-libro {
   background-color: var(--book-color);
 }
 
@@ -528,7 +540,7 @@ main {
   background-color: var(--podcast-color);
 }
 
-.is-article {
+.is-articulo {
   background-color: var(--article-color);
 }
 

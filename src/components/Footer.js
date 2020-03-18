@@ -6,7 +6,7 @@ class Footer extends Component {
     return (
       <footer className="footer">
         <div className="container">
-          <div className="footnote">🌎 En casa se esta muy bien</div>
+          <div className="footnote"><span role="img" aria-label="world">🌎</span> En casa se esta muy bien</div>
           <Button />
         </div>
       </footer>

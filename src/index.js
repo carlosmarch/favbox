@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Route, Link, BrowserRouter as Router, Switch } from 'react-router-dom'
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
 
 import './css/index.css';
 
@@ -8,6 +8,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 
 import App from './App';
+import Category from './Category';
 import About from './About';
 import Notfound from './Notfound';
 
@@ -22,6 +23,8 @@ const routing = (
 
       <Switch>
         <Route exact path="/" component={App} />
+        <Route path="/categorias/:id" component={Category} />
+        <Route path="/temas/:id" component={Category} />
         <Route path="/about" component={About} />
         <Route component={Notfound} />
       </Switch>

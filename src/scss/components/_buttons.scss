@@ -7,7 +7,7 @@ a{
   padding: 0px;
   background: transparent;
 }
-a.arrow{
+.arrow{
   font-weight: bold;
   &::after {
       content: "→";
