@@ -8,29 +8,31 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 
 import App from './App';
-import Category from './Category';
+import Detail from './Detail';
 import About from './About';
 import Notfound from './Notfound';
 
 
 import * as serviceWorker from './serviceWorker';
 
+window.$api = 'https://api.airtable.com/v0/appOyoqCMxKWB0IG8/recommendations?api_key=keyu0nFPUS8ZCnRmb';
+window.$api_contributors = 'https://api.airtable.com/v0/appOyoqCMxKWB0IG8/contributors?api_key=keyu0nFPUS8ZCnRmb';
 
 const routing = (
   <Router>
-    <div>
+
       <Header />
 
       <Switch>
         <Route exact path="/" component={App} />
-        <Route path="/categorias/:id" component={Category} />
-        <Route path="/temas/:id" component={Category} />
+        <Route exact path="/categorias/:id" component={Detail} />
+        <Route exact path="/temas/:id" component={Detail} />
         <Route path="/about" component={About} />
         <Route component={Notfound} />
       </Switch>
 
       <Footer />
-    </div>
+
   </Router>
 )
 

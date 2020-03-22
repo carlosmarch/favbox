@@ -1,7 +1,10 @@
 import React, { Component } from "react";
+import { Link } from 'react-router-dom';
 
 class Card extends Component {
   render() {
+
+    //console.log(this.props.autor)
 
     return (
 
@@ -12,13 +15,18 @@ class Card extends Component {
           <div className="card-description">{this.props.description}</div>
           <div className="card-topics">
 
-            {this.props.temas.map((topic, key) => {return (<span key={key}>#{topic}</span>)})}
+            {this.props.temas.map((topic, key) => {return (<Link to={ '/temas/' + topic } key={key}>#{topic}</Link>)})}
 
           </div>
+
           <div className="card-contributor">
-            <img src={process.env.PUBLIC_URL + '/img/user_icon.png'} className="contributor-image" alt="icon"/>
-            <div className="contributor-name">{this.props.contributor}</div>
+            <img src={this.props.autor[0].fields.avatar[0].url} className="contributor-image" alt="icon"/>
+            <div className="contributor-info">
+              <div className="contributor-name">{this.props.autor[0].fields.name}</div>
+              <div className="contributor-description">{this.props.autor[0].fields.description}</div>
+            </div>
           </div>
+
         </div>
       </a>
 

@@ -1,7 +1,4 @@
-main{
-  position: relative;
-  overflow: hidden;
-}
+
 .lines{
   position: absolute;
   pointer-events: none;
@@ -29,7 +26,7 @@ main{
 .card {
   display: flex;
   margin: 20px;
-  color: var(--text);
+  color: var(--black);
   border-radius: 3px;
   transition: .2s ease-out;
   overflow: hidden;
@@ -45,6 +42,7 @@ main{
   height: 410px;
   max-height: calc(110vw - 40px);
   background-size: cover;
+  background-position: center top;
 }
 
 .card:hover {
@@ -63,6 +61,7 @@ main{
   height: 100%;
   transition: .2s ease-out;
   padding: 24px;
+  background-color: var(--default-color);//default bg color
 }
 
 .card-content:hover {
@@ -78,8 +77,11 @@ main{
 .card-topics {
   margin-top: 16px;
   font-size: 13px;
-  span{
+  a{
     margin-right: 6px;
+    &:hover{
+      text-decoration: underline;
+    }
   }
 }
 
@@ -95,32 +97,19 @@ main{
   margin-right: 8px;
 }
 .contributor-name{
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 500;
 }
-
-
-.is-revista {
-  background-color: var(--magazine-color);
-}
-
-.is-libro {
-  background-color: var(--book-color);
-}
-
-.is-podcast {
-  background-color: var(--podcast-color);
-}
-
-.is-articulo {
-  background-color: var(--article-color);
+.contributor-description{
+  font-size: 13px;
+  font-weight: 100;
 }
 
 .badge {
   padding: 2px 8px;
   border-radius: 4px;
-  background-color: #b3d4ff;
-  color: var(--text);
+  background-color: var(--soft_blue);
+  color: var(--black);
   font-size: 13px;
   line-height: 20px;
   font-weight: 500;

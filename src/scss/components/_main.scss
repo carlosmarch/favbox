@@ -8,22 +8,28 @@ body {
     font-size: 15px;
     font-family: apercu-pro, "Apercu Pro", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
     font-weight: 300;
-    color: #181818;
+    color: var(--black);
     -webkit-font-smoothing: antialiased;
 }
-
-:root{
-  --interaction-blue:;
-
-  --magazine-color:#D1501A;
-  --book-color:#35977E;
-  --podcast-color:#E9B806;
-  --article-color:#55808E;
-
-  --text:#181818;
-  --brown:#f4f0eb;
-  --black:#181818;
+main{
+  position: relative;
+  overflow: hidden;
 }
 .global{
   margin-top: 94px;//header size
+  min-height: calc(100vh - 193px);//header+footer size
+}
+
+.mt-xl{
+  margin-top: 160px;
+}
+.mt-l{
+  margin-top: 80px;
+}
+
+.mt-m{
+  argin-top: 40px;
+}
+.mt-s{
+  margin-top: 20px;
 }

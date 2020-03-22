@@ -2,11 +2,9 @@ import React, { Component } from "react";
 
 class Button extends Component {
   render() {
-    const text = 'Hey! Empieza ahora';
-
     return (
 
-        <div className="button">{text}</div>
+        <div className="button">{this.props.text}</div>
 
     );
   }

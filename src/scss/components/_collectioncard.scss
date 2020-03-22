@@ -1,0 +1,59 @@
+.GridColection{
+  background: #e8e0cc;
+  padding: 80px 0;
+}
+.collection-card {
+  height: 300px;
+  border-radius: 16px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: inline-block;
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--black);
+  background-color: #f9f9f9;
+  transition: all .2s ease;
+  background-size: auto;
+  padding: 56px 10% 0;
+  position: relative;
+  &:hover {
+    transform: scale(1.03);
+    transition: all .2s ease;
+  }
+}
+.collection-card__title-container{
+  height: 50%;
+}
+.collection-card__title {
+    font-weight: 700;
+}
+.collection-card__number {
+    position: absolute;
+    bottom: 32px;
+}
+
+.collection-card:first-of-type{
+  background-image: url(/img/line-4.svg), url(/img/dot-2.svg);
+  background-size: auto, 60%;
+  background-position: center, -40% -100%;
+}
+.collection-card:nth-of-type(2){
+  background-image: url(/img/line-2.svg), url(/img/dot-3.svg);
+  background-size: cover;
+}
+.collection-card:nth-of-type(3){
+  background-image: url(/img/line.svg), url(/img/line.svg), url(/img/dot-1.svg);
+  background-size: auto,cover, 120%;
+  background-position: center, bottom, -100%;
+}
+.collection-card:nth-of-type(4){
+  background-image: url(/img/line-2.svg), url(/img/dot-6.svg);
+  background-size: auto, 30%;
+  background-position: center,bottom;
+}
+.collection-card:nth-of-type(5){
+  background-image: url(/img/line-3.svg), url(/img/dot-5.svg);
+  background-size: cover, 90%;
+  background-position: center, 30% -50%;
+}

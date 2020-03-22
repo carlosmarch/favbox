@@ -1,6 +1,6 @@
 .header {
   width: 100%;
-  color: var(--text);
+  color: var(--black);
   position: relative;
   position: sticky;
   top: 0;
@@ -22,16 +22,18 @@
     margin: 0 12px;
     cursor: pointer;
     position: relative;
+    height: 40px;
+    vertical-align: top;
     &:first-child{
         margin-left: 0;
     }
-    a{
+    div, a{
+      vertical-align: top;
       display: inline-block;
     }
 }
 .chevron {
     width: 10px;
-    height: 100%;
     display: block;
     fill: rgb(66, 66, 65);
     flex-shrink: 0;
@@ -44,19 +46,23 @@
 
 div#dropdown-categorias {
   opacity: 0;
+  pointer-events: none;
 }
 div#dropdown-temas {
   opacity: 0;
+  pointer-events: none;
 }
 
 li#menuitem-categorias.hoverstate{
   div#dropdown-categorias {
     opacity: 1;
+    pointer-events: all;
   }
 }
 li#menuitem-temas.hoverstate{
   div#dropdown-temas {
     opacity: 1;
+    pointer-events: all;
   }
 }
 
@@ -68,6 +74,7 @@ li#menuitem-temas.hoverstate{
     border-radius: 2px;
     box-shadow: 0px 2px 6px 0px #00000014;
     top: 32px;
+    left: 0;
     z-index: 10000;
     border: 1px solid #ececec;
     -webkit-transition: all 120ms ease-in 0s;

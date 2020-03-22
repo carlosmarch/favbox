@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 
 
@@ -25,7 +25,6 @@ class Header extends Component {
 
       this.setState({ categorias: window.$categories });
       this.setState({ temas: window.$topics });
-      console.log(window.$categories, window.$topics);
   }
 
   handleHoverTemas(){
@@ -39,12 +38,8 @@ class Header extends Component {
 
   render() {
 
-
-
-
     const hoverstateCategorias = this.state.isHoveredCategorias ? "hoverstate" : "";
     const hoverstateTemas = this.state.isHoveredTemas ? "hoverstate" : "";
-
 
     return (
       <header className="header">
@@ -55,11 +50,11 @@ class Header extends Component {
             <li><Link to="/">Inicio</Link></li>
 
             <li id="menuitem-categorias" className={hoverstateCategorias} onMouseEnter={this.handleHoverCategorias} onMouseLeave={this.handleHoverCategorias}>
-              <Link to="/">¿Qué te apetece?</Link>
+              <div>¿Qué te apetece?</div>
               <svg viewBox="0 0 30 30" className="chevron"><polygon points="15,17.4 4.8,7 2,9.8 15,23 28,9.8 25.2,7 "></polygon></svg>
               <div id={'dropdown-categorias'} className="drop-overlay">
                 <ul>
-                  {this.state.categorias.map((categorias, key) =>
+                  {this.state.categorias && this.state.categorias.map((categorias, key) =>
                     <li key={key}>
                       <Link to={`/categorias/${categorias}`}>{categorias}</Link>
                     </li>
@@ -69,11 +64,11 @@ class Header extends Component {
             </li>
 
             <li id="menuitem-temas" className={hoverstateTemas} onMouseEnter={this.handleHoverTemas} onMouseLeave={this.handleHoverTemas}>
-              <Link to="/">Temas</Link>
+              <div>Temas</div>
               <svg viewBox="0 0 30 30" className="chevron"><polygon points="15,17.4 4.8,7 2,9.8 15,23 28,9.8 25.2,7 "></polygon></svg>
               <div id={'dropdown-temas'} className="drop-overlay">
                 <ul>
-                  {this.state.temas.map((temas, key) =>
+                  {this.state.temas && this.state.temas.map((temas, key) =>
                     <li key={key}>
                       <Link to={`/temas/${temas}`}>{temas}</Link>
                     </li>

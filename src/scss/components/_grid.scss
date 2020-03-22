@@ -5,13 +5,17 @@ $breakpoint-m: 48em;
   align-self: center;
   max-width: 1200px;
   width: 100%;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
 }
-
+.container-big{
+  max-width: 1340px;
+}
 .grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  grid-gap: 1em;
+  grid-gap: 3em;
+  padding-bottom: 40px;
 }
 
 .width-1\/12 {

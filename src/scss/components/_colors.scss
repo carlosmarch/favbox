@@ -1,0 +1,50 @@
+:root{
+  --interaction-blue:#0000ff;
+  --black:#181818;
+
+  --default-color: #ead095;
+
+  --magazine-color:#D1501A;
+  --book-color:#35977E;
+  --podcast-color:#E9B806;
+  --article-color:#55808E;
+
+  --brown:#f4f0eb;
+  --cyan: #6afcee;
+  --yellow:#ffd954;
+  --purple:#7837e6;
+  --orange:#fb7961;
+  --soft_blue:#c6dcfd;
+}
+
+.is-revista {
+  background-color: var(--magazine-color);
+}
+
+.is-libro {
+  background-color: var(--book-color);
+}
+
+.is-podcast {
+  background-color: var(--podcast-color);
+}
+
+.is-articulo {
+  background-color: var(--article-color);
+}
+
+.bg-brown{
+  background-color: var(--brown);
+}
+.bg-cyan{
+  background-color: var(--cyan);
+}
+.bg-yellow{
+  background-color: var(--yellow);
+}
+.bg-purple{
+  background-color: var(--purple);
+}
+.bg-orange{
+  background-color: var(--orange);
+}

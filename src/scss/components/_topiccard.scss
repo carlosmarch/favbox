@@ -1,0 +1,20 @@
+.TopicCollection{
+  background-image: url(/img/line-4.svg), url(/img/dot-2.svg);
+  background-size: auto, 30%;
+  background-position: 110%, 0 -10%;
+  background-repeat: no-repeat;
+}
+.TopicCollection .grid {
+    grid-gap: 1em;
+}
+.TopicCollection .container{
+  max-width: 800px;
+}
+a.topic-card {
+    margin: 0;
+    padding: 8px 16px;
+    border-radius: 4px;
+    &:hover{
+        background: #f9f9f9;
+    }
+}

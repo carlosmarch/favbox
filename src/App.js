@@ -1,76 +1,127 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-
+import { Link } from 'react-router-dom';
+import * as Helpers from './Helpers';
 import Hero from './components/Hero';
-import Card from './components/Card';
 import BlockTitle from './components/BlockTitle';
-import Dropdown from './components/Dropdown';
+import Card from './components/Card';
+import Collectioncard from './components/Collectioncard';
+import Button from './components/Button';
 
-const api = 'https://api.airtable.com/v0/appOyoqCMxKWB0IG8/readings?api_key=keyu0nFPUS8ZCnRmb';
 
 class App extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      readings: [],
-      topics:[],
-      categories:[]
+      recommendations: [],
+      contributors: [],
     };
   }
 
   componentDidMount() {
-    fetch(api)
+    fetch(window.$api)
     .then((resp) => resp.json())
     .then(data => {
+      //console.log('allrecords',data.records)
+      //PREVENT RERENDER WITH setState
+      //STORE GLOBALLY & THEN SET ALL DATA
+      //this.setState({ recommendations: data.records }); //PREVENT RERENDER
+      Helpers.storeUniqueTopics(data.records)
+      Helpers.storeUniqueCategories(data.records)
+      window.$alldata = data.records;
 
-      this.setState({ readings: data.records });
+      return fetch(window.$api_contributors)
 
-      //unique topics
-      var topics = data.records.map(function(item) {return item.fields.temas;})
-      const mergeAllTopics = Array.prototype.concat.apply([], topics);
-      const uniqueTopics = mergeAllTopics.filter((val,id,array) => array.indexOf(val) === id);
-      this.setState({ topics: uniqueTopics });
-      window.$topics = uniqueTopics; //global variable for the dropdown
+    })
+    .then((resp2, data) => resp2.json())
+    .then(contributors => {
+      //console.log('allcontributors',contributors.records)
+      this.setState({
+        recommendations: window.$alldata,
+        contributors: contributors.records}
+      );
 
-      //unique categories
-      var categories = data.records.map(function(item) {return item.fields.categorias;})
-      const mergeAllCategories = Array.prototype.concat.apply([], categories);
-      const uniqueCategories = mergeAllCategories.filter((val,id,array) => array.indexOf(val) === id);
-      this.setState({ categories: uniqueCategories });
-      window.$categories = uniqueCategories; //global variable for the dropdown
+      //console.log('contributors',this.state.contributors)
+      console.log('recommendations',this.state.recommendations)
 
-      console.log(this.state.readings);
-      //console.log(this.state.topics);
-      //console.log(this.state.categories);
-
-    }).catch(err => {
+    })
+    .catch(err => {
       // Error
     });
   }
 
+  //Get autor data by autor ID "rec9p8GxW7FJxPtg5" "recbofdaqGgFjL20L"
+  getAutordata(item){
+    const itemid = item[0];
+    //console.log('getItemInfo RETURNS', this.state.contributors.filter(item => item.id.indexOf(itemid) !== -1) );
+    return this.state.contributors.filter(contributor => contributor.id.indexOf(itemid) !== -1);
+  }
+
+  countCollectionItems(collectionName){
+    return this.state.recommendations.filter(recommendation => recommendation.fields.coleccion[0].indexOf(collectionName) !== -1).length
+  }
+
 
   render() {
+
     return (
 
         <div className="global">
+
           <Hero />
+
           <main>
 
-            <div id="GridCard">
-              <BlockTitle title={'Destacados'} description={'Las recomendaciones mas destacadas'}/>
-              <div className="grid-card">
-
-                {this.state.readings.map((records) =>
-                  <Card {...records.fields} key={records.id}/>
-                )}
-
-                <img className="lines" src={process.env.PUBLIC_URL + '/img/lines.svg'} alt="lines"/>
+              <div id="GridCard">
+                <BlockTitle title={'Destacados'} description={'Las recomendaciones mas destacadas'}/>
+                <div className="container container-big">
+                    <div className="grid-card">
+                      {this.state.recommendations.map((records) =>
+                        <Card {...records.fields} key={records.id} autor={this.getAutordata(records.fields.autor)}/>
+                      )}
+                      <img className="lines" src={process.env.PUBLIC_URL + '/img/lines.svg'} alt="lines"/>
+                    </div>
+                </div>
               </div>
-            </div>
+
+              <div className="GridColection mt-xl">
+                <BlockTitle title={'Colecciones'} description={'Las recomendaciones mas destacadas'}/>
+                <div className="container">
+                  <div className=" grid mt-s">
+                      <Collectioncard title={'Darle al coco'} grid={'width-4/12'} number={this.countCollectionItems('Darle al coco')}/>
+                      <Collectioncard title={'Mantenerse en forma'} grid={'width-4/12'}/>
+                      <Collectioncard title={'Desconectar de la pantalla'} grid={'width-4/12'}/>
+                      <Collectioncard title={'Aprender algo'} grid={'width-6/12'}/>
+                      <Collectioncard title={'Disfrutar de algo bonito'} grid={'width-6/12'}/>
+                  </div>
+                </div>
+              </div>
+
+              <div className="Invite mt-l">
+                <div className="container">
+                  <div className="Promocard grid mt-s">
+                      <div className="grid__item width-10/12">
+                        <h3>Cuéntanos que te gusta</h3>
+                        <p>Encontraremos recomendaciones para tí y podrás compartir tus pasatiempos preferidos.</p>
+                      </div>
+                      <div className="grid__item width-2/12">
+                        <Button text="Empezar!" style="width:100%; text-align:center"/>
+                      </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="TopicCollection mt-l">
+                <div className="container">
+                  <div className=" grid mt-s">
+                    {window.$topics && window.$topics.map((temas, key) =>
+                        <Link to={`/temas/${temas}`} key={key} className="topic-card width-3/12">{temas}</Link>
+                    )}
+                  </div>
+                </div>
+              </div>
 
           </main>
-
         </div>
     );
   }
