@@ -491,7 +491,7 @@ li#menuitem-temas.hoverstate div#dropdown-temas {
   flex-direction: column;
   min-height: 400px;
   width: 100%;
-  background-color: var(--brown);
+  background-color: var(--soft-dafault-color);
   color: inherit;
   overflow: hidden;
   margin-bottom: 80px;

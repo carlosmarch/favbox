@@ -112,7 +112,6 @@ class App extends Component {
                       {this.returnCategoryItems('libro', 4).map((records) =>
                         <Card {...records.fields} key={records.id} autor={this.getAutordata(records.fields.autor)}/>
                       )}
-                      <img className="lines" src={process.env.PUBLIC_URL + '/img/lines.svg'} alt="lines"/>
                     </div>
                 </div>
               </div>
@@ -125,7 +124,7 @@ class App extends Component {
                       {this.returnCategoryItems('revista', 4).map((records) =>
                         <Card {...records.fields} key={records.id} autor={this.getAutordata(records.fields.autor)}/>
                       )}
-                      <img className="lines" src={process.env.PUBLIC_URL + '/img/lines.svg'} alt="lines"/>
+                      <img className="lines" src={process.env.PUBLIC_URL + '/img/dot-3.svg'} alt="lines"/>
                     </div>
                 </div>
               </div>
