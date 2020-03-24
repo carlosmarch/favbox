@@ -28,6 +28,7 @@ const routing = (
         <Route exact path="/categorias/:id" component={Detail} />
         <Route exact path="/temas/:id" component={Detail} />
         <Route path="/about" component={About} />
+        <Route path="/colecciones/:id" component={Detail} />
         <Route component={Notfound} />
       </Switch>
 

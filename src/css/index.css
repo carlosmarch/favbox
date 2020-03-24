@@ -501,23 +501,8 @@ li#menuitem-temas.hoverstate div#dropdown-temas {
   background-repeat: no-repeat;
 }
 
-.block {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  column-gap: 2.6%;
-  margin: 0px auto;
-  column-gap: 32px;
-}
-
-.block-left {
-  max-width: 555px;
-  padding-top: 20px;
-  grid-column: 1 / span 8;
-}
-
-.block-right {
-  margin-top: 0px;
-  grid-column: 9 / span 12;
+.hero-title {
+  padding-top: 40px;
 }
 
 .bg-styled {
@@ -544,6 +529,7 @@ li#menuitem-temas.hoverstate div#dropdown-temas {
   height: 100%;
   padding: 8px;
   margin: 8px;
+  min-height: 500px;
 }
 
 .image-column img {
@@ -1308,6 +1294,10 @@ li#menuitem-temas.hoverstate div#dropdown-temas {
 
 .collection-card__title {
   font-weight: 700;
+}
+
+.collection-card__title:first-letter {
+  text-transform: uppercase;
 }
 
 .collection-card__number {

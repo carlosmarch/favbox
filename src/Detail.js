@@ -20,13 +20,14 @@ class Detail extends Component {
     fetch(window.$api+'&filterByFormula=Find(%22'+this.state.topic+'%22%2C+'+this.state.category+')')
     .then((resp) => resp.json())
     .then(data => {
+      console.log(data);
       //this.setState({recommendations: data.records});
       window.$pagedata = data.records;
       return fetch(window.$api)
     })
     .then((resp2) => resp2.json())
     .then(datafull => {
-      //console.log(datafull);
+      console.log(datafull);
       Helpers.storeUniqueTopics(datafull.records)
       Helpers.storeUniqueCategories(datafull.records)
       window.$alldata = datafull.records;

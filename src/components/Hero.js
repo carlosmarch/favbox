@@ -12,8 +12,8 @@ class Hero extends Component {
           <div className="container">
                 <div className="grid">
                       <div className="grid__item width-6/12">
-                        <h1 className="">Me quedo en casa</h1>
-                        <p className="hero">Crea rutas de preguntas personalizadas con un número ilimitado de <b>Saltos Lógicos.</b> Saluda a las personas por el nombre o segméntalas por canal con <b>Campos Ocultos.</b> Haz seguimiento de forma personalizada en <b>Hubspot</b> o <b>Mailchimp.</b> Y optimiza tus campañas de marketing con <b>Google Tag Manager</b> o <b>Facebook pixel.</b></p>
+                        <h1 className="hero-title">Me quedo en casa</h1>
+                        <p className="hero-text">Bla bla bla bla bla bla bla bla blabla bla bla bla bla blabla blabla blabla blabla bla <b>bla bla.</b> bla blabla blabla blabla blabla blabla <b>bla bla</b> blabla <b>bla bla</b> bla.</p>
                         <a className="arrow" href="https://airtable.com/tblPHqTD0CnmiWwAN/viwOPZ0TiEQRSWSc9">Empieza ahora</a>
                       </div>
                       <div className="grid__item width-6/12">

@@ -23,16 +23,20 @@ class Header extends Component {
           isHoveredCategorias: !prevState.isHoveredCategorias
       }));
 
-      this.setState({ categorias: window.$categories });
-      this.setState({ temas: window.$topics });
+      this.setState({
+        categorias: window.$categories,
+        temas: window.$topics
+      });
   }
 
   handleHoverTemas(){
       this.setState(prevState => ({
           isHoveredTemas: !prevState.isHoveredTemas
       }));
-      this.setState({ categorias: window.$categories });
-      this.setState({ temas: window.$topics });
+      this.setState({
+        categorias: window.$categories,
+        temas: window.$topics
+      });
   }
 
 

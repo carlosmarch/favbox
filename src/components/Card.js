@@ -18,7 +18,7 @@ class Card extends Component {
             {this.props.temas.map((topic, key) => {return (<Link to={ '/temas/' + topic } key={key}>#{topic}</Link>)})}
 
           </div>
-          
+
           <div className="card-contributor">
             <img src={this.props.autor[0].fields.avatar[0].url} className="contributor-image" alt="icon"/>
             <div className="contributor-info">
