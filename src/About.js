@@ -7,7 +7,12 @@ class About extends Component {
 
     return (
       <div className="global">
-        <BlockTitle title={'About'} description={'Esto es el about'}/>
+        <div className="container container-s">
+          <BlockTitle title={'About'} description={'Esto es el about'}/>
+          <div className="AboutContent mt-s">
+            <p>El proyecto empieza durante la cuarentena de marzo por el COVID-19. </p>
+          </div>
+        </div>
       </div>
     );
   }

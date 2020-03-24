@@ -15,6 +15,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  padding-bottom: 120px;
 }
 
 .card:first-of-type {
@@ -76,7 +77,7 @@
 
 .card-topics {
   margin-top: 16px;
-  font-size: 13px;
+  font-size: 14px;
   a{
     margin-right: 6px;
     &:hover{

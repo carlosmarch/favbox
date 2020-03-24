@@ -1,7 +1,30 @@
 .GridColection{
-  background: #e8e0cc;
+  background: var(--soft-dafault-color);
   padding: 80px 0;
+  position: relative;
 }
+.GridColection::before{
+  top: -18px;
+  transform: rotate(180deg);
+}
+.GridColection::after{
+    bottom: -18px;
+}
+.GridColection::before,
+.GridColection::after{
+  content: "";
+  position: absolute;
+  background-color: inherit;
+  height: 18px;
+  left: -3vw;
+  -webkit-mask-image: url(/img/texture.svg);
+  mask-image: url(/img/texture.svg);
+  -webkit-mask-repeat: repeat-x;
+  mask-repeat: repeat-x;
+  width: 150%;
+  z-index: -1;
+}
+
 .collection-card {
   height: 300px;
   border-radius: 16px;

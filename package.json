@@ -1,5 +1,7 @@
 {
-  "name": "test",
+  "homepage": "https://carlosmarch.github.io/",
+  "start_url": "/",
+  "name": "mequedoencasa",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

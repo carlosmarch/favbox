@@ -42,7 +42,7 @@ class App extends Component {
       );
 
       //console.log('contributors',this.state.contributors)
-      console.log('recommendations',this.state.recommendations)
+      //console.log('recommendations',this.state.recommendations)
 
     })
     .catch(err => {
@@ -74,7 +74,7 @@ class App extends Component {
 
               <div id="GridCard">
                 <BlockTitle title={'Destacados'} description={'Las recomendaciones mas destacadas'}/>
-                <div className="container container-big">
+                <div className="container container-xl">
                     <div className="grid-card">
                       {this.state.recommendations.map((records) =>
                         <Card {...records.fields} key={records.id} autor={this.getAutordata(records.fields.autor)}/>
@@ -84,13 +84,13 @@ class App extends Component {
                 </div>
               </div>
 
-              <div className="GridColection mt-xl">
+              <div className="GridColection mt-l">
                 <BlockTitle title={'Colecciones'} description={'Las recomendaciones mas destacadas'}/>
                 <div className="container">
                   <div className=" grid mt-s">
                       <Collectioncard title={'Darle al coco'} grid={'width-4/12'} number={this.countCollectionItems('Darle al coco')}/>
                       <Collectioncard title={'Mantenerse en forma'} grid={'width-4/12'}/>
-                      <Collectioncard title={'Desconectar de la pantalla'} grid={'width-4/12'}/>
+                      <Collectioncard title={'Pandemias, contagios y visinarios'} grid={'width-4/12'}/>
                       <Collectioncard title={'Aprender algo'} grid={'width-6/12'}/>
                       <Collectioncard title={'Disfrutar de algo bonito'} grid={'width-6/12'}/>
                   </div>
@@ -105,14 +105,14 @@ class App extends Component {
                         <p>Encontraremos recomendaciones para tí y podrás compartir tus pasatiempos preferidos.</p>
                       </div>
                       <div className="grid__item width-2/12">
-                        <Button text="Empezar!" style="width:100%; text-align:center"/>
+                        <Button text="Empezar!" />
                       </div>
                   </div>
                 </div>
               </div>
 
               <div className="TopicCollection mt-l">
-                <div className="container">
+                <div className="container container-s">
                   <div className=" grid mt-s">
                     {window.$topics && window.$topics.map((temas, key) =>
                         <Link to={`/temas/${temas}`} key={key} className="topic-card width-3/12">{temas}</Link>

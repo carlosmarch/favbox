@@ -7,14 +7,21 @@
 .TopicCollection .grid {
     grid-gap: 1em;
 }
-.TopicCollection .container{
-  max-width: 800px;
-}
+
 a.topic-card {
     margin: 0;
     padding: 8px 16px;
     border-radius: 4px;
     &:hover{
         background: #f9f9f9;
+    }
+    &::before{
+      flex: 0 0 auto;
+      width: 9px;
+      height: 9px;
+      margin-right: 5px;
+      display: inline-block;
+      background-color: var(--black);
+      content: '';
     }
 }
