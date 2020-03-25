@@ -23,6 +23,9 @@
 }
 .footnote a {
     margin: 0 4px;
+    &:hover{
+      text-decoration: underline;
+    }
 }
 .divider{
   display: block;
@@ -59,23 +62,4 @@
     -o-transform: rotate(360deg);
     transform: rotate(360deg);
   }
-}
-
-
-.rotating-wrapper{
-  transform: translate(-5%, -5%) skewX(-40deg);
-}
-.rotating-text{
-  width: 100px;
-  position: absolute;
-  right: 10%;
-  filter: invert(1) sepia(0) saturate(0) hue-rotate(0);
-}
-.rotating {
-  -webkit-animation: rotating 5s linear infinite;
-  -moz-animation: rotating 5s linear infinite;
-  -ms-animation: rotating 5s linear infinite;
-  -o-animation: rotating 5s linear infinite;
-  animation: rotating 5s linear infinite;
-  transform: translate(-5%, -5%) skewX(-40deg);
 }

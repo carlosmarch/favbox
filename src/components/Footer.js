@@ -4,9 +4,6 @@ class Footer extends Component {
   render() {
     return (
       <footer className="footer">
-        <div className="rotating-wrapper">
-          <img src={process.env.PUBLIC_URL + '/img/text.svg'} className="rotating-text rotating" alt="Mequedoencasa"/>
-        </div>
         <div className="container">
                 <div className="footnote">Gracias a Joan Miró por la inspiración. Y a un buen puñado de productos digitales excelentes
                   <br/>

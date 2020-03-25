@@ -1,0 +1,32 @@
+.Notfound{
+  background-image: url(/img/dot-2.svg);
+  background-size: 30%;
+  background-position: center 30%;
+  background-repeat: no-repeat;
+}
+.Notfound .container{
+    top: 250px;
+}
+.Notfound .block-title{
+  text-align: center;
+}
+.Notfound .block-description{
+  text-align: center;
+}
+
+.rotating-wrapper{
+  transform: translate(-5%, -5%) skewX(-40deg);
+}
+.rotating-text{
+  width: 500px;
+  margin: 0 40%;
+  //filter: invert(1) sepia(0) saturate(0) hue-rotate(0);
+}
+.rotating {
+  -webkit-animation: rotating 5s linear infinite;
+  -moz-animation: rotating 5s linear infinite;
+  -ms-animation: rotating 5s linear infinite;
+  -o-animation: rotating 5s linear infinite;
+  animation: rotating 5s linear infinite;
+  transform: translate(-5%, -5%) skewX(-40deg);
+}

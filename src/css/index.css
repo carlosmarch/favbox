@@ -335,6 +335,10 @@ a {
   align-items: center;
 }
 
+.text-center {
+  text-align: center;
+}
+
 .header {
   width: 100%;
   color: var(--black);
@@ -503,6 +507,10 @@ li#menuitem-temas.hoverstate div#dropdown-temas {
 
 .hero-title {
   padding-top: 40px;
+}
+
+.hero-text {
+  margin-bottom: 24px;
 }
 
 .bg-styled {
@@ -1048,6 +1056,10 @@ li#menuitem-temas.hoverstate div#dropdown-temas {
   margin: 0 4px;
 }
 
+.footnote a:hover {
+  text-decoration: underline;
+}
+
 .divider {
   display: block;
   width: 60%;
@@ -1086,15 +1098,36 @@ li#menuitem-temas.hoverstate div#dropdown-temas {
   }
 }
 
+.block-title {
+  text-transform: capitalize;
+}
+
+.Notfound {
+  background-image: url(/img/dot-2.svg);
+  background-size: 30%;
+  background-position: center 30%;
+  background-repeat: no-repeat;
+}
+
+.Notfound .container {
+  top: 250px;
+}
+
+.Notfound .block-title {
+  text-align: center;
+}
+
+.Notfound .block-description {
+  text-align: center;
+}
+
 .rotating-wrapper {
   transform: translate(-5%, -5%) skewX(-40deg);
 }
 
 .rotating-text {
-  width: 100px;
-  position: absolute;
-  right: 10%;
-  filter: invert(1) sepia(0) saturate(0) hue-rotate(0);
+  width: 500px;
+  margin: 0 40%;
 }
 
 .rotating {
@@ -1104,10 +1137,6 @@ li#menuitem-temas.hoverstate div#dropdown-temas {
   -o-animation: rotating 5s linear infinite;
   animation: rotating 5s linear infinite;
   transform: translate(-5%, -5%) skewX(-40deg);
-}
-
-.block-title {
-  text-transform: capitalize;
 }
 
 .lines {

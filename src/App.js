@@ -20,6 +20,9 @@ class App extends Component {
     };
   }
 
+
+
+
   componentDidMount() {
     fetch(window.$api)
     .then((resp) => resp.json())
@@ -52,10 +55,13 @@ class App extends Component {
     });
   }
 
-  //Get autor data by autor ID "rec9p8GxW7FJxPtg5" "recbofdaqGgFjL20L"
-  getAutordata(item){
-    const itemid = item[0];
-    return this.state.contributors.filter(contributor => contributor.id.indexOf(itemid) !== -1);
+
+
+
+  //Get contributor data by contributor ID "rec9p8GxW7FJxPtg5" "recbofdaqGgFjL20L"
+  getContributor(contributorIdArray){
+    const contributorId = contributorIdArray[0];
+    return this.state.contributors.filter(contributor => contributor.id.indexOf(contributorId) !== -1);
   }
 
 
@@ -93,24 +99,11 @@ class App extends Component {
           <main>
 
               <div id="GridCard">
-                <BlockTitle title={'Destacados'} description={'Las recomendaciones mas destacadas'}/>
-                <div className="container container-xl">
-                    <div className="grid-card">
-                      {this.returnCollectionItems('destacados', 4).map((records) =>
-                        <Card {...records.fields} key={records.id} autor={this.getAutordata(records.fields.autor)}/>
-                      )}
-                      <img className="lines" src={process.env.PUBLIC_URL + '/img/lines.svg'} alt="lines"/>
-                    </div>
-                </div>
-              </div>
-
-
-              <div id="GridCard">
                 <BlockTitle title={'Libros'} description={'Las recomendaciones mas destacadas'}/>
                 <div className="container container-xl">
                     <div className="grid-card">
                       {this.returnCategoryItems('libro', 4).map((records) =>
-                        <Card {...records.fields} key={records.id} autor={this.getAutordata(records.fields.autor)}/>
+                        <Card {...records.fields} key={records.id} autor={this.getContributor(records.fields.contribuidor)}/>
                       )}
                     </div>
                 </div>
@@ -122,14 +115,12 @@ class App extends Component {
                 <div className="container container-xl">
                     <div className="grid-card">
                       {this.returnCategoryItems('revista', 4).map((records) =>
-                        <Card {...records.fields} key={records.id} autor={this.getAutordata(records.fields.autor)}/>
+                        <Card {...records.fields} key={records.id} autor={this.getContributor(records.fields.contribuidor)}/>
                       )}
                       <img className="lines" src={process.env.PUBLIC_URL + '/img/dot-3.svg'} alt="lines"/>
                     </div>
                 </div>
               </div>
-
-
 
 
               <div className="GridColection mt-l">
@@ -145,7 +136,9 @@ class App extends Component {
                 </div>
               </div>
 
+
               <Promocard />
+
 
               <div className="TopicCollection mt-l">
                 <div className="container container-s">
@@ -156,6 +149,8 @@ class App extends Component {
                   </div>
                 </div>
               </div>
+
+
 
           </main>
         </div>

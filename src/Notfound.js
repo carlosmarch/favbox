@@ -7,8 +7,11 @@ class Notfound extends Component {
 
     return (
 
-      <div className="global">
-        <BlockTitle title={'Notfound'} description={'Esto es el notfound'}/>
+      <div className="Notfound global">
+        <BlockTitle title={'Notfound'} description={'No lo hemos esncontrado'}/>
+        <div className="rotating-wrapper">
+          <img src={process.env.PUBLIC_URL + '/img/text.svg'} className="rotating-text rotating" alt="Mequedoencasa"/>
+        </div>
       </div>
 
     );

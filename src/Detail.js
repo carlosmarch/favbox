@@ -20,14 +20,14 @@ class Detail extends Component {
     fetch(window.$api+'&filterByFormula=Find(%22'+this.state.topic+'%22%2C+'+this.state.category+')')
     .then((resp) => resp.json())
     .then(data => {
-      console.log(data);
+      //console.log(data);
       //this.setState({recommendations: data.records});
       window.$pagedata = data.records;
       return fetch(window.$api)
     })
     .then((resp2) => resp2.json())
     .then(datafull => {
-      console.log(datafull);
+      //console.log(datafull);
       Helpers.storeUniqueTopics(datafull.records)
       Helpers.storeUniqueCategories(datafull.records)
       window.$alldata = datafull.records;
@@ -65,9 +65,10 @@ class Detail extends Component {
     }
   }
 
-  getAutordata(item){
-    const itemid = item[0];
-    return this.state.contributors.filter(contributor => contributor.id.indexOf(itemid) !== -1);
+  //Get contributor data by contributor ID "rec9p8GxW7FJxPtg5" "recbofdaqGgFjL20L"
+  getContributor(contributorIdArray){
+    const contributorId = contributorIdArray[0];
+    return this.state.contributors.filter(contributor => contributor.id.indexOf(contributorId) !== -1);
   }
 
   render() {
@@ -82,7 +83,7 @@ class Detail extends Component {
                   <div className="grid-card">
 
                     {this.state.recommendations.map((records, key) =>
-                      <Card {...records.fields} key={key} autor={this.getAutordata(records.fields.autor)}/>
+                      <Card {...records.fields} key={key} autor={this.getContributor(records.fields.contribuidor)}/>
                     )}
 
                     <img className="lines" src={process.env.PUBLIC_URL + '/img/lines.svg'} alt="lines"/>

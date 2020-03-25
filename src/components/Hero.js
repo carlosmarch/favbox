@@ -13,7 +13,7 @@ class Hero extends Component {
                 <div className="grid">
                       <div className="grid__item width-6/12">
                         <h1 className="hero-title">Me quedo en casa</h1>
-                        <p className="hero-text">Bla bla bla bla bla bla bla bla blabla bla bla bla bla blabla blabla blabla blabla bla <b>bla bla.</b> bla blabla blabla blabla blabla blabla <b>bla bla</b> blabla <b>bla bla</b> bla.</p>
+                        <p className="hero-text">Hola!! Bla bla bla bla bla bla bla bla blabla bla bla bla bla blabla blabla blabla blabla bla <b>bla bla.</b> bla blabla blabla blabla blabla blabla <b>bla bla</b> blabla <b>bla bla</b> bla.</p>
                         <a className="arrow" href="https://airtable.com/tblPHqTD0CnmiWwAN/viwOPZ0TiEQRSWSc9">Empieza ahora</a>
                       </div>
                       <div className="grid__item width-6/12">
@@ -36,7 +36,7 @@ class Hero extends Component {
                                   <img className="image-5" src={process.env.PUBLIC_URL + '/img/cover-5.jpg'} alt="international person"/>
                                   <img className="image-6" src={process.env.PUBLIC_URL + '/img/cover-6.jpg'} alt="international person"/>
                                   <img className="image-7" src={process.env.PUBLIC_URL + '/img/cover-7.jpg'} alt="international person"/>
-                                  <img className="image-8" src={process.env.PUBLIC_URL + '/img/cover-8.jpg'} alt="international person"/>
+                                  <img className="image-8" src={process.env.PUBLIC_URL + '/img/cover-8.png'} alt="international person"/>
                                 </div>
                                 <div className="image-column">
                                   <img className="image-1" src={process.env.PUBLIC_URL + '/img/cover-1.jpg'} alt="international person"/>
