@@ -1,17 +1,57 @@
 .Promocard{
-    background: #ead095;
-    border-radius: 16px;
-    background-position: center;
-    background-repeat: no-repeat;
-    cursor: pointer;
-    text-decoration: none;
-    color: var(--black);
-    transition: all .2s ease;
-    background-size: auto;
-    padding: 56px;
-    position: relative;
+  background: #ead095;
+  border-radius: 16px;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--black);
+  transition: all .2s ease;
+  background-size: auto;
+  padding: 56px;
+  position: relative;
 }
 .Promocard .button{
   width: 100%;
   text-align: center;
+}
+.wavetext{
+
+}
+.letter{
+  font-family: Graphik, Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  width: 24px;
+  height: 24px;
+  border-radius: 2px;
+  color: #181818;
+  background-color: #d8be96;
+  padding: 4px 4px;
+  box-sizing: border-box;
+  display: inline-block;
+  text-align: center;
+   x-transition: all 2s ease-in-out;
+  -webkit-animation: wave 2s infinite;
+  animation: wave 2s infinite;
+  position: relative;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  margin-right: 3px;
+  text-transform: uppercase;
+  -webkit-animation-delay: 0s;
+  animation-delay: 0s;
+}
+$offset : -4px;
+$count : 4;
+$duration : 2;
+
+@keyframes wave {
+  from { transform : translateY(0); }
+  to   { transform : translateY( $offset ); }
+}
+@for $i from 0 to $count {
+  .letter:nth-child( #{$count}n + #{$i} ) {
+      animation-delay :  -#{($count - $i) * 2 * $duration / $count }s;
+  }
 }

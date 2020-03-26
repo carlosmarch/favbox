@@ -12,7 +12,13 @@ class Promocard extends Component {
         <div className="container">
           <div className="Promocard grid mt-s">
               <div className="grid__item width-10/12">
-                <h3>Cuéntanos que te gusta</h3>
+                <div className="sticker">
+                  <span className="letter">H</span>
+                  <span className="letter">E</span>
+                  <span className="letter">Y</span>
+                  <span className="letter">!</span>
+                </div>
+                <h3>Cuéntanos qué te gusta</h3>
                 <p>Encontraremos recomendaciones para tí y podrás compartir tus pasatiempos preferidos.</p>
               </div>
               <div className="grid__item width-2/12">

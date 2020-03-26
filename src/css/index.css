@@ -2,13 +2,13 @@
 h1 {
   font-size: 62px;
   line-height: 76px;
-  font-weight: lighter;
+  font-weight: bold;
   padding: 0;
   margin: 32px 0;
 }
 
 h2 {
-  font-size: 40px;
+  font-size: 48px;
 }
 
 h3 {
@@ -24,7 +24,7 @@ h4 {
 h5 {
   font-size: 24px;
   line-height: 28px;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 h6 {
@@ -1394,6 +1394,70 @@ a.topic-card::before {
   content: '';
 }
 
+.MusicGrid {
+  background: var(--soft-dafault-color);
+  padding: 80px 0 40px 0;
+  margin-bottom: 80px;
+  background-image: url(/img/line.svg), url(/img/dot-4.svg);
+  background-size: auto, 30%;
+  background-position: center, bottom left;
+  background-repeat: no-repeat;
+}
+
+.musiccard-album {
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: .2s ease-out;
+}
+
+.musiccard-album:hover {
+  transform: perspective(1000px) rotateY(-10deg) translate3d(-3px, 0, 0);
+  transform-origin: 0 50%;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+  transition: .2s ease-out;
+}
+
+.musiccard-album-contents {
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  display: block;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 100000;
+  position: absolute;
+  opacity: 0;
+  transition: .2s ease-out;
+  background-color: var(--default-color);
+}
+
+.musiccard-album-contents:hover {
+  opacity: 1;
+  transition: .2s ease-out;
+}
+
+.play {
+  width: 60px;
+  margin-top: calc(50% - 40px);
+  margin: calc(50% - 40px) auto;
+}
+
+.musiccard-album-img {
+  width: 100%;
+  display: block;
+}
+
+.musiccard-title {
+  margin-top: 8px;
+}
+
+.musiccard-description {
+  font-size: 18px;
+}
+
 .Promocard {
   background: #ead095;
   border-radius: 16px;
@@ -1411,4 +1475,54 @@ a.topic-card::before {
 .Promocard .button {
   width: 100%;
   text-align: center;
+}
+
+.letter {
+  font-family: Graphik, Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  width: 24px;
+  height: 24px;
+  border-radius: 2px;
+  color: #181818;
+  background-color: #d8be96;
+  padding: 4px 4px;
+  box-sizing: border-box;
+  display: inline-block;
+  text-align: center;
+  x-transition: all 2s ease-in-out;
+  -webkit-animation: wave 2s infinite;
+  animation: wave 2s infinite;
+  position: relative;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  margin-right: 3px;
+  text-transform: uppercase;
+  -webkit-animation-delay: 0s;
+  animation-delay: 0s;
+}
+
+@keyframes wave {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-4px);
+  }
+}
+
+.letter:nth-child(4n + 0) {
+  animation-delay: -4s;
+}
+
+.letter:nth-child(4n + 1) {
+  animation-delay: -3s;
+}
+
+.letter:nth-child(4n + 2) {
+  animation-delay: -2s;
+}
+
+.letter:nth-child(4n + 3) {
+  animation-delay: -1s;
 }

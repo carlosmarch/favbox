@@ -6,8 +6,10 @@ import * as Helpers from './Helpers';
 import Hero from './components/Hero';
 import BlockTitle from './components/BlockTitle';
 import Card from './components/Card';
+import Musiccard from './components/Musiccard';
 import Collectioncard from './components/Collectioncard';
 import Promocard from './components/Promocard';
+
 
 
 class App extends Component {
@@ -15,6 +17,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isLoading: true,
       recommendations: [],
       contributors: [],
     };
@@ -42,6 +45,7 @@ class App extends Component {
     .then(contributors => {
       //console.log('allcontributors',contributors.records)
       this.setState({
+        isLoading: false,
         recommendations: window.$alldata,
         contributors: contributors.records}
       );
@@ -60,7 +64,7 @@ class App extends Component {
 
   //Get contributor data by contributor ID "rec9p8GxW7FJxPtg5" "recbofdaqGgFjL20L"
   getContributor(contributorIdArray){
-    const contributorId = contributorIdArray[0];
+    const contributorId = contributorIdArray && contributorIdArray[0];
     return this.state.contributors.filter(contributor => contributor.id.indexOf(contributorId) !== -1);
   }
 
@@ -68,19 +72,19 @@ class App extends Component {
   //RETURN FILTERED ITEMS
   returnTopicItems(topicName, size){
     const topicItems = [];
-    this.state.recommendations.filter(recommendation => recommendation.fields.temas.includes(topicName)).map(filteredTopicItem => (
+    this.state.recommendations.filter(recommendation => recommendation.fields.temas?.includes(topicName)).map(filteredTopicItem => (
         topicItems.push(filteredTopicItem)
    ));
    return topicItems.slice(0, size)
   }
 
   returnCategoryItems(categoryName, size){
-    return this.state.recommendations.filter(recommendation => recommendation.fields.categorias.includes(categoryName)).slice(0, size)
+    return this.state.recommendations.filter(recommendation => recommendation.fields.categorias?.includes(categoryName)).slice(0, size)
   }
 
   returnCollectionItems(collectionName, size){
     const collections = [];
-    this.state.recommendations.filter(recommendation => recommendation.fields.colecciones.includes(collectionName)).map(filteredCollectionItem => (
+    this.state.recommendations.filter(recommendation => recommendation.fields.colecciones?.includes(collectionName)).map(filteredCollectionItem => (
         collections.push(filteredCollectionItem)
    ));
    return collections.slice(0, size)
@@ -89,72 +93,91 @@ class App extends Component {
 
   render() {
 
+          return (
 
-    return (
+              <div className="global">
 
-        <div className="global">
+                <Hero />
 
-          <Hero />
+                <main>
 
-          <main>
-
-              <div id="GridCard">
-                <BlockTitle title={'Libros'} description={'Las recomendaciones mas destacadas'}/>
-                <div className="container container-xl">
-                    <div className="grid-card">
-                      {this.returnCategoryItems('libro', 4).map((records) =>
-                        <Card {...records.fields} key={records.id} autor={this.getContributor(records.fields.contribuidor)}/>
-                      )}
+                    <div id="GridCard">
+                      <BlockTitle title={'Libros'} description={'Las recomendaciones mas destacadas'}/>
+                      <div className="container container-xl">
+                          <div className="grid-card">
+                            {this.returnCategoryItems('libro', 8).map((records) =>
+                              <Card {...records.fields} key={records.id} autor={this.getContributor(records.fields.contribuidor)}/>
+                            )}
+                          </div>
+                      </div>
                     </div>
-                </div>
-              </div>
 
 
-              <div id="GridCard">
-                <BlockTitle title={'Revistas'} description={'Las recomendaciones mas destacadas'}/>
-                <div className="container container-xl">
-                    <div className="grid-card">
-                      {this.returnCategoryItems('revista', 4).map((records) =>
-                        <Card {...records.fields} key={records.id} autor={this.getContributor(records.fields.contribuidor)}/>
-                      )}
-                      <img className="lines" src={process.env.PUBLIC_URL + '/img/dot-3.svg'} alt="lines"/>
+
+
+                    <div className="MusicGrid">
+                      <div className="container">
+                        <BlockTitle title={'Música'} description={'Las recomendaciones mas destacadas'}/>
+                        <div className=" grid mt-s">
+                            {this.returnCategoryItems('música', 8).map((records) =>
+                              <Musiccard {...records.fields} key={records.id} autor={this.getContributor(records.fields.contribuidor)}/>
+                            )}
+                          </div>
+                      </div>
                     </div>
-                </div>
+
+
+
+
+                    <div id="GridCard">
+                      <BlockTitle title={'Revistas'} description={'Las recomendaciones mas destacadas'}/>
+                      <div className="container container-xl">
+                          <div className="grid-card">
+                            {this.returnCategoryItems('revista', 4).map((records) =>
+                              <Card {...records.fields} key={records.id} autor={this.getContributor(records.fields.contribuidor)}/>
+                            )}
+                            <img className="lines" src={process.env.PUBLIC_URL + '/img/dot-3.svg'} alt="lines"/>
+                          </div>
+                      </div>
+                    </div>
+
+
+
+
+
+                    <div className="GridColection mt-l">
+                      <BlockTitle title={'Colecciones'} description={'Las recomendaciones mas destacadas'}/>
+                      <div className="container">
+                        <div className=" grid mt-s">
+                            <Collectioncard title={'darle al coco'} grid={'width-4/12'} number={this.returnCollectionItems('darle al coco').length}/>
+                            <Collectioncard title={'mantenerse en forma'} grid={'width-4/12'}/>
+                            <Collectioncard title={'pandemias, contagios y visionarios'} grid={'width-4/12'}/>
+                            <Collectioncard title={'aprender'} grid={'width-6/12'}/>
+                            <Collectioncard title={'disfrutar de algo'} grid={'width-6/12'}/>
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <Promocard />
+
+
+                    <div className="TopicCollection mt-l">
+                      <div className="container container-s">
+                        <div className=" grid mt-s">
+                          {window.$topics && window.$topics.filter(function(e){return e}).map((temas, key) =>
+                              <Link to={`/temas/${temas}`} key={key} className="topic-card width-3/12">{temas}</Link>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+
+
+
+                </main>
               </div>
+          );//render
 
-
-              <div className="GridColection mt-l">
-                <BlockTitle title={'Colecciones'} description={'Las recomendaciones mas destacadas'}/>
-                <div className="container">
-                  <div className=" grid mt-s">
-                      <Collectioncard title={'darle al coco'} grid={'width-4/12'} number={this.returnCollectionItems('darle al coco').length}/>
-                      <Collectioncard title={'mantenerse en forma'} grid={'width-4/12'}/>
-                      <Collectioncard title={'pandemias, contagios y visinarios'} grid={'width-4/12'}/>
-                      <Collectioncard title={'aprender'} grid={'width-6/12'}/>
-                      <Collectioncard title={'disfrutar de algo'} grid={'width-6/12'}/>
-                  </div>
-                </div>
-              </div>
-
-
-              <Promocard />
-
-
-              <div className="TopicCollection mt-l">
-                <div className="container container-s">
-                  <div className=" grid mt-s">
-                    {window.$topics && window.$topics.map((temas, key) =>
-                        <Link to={`/temas/${temas}`} key={key} className="topic-card width-3/12">{temas}</Link>
-                    )}
-                  </div>
-                </div>
-              </div>
-
-
-
-          </main>
-        </div>
-    );
   }
 }
 

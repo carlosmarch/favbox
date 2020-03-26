@@ -86,11 +86,11 @@ class Header extends Component {
         </ul>
 
           <div className="form">
-            <form className="email-form">
+            <form className="email-form" action="mailto:carlosmarchinfo@gmail.com">
               <div className="email-form__input-wrapper">
                 <input type="email" id="email" className="email-form__input" aria-required="true" aria-invalid="false" aria-describedby="signup-cta-error" placeholder="Email"/>
               </div>
-              <button type="submit" className="email-form__submit">
+              <button type="submit" className="email-form__submit" mailto="">
                 <span className="email-form__submit__label">Quiero participar</span>
               </button>
             </form>
