@@ -15,7 +15,7 @@ class Card extends Component {
           <div className="card-description">{this.props.description}</div>
           <div className="card-topics">
 
-            {this.props.temas.map((topic, key) => {return (<Link to={ '/temas/' + topic } key={key}>#{topic}</Link>)})}
+            {this.props.temas?.map((topic, key) => {return (<Link to={ '/temas/' + topic } key={key}>#{topic}</Link>)})}
 
           </div>
 

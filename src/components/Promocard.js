@@ -10,7 +10,7 @@ class Promocard extends Component {
 
       <div className="Invite mt-l">
         <div className="container">
-          <div className="Promocard grid mt-s">
+          <div className="Promocard grid mt-xl">
               <div className="grid__item width-10/12">
                 <div className="sticker">
                   <span className="letter">H</span>

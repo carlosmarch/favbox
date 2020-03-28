@@ -4,7 +4,8 @@ function storeUniqueTopics(records){
   const mergeAllTopics = Array.prototype.concat.apply([], topics);
   const uniqueTopics = mergeAllTopics.filter((val,id,array) => array.indexOf(val) === id);
 
-  window.$topics = uniqueTopics; //global variable for the dropdown
+  //global variable for the dropdown
+  window.$topics = uniqueTopics.filter(function(e){return e}); //remove empty ones
   return uniqueTopics
 }
 
@@ -14,7 +15,8 @@ function storeUniqueCategories(records){
   const mergeAllCategories = Array.prototype.concat.apply([], categories);
   const uniqueCategories = mergeAllCategories.filter((val,id,array) => array.indexOf(val) === id);
 
-  window.$categories = uniqueCategories; //global variable for the dropdown
+  //global variable for the dropdown
+  window.$categories = uniqueCategories.filter(function(e){return e}); //remove empty ones 
   return uniqueCategories
 }
 

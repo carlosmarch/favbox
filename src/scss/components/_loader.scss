@@ -1,0 +1,17 @@
+.loader-container{
+  min-height: 400px;
+  padding-top: 80px;
+  width: 100%;
+  grid-column: span 12;
+  .rotating {
+      animation: rotating 2s linear infinite;
+      transform: translate(-5%, -5%) skewX(-40deg);
+  }
+  .rotating-text {
+      width: 120px;
+      margin: 0 52%;
+  }
+
+
+
+}

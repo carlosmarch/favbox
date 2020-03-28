@@ -7,8 +7,11 @@ import Hero from './components/Hero';
 import BlockTitle from './components/BlockTitle';
 import Card from './components/Card';
 import Musiccard from './components/Musiccard';
+import Podcastcard from './components/Podcastcard';
 import Collectioncard from './components/Collectioncard';
 import Promocard from './components/Promocard';
+import Articlelist from './components/Articlelist';
+import LoadingSpinner from './components/LoadingSpinner';
 
 
 
@@ -105,7 +108,7 @@ class App extends Component {
                       <BlockTitle title={'Libros'} description={'Las recomendaciones mas destacadas'}/>
                       <div className="container container-xl">
                           <div className="grid-card">
-                            {this.returnCategoryItems('libro', 8).map((records) =>
+                            {this.state.isLoading ? <LoadingSpinner /> : this.returnCategoryItems('libro', 4).map((records) =>
                               <Card {...records.fields} key={records.id} autor={this.getContributor(records.fields.contribuidor)}/>
                             )}
                           </div>
@@ -118,11 +121,19 @@ class App extends Component {
                     <div className="MusicGrid">
                       <div className="container">
                         <BlockTitle title={'Música'} description={'Las recomendaciones mas destacadas'}/>
-                        <div className=" grid mt-s">
-                            {this.returnCategoryItems('música', 8).map((records) =>
-                              <Musiccard {...records.fields} key={records.id} autor={this.getContributor(records.fields.contribuidor)}/>
-                            )}
-                          </div>
+                        <div className="grid mt-s">
+                            {this.state.isLoading ? <LoadingSpinner /> : this.returnCategoryItems('música', 8).map((records) =>
+                            <Musiccard {...records.fields} key={records.id} autor={this.getContributor(records.fields.contribuidor)}/>
+                          )}
+                        </div>
+
+                        <BlockTitle title={'Podcasts'} description={'Las recomendaciones mas destacadas'}/>
+                        <div className="grid mt-s">
+                            {this.state.isLoading ? <LoadingSpinner /> : this.returnCategoryItems('podcast', 8).map((records) =>
+                            <Podcastcard {...records.fields} key={records.id} autor={this.getContributor(records.fields.contribuidor)}/>
+                          )}
+                        </div>
+
                       </div>
                     </div>
 
@@ -130,19 +141,16 @@ class App extends Component {
 
 
                     <div id="GridCard">
-                      <BlockTitle title={'Revistas'} description={'Las recomendaciones mas destacadas'}/>
                       <div className="container container-xl">
+                          <BlockTitle title={'Revistas'} description={'Las recomendaciones mas destacadas'}/>
                           <div className="grid-card">
-                            {this.returnCategoryItems('revista', 4).map((records) =>
+                              {this.state.isLoading ? <LoadingSpinner /> : this.returnCategoryItems('revista', 4).map((records) =>
                               <Card {...records.fields} key={records.id} autor={this.getContributor(records.fields.contribuidor)}/>
                             )}
                             <img className="lines" src={process.env.PUBLIC_URL + '/img/dot-3.svg'} alt="lines"/>
                           </div>
                       </div>
                     </div>
-
-
-
 
 
                     <div className="GridColection mt-l">
@@ -159,13 +167,25 @@ class App extends Component {
                     </div>
 
 
+                    <div className="ArticlesGrid">
+                      <div className="container">
+                        <BlockTitle title={'Qué leer'} description={'These beliefs guide all our work, from designing products to growing our global team.'} titleclass="big-title title-has-arrow mt-xl" descriptionclass="big-description"/>
+                        <div className="mt-l">
+                            {this.state.isLoading ? <LoadingSpinner /> : this.returnCategoryItems('artículo', 20).map((records) =>
+                            <Articlelist {...records.fields} key={records.id} autor={this.getContributor(records.fields.contribuidor)}/>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+
+
                     <Promocard />
 
 
                     <div className="TopicCollection mt-l">
                       <div className="container container-s">
                         <div className=" grid mt-s">
-                          {window.$topics && window.$topics.filter(function(e){return e}).map((temas, key) =>
+                          {window.$topics && window.$topics.map((temas, key) =>
                               <Link to={`/temas/${temas}`} key={key} className="topic-card width-3/12">{temas}</Link>
                           )}
                         </div>

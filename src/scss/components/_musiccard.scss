@@ -37,12 +37,15 @@
     opacity: 1;
     transition: .2s ease-out;
   }
+
+  .play {
+      width: 60px;
+      margin-top: calc(50% - 40px);
+      margin: calc(50% - 40px) auto;
+  }
+  
 }
-.play {
-    width: 60px;
-    margin-top: calc(50% - 40px);
-    margin: calc(50% - 40px) auto;
-}
+
 .musiccard-album-img {
   width: 100%;
   display: block;

@@ -67,8 +67,8 @@ class Detail extends Component {
 
   //Get contributor data by contributor ID "rec9p8GxW7FJxPtg5" "recbofdaqGgFjL20L"
   getContributor(contributorIdArray){
-    const contributorId = contributorIdArray[0];
-    return this.state.contributors.filter(contributor => contributor.id.indexOf(contributorId) !== -1);
+    const contributorId = contributorIdArray && contributorIdArray[0];
+    return this.state.contributors?.filter(contributor => contributor.id?.indexOf(contributorId) !== -1);
   }
 
   render() {
@@ -78,11 +78,11 @@ class Detail extends Component {
           <main>
 
             <div id="GridCard">
-              <BlockTitle title={this.state.category==='categorias' ? this.state.topic+'s' : this.state.topic} description={'Las recomendaciones de '+this.state.topic+' mas destacadas'}/>
+              <BlockTitle title={this.state.category==='categorias' ? this.state.topic+'s' : this.state.topic} description={'Las recomendaciones de '+this.state.topic+' mas destacadas'} titleclass="big-title mt-s" descriptionclass="big-description mb-m"/>
               <div className="container container-xl">
                   <div className="grid-card">
 
-                    {this.state.recommendations.map((records, key) =>
+                    {this.state.recommendations?.map((records, key) =>
                       <Card {...records.fields} key={key} autor={this.getContributor(records.fields.contribuidor)}/>
                     )}
 
