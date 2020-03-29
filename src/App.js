@@ -49,7 +49,7 @@ class App extends Component {
       //console.log('allcontributors',contributors.records)
       this.setState({
         isLoading: false,
-        recommendations: window.$alldata,
+        recommendations: window.$alldata.sort(() => Math.random() - 0.5),
         contributors: contributors.records}
       );
 

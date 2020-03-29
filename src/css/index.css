@@ -48,6 +48,7 @@ p.hero {
 }
 
 :root {
+  --background:#f5f0ea;
   --interaction-blue:#0000ff;
   --black:#181818;
   --default-color: #ead095;
@@ -112,6 +113,7 @@ body {
   font-weight: 300;
   color: var(--black);
   -webkit-font-smoothing: antialiased;
+  background: var(--background);
 }
 
 main {
@@ -1193,6 +1195,8 @@ li#menuitem-temas.hoverstate div#dropdown-temas {
 
 .Notfound .block-title {
   text-align: center;
+  margin: 0 auto;
+  display: block;
 }
 
 .Notfound .block-description {

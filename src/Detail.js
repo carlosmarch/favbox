@@ -4,12 +4,14 @@ import * as Helpers from './Helpers';
 
 import Card from './components/Card';
 import BlockTitle from './components/BlockTitle';
+import LoadingSpinner from './components/LoadingSpinner';
 
 class Detail extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
+      isLoading: true,
       recommendations: [],
       category: Helpers.getUrlCategory(),
       topic: Helpers.getUrlTopic(),
@@ -38,7 +40,8 @@ class Detail extends Component {
       //ONCE WE HAVE ALL DATA FETCHED
       //THEN WE SETSTATE WHICH CAUSES RERENDER
       this.setState({
-        recommendations: window.$pagedata,
+        isLoading: false,
+        recommendations: window.$pagedata.sort(() => Math.random() - 0.5),
         contributors: contributors.records}
       );
       //console.log('allcontributors',contributors.records)
@@ -56,6 +59,7 @@ class Detail extends Component {
     if ( ( Helpers.getUrlTopic() !== prevProps.match.params.id )  || (  Helpers.getUrlCategory() !== prevProps.match.url.split("/")[1])  ) {
       // SET CLICKED NEW URL
       this.setState({
+        isLoading: true,
         category: Helpers.getUrlCategory(),
         topic : Helpers.getUrlTopic()
       }, () => {
@@ -72,6 +76,7 @@ class Detail extends Component {
   }
 
   render() {
+    window.scrollTo(0, 0);
     return (
 
         <div className="global">
@@ -82,7 +87,7 @@ class Detail extends Component {
               <div className="container container-xl">
                   <div className="grid-card">
 
-                    {this.state.recommendations?.map((records, key) =>
+                    {this.state.isLoading ? <LoadingSpinner /> : this.state.recommendations?.map((records, key) =>
                       <Card {...records.fields} key={key} autor={this.getContributor(records.fields.contribuidor)}/>
                     )}
 

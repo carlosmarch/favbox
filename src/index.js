@@ -25,10 +25,10 @@ const routing = (
 
       <Switch>
         <Route exact path="/" component={App} />
-        <Route exact path="/categorias/:id" component={Detail} />
-        <Route exact path="/temas/:id" component={Detail} />
-        <Route path="/about" component={About} />
+        <Route path="/categorias/:id" component={Detail} />
+        <Route path="/temas/:id" component={Detail} />
         <Route path="/colecciones/:id" component={Detail} />
+        <Route exact path="/about" component={About} />
         <Route component={Notfound} />
       </Switch>
 
