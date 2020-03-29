@@ -105,7 +105,7 @@ class App extends Component {
                 <main>
 
                     <div id="GridCard">
-                      <BlockTitle title={'Libros'} description={'Las recomendaciones mas destacadas'}/>
+                      <BlockTitle title={'Libros'} description={'Las recomendaciones mas destacadas'} link={'categorias/libro'}/>
                       <div className="container container-xl">
                           <div className="grid-card">
                             {this.state.isLoading ? <LoadingSpinner /> : this.returnCategoryItems('libro', 4).map((records) =>
@@ -120,14 +120,14 @@ class App extends Component {
 
                     <div className="MusicGrid">
                       <div className="container">
-                        <BlockTitle title={'Música'} description={'Las recomendaciones mas destacadas'}/>
+                        <BlockTitle title={'Música'} description={'Las recomendaciones mas destacadas'} link={'categorias/música'}/>
                         <div className="grid mt-s">
                             {this.state.isLoading ? <LoadingSpinner /> : this.returnCategoryItems('música', 8).map((records) =>
                             <Musiccard {...records.fields} key={records.id} autor={this.getContributor(records.fields.contribuidor)}/>
                           )}
                         </div>
 
-                        <BlockTitle title={'Podcasts'} description={'Las recomendaciones mas destacadas'}/>
+                        <BlockTitle title={'Podcasts'} description={'Las recomendaciones mas destacadas'} link={'categorias/podcast'}/>
                         <div className="grid mt-s">
                             {this.state.isLoading ? <LoadingSpinner /> : this.returnCategoryItems('podcast', 8).map((records) =>
                             <Podcastcard {...records.fields} key={records.id} autor={this.getContributor(records.fields.contribuidor)}/>
@@ -142,7 +142,7 @@ class App extends Component {
 
                     <div id="GridCard">
                       <div className="container container-xl">
-                          <BlockTitle title={'Revistas'} description={'Las recomendaciones mas destacadas'}/>
+                          <BlockTitle title={'Revistas'} description={'Las recomendaciones mas destacadas'} link={'categorias/revista'}/>
                           <div className="grid-card">
                               {this.state.isLoading ? <LoadingSpinner /> : this.returnCategoryItems('revista', 4).map((records) =>
                               <Card {...records.fields} key={records.id} autor={this.getContributor(records.fields.contribuidor)}/>
@@ -169,7 +169,10 @@ class App extends Component {
 
                     <div className="ArticlesGrid">
                       <div className="container">
-                        <BlockTitle title={'Qué leer'} description={'These beliefs guide all our work, from designing products to growing our global team.'} titleclass="big-title title-has-arrow mt-xl" descriptionclass="big-description"/>
+                        <BlockTitle
+                          title={'Qué leer'}
+                          description={'These beliefs guide all our work, from designing products to growing our global team.'}
+                          titleclass="big-title mt-xl" descriptionclass="big-description" link={'categorias/artículo'}/>
                         <div className="mt-l">
                             {this.state.isLoading ? <LoadingSpinner /> : this.returnCategoryItems('artículo', 20).map((records) =>
                             <Articlelist {...records.fields} key={records.id} autor={this.getContributor(records.fields.contribuidor)}/>

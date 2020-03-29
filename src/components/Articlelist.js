@@ -4,7 +4,7 @@ class Articlelist extends Component {
   render() {
     return (
 
-      <div className="grid mt-l">
+      <div className="grid mt-l articlelist">
         <div className="grid__item width-3/12">
           <h3>{this.props.title}</h3>
         </div>

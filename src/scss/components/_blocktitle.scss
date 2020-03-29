@@ -1,16 +1,45 @@
 .block-title{
+  font-size: 48px;
   text-transform: capitalize;
+  color: var(--black);
+  display: inline-block;
+  font-weight: bold;
 }
-.block-description{
+.block-description{}
 
-}
 .big-title{
   font-size: 96px;
   line-height: 106px;
+  color: var(--black);
+  font-weight: bold;
+  display: inline-block;
 }
 .big-description{
   font-size: 36px;
   line-height: 54px;
   width: 66.66667%;
   margin-left: 16.66667%;
+}
+
+.title-has-arrow{
+  transition: all 0.6s ease 0s;
+}
+.title-has-arrow::after {
+  content: "→";
+  font-weight: lighter;
+  margin: 0px 0px 0px 8px;
+  transition: all 0.2s ease 0s;
+  position: absolute;
+  margin-left: -30px;
+  opacity: 0;
+  cursor: pointer;
+}
+.title-has-arrow:hover {
+  margin-left: -10px;
+  transition: all 0.6s ease 0s;
+}
+.title-has-arrow:hover::after {
+  opacity: 1;
+  transition: all 0.6s ease 0s;
+  margin-left: 0;
 }
