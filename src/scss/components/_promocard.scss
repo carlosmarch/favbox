@@ -1,3 +1,7 @@
+.Promo .grid{
+  grid-gap: 8px;
+}
+
 .Promocard{
   background: #ead095;
   border-radius: 16px;
@@ -11,7 +15,11 @@
   padding: 56px;
   position: relative;
   align-items: end;
+  @media (max-width: $breakpoint-m){
+    padding: 32px;
+  }
 }
+
 .Promocard .button{
   width: 100%;
   text-align: center;
@@ -43,6 +51,7 @@
   -webkit-animation-delay: 0s;
   animation-delay: 0s;
 }
+
 $offset : -4px;
 $count : 4;
 $duration : 2;

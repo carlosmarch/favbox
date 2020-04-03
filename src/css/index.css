@@ -1449,6 +1449,12 @@ li#menuitem-temas.hoverstate div#dropdown-temas {
   z-index: -1;
 }
 
+@media (max-width: 48em) {
+  .GridColection .grid {
+    grid-gap: 16px;
+  }
+}
+
 .collection-card {
   height: 300px;
   border-radius: 16px;
@@ -1613,6 +1619,10 @@ a.topic-card::before {
   font-size: 18px;
 }
 
+.Promo .grid {
+  grid-gap: 8px;
+}
+
 .Promocard {
   background: #ead095;
   border-radius: 16px;
@@ -1626,6 +1636,12 @@ a.topic-card::before {
   padding: 56px;
   position: relative;
   align-items: end;
+}
+
+@media (max-width: 48em) {
+  .Promocard {
+    padding: 32px;
+  }
 }
 
 .Promocard .button {

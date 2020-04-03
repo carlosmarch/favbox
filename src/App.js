@@ -203,7 +203,7 @@ class App extends Component {
                       <div className="container container-s">
                         <div className=" grid mt-s">
                           {window.$topics && window.$topics.map((temas, key) =>
-                              <Link to={`/temas/${temas}`} key={key} className="topic-card width-3/12">{temas}</Link>
+                              <Link to={`/temas/${temas}`} key={key} className="topic-card width-3/12 width-6/12@m">{temas}</Link>
                           )}
                         </div>
                       </div>

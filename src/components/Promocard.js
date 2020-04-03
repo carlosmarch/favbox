@@ -8,7 +8,7 @@ class Promocard extends Component {
 
     return (
 
-      <div className="Invite mt-l">
+      <div className="Promo mt-l">
         <div className="container">
           <div className="Promocard grid mt-xl">
               <div className="grid__item width-10/12 width-12/12@m">
