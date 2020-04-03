@@ -11,12 +11,12 @@ class Hero extends Component {
 
           <div className="container">
                 <div className="grid">
-                      <div className="grid__item width-6/12">
+                      <div className="grid__item width-6/12 width-12/12@m">
                         <h1 className="hero-title">Me quedo <br></br>en casa</h1>
-                        <p className="hero-text">Hey my friend!! Aquí tienes un montón de recomendaciones para pasar estos días de encierro de una forma más llevadera.</p>
+                        <p className="hero-text">Hey my friend!! Aquí tienes un montón de recomendaciones seleccionadas de forma colaborativa para pasar estos días de encierro de una forma más llevadera.</p>
                         <a className="arrow" href="/#">Empieza ahora</a>
                       </div>
-                      <div className="grid__item width-6/12">
+                      <div className="grid__item width-6/12 no@m">
                         <div className="col-xs-12 col-md-6 col-md-offset-1 image-container">
                                 <div className="image-column">
                                   <img className="image-1" src={process.env.PUBLIC_URL + '/img/cover-1.jpg'} alt="international person"/>
@@ -49,7 +49,6 @@ class Hero extends Component {
                                   <img className="image-2" src={process.env.PUBLIC_URL + '/img/cover-7.jpg'} alt="international person"/>
                                   <img className="image-3" src={process.env.PUBLIC_URL + '/img/cover-8.png'} alt="international person"/>
                                 </div>
-                                <div className="shadow"></div>
                         </div>
                       </div>
               </div>

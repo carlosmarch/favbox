@@ -5,7 +5,7 @@ class Musiccard extends Component {
 
 
     return (
-      <div className="musiccard width-2/12">
+      <div className="musiccard width-2/12 width-4/12@m">
         <div className="musiccard-album">
           <div className="musiccard-album-contents">
             <img className="play" src={process.env.PUBLIC_URL + '/img/play.svg'} alt="play"/>

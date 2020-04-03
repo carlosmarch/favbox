@@ -11,7 +11,7 @@ class Promocard extends Component {
       <div className="Invite mt-l">
         <div className="container">
           <div className="Promocard grid mt-xl">
-              <div className="grid__item width-10/12">
+              <div className="grid__item width-10/12 width-12/12@m">
                 <div className="sticker">
                   <span className="letter">H</span>
                   <span className="letter">E</span>
@@ -21,7 +21,7 @@ class Promocard extends Component {
                 <h3>Cuéntanos qué te gusta</h3>
                 <p>Encontraremos recomendaciones para tí y podrás compartir tus pasatiempos preferidos.</p>
               </div>
-              <div className="grid__item width-2/12">
+              <div className="grid__item width-2/12 width-12/12@m">
                 <Button text="Empezar!" />
               </div>
           </div>

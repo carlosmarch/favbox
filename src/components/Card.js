@@ -7,7 +7,7 @@ class Card extends Component {
 
     return (
 
-      <a className="card" href={this.props.url} target="_blank" style={{backgroundImage: `url(${this.props.imageUrl})`}} rel="noopener noreferrer">
+      <a className="card grid__item width-3/12 width-6/12@m" href={this.props.url} target="_blank" style={{backgroundImage: `url(${this.props.imageUrl})`}} rel="noopener noreferrer">
         <div className={`card-content ${"is-" + this.props.categorias}`}>
           <div className="card-category badge inline">{this.props.categorias}</div>
           <h3 className="card-title">{this.props.title}</h3>

@@ -7,7 +7,7 @@ class Articlelist extends Component {
       <div className="articlelist">
         <div className="articlelist-title">
           <div className="articlelist-category badge inline">{this.props.categorias}</div>
-          <h3>{this.props.title}</h3>
+          <h4>{this.props.title}</h4>
         </div>
         <div className="articlelist-description">
           <p>{this.props.description}</p>

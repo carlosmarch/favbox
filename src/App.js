@@ -179,7 +179,7 @@ class App extends Component {
                       <div className="container">
                         <BlockTitle
                           title={'Qué leer'}
-                          description={'Artículos, newsletters y webs para entretenernos navegando.'}
+                          description={'Artículos, newsletters y webs para entretenerse un rato navegando.'}
                           titleclass="big-title mt-xl" descriptionclass="big-description" link={'categorias/artículo'}/>
                         <div className="mt-l">
                             {this.state.isLoading ? <LoadingSpinner /> : this.getCategoryItems('artículo', 20).map((records) =>

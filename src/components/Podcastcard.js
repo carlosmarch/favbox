@@ -5,7 +5,7 @@ class Podcastcard extends Component {
 
 
     return (
-      <a className="podcastcard width-6/12" href={this.props.url} target="_blank" rel="noopener noreferrer">
+      <a className="podcastcard width-6/12 width-12/12@m" href={this.props.url} target="_blank" rel="noopener noreferrer">
 
         <div className="podcastcard-album">
           <div className="podcastcard-album-contents">

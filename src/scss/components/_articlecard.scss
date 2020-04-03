@@ -34,3 +34,27 @@
   display: inline-block;
   padding: 0 8px;
 }
+
+
+.articlelist {
+  @media (max-width: $breakpoint-m) {
+    display: block;
+  }
+}
+.articlelist-title{
+  @media (max-width: $breakpoint-m) {
+    width: 100%;
+  }
+}
+.articlelist-description{
+  @media (max-width: $breakpoint-m) {
+    width: 100%;
+    margin-left: 0%;
+  }
+}
+.articlelist-link{
+  @media (max-width: $breakpoint-m) {
+    margin-top: 16px;
+    text-align: left;
+  }
+}
