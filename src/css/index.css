@@ -271,6 +271,12 @@ main {
   padding-bottom: 40px;
 }
 
+@media (max-width: 48em) {
+  .grid {
+    grid-gap: 48px 24px;
+  }
+}
+
 .width-1\/12 {
   grid-column: span 1;
 }
@@ -465,6 +471,12 @@ a {
   margin: 0 auto;
   z-index: 100;
   position: absolute;
+}
+
+@media (max-width: 48em) {
+  .header {
+    padding: 21px 10px;
+  }
 }
 
 .nav {
@@ -1447,12 +1459,6 @@ li#menuitem-temas.hoverstate div#dropdown-temas {
   mask-repeat: repeat-x;
   width: 150%;
   z-index: -1;
-}
-
-@media (max-width: 48em) {
-  .GridColection .grid {
-    grid-gap: 16px;
-  }
 }
 
 .collection-card {

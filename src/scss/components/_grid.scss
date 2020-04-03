@@ -26,7 +26,11 @@
   grid-gap: 3em;
   padding-bottom: 40px;
 }
-
+.grid{
+  @media (max-width: $breakpoint-m){
+    grid-gap: 48px 24px;
+  }
+}
 .width-1\/12 {
   grid-column: span 1;
 }

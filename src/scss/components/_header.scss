@@ -9,6 +9,9 @@
   margin: 0 auto;
   z-index: 100;
   position: absolute;
+  @media (max-width: $breakpoint-m) {
+    padding: 21px 10px;
+  }
 }
 .nav{
   display: inline-block;

@@ -24,11 +24,7 @@
   width: 150%;
   z-index: -1;
 }
-.GridColection .grid{
-  @media (max-width: $breakpoint-m){
-    grid-gap: 16px;
-  }
-}
+
 .collection-card {
   height: 300px;
   border-radius: 16px;
