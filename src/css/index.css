@@ -78,6 +78,7 @@ p {
   font-size: 20px;
   line-height: 30px;
   font-weight: 400;
+  margin-bottom: 32px;
 }
 
 p.hero {
@@ -1714,6 +1715,15 @@ a.topic-card::before {
   margin-bottom: 12px;
   display: inline-block;
   padding: 0 8px;
+}
+
+.is-temas .PodcastGrid {
+  background-image: url(/img/line-3.svg), url(/img/dot-5.svg);
+  background-size: 60%, 40%;
+  background-position: 50%, 30% 30%;
+  background-repeat: no-repeat;
+  padding: 40px 0;
+  background-color: var(--soft-dafault-color);
 }
 
 .podcastcard {

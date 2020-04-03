@@ -111,7 +111,7 @@ class App extends Component {
 
                 <main>
 
-                    <div className="GridCard">
+                    <div className="GridCard mb-l">
                         <BlockTitle title={'Libros'} description={'Las recomendaciones mas destacadas'} link={'categorias/libro'}/>
                         <div className="container container-xl">
                             <div className="grid">
@@ -179,7 +179,7 @@ class App extends Component {
                       <div className="container">
                         <BlockTitle
                           title={'Qué leer'}
-                          description={'These beliefs guide all our work, from designing products to growing our global team.'}
+                          description={'Artículos, newsletters y webs para entretenernos navegando.'}
                           titleclass="big-title mt-xl" descriptionclass="big-description" link={'categorias/artículo'}/>
                         <div className="mt-l">
                             {this.state.isLoading ? <LoadingSpinner /> : this.getCategoryItems('artículo', 20).map((records) =>

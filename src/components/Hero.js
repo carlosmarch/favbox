@@ -13,7 +13,7 @@ class Hero extends Component {
                 <div className="grid">
                       <div className="grid__item width-6/12">
                         <h1 className="hero-title">Me quedo <br></br>en casa</h1>
-                        <p className="hero-text">Hola!! Aquí tienes un montón de recomendaciones para pasar estos días de encierro de una forma más llevadera.</p>
+                        <p className="hero-text">Hey my friend!! Aquí tienes un montón de recomendaciones para pasar estos días de encierro de una forma más llevadera.</p>
                         <a className="arrow" href="/#">Empieza ahora</a>
                       </div>
                       <div className="grid__item width-6/12">

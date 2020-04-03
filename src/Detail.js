@@ -9,6 +9,15 @@ import Musiccard from './components/Musiccard';
 import Podcastcard from './components/Podcastcard';
 import Articlelist from './components/Articlelist';
 
+
+const catTemplate = {
+  card: ['libro', 'revista', 'película', 'serie'],
+  musiccard: ['música'],
+  podcastcard : ['podcast'],
+  articlelist : ['artículo', 'web', 'newsletter']
+};
+
+
 class Detail extends Component {
 
   constructor(props) {
@@ -17,10 +26,11 @@ class Detail extends Component {
       isLoading: true,
       recommendations: [],
       category: Helpers.getUrlCategory(),
-      topic: Helpers.getUrlTopic(),
-      categoryItems: [],
+      topic: Helpers.getUrlTopic()
     };
   }
+
+
 
   componentDidMount() {
     fetch(window.$api+'&filterByFormula=Find(%22'+this.state.topic+'%22%2C+'+this.state.category+')')
@@ -103,62 +113,51 @@ class Detail extends Component {
 
   //Get items by category name
   getCategoryItems(categoryName){
-    return this.state.recommendations.filter(recommendation => recommendation.fields.categorias?.includes(categoryName))
+    return this.state.recommendations.filter(recommendation => recommendation.fields.categorias?.includes(categoryName));
   }
 
-  //Order Categories for render in desired order
-  getOrderedCategories(pagedata){
-    //@TODO ADD NEW ONES!!!
-    const categories = ['libro', 'revista', 'música','podcast','artículo','web','newsletter'];
-    const uniqueCategories = this.getUniqueCategories(pagedata);
-    const filteredCategories = categories.filter( ( cat ) => uniqueCategories.includes( cat ) );
-    console.log('filtered',uniqueCategories, filteredCategories)
-    return filteredCategories;
+  //Get all items which includes any of categories in array
+  getBlockCategoryItems(catArr){
+    return this.state.recommendations.filter( (recommendation) => catArr.some((tag) => recommendation.fields.categorias.includes(tag)) );
   }
+
+  matchCategoriesWithTemplates(catArr){
+    return this.getUniqueCategories(this.state.recommendations).filter(matchBlockCat => catArr.includes(matchBlockCat))
+  }
+
 
   render() {
     window.scrollTo(0, 0);
+
 
 
     return (
 
         <div className="global">
           <main>
+            <div id="Detail" className={`pb-xl ${"is-" + this.state.category}`}>
 
-            <div id="Detail" className="pb-xl">
-              <BlockTitle title={this.state.category==='categorias' ? this.state.topic+'s' : this.state.topic} description={'Las recomendaciones de '+this.state.topic+' mas destacadas'} titleclass="big-title mt-s" descriptionclass="big-description mb-m"/>
-              <div className="container container">
-                  <div className="grid">
+                    <BlockTitle title={this.state.topic} description={'Las recomendaciones de '+this.state.topic+' mas destacadas'} titleclass="big-title mt-s" descriptionclass="big-description mb-m"/>
 
-                    {this.state.isLoading ? <LoadingSpinner /> : this.getOrderedCategories(this.state.recommendations)?.map((catName) =>
+                    {this.state.isLoading ? <LoadingSpinner /> : this.matchCategoriesWithTemplates(catTemplate.card) && this.matchCategoriesWithTemplates(catTemplate.card).length ? (
+                      this.renderCardItems(catTemplate.card)
+                    ) : ('')}
 
-                          this.getCategoryItems(catName).map((item, key)  => {
+                    {this.state.isLoading ? <LoadingSpinner /> : this.matchCategoriesWithTemplates(catTemplate.musiccard) && this.matchCategoriesWithTemplates(catTemplate.musiccard).length ? (
+                      this.renderMusicItems(catTemplate.musiccard)
+                    ) : ('')}
 
-                                if( (catName == 'libro') || (catName == 'revista') ){
-                                  console.log('CARD', catName, item)
-                                  return <Card {...item.fields} key={key} autor={this.getContributor(item.fields.contribuidor)}/>
+                    {this.state.isLoading ? <LoadingSpinner /> : this.matchCategoriesWithTemplates(catTemplate.podcastcard) && this.matchCategoriesWithTemplates(catTemplate.podcastcard).length ? (
+                      this.renderPodcastItems(catTemplate.podcastcard)
+                    ) : ('')}
 
-                                }else if( catName == 'música' ){
-                                  console.log(item.fields.contribuidor)
-                                  return <Musiccard {...item.fields} key={item.id}/>
-
-                                }else if( catName == 'podcast' ){
-                                  console.log('PODCASTCARD', catName, item)
-                                  return <Podcastcard {...item.fields} key={item.id} autor={this.getContributor(item.fields.contribuidor)}/>
-
-                                }else if( (catName == 'artículo') || (catName == 'newsletter') || (catName == 'web') ){
-                                  console.log('ARTICLECARD', catName, item)
-                                  return <Articlelist {...item.fields} key={item.id} autor={this.getContributor(item.fields.contribuidor)}/>
-
-                                }
-
-                          })
+                    {this.state.isLoading ? <LoadingSpinner /> : this.matchCategoriesWithTemplates(catTemplate.articlelist) && this.matchCategoriesWithTemplates(catTemplate.articlelist).length ? (
+                      this.renderArticleItems(catTemplate.articlelist)
+                    ) : ('')}
 
 
-                    )}
-                    <img className="lines" src={process.env.PUBLIC_URL + '/img/lines.svg'} alt="lines"/>
-                  </div>
-              </div>
+              <img className="lines" src={process.env.PUBLIC_URL + '/img/lines.svg'} alt="lines"/>
+
             </div>
 
           </main>
@@ -166,6 +165,72 @@ class Detail extends Component {
         </div>
     );
   }//Render
+
+
+
+  //-------------------------//
+  //  TEMPLATES
+  //-------------------------//
+
+  renderCardItems(catArray) {
+    return (
+      <div className="GridCard">
+          <div className="container">
+              <div className="grid">
+                {this.getBlockCategoryItems(catArray).map((records) =>
+                  <Card {...records.fields} key={records.id} autor={this.getContributor(records.fields.contribuidor)}/>
+                )}
+              </div>
+          </div>
+      </div>
+    )
+  }
+
+  renderMusicItems(catArray) {
+    return(
+      <div className="MusicGrid-detail mt-l">
+        <BlockTitle title={this.state.category==='categorias' ? '' : 'Música'} />
+        <div className="container">
+            <div className="grid">
+                {this.getBlockCategoryItems(catArray).map((records) =>
+                  <Musiccard {...records.fields} key={records.id} autor={this.getContributor(records.fields.contribuidor)}/>
+                )}
+            </div>
+        </div>
+      </div>
+    )
+  }
+
+  renderPodcastItems(catArray){
+    return(
+      <div className="PodcastGrid mt-l">
+        <div className="container mt-l">
+          <BlockTitle title={this.state.category==='categorias' ? '' : 'Para escuchar'} />
+          <div className="grid">
+              {this.getBlockCategoryItems(catArray).map((records) =>
+                <Podcastcard {...records.fields} key={records.id} autor={this.getContributor(records.fields.contribuidor)}/>
+              )}
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  renderArticleItems(catArray){
+    return(
+      <div className="ArticlesGrid mt-l">
+        <div className="container">
+          <BlockTitle title={this.state.category==='categorias' ? '' : 'Más'}/>
+          <div className="">
+              {this.getBlockCategoryItems(catArray).map((records) =>
+                <Articlelist {...records.fields} key={records.id} autor={this.getContributor(records.fields.contribuidor)}/>
+              )}
+          </div>
+        </div>
+      </div>
+    )
+  }
+
 
 
 }
