@@ -1,3 +1,51 @@
+@font-face {
+  font-family: 'Apercu Medium';
+  src:
+  url('/fonts/Apercu-Medium.eot'),
+  url('/fonts/Apercu-Medium.woff') format('woff'),
+  url('/fonts/Apercu-Medium.ttf') format('truetype'),
+  url('/fonts/Apercu-Medium.svg') format('svg');
+  font-weight: bold;
+  font-style: normal;
+}
+
+
+/** SHARP GROTESK **/
+@font-face {
+  font-family: 'Sharp Grotesk Book';
+  src:
+  url('/fonts/sharp-grotesk-book-15-regular.woff2') format('woff2'),
+  url('/fonts/sharp-grotesk-book-15-regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Sharp Grotesk SmBold';
+  src:
+  url('/fonts/sharp-grotesk-smbold-20-regular.woff2') format('woff2'),
+  url('/fonts/sharp-grotesk-smbold-20-regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Sharp Grotesk Medium';
+  src:
+  url('/fonts/sharp-grotesk-medium-25-regular.woff2') format('woff2'),
+  url('/fonts/sharp-grotesk-medium-25-regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+body{
+  font-size: 15px;
+  font-family: "Apercu Medium", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+  font-weight: 300;
+  color: var(--black);
+  -webkit-font-smoothing: antialiased;
+}
+h1,h2,h3,h4,h5,h6{
+  font-family: "Sharp Grotesk SmBold", Open Sans,sans-serif;
+}
 h1 {
   font-size: 62px;
   line-height: 76px;
@@ -22,7 +70,7 @@ h5 {
   font-weight: 600;
 }
 h6 {
-  font-size: 22px;
+  font-size: 20px;
   line-height: 28px;
   font-weight: 500;
 }

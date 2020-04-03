@@ -54,9 +54,13 @@
 }
 .podcastcard-content{
   margin-left: 24px;
+  .badge{
+    margin-bottom: 6px;
+    display: inline-block;
+    padding: 0 8px;
+  }
 }
 .podcastcard-title {
-  margin-bottom: 8px;
 }
 
 .podcastcard-description{

@@ -1,6 +1,8 @@
-.ArticlesGrid .grid{
-  padding: 24px 0;
+.articlelist {
   border-top: 1px solid rgba(0,0,0,.25);
+  display: flex;
+  grid-column: span 12;
+  padding: 24px 0;
   width: 100%;
   text-decoration: none;
   color: #222;
@@ -8,10 +10,27 @@
   line-height: 28px;
   min-height: 140px;
   align-items: center;
-}
-
-.articlelist {
+  background: var(--background);
   a{
     color: var(--interaction-blue);
   }
+}
+
+.articlelist-title{
+  width: 25%;
+}
+.articlelist-description{
+  width: 50%;
+  margin-left: 5%;
+}
+.articlelist-link{
+  flex: 1 1;
+  width: auto;
+  text-align: right;
+}
+
+.articlelist-title .badge {
+  margin-bottom: 12px;
+  display: inline-block;
+  padding: 0 8px;
 }

@@ -1,11 +1,16 @@
 .block-title{
   font-size: 48px;
-  text-transform: capitalize;
   color: var(--black);
   display: inline-block;
   font-weight: bold;
+  font-family: "Sharp Grotesk Medium", sans-serif;
+  &:first-letter {
+    text-transform: uppercase;
+  }
 }
-.block-description{}
+.block-description{
+  margin-bottom: 24px;
+}
 
 .big-title{
   font-size: 96px;

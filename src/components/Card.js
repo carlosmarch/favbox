@@ -2,9 +2,8 @@ import React, { Component } from "react";
 import { Link } from 'react-router-dom';
 
 class Card extends Component {
-  render() {
 
-    //console.log(this.props.autor)
+  render() {
 
     return (
 

@@ -1,4 +1,45 @@
 @charset "UTF-8";
+@font-face {
+  font-family: 'Apercu Medium';
+  src: url("/fonts/Apercu-Medium.eot"), url("/fonts/Apercu-Medium.woff") format("woff"), url("/fonts/Apercu-Medium.ttf") format("truetype"), url("/fonts/Apercu-Medium.svg") format("svg");
+  font-weight: bold;
+  font-style: normal;
+}
+
+/** SHARP GROTESK **/
+@font-face {
+  font-family: 'Sharp Grotesk Book';
+  src: url("/fonts/sharp-grotesk-book-15-regular.woff2") format("woff2"), url("/fonts/sharp-grotesk-book-15-regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Sharp Grotesk SmBold';
+  src: url("/fonts/sharp-grotesk-smbold-20-regular.woff2") format("woff2"), url("/fonts/sharp-grotesk-smbold-20-regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Sharp Grotesk Medium';
+  src: url("/fonts/sharp-grotesk-medium-25-regular.woff2") format("woff2"), url("/fonts/sharp-grotesk-medium-25-regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-size: 15px;
+  font-family: "Apercu Medium", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+  font-weight: 300;
+  color: var(--black);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Sharp Grotesk SmBold", Open Sans,sans-serif;
+}
+
 h1 {
   font-size: 62px;
   line-height: 76px;
@@ -28,7 +69,7 @@ h5 {
 }
 
 h6 {
-  font-size: 22px;
+  font-size: 20px;
   line-height: 28px;
   font-weight: 500;
 }
@@ -108,11 +149,6 @@ p.hero {
 }
 
 body {
-  font-size: 15px;
-  font-family: apercu-pro, "Apercu Pro", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
-  font-weight: 300;
-  color: var(--black);
-  -webkit-font-smoothing: antialiased;
   background: var(--background);
 }
 
@@ -124,38 +160,6 @@ main {
 .global {
   margin-top: 94px;
   min-height: calc(100vh - 193px);
-}
-
-.mt-xl {
-  margin-top: 160px;
-}
-
-.mt-l {
-  margin-top: 80px;
-}
-
-.mt-m {
-  margin-top: 40px;
-}
-
-.mt-s {
-  margin-top: 20px;
-}
-
-.mb-xl {
-  margin-bottom: 160px;
-}
-
-.mb-l {
-  margin-bottom: 80px;
-}
-
-.mb-m {
-  margin-bottom: 40px;
-}
-
-.mb-s {
-  margin-bottom: 20px;
 }
 
 .container {
@@ -348,6 +352,70 @@ a {
   background-color: #0b0bd8;
 }
 
+.mt-xl {
+  margin-top: 160px;
+}
+
+.mt-l {
+  margin-top: 80px;
+}
+
+.mt-m {
+  margin-top: 40px;
+}
+
+.mt-s {
+  margin-top: 20px;
+}
+
+.mb-xl {
+  margin-bottom: 160px;
+}
+
+.mb-l {
+  margin-bottom: 80px;
+}
+
+.mb-m {
+  margin-bottom: 40px;
+}
+
+.mb-s {
+  margin-bottom: 20px;
+}
+
+.pt-xl {
+  padding-top: 160px;
+}
+
+.pt-l {
+  padding-top: 80px;
+}
+
+.pt-m {
+  padding-top: 40px;
+}
+
+.pt-s {
+  padding-top: 20px;
+}
+
+.pb-xl {
+  padding-bottom: 160px;
+}
+
+.pb-l {
+  padding-bottom: 80px;
+}
+
+.pb-m {
+  padding-bottom: 40px;
+}
+
+.pb-s {
+  padding-bottom: 20px;
+}
+
 .inline {
   display: inline;
   align-items: center;
@@ -463,7 +531,7 @@ li#menuitem-temas.hoverstate div#dropdown-temas {
   cursor: pointer;
   list-style: none;
   height: 24px;
-  padding: 4px 16px;
+  padding: 4px 16px 24px 16px;
   font-weight: 500;
   font-size: 15px;
   display: block;
@@ -542,6 +610,7 @@ li#menuitem-temas.hoverstate div#dropdown-temas {
 
 .hero-title {
   padding-top: 40px;
+  font-family: "Sharp Grotesk Medium", sans-serif;
 }
 
 .hero-text {
@@ -1135,10 +1204,18 @@ li#menuitem-temas.hoverstate div#dropdown-temas {
 
 .block-title {
   font-size: 48px;
-  text-transform: capitalize;
   color: var(--black);
   display: inline-block;
   font-weight: bold;
+  font-family: "Sharp Grotesk Medium", sans-serif;
+}
+
+.block-title:first-letter {
+  text-transform: uppercase;
+}
+
+.block-description {
+  margin-bottom: 24px;
 }
 
 .big-title {
@@ -1221,35 +1298,13 @@ li#menuitem-temas.hoverstate div#dropdown-temas {
   transform: translate(-5%, -5%) skewX(-40deg);
 }
 
-.lines {
-  position: absolute;
-  pointer-events: none;
-  -webkit-user-select: none;
-  user-select: none;
-  right: -100px;
-  bottom: 0px;
-  z-index: -1;
-  top: 0;
-}
-
 .grid-card {
   width: 100%;
-  padding: 0 20px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
   padding-bottom: 120px;
 }
 
-.card:first-of-type {
-  grid-column: 1/span 6;
-  grid-row: 1/span 2;
-  order: 1;
-}
-
 .card {
-  display: flex;
-  margin: 20px;
+  grid-column: span 3;
   color: var(--black);
   border-radius: 3px;
   transition: .2s ease-out;
@@ -1345,6 +1400,17 @@ li#menuitem-temas.hoverstate div#dropdown-temas {
   letter-spacing: 0px;
   text-transform: none;
   display: inline;
+}
+
+.lines {
+  position: absolute;
+  pointer-events: none;
+  -webkit-user-select: none;
+  user-select: none;
+  right: -100px;
+  bottom: 0px;
+  z-index: -1;
+  top: 0;
 }
 
 .GridColection {
@@ -1610,9 +1676,11 @@ a.topic-card::before {
   animation-delay: -1s;
 }
 
-.ArticlesGrid .grid {
-  padding: 24px 0;
+.articlelist {
   border-top: 1px solid rgba(0, 0, 0, 0.25);
+  display: flex;
+  grid-column: span 12;
+  padding: 24px 0;
   width: 100%;
   text-decoration: none;
   color: #222;
@@ -1620,10 +1688,32 @@ a.topic-card::before {
   line-height: 28px;
   min-height: 140px;
   align-items: center;
+  background: var(--background);
 }
 
 .articlelist a {
   color: var(--interaction-blue);
+}
+
+.articlelist-title {
+  width: 25%;
+}
+
+.articlelist-description {
+  width: 50%;
+  margin-left: 5%;
+}
+
+.articlelist-link {
+  flex: 1 1;
+  width: auto;
+  text-align: right;
+}
+
+.articlelist-title .badge {
+  margin-bottom: 12px;
+  display: inline-block;
+  padding: 0 8px;
 }
 
 .podcastcard {
@@ -1685,8 +1775,10 @@ a.topic-card::before {
   margin-left: 24px;
 }
 
-.podcastcard-title {
-  margin-bottom: 8px;
+.podcastcard-content .badge {
+  margin-bottom: 6px;
+  display: inline-block;
+  padding: 0 8px;
 }
 
 .podcastcard-description {

@@ -3,10 +3,8 @@ function storeUniqueTopics(records){
   var topics = records.map(function(item) {return item.fields.temas;})
   const mergeAllTopics = Array.prototype.concat.apply([], topics);
   const uniqueTopics = mergeAllTopics.filter((val,id,array) => array.indexOf(val) === id);
-
   //global variable for the dropdown
   window.$topics = uniqueTopics.filter(function(e){return e}); //remove empty ones
-  return uniqueTopics
 }
 
 function storeUniqueCategories(records){
@@ -14,10 +12,23 @@ function storeUniqueCategories(records){
   var categories = records.map(function(item) {return item.fields.categorias;})
   const mergeAllCategories = Array.prototype.concat.apply([], categories);
   const uniqueCategories = mergeAllCategories.filter((val,id,array) => array.indexOf(val) === id);
-
   //global variable for the dropdown
-  window.$categories = uniqueCategories.filter(function(e){return e}); //remove empty ones 
+  window.$categories = uniqueCategories.filter(function(e){return e}); //remove empty ones
+}
+
+
+function getUniqueCategories(records){
+  var categories = records.map(function(item) {return item.fields.categorias;})
+  const mergeAllCategories = Array.prototype.concat.apply([], categories);
+  const uniqueCategories = mergeAllCategories.filter((val,id,array) => array.indexOf(val) === id);
   return uniqueCategories
+}
+
+function getUniqueTopics(records){
+  var topics = records.map(function(item) {return item.fields.temas;})
+  const mergeAllTopics = Array.prototype.concat.apply([], topics);
+  const uniqueTopics = mergeAllTopics.filter((val,id,array) => array.indexOf(val) === id);
+  return uniqueTopics
 }
 
 function getUrlCategory(){
@@ -32,6 +43,8 @@ function getUrlTopic(){
 export {
    storeUniqueTopics,
    storeUniqueCategories,
+   getUniqueCategories,
+   getUniqueTopics,
    getUrlCategory,
    getUrlTopic,
 };

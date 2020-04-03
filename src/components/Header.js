@@ -12,7 +12,6 @@ class Header extends Component {
           isHoveredTemas: false,
           categorias: [],
           temas: []
-
       };
       this.handleHoverCategorias = this.handleHoverCategorias.bind(this);
       this.handleHoverTemas = this.handleHoverTemas.bind(this);
@@ -58,9 +57,9 @@ class Header extends Component {
               <svg viewBox="0 0 30 30" className="chevron"><polygon points="15,17.4 4.8,7 2,9.8 15,23 28,9.8 25.2,7 "></polygon></svg>
               <div id={'dropdown-categorias'} className="drop-overlay">
                 <ul>
-                  {this.state.categorias && this.state.categorias.map((categorias, key) =>
+                  {this.state.categorias && this.state.categorias.map((categoria, key) =>
                     <li key={key}>
-                      <Link to={`/categorias/${categorias}`}>{categorias}</Link>
+                      <Link to={`/categorias/${categoria}`}>{categoria}</Link>
                     </li>
                   )}
                 </ul>
@@ -72,9 +71,9 @@ class Header extends Component {
               <svg viewBox="0 0 30 30" className="chevron"><polygon points="15,17.4 4.8,7 2,9.8 15,23 28,9.8 25.2,7 "></polygon></svg>
               <div id={'dropdown-temas'} className="drop-overlay">
                 <ul>
-                  {this.state.temas && this.state.temas.map((temas, key) =>
+                  {this.state.temas && this.state.temas.map((tema, key) =>
                     <li key={key}>
-                      <Link to={`/temas/${temas}`}>{temas}</Link>
+                      <Link to={`/temas/${tema}`}>{tema}</Link>
                     </li>
                   )}
                 </ul>

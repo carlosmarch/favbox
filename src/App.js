@@ -46,13 +46,13 @@ class App extends Component {
     })
     .then((resp2, data) => resp2.json())
     .then(contributors => {
-      //console.log('allcontributors',contributors.records)
+
       this.setState({
         isLoading: false,
-        recommendations: window.$alldata.sort(() => Math.random() - 0.5),
+        recommendations: window.$alldata.sort(() => Math.random() - 0.5),//random order
         contributors: contributors.records}
       );
-
+      //console.log('allcontributors',contributors.records)
       //console.log('contributors',this.state.contributors)
       //console.log('recommendations',this.state.recommendations)
 
@@ -64,6 +64,10 @@ class App extends Component {
 
 
 
+  //-------------------------//
+  //  HELPERS
+  //-------------------------//
+
 
   //Get contributor data by contributor ID "rec9p8GxW7FJxPtg5" "recbofdaqGgFjL20L"
   getContributor(contributorIdArray){
@@ -73,7 +77,7 @@ class App extends Component {
 
 
   //RETURN FILTERED ITEMS
-  returnTopicItems(topicName, size){
+  getTopicItems(topicName, size){
     const topicItems = [];
     this.state.recommendations.filter(recommendation => recommendation.fields.temas?.includes(topicName)).map(filteredTopicItem => (
         topicItems.push(filteredTopicItem)
@@ -81,11 +85,14 @@ class App extends Component {
    return topicItems.slice(0, size)
   }
 
-  returnCategoryItems(categoryName, size){
+  //Get items by category name
+  getCategoryItems(categoryName, size){
     return this.state.recommendations.filter(recommendation => recommendation.fields.categorias?.includes(categoryName)).slice(0, size)
   }
 
-  returnCollectionItems(collectionName, size){
+
+  //Get items by collection name
+  getCollectionItems(collectionName, size){
     const collections = [];
     this.state.recommendations.filter(recommendation => recommendation.fields.colecciones?.includes(collectionName)).map(filteredCollectionItem => (
         collections.push(filteredCollectionItem)
@@ -104,66 +111,67 @@ class App extends Component {
 
                 <main>
 
-                    <div id="GridCard">
-                      <BlockTitle title={'Libros'} description={'Las recomendaciones mas destacadas'} link={'categorias/libro'}/>
-                      <div className="container container-xl">
-                          <div className="grid-card">
-                            {this.state.isLoading ? <LoadingSpinner /> : this.returnCategoryItems('libro', 4).map((records) =>
-                              <Card {...records.fields} key={records.id} autor={this.getContributor(records.fields.contribuidor)}/>
-                            )}
-                          </div>
-                      </div>
+                    <div className="GridCard">
+                        <BlockTitle title={'Libros'} description={'Las recomendaciones mas destacadas'} link={'categorias/libro'}/>
+                        <div className="container container-xl">
+                            <div className="grid">
+                              {this.state.isLoading ? <LoadingSpinner /> : this.getCategoryItems('libro', 4).map((records) =>
+                                <Card {...records.fields} key={records.id} autor={this.getContributor(records.fields.contribuidor)}/>
+                              )}
+                            </div>
+                        </div>
                     </div>
 
 
 
 
                     <div className="MusicGrid">
-                      <div className="container">
                         <BlockTitle title={'Música'} description={'Las recomendaciones mas destacadas'} link={'categorias/música'}/>
-                        <div className="grid mt-s">
-                            {this.state.isLoading ? <LoadingSpinner /> : this.returnCategoryItems('música', 8).map((records) =>
-                            <Musiccard {...records.fields} key={records.id} autor={this.getContributor(records.fields.contribuidor)}/>
-                          )}
+                        <div className="container">
+                            <div className="grid mt-s">
+                                {this.state.isLoading ? <LoadingSpinner /> : this.getCategoryItems('música', 8).map((records) =>
+                                  <Musiccard {...records.fields} key={records.id} autor={this.getContributor(records.fields.contribuidor)}/>
+                                )}
+                            </div>
                         </div>
 
-                        <BlockTitle title={'Podcasts'} description={'Las recomendaciones mas destacadas'} link={'categorias/podcast'}/>
-                        <div className="grid mt-s">
-                            {this.state.isLoading ? <LoadingSpinner /> : this.returnCategoryItems('podcast', 8).map((records) =>
-                            <Podcastcard {...records.fields} key={records.id} autor={this.getContributor(records.fields.contribuidor)}/>
-                          )}
+                        <BlockTitle title={'Podcasts'} description={'Las recomendaciones mas destacadas'} link={'categorias/podcast'} titleclass="mt-l"/>
+                        <div className="container">
+                            <div className="grid mt-s">
+                                {this.state.isLoading ? <LoadingSpinner /> : this.getCategoryItems('podcast', 8).map((records) =>
+                                  <Podcastcard {...records.fields} key={records.id} autor={this.getContributor(records.fields.contribuidor)}/>
+                                )}
+                            </div>
                         </div>
-
-                      </div>
                     </div>
 
 
 
 
                     <div id="GridCard">
-                      <div className="container container-xl">
-                          <BlockTitle title={'Revistas'} description={'Las recomendaciones mas destacadas'} link={'categorias/revista'}/>
-                          <div className="grid-card">
-                              {this.state.isLoading ? <LoadingSpinner /> : this.returnCategoryItems('revista', 4).map((records) =>
-                              <Card {...records.fields} key={records.id} autor={this.getContributor(records.fields.contribuidor)}/>
-                            )}
+                        <BlockTitle title={'Revistas'} description={'Las recomendaciones mas destacadas'} link={'categorias/revista'}/>
+                        <div className="container container-xl">
+                          <div className="grid">
+                              {this.state.isLoading ? <LoadingSpinner /> : this.getCategoryItems('revista', 4).map((records) =>
+                                <Card {...records.fields} key={records.id} autor={this.getContributor(records.fields.contribuidor)}/>
+                              )}
                             <img className="lines" src={process.env.PUBLIC_URL + '/img/dot-3.svg'} alt="lines"/>
                           </div>
-                      </div>
+                        </div>
                     </div>
 
 
                     <div className="GridColection mt-l">
-                      <BlockTitle title={'Colecciones'} description={'Las recomendaciones mas destacadas'}/>
-                      <div className="container">
-                        <div className=" grid mt-s">
-                            <Collectioncard title={'darle al coco'} grid={'width-4/12'} number={this.returnCollectionItems('darle al coco').length}/>
-                            <Collectioncard title={'mantenerse en forma'} grid={'width-4/12'}/>
-                            <Collectioncard title={'pandemias, contagios y visionarios'} grid={'width-4/12'}/>
-                            <Collectioncard title={'aprender'} grid={'width-6/12'}/>
-                            <Collectioncard title={'disfrutar de algo'} grid={'width-6/12'}/>
+                        <BlockTitle title={'Colecciones'} description={'Las recomendaciones mas destacadas'}/>
+                        <div className="container container-xl">
+                          <div className=" grid mt-s">
+                              <Collectioncard title={'darle al coco'} grid={'width-4/12'} number={this.getCollectionItems('darle al coco').length}/>
+                              <Collectioncard title={'mantenerse en forma'} grid={'width-4/12'}/>
+                              <Collectioncard title={'pandemias, contagios y visionarios'} grid={'width-4/12'}/>
+                              <Collectioncard title={'aprender'} grid={'width-6/12'}/>
+                              <Collectioncard title={'disfrutar de algo'} grid={'width-6/12'}/>
+                          </div>
                         </div>
-                      </div>
                     </div>
 
 
@@ -174,9 +182,15 @@ class App extends Component {
                           description={'These beliefs guide all our work, from designing products to growing our global team.'}
                           titleclass="big-title mt-xl" descriptionclass="big-description" link={'categorias/artículo'}/>
                         <div className="mt-l">
-                            {this.state.isLoading ? <LoadingSpinner /> : this.returnCategoryItems('artículo', 20).map((records) =>
-                            <Articlelist {...records.fields} key={records.id} autor={this.getContributor(records.fields.contribuidor)}/>
-                          )}
+                            {this.state.isLoading ? <LoadingSpinner /> : this.getCategoryItems('artículo', 20).map((records) =>
+                              <Articlelist {...records.fields} key={records.id} autor={this.getContributor(records.fields.contribuidor)}/>
+                            )}
+                            {this.state.isLoading ? <LoadingSpinner /> : this.getCategoryItems('newsletter', 20).map((records) =>
+                              <Articlelist {...records.fields} key={records.id} autor={this.getContributor(records.fields.contribuidor)}/>
+                            )}
+                            {this.state.isLoading ? <LoadingSpinner /> : this.getCategoryItems('web', 20).map((records) =>
+                              <Articlelist {...records.fields} key={records.id} autor={this.getContributor(records.fields.contribuidor)}/>
+                            )}
                         </div>
                       </div>
                     </div>

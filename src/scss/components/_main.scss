@@ -5,11 +5,6 @@
 }
 
 body {
-    font-size: 15px;
-    font-family: apercu-pro, "Apercu Pro", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
-    font-weight: 300;
-    color: var(--black);
-    -webkit-font-smoothing: antialiased;
     background: var(--background);
 }
 main{
@@ -20,21 +15,3 @@ main{
   margin-top: 94px;//header size
   min-height: calc(100vh - 193px);//header+footer size
 }
-
-.mt-xl{
-  margin-top: 160px;}
-.mt-l{
-  margin-top: 80px;}
-.mt-m{
-  margin-top: 40px;}
-.mt-s{
-  margin-top: 20px;}
-
-.mb-xl{
-  margin-bottom: 160px;}
-.mb-l{
-  margin-bottom: 80px;}
-.mb-m{
-  margin-bottom: 40px;}
-.mb-s{
-  margin-bottom: 20px;}
