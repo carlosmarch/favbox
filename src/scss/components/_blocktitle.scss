@@ -4,6 +4,7 @@
   display: inline-block;
   font-weight: bold;
   font-family: "Sharp Grotesk Medium", sans-serif;
+  overflow-wrap: anywhere;
   &:first-letter {
     text-transform: uppercase;
   }

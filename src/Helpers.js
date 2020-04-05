@@ -40,6 +40,7 @@ function getUrlTopic(){
   return decodeURIComponent(window.location.pathname.split("/").pop());
 }
 
+
 export {
    storeUniqueTopics,
    storeUniqueCategories,

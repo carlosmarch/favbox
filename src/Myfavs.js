@@ -19,7 +19,7 @@ const catTemplate = {
 };
 
 
-class Detail extends Component {
+class Myfavs extends Component {
 
   constructor(props) {
     super(props);
@@ -34,39 +34,32 @@ class Detail extends Component {
 
 
   componentDidMount() {
-    fetch(window.$api+'&filterByFormula=Find(%22'+this.state.topic+'%22%2C+'+this.state.category+')')
+    fetch(window.$api)
     .then((resp) => resp.json())
-    .then(pagedata => {
+    .then(data => {
+      //console.log('allrecords',data.records)
+      //PREVENT RERENDER WITH setState
+      //STORE GLOBALLY & THEN SET ALL DATA
+      //this.setState({ recommendations: data.records }); //PREVENT RERENDER
+      Helpers.storeUniqueTopics(data.records)
+      Helpers.storeUniqueCategories(data.records)
+      window.$alldata = data.records;
 
-      //console.log(pagedata);
-      //this.setState({recommendations: pagedata.records});
-      window.$pagedata = pagedata.records;
-      return fetch(window.$api)
-
-    })
-    .then((resp2) => resp2.json())
-    .then(datafull => {
-
-      //console.log(datafull);
-      Helpers.storeUniqueTopics(datafull.records)
-      Helpers.storeUniqueCategories(datafull.records)
-      window.$alldata = datafull.records;
       return fetch(window.$api_contributors)
 
     })
-    .then((resp3, data) => resp3.json())
+    .then((resp2, data) => resp2.json())
     .then(contributors => {
 
-      //ONCE WE HAVE ALL DATA FETCHED
-      //THEN WE SETSTATE WHICH CAUSES RERENDER
       this.setState({
         isLoading: false,
-        recommendations: window.$pagedata,
+        recommendations: window.$alldata.sort(() => Math.random() - 0.5),//random order
         contributors: contributors.records}
       );
       //console.log('allcontributors',contributors.records)
       //console.log('contributors',this.state.contributors)
       //console.log('recommendations',this.state.recommendations)
+
     })
     .catch(err => {
       // Error
@@ -125,6 +118,21 @@ class Detail extends Component {
   matchCategoriesWithTemplates(catArr){
     return this.getUniqueCategories(this.state.recommendations).filter(matchBlockCat => catArr.includes(matchBlockCat))
   }
+
+
+  getAllStorage() {
+
+    var values = [],
+        keys = Object.keys(localStorage),
+        i = keys.length;
+
+    while ( i-- ) {
+        values.push( localStorage.getItem(keys[i]) );
+    }
+
+    return values;
+}
+
 
 
   render() {
@@ -238,4 +246,4 @@ class Detail extends Component {
 
 }
 
-export default Detail;
+export default Myfavs;

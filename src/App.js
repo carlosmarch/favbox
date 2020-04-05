@@ -11,11 +11,15 @@ import Podcastcard from './components/Podcastcard';
 import Collectioncard from './components/Collectioncard';
 import Promocard from './components/Promocard';
 import Articlelist from './components/Articlelist';
+import Videocard from './components/Videocard';
 import LoadingSpinner from './components/LoadingSpinner';
 
 
 
+
 class App extends Component {
+
+
 
   constructor(props) {
     super(props);
@@ -25,9 +29,6 @@ class App extends Component {
       contributors: [],
     };
   }
-
-
-
 
   componentDidMount() {
     fetch(window.$api)
@@ -116,7 +117,7 @@ class App extends Component {
                         <div className="container container-xl">
                             <div className="grid">
                               {this.state.isLoading ? <LoadingSpinner /> : this.getCategoryItems('libro', 4).map((records) =>
-                                <Card {...records.fields} key={records.id} autor={this.getContributor(records.fields.contribuidor)}/>
+                                <Card {...records.fields} key={records.id} itemId={records.id} autor={this.getContributor(records.fields.contribuidor)}/>
                               )}
                             </div>
                         </div>
@@ -129,8 +130,8 @@ class App extends Component {
                         <BlockTitle title={'Música'} description={'Las recomendaciones mas destacadas'} link={'categorias/música'}/>
                         <div className="container">
                             <div className="grid mt-s">
-                                {this.state.isLoading ? <LoadingSpinner /> : this.getCategoryItems('música', 8).map((records) =>
-                                  <Musiccard {...records.fields} key={records.id} autor={this.getContributor(records.fields.contribuidor)}/>
+                                {this.state.isLoading ? <LoadingSpinner /> : this.getCategoryItems('música', 6).map((records) =>
+                                  <Musiccard {...records.fields} key={records.id} itemId={records.id} autor={this.getContributor(records.fields.contribuidor)}/>
                                 )}
                             </div>
                         </div>
@@ -139,7 +140,7 @@ class App extends Component {
                         <div className="container">
                             <div className="grid mt-s">
                                 {this.state.isLoading ? <LoadingSpinner /> : this.getCategoryItems('podcast', 8).map((records) =>
-                                  <Podcastcard {...records.fields} key={records.id} autor={this.getContributor(records.fields.contribuidor)}/>
+                                  <Podcastcard {...records.fields} key={records.id} itemId={records.id} autor={this.getContributor(records.fields.contribuidor)}/>
                                 )}
                             </div>
                         </div>
@@ -148,12 +149,12 @@ class App extends Component {
 
 
 
-                    <div id="GridCard">
+                    <div className="GridCard">
                         <BlockTitle title={'Revistas'} description={'Las recomendaciones mas destacadas'} link={'categorias/revista'}/>
                         <div className="container container-xl">
                           <div className="grid">
                               {this.state.isLoading ? <LoadingSpinner /> : this.getCategoryItems('revista', 4).map((records) =>
-                                <Card {...records.fields} key={records.id} autor={this.getContributor(records.fields.contribuidor)}/>
+                                <Card {...records.fields} key={records.id} itemId={records.id} autor={this.getContributor(records.fields.contribuidor)}/>
                               )}
                             <img className="lines" src={process.env.PUBLIC_URL + '/img/dot-3.svg'} alt="lines"/>
                           </div>
@@ -161,15 +162,30 @@ class App extends Component {
                     </div>
 
 
+                    <div className="GridVideo mt-l">
+                        <BlockTitle title={'Videos'} description={'Las recomendaciones mas destacadas'} link={'categorias/video'}/>
+                        <div className="container container-xl">
+                          <div className="grid">
+                              {this.state.isLoading ? <LoadingSpinner /> : this.getCategoryItems('video', 4).map((records) =>
+                                <Videocard {...records.fields} key={records.id} itemId={records.id} autor={this.getContributor(records.fields.contribuidor)}/>
+                              )}
+                            <img className="lines" src={process.env.PUBLIC_URL + '/img/dot-2.svg'} alt="lines"/>
+                          </div>
+                        </div>
+                    </div>
+
+
+
+
                     <div className="GridColection mt-l">
                         <BlockTitle title={'Colecciones'} description={'Las recomendaciones mas destacadas'}/>
                         <div className="container container-xl">
                           <div className=" grid mt-s">
                               <Collectioncard title={'darle al coco'} grid={'width-4/12'} number={this.getCollectionItems('darle al coco').length}/>
-                              <Collectioncard title={'mantenerse en forma'} grid={'width-4/12'}/>
-                              <Collectioncard title={'pandemias, contagios y visionarios'} grid={'width-4/12'}/>
-                              <Collectioncard title={'aprender'} grid={'width-6/12'}/>
-                              <Collectioncard title={'disfrutar de algo'} grid={'width-6/12'}/>
+                              <Collectioncard title={'mantenerse en forma'} grid={'width-4/12'} number="0" />
+                              <Collectioncard title={'pandemias, contagios y visionarios'} grid={'width-4/12'} number="0" />
+                              <Collectioncard title={'aprender'} grid={'width-6/12'} number={this.getCollectionItems('aprender').length} />
+                              <Collectioncard title={'futuros'} grid={'width-6/12'} number={this.getCollectionItems('futuros').length} />
                           </div>
                         </div>
                     </div>
@@ -183,13 +199,13 @@ class App extends Component {
                           titleclass="big-title mt-xl" descriptionclass="big-description" link={'categorias/artículo'}/>
                         <div className="mt-l">
                             {this.state.isLoading ? <LoadingSpinner /> : this.getCategoryItems('artículo', 20).map((records) =>
-                              <Articlelist {...records.fields} key={records.id} autor={this.getContributor(records.fields.contribuidor)}/>
+                              <Articlelist {...records.fields} key={records.id} itemId={records.id} autor={this.getContributor(records.fields.contribuidor)}/>
                             )}
                             {this.state.isLoading ? <LoadingSpinner /> : this.getCategoryItems('newsletter', 20).map((records) =>
-                              <Articlelist {...records.fields} key={records.id} autor={this.getContributor(records.fields.contribuidor)}/>
+                              <Articlelist {...records.fields} key={records.id} itemId={records.id} autor={this.getContributor(records.fields.contribuidor)}/>
                             )}
                             {this.state.isLoading ? <LoadingSpinner /> : this.getCategoryItems('web', 20).map((records) =>
-                              <Articlelist {...records.fields} key={records.id} autor={this.getContributor(records.fields.contribuidor)}/>
+                              <Articlelist {...records.fields} key={records.id} itemId={records.id} autor={this.getContributor(records.fields.contribuidor)}/>
                             )}
                         </div>
                       </div>
