@@ -8,6 +8,7 @@ import LoadingSpinner from './components/LoadingSpinner';
 import Musiccard from './components/Musiccard';
 import Podcastcard from './components/Podcastcard';
 import Articlelist from './components/Articlelist';
+import Videocard from './components/Videocard';
 import Notfound from './Notfound';
 
 
@@ -15,9 +16,9 @@ const catTemplate = {
   card: ['libro', 'revista', 'película', 'serie'],
   musiccard: ['música'],
   podcastcard : ['podcast'],
-  articlelist : ['artículo', 'web', 'newsletter']
+  articlelist : ['artículo', 'web', 'newsletter'],
+  videocard: ['video']
 };
-
 
 class Myfavs extends Component {
 
@@ -43,8 +44,6 @@ class Myfavs extends Component {
       Helpers.storeUniqueCategories(data.records)
       window.$alldata = data.records;
 
-
-
       return fetch(window.$api_contributors)
 
     })
@@ -61,8 +60,8 @@ class Myfavs extends Component {
       );
       //console.log('allcontributors',contributors.records)
       //console.log('contributors',this.state.contributors)
-      // console.log('recommendations',this.state.recommendations)
-      // console.log( 'favs', Helpers.getFavs(), this.getFavItems(Helpers.getFavs()) )
+      //console.log('recommendations',this.state.recommendations)
+      console.log( 'favs', Helpers.getFavs(), this.getFavItems(Helpers.getFavs()) )
 
     })
     .catch(err => {
@@ -138,9 +137,15 @@ class Myfavs extends Component {
                       this.renderPodcastItems(catTemplate.podcastcard)
                     ) : ('')}
 
+                    {this.state.isLoading ? '' : this.matchCategoriesWithTemplates(catTemplate.videocard) && this.matchCategoriesWithTemplates(catTemplate.videocard).length ? (
+                      this.renderVideoItems(catTemplate.videocard)
+                    ) : ('')}
+
                     {this.state.isLoading ? '' : this.matchCategoriesWithTemplates(catTemplate.articlelist) && this.matchCategoriesWithTemplates(catTemplate.articlelist).length ? (
                       this.renderArticleItems(catTemplate.articlelist)
                     ) : ('')}
+
+                    {this.state.recommendations && !this.state.recommendations.length ? <Notfound/> : '' }
 
               <img className="lines" src={process.env.PUBLIC_URL + '/img/lines.svg'} alt="lines"/>
 
@@ -211,6 +216,21 @@ class Myfavs extends Component {
           <div className="">
               {this.getBlockCategoryItems(catArray).map((records) =>
                 <Articlelist {...records.fields} key={records.id} itemId={records.id} autor={this.getContributor(records.fields.contribuidor)}/>
+              )}
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  renderVideoItems(catArray){
+    return(
+      <div className="ArticlesGrid mt-l">
+        <div className="container">
+          <h3 className="title-divider">Videos</h3>
+          <div className="grid">
+              {this.getBlockCategoryItems(catArray).map((records) =>
+                <Videocard {...records.fields} key={records.id} itemId={records.id} autor={this.getContributor(records.fields.contribuidor)}/>
               )}
           </div>
         </div>

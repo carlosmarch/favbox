@@ -43,7 +43,7 @@ class Header extends Component {
 
 
   render() {
-    
+
     return (
       <header className="header">
         <div className="container">
@@ -82,7 +82,7 @@ class Header extends Component {
 
             <li><Link to="/about">About</Link></li>
 
-            { this.state.hasFavs ? <li id="Favoritos-button" className="favlink"><Link to="/favoritos">❤ Mis Favoritos</Link></li> : "" }
+            <li id="Favoritos-button" className="favlink"><Link to="/favoritos">❤ Mis Favoritos</Link></li>
 
 
         </ul>

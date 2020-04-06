@@ -130,7 +130,7 @@ class App extends Component {
                         <BlockTitle title={'Música'} description={'Las recomendaciones mas destacadas'} link={'categorias/música'}/>
                         <div className="container">
                             <div className="grid mt-s">
-                                {this.state.isLoading ? <LoadingSpinner /> : this.getCategoryItems('música', 6).map((records) =>
+                                {this.state.isLoading ? <LoadingSpinner /> : this.getCategoryItems('música', 8).map((records) =>
                                   <Musiccard {...records.fields} key={records.id} itemId={records.id} autor={this.getContributor(records.fields.contribuidor)}/>
                                 )}
                             </div>
@@ -139,7 +139,7 @@ class App extends Component {
                         <BlockTitle title={'Podcasts'} description={'Las recomendaciones mas destacadas'} link={'categorias/podcast'} titleclass="mt-l"/>
                         <div className="container">
                             <div className="grid mt-s">
-                                {this.state.isLoading ? <LoadingSpinner /> : this.getCategoryItems('podcast', 8).map((records) =>
+                                {this.state.isLoading ? <LoadingSpinner /> : this.getCategoryItems('podcast', 4).map((records) =>
                                   <Podcastcard {...records.fields} key={records.id} itemId={records.id} autor={this.getContributor(records.fields.contribuidor)}/>
                                 )}
                             </div>
@@ -182,7 +182,7 @@ class App extends Component {
                         <div className="container container-xl">
                           <div className=" grid mt-s">
                               <Collectioncard title={'darle al coco'} grid={'width-4/12'} number={this.getCollectionItems('darle al coco').length}/>
-                              <Collectioncard title={'mantenerse en forma'} grid={'width-4/12'} number="0" />
+                              <Collectioncard title={'mantenerse en forma'} grid={'width-4/12'} number={this.getCollectionItems('mantenerse en forma').length} />
                               <Collectioncard title={'pandemias, contagios y visionarios'} grid={'width-4/12'} number="0" />
                               <Collectioncard title={'aprender'} grid={'width-6/12'} number={this.getCollectionItems('aprender').length} />
                               <Collectioncard title={'futuros'} grid={'width-6/12'} number={this.getCollectionItems('futuros').length} />

@@ -8,6 +8,7 @@ import LoadingSpinner from './components/LoadingSpinner';
 import Musiccard from './components/Musiccard';
 import Podcastcard from './components/Podcastcard';
 import Articlelist from './components/Articlelist';
+import Videocard from './components/Videocard';
 import Notfound from './Notfound';
 
 
@@ -15,7 +16,8 @@ const catTemplate = {
   card: ['libro', 'revista', 'película', 'serie'],
   musiccard: ['música'],
   podcastcard : ['podcast'],
-  articlelist : ['artículo', 'web', 'newsletter']
+  articlelist : ['artículo', 'web', 'newsletter'],
+  videocard: ['video']
 };
 
 
@@ -155,6 +157,10 @@ class Detail extends Component {
                       this.renderPodcastItems(catTemplate.podcastcard)
                     ) : ('')}
 
+                    {this.state.isLoading ? '' : this.matchCategoriesWithTemplates(catTemplate.videocard) && this.matchCategoriesWithTemplates(catTemplate.videocard).length ? (
+                      this.renderVideoItems(catTemplate.videocard)
+                    ) : ('')}
+
                     {this.state.isLoading ? '' : this.matchCategoriesWithTemplates(catTemplate.articlelist) && this.matchCategoriesWithTemplates(catTemplate.articlelist).length ? (
                       this.renderArticleItems(catTemplate.articlelist)
                     ) : ('')}
@@ -222,11 +228,26 @@ class Detail extends Component {
   renderArticleItems(catArray){
     return(
       <div className="ArticlesGrid mt-l">
+        <BlockTitle title={this.state.category==='categorias' ? '' : 'Más'}/>
         <div className="container">
-          <BlockTitle title={this.state.category==='categorias' ? '' : 'Más'}/>
-          <div className="">
+          <div className="grid">
               {this.getBlockCategoryItems(catArray).map((records) =>
                 <Articlelist {...records.fields} key={records.id} itemId={records.id} autor={this.getContributor(records.fields.contribuidor)}/>
+              )}
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  renderVideoItems(catArray){
+    return(
+      <div className="ArticlesGrid mt-l">
+        <BlockTitle title={this.state.category==='categorias' ? '' : 'Videos'}/>
+        <div className="container">
+          <div className="grid">
+              {this.getBlockCategoryItems(catArray).map((records) =>
+                <Videocard {...records.fields} key={records.id} itemId={records.id} autor={this.getContributor(records.fields.contribuidor)}/>
               )}
           </div>
         </div>
