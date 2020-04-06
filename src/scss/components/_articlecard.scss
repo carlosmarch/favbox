@@ -11,6 +11,7 @@
   min-height: 140px;
   align-items: center;
   background: var(--background);
+  position: relative;
   a{
     color: var(--interaction-blue);
   }
@@ -20,13 +21,14 @@
   width: 25%;
 }
 .articlelist-description{
-  width: 50%;
+  width: 60%;
   margin-left: 5%;
 }
 .articlelist-link{
   flex: 1 1;
   width: auto;
   text-align: right;
+  position: relative;
 }
 
 .articlelist-title .badge {
@@ -34,7 +36,17 @@
   display: inline-block;
   padding: 0 8px;
 }
+.articlelist .contributor {
+    display: flex;
+    align-items: center;
+    margin-top: 12px;
+    line-height: 16px;
+}
 
+.articlelist .like {
+    top: 16px;
+    right: 24px;
+}
 
 .articlelist {
   @media (max-width: $breakpoint-m) {

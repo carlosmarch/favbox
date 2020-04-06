@@ -1,20 +1,19 @@
 import React, { Component } from "react";
+import * as Helpers from '../Helpers';
 
 class Like extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      isLike: localStorage.getItem(this.props.itemId) !== null //True if NOT exists
+      isLike: localStorage.getItem(this.props.itemId) !== null //Default False -> if NOT NULL ||  if Exists -> True
     };
   }
 
   handleLike = (e) => {
 
-    console.log('handlelike')
     e.preventDefault();
     const item = e.target.value;
-    console.log('hola', item);
 
     if (localStorage.getItem(item) === null) {
       //Set a like
@@ -30,7 +29,7 @@ class Like extends Component {
   }
 
   render() {
-    console.log(this.props.itemId, this.state.isLike)
+
     return (
       <div className="like">
         <button className={"likebutton is-like-"+`${this.state.isLike}`} value={this.props.itemId} onClick={this.handleLike}>❤</button>

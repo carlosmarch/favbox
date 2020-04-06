@@ -3,6 +3,12 @@
   height:200px;
   overflow: hidden;
   position: relative;
+  display: block;
+  &:hover img.play{
+    transform: scale(1.1);
+    transition: all 0.4s ease 0s;
+    opacity: 1;
+  }
 }
 .videocard-cover-img{
   max-width: 100%;
@@ -17,4 +23,11 @@
     position: absolute;
     left: calc(50% - 30px);
     top: calc(50% - 30px);
+    transition: all 0.4s ease 0s;
+    opacity: 0;
+}
+.videocard .contributor{
+  display: flex;
+  align-items: center;
+  margin-top: 12px;
 }

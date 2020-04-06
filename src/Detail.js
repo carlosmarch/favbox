@@ -105,8 +105,8 @@ class Detail extends Component {
 
 
   //Get unique categories from page records
-  getUniqueCategories(pagedata){
-    let categories = pagedata.map(function(item) {return item.fields.categorias})
+  getUniqueCategories(data){
+    let categories = data.map(function(item) {return item.fields.categorias})
     let mergeAllCategories = Array.prototype.concat.apply([], categories);
     return mergeAllCategories.filter((val,id,array) => array.indexOf(val) === id);
   }
@@ -138,7 +138,7 @@ class Detail extends Component {
           <main>
             <div id="Detail" className={`pb-xl ${"is-" + this.state.category}`}>
 
-                    {!this.state.isLoading && window.$pagedata.length === 0
+                    {!this.state.isLoading && window.$pagedata.length && window.$pagedata.length === 0
                       ? <Notfound/>
                       : <BlockTitle title={this.state.topic} description={'Las recomendaciones de '+this.state.topic+' mas destacadas'} titleclass="big-title mt-s" descriptionclass="big-description mb-m"/>
                     }

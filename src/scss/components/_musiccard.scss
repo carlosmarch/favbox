@@ -33,6 +33,7 @@
   opacity: 0;
   transition: .2s ease-out;
   background-color: var(--default-color);
+  z-index: 0;
   &:hover{
     opacity: 1;
     transition: .2s ease-out;
@@ -43,7 +44,7 @@
       margin-top: calc(50% - 40px);
       margin: calc(50% - 40px) auto;
   }
-  
+
 }
 
 .musiccard-album-img {
@@ -57,4 +58,13 @@
 
 .musiccard-description{
   font-size: 18px;
+}
+
+.musiccard .contributor{
+  bottom: 12px;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  left: 12px;
+  text-align: left;
 }

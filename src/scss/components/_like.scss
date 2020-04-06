@@ -10,20 +10,46 @@ button, input[type="submit"], input[type="reset"] {
 
 
 .like{
-  position: absolute;
-  right: 16px;
-  top: 14px;
+	position: absolute;
+	text-align: right;
+	top: 12px;
+	right: 12px;
+	z-index: 1000;
+	display: inline-block;
 }
 .likebutton {
-  align-self: center;
-  position: relative;
-  font-size: 2em;
-  cursor: pointer;
+	cursor: pointer;
+	background: #fff;
+	border-radius: 50%;
+	display: inline-block;
+	transition: .2s;
+	font-size: 24px;
+	width: 40px;
+	height: 40px;
+	text-align: center;
 }
+
 .is-like-true{
-	color: #e2264d;
+	animation: size .4s;
+  color:#ecba6d;
 }
 
 .is-like-false{
   color: #aab8c2;
+	background: #fff;
+	&:hover {
+	  color:#666;
+	}
+}
+
+@keyframes size {
+  0% {
+		transform: scale(0.9);
+		font-size: 12px;
+	}
+  50% {transform: scale(1.2)}
+  100% {
+		transform: scale(1);
+		font-size: 24px;
+	}
 }

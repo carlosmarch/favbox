@@ -26,8 +26,6 @@ class Myfavs extends Component {
     this.state = {
       isLoading: true,
       recommendations: [],
-      category: Helpers.getUrlCategory(),
-      topic: Helpers.getUrlTopic()
     };
   }
 
@@ -45,6 +43,8 @@ class Myfavs extends Component {
       Helpers.storeUniqueCategories(data.records)
       window.$alldata = data.records;
 
+
+
       return fetch(window.$api_contributors)
 
     })
@@ -53,34 +53,21 @@ class Myfavs extends Component {
 
       this.setState({
         isLoading: false,
-        recommendations: window.$alldata.sort(() => Math.random() - 0.5),//random order
-        contributors: contributors.records}
+        recommendations: this.getFavItems(window.$alldata, Helpers.getFavs()),
+        contributors: contributors.records,
+        category: Helpers.getUrlCategory(),
+        topic: Helpers.getUrlTopic()
+        }
       );
       //console.log('allcontributors',contributors.records)
       //console.log('contributors',this.state.contributors)
-      //console.log('recommendations',this.state.recommendations)
+      // console.log('recommendations',this.state.recommendations)
+      // console.log( 'favs', Helpers.getFavs(), this.getFavItems(Helpers.getFavs()) )
 
     })
     .catch(err => {
       // Error
     });
-  }
-
-
-
-  componentDidUpdate(prevProps) {
-    //If prev url is not the same render again
-    if ( ( Helpers.getUrlTopic() !== prevProps.match.params.id )  || (  Helpers.getUrlCategory() !== prevProps.match.url.split("/")[1])  ) {
-      // SET CLICKED NEW URL
-      this.setState({
-        isLoading: true,
-        category: Helpers.getUrlCategory(),
-        topic : Helpers.getUrlTopic()
-      }, () => {
-        //Call API && Render again when state (async) is done
-        this.componentDidMount()
-      });
-    }
   }
 
 
@@ -98,8 +85,8 @@ class Myfavs extends Component {
 
 
   //Get unique categories from page records
-  getUniqueCategories(pagedata){
-    let categories = pagedata.map(function(item) {return item.fields.categorias})
+  getUniqueCategories(data){
+    let categories = data.map(function(item) {return item.fields.categorias})
     let mergeAllCategories = Array.prototype.concat.apply([], categories);
     return mergeAllCategories.filter((val,id,array) => array.indexOf(val) === id);
   }
@@ -115,24 +102,15 @@ class Myfavs extends Component {
     return this.state.recommendations.filter( (recommendation) => catArr.some((tag) => recommendation.fields.categorias.includes(tag)) );
   }
 
+  //From unique categories match only the ones from template array
   matchCategoriesWithTemplates(catArr){
     return this.getUniqueCategories(this.state.recommendations).filter(matchBlockCat => catArr.includes(matchBlockCat))
   }
 
-
-  getAllStorage() {
-
-    var values = [],
-        keys = Object.keys(localStorage),
-        i = keys.length;
-
-    while ( i-- ) {
-        values.push( localStorage.getItem(keys[i]) );
-    }
-
-    return values;
-}
-
+  //Get all items which includes id
+  getFavItems(records, favArr){
+    return records.filter(recommendation => favArr.some(favId => recommendation.id === favId));
+  }
 
 
   render() {
@@ -144,12 +122,9 @@ class Myfavs extends Component {
 
         <div className="global">
           <main>
-            <div id="Detail" className={`pb-xl ${"is-" + this.state.category}`}>
+            <div id="Favoritos" className={`pb-xl ${"is-" + this.state.category}`}>
 
-                    {!this.state.isLoading && window.$pagedata.length === 0
-                      ? <Notfound/>
-                      : <BlockTitle title={this.state.topic} description={'Las recomendaciones de '+this.state.topic+' mas destacadas'} titleclass="big-title mt-s" descriptionclass="big-description mb-m"/>
-                    }
+                    <BlockTitle title={'Favoritos'} titleclass="big-title mt-s mb-s" descriptionclass="big-description mb-m"/>
 
                     {this.state.isLoading ? <LoadingSpinner /> : this.matchCategoriesWithTemplates(catTemplate.card) && this.matchCategoriesWithTemplates(catTemplate.card).length ? (
                       this.renderCardItems(catTemplate.card)
@@ -185,8 +160,9 @@ class Myfavs extends Component {
 
   renderCardItems(catArray) {
     return (
-      <div className="GridCard">
-          <div className="container container-xl">
+      <div className="GridCard mt-s">
+          <div className="container">
+              <h3 className="title-divider">Libros y revistas</h3>
               <div className="grid">
                 {this.getBlockCategoryItems(catArray).map((records) =>
                   <Card {...records.fields} key={records.id} itemId={records.id} autor={this.getContributor(records.fields.contribuidor)}/>
@@ -200,8 +176,8 @@ class Myfavs extends Component {
   renderMusicItems(catArray) {
     return(
       <div className="MusicGrid-detail mt-l">
-        <BlockTitle title={this.state.category==='categorias' ? '' : 'Música'} />
         <div className="container">
+            <h3 className="title-divider">Música</h3>
             <div className="grid">
                 {this.getBlockCategoryItems(catArray).map((records) =>
                   <Musiccard {...records.fields} key={records.id} itemId={records.id} autor={this.getContributor(records.fields.contribuidor)}/>
@@ -216,7 +192,7 @@ class Myfavs extends Component {
     return(
       <div className="PodcastGrid mt-l">
         <div className="container mt-l">
-          <BlockTitle title={this.state.category==='categorias' ? '' : 'Para escuchar'} />
+          <h3 className="title-divider">Podcasts</h3>
           <div className="grid">
               {this.getBlockCategoryItems(catArray).map((records) =>
                 <Podcastcard {...records.fields} key={records.id} itemId={records.id} autor={this.getContributor(records.fields.contribuidor)}/>
@@ -231,7 +207,7 @@ class Myfavs extends Component {
     return(
       <div className="ArticlesGrid mt-l">
         <div className="container">
-          <BlockTitle title={this.state.category==='categorias' ? '' : 'Más'}/>
+          <h3 className="title-divider">Artículos, webs, newsletters...</h3>
           <div className="">
               {this.getBlockCategoryItems(catArray).map((records) =>
                 <Articlelist {...records.fields} key={records.id} itemId={records.id} autor={this.getContributor(records.fields.contribuidor)}/>

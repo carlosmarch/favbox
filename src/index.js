@@ -11,7 +11,7 @@ import App from './App';
 import Detail from './Detail';
 import About from './About';
 import Notfound from './Notfound';
-
+import Myfavs from './Myfavs';
 
 import * as serviceWorker from './serviceWorker';
 
@@ -29,6 +29,7 @@ const routing = (
         <Route path="/temas/:id" component={Detail} />
         <Route path="/colecciones/:id" component={Detail} />
         <Route exact path="/about" component={About} />
+        <Route exact path="/favoritos" component={Myfavs} />
         <Route component={Notfound} />
       </Switch>
 

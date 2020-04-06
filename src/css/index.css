@@ -484,7 +484,7 @@ a {
   display: inline-block;
   font-size: 18px;
   font-weight: 800;
-  padding-top: 12px;
+  padding-top: 8px;
 }
 
 .menu li {
@@ -570,6 +570,13 @@ li#menuitem-temas.hoverstate div#dropdown-temas {
 .drop-overlay a {
   display: inline-block;
   width: 100%;
+}
+
+.favlink a {
+  background: #fff;
+  padding: 4px 12px;
+  margin-top: -4px;
+  border-radius: 4px;
 }
 
 .form {
@@ -1275,6 +1282,10 @@ li#menuitem-temas.hoverstate div#dropdown-temas {
   margin-left: 0;
 }
 
+.title-divider {
+  margin-bottom: 24px;
+}
+
 .Notfound {
   background-image: url(/img/dot-2.svg);
   background-size: 30%;
@@ -1326,23 +1337,51 @@ button, input[type="submit"], input[type="reset"] {
 
 .like {
   position: absolute;
-  right: 16px;
-  top: 14px;
+  text-align: right;
+  top: 12px;
+  right: 12px;
+  z-index: 1000;
+  display: inline-block;
 }
 
 .likebutton {
-  align-self: center;
-  position: relative;
-  font-size: 2em;
   cursor: pointer;
+  background: #fff;
+  border-radius: 50%;
+  display: inline-block;
+  transition: .2s;
+  font-size: 24px;
+  width: 40px;
+  height: 40px;
+  text-align: center;
 }
 
 .is-like-true {
-  color: #e2264d;
+  animation: size .4s;
+  color: #ecba6d;
 }
 
 .is-like-false {
   color: #aab8c2;
+  background: #fff;
+}
+
+.is-like-false:hover {
+  color: #666;
+}
+
+@keyframes size {
+  0% {
+    transform: scale(0.9);
+    font-size: 12px;
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+    font-size: 24px;
+  }
 }
 
 .grid-card {
@@ -1418,7 +1457,7 @@ button, input[type="submit"], input[type="reset"] {
   text-decoration: underline;
 }
 
-.card-contributor {
+.card .contributor {
   bottom: 20px;
   position: absolute;
   display: flex;
@@ -1633,6 +1672,7 @@ a.topic-card::before {
   opacity: 0;
   transition: .2s ease-out;
   background-color: var(--default-color);
+  z-index: 0;
 }
 
 .musiccard-album-contents:hover {
@@ -1657,6 +1697,15 @@ a.topic-card::before {
 
 .musiccard-description {
   font-size: 18px;
+}
+
+.musiccard .contributor {
+  bottom: 12px;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  left: 12px;
+  text-align: left;
 }
 
 .Promo .grid {
@@ -1752,6 +1801,7 @@ a.topic-card::before {
   min-height: 140px;
   align-items: center;
   background: var(--background);
+  position: relative;
 }
 
 .articlelist a {
@@ -1763,7 +1813,7 @@ a.topic-card::before {
 }
 
 .articlelist-description {
-  width: 50%;
+  width: 60%;
   margin-left: 5%;
 }
 
@@ -1771,12 +1821,25 @@ a.topic-card::before {
   flex: 1 1;
   width: auto;
   text-align: right;
+  position: relative;
 }
 
 .articlelist-title .badge {
   margin-bottom: 12px;
   display: inline-block;
   padding: 0 8px;
+}
+
+.articlelist .contributor {
+  display: flex;
+  align-items: center;
+  margin-top: 12px;
+  line-height: 16px;
+}
+
+.articlelist .like {
+  top: 16px;
+  right: 24px;
 }
 
 @media (max-width: 48em) {
@@ -1821,6 +1884,7 @@ a.topic-card::before {
   padding: 16px;
   align-items: center;
   transition: .2s ease-out;
+  position: relative;
 }
 
 .podcastcard:hover {
@@ -1883,11 +1947,24 @@ a.topic-card::before {
   font-size: 18px;
 }
 
+.podcastcard .contributor {
+  display: flex;
+  align-items: center;
+  margin-top: 12px;
+}
+
 .videocard-cover {
   width: 100%;
   height: 200px;
   overflow: hidden;
   position: relative;
+  display: block;
+}
+
+.videocard-cover:hover img.play {
+  transform: scale(1.1);
+  transition: all 0.4s ease 0s;
+  opacity: 1;
 }
 
 .videocard-cover-img {
@@ -1902,4 +1979,12 @@ a.topic-card::before {
   position: absolute;
   left: calc(50% - 30px);
   top: calc(50% - 30px);
+  transition: all 0.4s ease 0s;
+  opacity: 0;
+}
+
+.videocard .contributor {
+  display: flex;
+  align-items: center;
+  margin-top: 12px;
 }

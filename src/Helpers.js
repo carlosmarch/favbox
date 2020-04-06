@@ -40,6 +40,32 @@ function getUrlTopic(){
   return decodeURIComponent(window.location.pathname.split("/").pop());
 }
 
+function truncateText(str, length, ending) {
+    if (length == null) {
+      length = 20;
+    }
+    if (ending == null) {
+      ending = '...';
+    }
+    if (str.length > length) {
+      return str.substring(0, length - ending.length) + ending;
+    } else {
+      return str;
+    }
+  }
+
+
+  function getFavs() {
+    var archive = [],
+        keys = Object.keys(localStorage),
+        i = 0, key;
+    for (; key = keys[i]; i++) {
+        archive.push( key );
+    }
+    return archive;
+  }
+
+
 
 export {
    storeUniqueTopics,
@@ -48,4 +74,6 @@ export {
    getUniqueTopics,
    getUrlCategory,
    getUrlTopic,
+   truncateText,
+   getFavs
 };

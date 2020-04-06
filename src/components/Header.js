@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
+import * as Helpers from '../Helpers';
 
 
 
@@ -11,7 +12,8 @@ class Header extends Component {
           isHoveredCategorias: false,
           isHoveredTemas: false,
           categorias: [],
-          temas: []
+          temas: [],
+          hasFavs: typeof Helpers.getFavs() !== 'undefined' && Helpers.getFavs().length > 0
       };
       this.handleHoverCategorias = this.handleHoverCategorias.bind(this);
       this.handleHoverTemas = this.handleHoverTemas.bind(this);
@@ -39,11 +41,9 @@ class Header extends Component {
   }
 
 
+
   render() {
-
-    const hoverstateCategorias = this.state.isHoveredCategorias ? "hoverstate" : "";
-    const hoverstateTemas = this.state.isHoveredTemas ? "hoverstate" : "";
-
+    
     return (
       <header className="header">
         <div className="container">
@@ -52,7 +52,7 @@ class Header extends Component {
 
             <li><Link to="/">Inicio</Link></li>
 
-            <li id="menuitem-categorias" className={hoverstateCategorias} onMouseEnter={this.handleHoverCategorias} onMouseLeave={this.handleHoverCategorias}>
+            <li id="menuitem-categorias" className={ this.state.isHoveredCategorias ? "hoverstate" : "" } onMouseEnter={this.handleHoverCategorias} onMouseLeave={this.handleHoverCategorias}>
               <div>¿Qué te apetece?</div>
               <svg viewBox="0 0 30 30" className="chevron"><polygon points="15,17.4 4.8,7 2,9.8 15,23 28,9.8 25.2,7 "></polygon></svg>
               <div id={'dropdown-categorias'} className="drop-overlay">
@@ -66,7 +66,7 @@ class Header extends Component {
               </div>
             </li>
 
-            <li id="menuitem-temas" className={hoverstateTemas} onMouseEnter={this.handleHoverTemas} onMouseLeave={this.handleHoverTemas}>
+            <li id="menuitem-temas" className={ this.state.isHoveredTemas ? "hoverstate" : "" } onMouseEnter={this.handleHoverTemas} onMouseLeave={this.handleHoverTemas}>
               <div>Temas</div>
               <svg viewBox="0 0 30 30" className="chevron"><polygon points="15,17.4 4.8,7 2,9.8 15,23 28,9.8 25.2,7 "></polygon></svg>
               <div id={'dropdown-temas'} className="drop-overlay">
@@ -81,6 +81,9 @@ class Header extends Component {
             </li>
 
             <li><Link to="/about">About</Link></li>
+
+            { this.state.hasFavs ? <li id="Favoritos-button" className="favlink"><Link to="/favoritos">❤ Mis Favoritos</Link></li> : "" }
+
 
         </ul>
 

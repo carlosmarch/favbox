@@ -17,7 +17,7 @@
   display: inline-block;
   font-size: 18px;
   font-weight: 800;
-  padding-top: 12px;
+  padding-top: 8px;
 }
 
 .menu li {
@@ -100,6 +100,18 @@ li#menuitem-temas.hoverstate{
         width: 100%;
     }
 }
+
+.favlink a{
+    background: #fff;
+    padding: 4px 12px;
+    margin-top: -4px;
+    border-radius: 4px;
+    &:hover{
+
+    }
+}
+
+
 
 
 
