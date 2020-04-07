@@ -42,3 +42,27 @@ $breakpoint-m: 48em;
 .text-center{
   text-align: center;
 }
+
+.textured{
+  background: var(--soft-dafault-color);
+}
+.textured::before, .textured::after{
+    content: "";
+    position: absolute;
+    background-color: inherit;
+    height: 18px;
+    left: -3vw;
+    -webkit-mask-image: url(/img/texture.svg);
+    mask-image: url(/img/texture.svg);
+    -webkit-mask-repeat: repeat-x;
+    mask-repeat: repeat-x;
+    width: 150%;
+    z-index: -1;
+}
+.textured::before {
+    top: -18px;
+    transform: rotate(180deg);
+}
+.textured::after {
+      bottom: -18px;
+}

@@ -234,6 +234,33 @@ p.hero {
   text-align: center;
 }
 
+.textured {
+  background: var(--soft-dafault-color);
+}
+
+.textured::before, .textured::after {
+  content: "";
+  position: absolute;
+  background-color: inherit;
+  height: 18px;
+  left: -3vw;
+  -webkit-mask-image: url(/img/texture.svg);
+  mask-image: url(/img/texture.svg);
+  -webkit-mask-repeat: repeat-x;
+  mask-repeat: repeat-x;
+  width: 150%;
+  z-index: -1;
+}
+
+.textured::before {
+  top: -18px;
+  transform: rotate(180deg);
+}
+
+.textured::after {
+  bottom: -18px;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -639,7 +666,8 @@ li#menuitem-temas.hoverstate div#dropdown-temas {
 
 .bottombar {
   height: 56px;
-  background-color: var(--black);
+  backdrop-filter: blur(8px);
+  background-color: #fffffff0;
   width: 100%;
   box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
   overflow: hidden;
@@ -657,11 +685,11 @@ li#menuitem-temas.hoverstate div#dropdown-temas {
 }
 
 .bottombar svg {
-  stroke: #fff;
+  stroke: #A6A6A6;
 }
 
 .bottombar .tab-active svg {
-  stroke: var(--default-color);
+  stroke: var(--black);
 }
 
 .bottombar-wapper {
@@ -2021,11 +2049,10 @@ a.topic-card::before {
 
 .is-temas .PodcastGrid {
   background-image: url(/img/line-3.svg), url(/img/dot-5.svg);
-  background-size: 60%, 40%;
+  background-size: 60%, contain;
   background-position: 50%, 30% 30%;
   background-repeat: no-repeat;
   padding: 40px 0;
-  background-color: var(--soft-dafault-color);
 }
 
 .podcastcard {

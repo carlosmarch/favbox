@@ -180,7 +180,7 @@ class App extends Component {
                     <div className="GridColection mt-l">
                         <BlockTitle title={'Colecciones'} description={'Las recomendaciones mas destacadas'}/>
                         <div className="container container-xl">
-                          <div className=" grid mt-s">
+                          <div className="grid mt-s">
                               <Collectioncard title={'darle al coco'} grid={'width-4/12'} number={this.getCollectionItems('darle al coco').length}/>
                               <Collectioncard title={'mantenerse en forma'} grid={'width-4/12'} number={this.getCollectionItems('mantenerse en forma').length} />
                               <Collectioncard title={'pandemias, contagios y visionarios'} grid={'width-4/12'} number="0" />
@@ -191,13 +191,13 @@ class App extends Component {
                     </div>
 
 
-                    <div className="ArticlesGrid">
+                    <div className="ArticlesGrid mt-l">
+                      <BlockTitle
+                        title={'Qué leer'}
+                        description={'Artículos, newsletters y webs para entretenerse un rato navegando.'}
+                        titleclass="big-title" descriptionclass="big-description" link={'categorias/artículo'}/>
                       <div className="container">
-                        <BlockTitle
-                          title={'Qué leer'}
-                          description={'Artículos, newsletters y webs para entretenerse un rato navegando.'}
-                          titleclass="big-title mt-xl" descriptionclass="big-description" link={'categorias/artículo'}/>
-                        <div className="mt-l">
+                        <div className="mt-s">
                             {this.state.isLoading ? <LoadingSpinner /> : this.getCategoryItems('artículo', 20).map((records) =>
                               <Articlelist {...records.fields} key={records.id} itemId={records.id} autor={this.getContributor(records.fields.contribuidor)}/>
                             )}
