@@ -9,7 +9,7 @@ import Musiccard from './components/Musiccard';
 import Podcastcard from './components/Podcastcard';
 import Articlelist from './components/Articlelist';
 import Videocard from './components/Videocard';
-import Notfound from './Notfound';
+import Empty from './components/Empty';
 
 
 const catTemplate = {
@@ -61,7 +61,7 @@ class Myfavs extends Component {
       //console.log('allcontributors',contributors.records)
       //console.log('contributors',this.state.contributors)
       //console.log('recommendations',this.state.recommendations)
-      console.log( 'favs', Helpers.getFavs(), this.getFavItems(Helpers.getFavs()) )
+      //console.log( 'favs', Helpers.getFavs(), this.getFavItems(Helpers.getFavs()) )
 
     })
     .catch(err => {
@@ -106,7 +106,7 @@ class Myfavs extends Component {
     return this.getUniqueCategories(this.state.recommendations).filter(matchBlockCat => catArr.includes(matchBlockCat))
   }
 
-  //Get all items which includes id
+  //Get all items which includes id in fav storage array
   getFavItems(records, favArr){
     return records.filter(recommendation => favArr.some(favId => recommendation.id === favId));
   }
@@ -123,7 +123,7 @@ class Myfavs extends Component {
           <main>
             <div id="Favoritos" className={`pb-xl ${"is-" + this.state.category}`}>
 
-                    <BlockTitle title={'Favoritos'} titleclass="big-title mt-s mb-s" descriptionclass="big-description mb-m"/>
+                    <BlockTitle title={this.state.recommendations && !this.state.recommendations.length ? '' : 'Favoritos'} titleclass="big-title mt-s mb-s" descriptionclass="big-description mb-m"/>
 
                     {this.state.isLoading ? <LoadingSpinner /> : this.matchCategoriesWithTemplates(catTemplate.card) && this.matchCategoriesWithTemplates(catTemplate.card).length ? (
                       this.renderCardItems(catTemplate.card)
@@ -145,7 +145,7 @@ class Myfavs extends Component {
                       this.renderArticleItems(catTemplate.articlelist)
                     ) : ('')}
 
-                    {this.state.recommendations && !this.state.recommendations.length ? <Notfound/> : '' }
+                    {!this.state.isLoading && this.state.recommendations && !this.state.recommendations.length ? <Empty/> : '' }
 
               <img className="lines" src={process.env.PUBLIC_URL + '/img/lines.svg'} alt="lines"/>
 

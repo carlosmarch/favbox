@@ -7,7 +7,7 @@ class Musiccard extends Component {
 
 
     return (
-      <div className="musiccard width-3/12 width-4/12@m">
+      <div className="musiccard width-3/12 width-6/12@m">
         <div className="musiccard-album">
           <Like itemId={this.props.itemId}/>
           <div className="musiccard-album-contents">

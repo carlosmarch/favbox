@@ -4,7 +4,7 @@ class Hero extends Component {
   render() {
 
     return (
-        <div className="hero-section">
+        <div className="hero-section no@m">
           <div className="bg-styled">
             <img src={process.env.PUBLIC_URL + '/img/line.svg'} className="" alt="lines"/>
           </div>

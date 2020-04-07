@@ -3,7 +3,7 @@ import React, { Component } from "react";
 class Footer extends Component {
   render() {
     return (
-      <footer className="footer">
+      <footer className="footer no@m">
         <div className="container">
                 <div className="footnote">Gracias a Joan Miró por la inspiración. Y a un buen puñado de productos digitales excelentes
                   <br/>

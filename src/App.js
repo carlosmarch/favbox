@@ -215,7 +215,7 @@ class App extends Component {
                     <Promocard />
 
 
-                    <div className="TopicCollection mt-l">
+                    <div className="TopicCollection mt-l no@m">
                       <div className="container container-s">
                         <div className=" grid mt-s">
                           {window.$topics && window.$topics.map((temas, key) =>

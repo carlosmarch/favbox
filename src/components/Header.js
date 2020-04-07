@@ -45,7 +45,7 @@ class Header extends Component {
   render() {
 
     return (
-      <header className="header">
+      <header className="header no@m">
         <div className="container">
 
           <ul id="primarymenu" className="nav menu">

@@ -1,0 +1,77 @@
+.bottombar{
+  height: 56px;
+  background-color: #fff;
+  width: 100%;
+  box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 100000;
+  display: block;
+  @media (min-width: $breakpoint-m){
+    display: none;
+  }
+}
+.bottombar-wapper{
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  height: 100%;
+}
+.bottombar-item{
+  min-width: 56px;
+  max-width: 96px;
+  -webkit-transition-property: min-width, max-width;
+  transition-property: min-width, max-width;
+  -webkit-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-transition-duration: 100ms;
+  transition-duration: 100ms;
+  -webkit-box-flex: 1;
+  flex: 1 1 0;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: start;
+  justify-content: flex-start;
+  padding: 0 12px;
+  min-width: 60px;
+  max-width: 168px;
+  box-sizing: border-box;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.bottombar-item-icon{
+  padding-top: 16px;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+}
+.bottombar-item-text{
+  margin-top: auto;
+  padding-bottom: 10px;
+  font-size: 0.75rem;
+  pointer-events: none;
+  -webkit-transition-property: font-size, color;
+  transition-property: font-size, color;
+  -webkit-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-transition-duration: 100ms;
+  transition-duration: 100ms;
+}

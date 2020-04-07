@@ -8,7 +8,8 @@ $breakpoint-m: 48em;
   }
 }
 .mt-xl{ margin-top: 160px;}
-.mt-l{ margin-top: 80px; }
+.mt-l{ margin-top: 80px;
+  @media (max-width: $breakpoint-m){margin-top: 24px;}}
 .mt-m{ margin-top: 40px; }
 .mt-s{ margin-top: 20px; }
 
@@ -27,6 +28,12 @@ $breakpoint-m: 48em;
 .pb-m { padding-bottom: 40px; }
 .pb-s { padding-bottom: 20px; }
 
+.global{
+  @media (max-width: $breakpoint-m){
+    margin-top: 32px!important;
+    margin-bottom: 56px;
+  }
+}
 
 .inline {
     display: inline;

@@ -6,6 +6,7 @@ import './css/index.css';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
+import BottomBar from './components/BottomBar';
 
 import App from './App';
 import Detail from './Detail';
@@ -32,7 +33,7 @@ const routing = (
         <Route exact path="/favoritos" component={Myfavs} />
         <Route component={Notfound} />
       </Switch>
-
+      <BottomBar/>
       <Footer />
 
   </Router>

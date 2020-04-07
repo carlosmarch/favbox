@@ -8,8 +8,8 @@ class Videocard extends Component {
 
     return (
       <div className="videocard width-4/12 width-6/12@m">
+        <Like itemId={this.props.itemId}/>
         <a className="videocard-cover" href={this.props.url} target="_blank" rel="noopener noreferrer">
-          <Like itemId={this.props.itemId}/>
           <img className="play" src={process.env.PUBLIC_URL + '/img/play.svg'} alt="play"/>
           <img className="videocard-cover-img" src={this.props.imageUrl} alt="cover"/>
         </a>
