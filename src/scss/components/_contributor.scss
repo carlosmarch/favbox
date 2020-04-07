@@ -1,0 +1,40 @@
+
+.contributor{
+  display: flex;
+  align-items: center;
+  margin-top: 12px;
+  line-height: 16px;
+}
+
+.contributor-image{
+  width: 32px;
+  margin-right: 8px;
+}
+.contributor-name{
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 0.2px;
+  font-weight: normal;
+  text-shadow: 0.5px 0 0 currentColor;
+}
+.contributor-description{
+  font-size: 13px;
+  font-weight: 100;
+}
+
+.card .contributor {
+  bottom: 20px;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.musiccard .contributor{
+  bottom: 12px;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  left: 12px;
+  text-align: left;
+}

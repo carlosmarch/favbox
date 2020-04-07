@@ -24,6 +24,9 @@
     -webkit-transform: scale(1.02);
     transform: scale(1.02);
   }
+  @media (max-width: $breakpoint-m) {
+    height: 110px;
+  }
 }
 .videocard-cover-img{
   transition: all 0.2s ease 0s;
@@ -50,9 +53,4 @@
     top: calc(50% - 30px);
     transition: all 0.4s ease 0s;
     opacity: 0;
-}
-.videocard .contributor{
-  display: flex;
-  align-items: center;
-  margin-top: 12px;
 }

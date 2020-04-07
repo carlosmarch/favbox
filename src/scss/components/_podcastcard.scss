@@ -23,6 +23,10 @@
     }
 
   }
+  @media (max-width: $breakpoint-m) {
+    padding: 8px 8px 48px 8px;
+    align-items: flex-start;
+  }
 
 }
 
@@ -32,6 +36,9 @@
   overflow: hidden;
   transition: .2s ease-out;
   min-width: 112px;
+  @media (max-width: $breakpoint-m) {
+    min-width: 72px;
+  }
 }
 
 .podcastcard-album-contents {
@@ -53,15 +60,18 @@
       margin-top: calc(50% - 15px);
       margin: calc(50% - 15px) auto;
   }
-
 }
-
 
 .podcastcard-album-img {
   width: 112px;
   height: 112px;
   display: block;
+  @media (max-width: $breakpoint-m) {
+    width: 72px;
+    height: 72px;
+  }
 }
+
 .podcastcard-content{
   margin-left: 24px;
   .badge{
@@ -70,6 +80,7 @@
     padding: 0 8px;
   }
 }
+
 .podcastcard-title {
 }
 
@@ -78,7 +89,15 @@
 }
 
 .podcastcard .contributor{
-  display: flex;
-  align-items: center;
-  margin-top: 12px;
+  @media (max-width: $breakpoint-m) {
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+  }
+}
+.podcastcard .like{
+  @media (max-width: $breakpoint-m) {
+    top: 8px;
+    right: 8px;
+  }
 }

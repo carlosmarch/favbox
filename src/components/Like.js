@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import * as Helpers from '../Helpers';
-
 
 class Like extends Component {
 
@@ -33,7 +31,7 @@ class Like extends Component {
 
     return (
       <div className="like">
-        <button className={"likebutton is-like-"+`${this.state.isLike}`} value={this.props.itemId} onClick={this.handleLike}>❤</button>
+        <button className={`likebutton is-like-${this.state.isLike}`} value={this.props.itemId} onClick={this.handleLike}>❤</button>
       </div>
     );
   }

@@ -36,6 +36,8 @@
   font-weight: normal;
   font-style: normal;
 }
+
+
 body{
   font-size: 15px;
   font-family: "Apercu Medium", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
@@ -49,7 +51,6 @@ h1,h2,h3,h4,h5,h6{
 h1 {
   font-size: 68px;
   line-height: 76px;
-  font-weight: bold;
   padding: 0;
   margin: 32px 0;
 }
@@ -63,23 +64,31 @@ h3 {
 }
 h4 {
   font-size: 28px;
+  @media (max-width: $breakpoint-m) {
+    font-size: 24px;
+    line-height: 26px;
+  }
 }
 h5 {
   font-size: 24px;
   line-height: 28px;
-  font-weight: 600;
+  @media (max-width: $breakpoint-m) {
+    font-size: 20px;
+    line-height: 22px;
+  }
 }
 h6 {
   font-size: 20px;
   line-height: 28px;
-  font-weight: 500;
+  @media (max-width: $breakpoint-m) {
+    font-size: 18px;
+    line-height: 20px;
+  }
 }
 
 p{
   font-size: 20px;
   line-height: 30px;
-  font-weight: 400;
-  //margin-bottom: 32px;
 }
 
 p.hero {

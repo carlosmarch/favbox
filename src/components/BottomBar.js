@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
-import * as Helpers from '../Helpers';
-import { Tag, Heart, Layers, Hash } from 'react-feather';
+import { Tag, Heart, Layers } from 'react-feather';
 
 class BottomBar extends Component {
 
@@ -25,17 +24,17 @@ class BottomBar extends Component {
       <div className="bottombar">
         <div className="bottombar-wapper">
               <div className="bottombar-item tab-inicio">
-                <Link to="/" className={`bottombar-item-icon ${this.state.activeIndex==0 ? 'tab-active': ''}`}  onClick={this.toggleClass.bind(this, 0)}>
+                <Link to="/" className={`bottombar-item-icon ${this.state.activeIndex===0 ? 'tab-active': ''}`}  onClick={this.toggleClass.bind(this, 0)}>
                   <Layers color="#181818" size={26} />
                 </Link>
               </div>
               <div className="bottombar-item tab-categorias">
-                <Link to="/categorias" className={`bottombar-item-icon ${this.state.activeIndex==1 ? 'tab-active': ''}`} onClick={this.toggleClass.bind(this, 1)}>
+                <Link to="/categorias" className={`bottombar-item-icon ${this.state.activeIndex===1 ? 'tab-active': ''}`} onClick={this.toggleClass.bind(this, 1)}>
                   <Tag color="#181818" size={26} />
                   </Link>
               </div>
               <div className="bottombar-item tab-favoritos">
-                <Link to="/favoritos" className={`bottombar-item-icon ${this.state.activeIndex==2 ? 'tab-active': ''}`}  onClick={this.toggleClass.bind(this, 2)}>
+                <Link to="/favoritos" className={`bottombar-item-icon ${this.state.activeIndex===2 ? 'tab-active': ''}`}  onClick={this.toggleClass.bind(this, 2)}>
                   <Heart color="#181818" size={26} />
                 </Link>
               </div>

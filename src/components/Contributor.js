@@ -3,7 +3,7 @@ import React, { Component } from "react";
 class Contributor extends Component {
 
   render() {
-    
+
     return (
       <div className="contributor">
         <img src={this.props.contributor.avatar[0].url} className="contributor-image" alt="icon"/>
