@@ -8,6 +8,9 @@
   &:first-letter {
     text-transform: uppercase;
   }
+  @media (max-width: $breakpoint-m){
+    font-size: 36px;
+  }  
 }
 .block-description{
   margin-bottom: 24px;

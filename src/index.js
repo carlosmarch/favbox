@@ -13,6 +13,7 @@ import Detail from './Detail';
 import About from './About';
 import Notfound from './Notfound';
 import Myfavs from './Myfavs';
+import Categories from './components/Categories';
 
 import * as serviceWorker from './serviceWorker';
 
@@ -31,6 +32,7 @@ const routing = (
         <Route path="/colecciones/:id" component={Detail} />
         <Route exact path="/about" component={About} />
         <Route exact path="/favoritos" component={Myfavs} />
+        <Route exact path="/categorias" component={Categories} />
         <Route component={Notfound} />
       </Switch>
       <BottomBar/>
