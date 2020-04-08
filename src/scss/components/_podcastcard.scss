@@ -24,8 +24,8 @@
 
   }
   @media (max-width: $breakpoint-m) {
-    padding: 8px 8px 48px 8px;
-    align-items: flex-start;
+    padding: 12px 12px 48px;
+    align-items: center;
   }
 
 }
@@ -38,6 +38,7 @@
   min-width: 112px;
   @media (max-width: $breakpoint-m) {
     min-width: 72px;
+    border-radius: 50%;
   }
 }
 
@@ -74,6 +75,9 @@
 
 .podcastcard-content{
   margin-left: 24px;
+  @media (max-width: $breakpoint-m) {
+    margin-left: 16px;
+  }
   .badge{
     margin-bottom: 6px;
     display: inline-block;
@@ -86,13 +90,37 @@
 
 .podcastcard-description{
   font-size: 18px;
+  @media (max-width: $breakpoint-m) {
+    font-size: 14px;
+  }
 }
+
+
 
 .podcastcard .contributor{
   @media (max-width: $breakpoint-m) {
     position: absolute;
-    bottom: 8px;
-    left: 8px;
+    bottom: 12px;
+    left: 12px;
+  }
+}
+.podcastcard .contributor-info{
+  @media (max-width: $breakpoint-m) {
+    display: flex;
+    align-items: baseline;
+  }
+}
+
+.podcastcard .contributor-image {
+  @media (max-width: $breakpoint-m) {
+    height: 24px;
+    margin-right: 8px;
+  }
+}
+.podcastcard .contributor-description {
+  @media (max-width: $breakpoint-m) {
+    font-size: 13px;
+    margin-left: 4px;
   }
 }
 .podcastcard .like{

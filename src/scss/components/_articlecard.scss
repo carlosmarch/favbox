@@ -5,15 +5,13 @@
   padding: 24px 0;
   width: 100%;
   text-decoration: none;
-  color: #222;
   font-size: 20px;
   line-height: 28px;
   min-height: 140px;
   align-items: center;
-  background: var(--background);
   position: relative;
   a{
-    color: var(--interaction-blue);
+    color: var(--interaction);
   }
   &:hover .articlelist-title::after{
     transition: all 0.2s ease 0s;

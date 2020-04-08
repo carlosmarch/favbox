@@ -1,5 +1,5 @@
 .GridColection{
-  background: var(--soft-dafault-color);
+  background: var(--soft-brown-bg);
   padding: 80px 0;
   position: relative;
 }
@@ -34,7 +34,6 @@
   display: inline-block;
   cursor: pointer;
   text-decoration: none;
-  color: var(--black);
   background-color: #f9f9f9;
   transition: all .2s ease;
   background-size: auto;

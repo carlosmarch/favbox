@@ -1,6 +1,6 @@
 .block-title{
   font-size: 48px;
-  color: var(--black);
+  //color: var(--black);
   display: inline-block;
   font-weight: bold;
   font-family: "Sharp Grotesk Medium", sans-serif;
@@ -10,7 +10,7 @@
   }
   @media (max-width: $breakpoint-m){
     font-size: 36px;
-  }  
+  }
 }
 .block-description{
   margin-bottom: 24px;
@@ -19,7 +19,7 @@
 .big-title{
   font-size: 96px;
   line-height: 106px;
-  color: var(--black);
+  //color: var(--black);
   font-weight: bold;
   display: inline-block;
   @media (max-width: $breakpoint-m){

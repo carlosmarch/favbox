@@ -14,7 +14,6 @@ class Hero extends Component {
                       <div className="grid__item width-6/12 width-12/12@m">
                         <h1 className="hero-title">Me quedo <br></br>en casa</h1>
                         <p className="hero-text">Hey my friend!! Aquí tienes un montón de recomendaciones seleccionadas de forma colaborativa para pasar estos días de encierro de una forma más llevadera.</p>
-                        <a className="arrow" href="/#">Empieza ahora</a>
                       </div>
                       <div className="grid__item width-6/12 no@m">
                         <div className="col-xs-12 col-md-6 col-md-offset-1 image-container">

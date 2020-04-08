@@ -42,11 +42,12 @@ body{
   font-size: 15px;
   font-family: "Apercu Medium", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
   font-weight: 300;
-  color: var(--black);
+  color: var(--body-type);
   -webkit-font-smoothing: antialiased;
 }
 h1,h2,h3,h4,h5,h6{
   font-family: "Sharp Grotesk SmBold", Open Sans,sans-serif;
+  color: var(--title-type)
 }
 h1 {
   font-size: 68px;
@@ -81,7 +82,7 @@ h6 {
   font-size: 20px;
   line-height: 28px;
   @media (max-width: $breakpoint-m) {
-    font-size: 18px;
+    font-size: 14px;
     line-height: 20px;
   }
 }

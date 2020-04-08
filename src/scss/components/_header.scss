@@ -1,6 +1,5 @@
 .header {
   width: 100%;
-  color: var(--black);
   position: relative;
   position: sticky;
   top: 0;
@@ -15,7 +14,7 @@
 }
 .nav{
   display: inline-block;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 800;
   padding-top: 8px;
 }
@@ -133,7 +132,7 @@ li#menuitem-temas.hoverstate{
   width: 100%;
   outline: 0;
   border: 2px solid;
-  color: var(--black);
+  color: var(--dark-green);
   border-radius: 6px 0px 0px 6px;
   font-size: 15px;
   line-height: unset;
@@ -143,8 +142,8 @@ li#menuitem-temas.hoverstate{
 }
 .email-form__submit {
   min-width: 186px;
-  background-color: var(--black);
-  border: 2px solid var(--black);
+  background-color: var(--dark-green);
+  border: 2px solid var(--dark-green);
   color: #fff;
   display: inline-block;
   border-radius: 0 6px 6px 0;

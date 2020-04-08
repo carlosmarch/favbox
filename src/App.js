@@ -147,8 +147,6 @@ class App extends Component {
                     </div>
 
 
-
-
                     <div className="GridCard">
                         <BlockTitle title={'Revistas'} description={'Las recomendaciones mas destacadas'} link={'categorias/revista'}/>
                         <div className="container container-xl">
@@ -158,6 +156,40 @@ class App extends Component {
                               )}
                             <img className="lines" src={process.env.PUBLIC_URL + '/img/dot-3.svg'} alt="lines"/>
                           </div>
+                        </div>
+                    </div>
+
+
+                    <div className="AppGrid mt-l">
+                        <div className="container">
+                              <div className="grid">
+                                    <div className="grid__item width-6/12 width-12/12@m">
+                                          <a className="appcard width-12/12 width-12/12@m" href="#" target="_blank" rel="noopener noreferrer">
+                                            <div className="appcard-icon"></div>
+                                            <div className="appcard-content">
+                                              <h5 className="appcard-title">App name</h5>
+                                              <div className="appcard-description">App description</div>
+                                            </div>
+                                          </a>
+                                          <a className="appcard width-12/12 width-12/12@m" href="#" target="_blank" rel="noopener noreferrer">
+                                            <div className="appcard-icon"></div>
+                                            <div className="appcard-content">
+                                              <h5 className="appcard-title">App name</h5>
+                                              <div className="appcard-description">App description</div>
+                                            </div>
+                                          </a>
+                                          <a className="appcard width-12/12 width-12/12@m" href="#" target="_blank" rel="noopener noreferrer">
+                                            <div className="appcard-icon"></div>
+                                            <div className="appcard-content">
+                                              <h5 className="appcard-title">App name</h5>
+                                              <div className="appcard-description">App description</div>
+                                            </div>
+                                          </a>
+                                    </div>
+                                    <div className="grid__item width-6/12 width-12/12@m">
+                                        <BlockTitle title={'Apps'} description={'Algo para todo el mundo'} link={'categorias/app'}/>
+                                    </div>
+                              </div>
                         </div>
                     </div>
 
