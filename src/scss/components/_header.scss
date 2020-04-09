@@ -4,7 +4,7 @@
   position: sticky;
   top: 0;
   width: 100%;
-  padding: 30px 40px;
+  padding: 30px 40px 16px 40px;
   margin: 0 auto;
   z-index: 100;
   position: absolute;
@@ -101,7 +101,8 @@ li#menuitem-temas.hoverstate{
 }
 
 .favlink a{
-    background: #fff;
+    background: var(--dark-green);
+    color: #fff;
     padding: 4px 12px;
     margin-top: -4px;
     border-radius: 4px;
@@ -134,7 +135,7 @@ li#menuitem-temas.hoverstate{
   border: 2px solid;
   color: var(--dark-green);
   border-radius: 6px 0px 0px 6px;
-  font-size: 15px;
+  font-size: 14px;
   line-height: unset;
   padding: 6px 14px;
   min-width: 240px;

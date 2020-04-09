@@ -90,3 +90,37 @@
   background-size: cover, 90%;
   background-position: center, 30% -50%;
 }
+
+
+/*
+HERO HEADER
+*/
+.is-colecciones .title-block:nth-of-type(1){
+  //min-height: 340px;
+}
+.is-colecciones .GridCard .grid{
+    background: #fff;
+    padding-top: 60px;
+}
+.is-colecciones::after {
+    content: '';
+    width: 40vw;
+    left: 60%;
+    position: absolute;
+    top: 0px;
+    height: 480px;
+    padding-top: 0px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    right: 0;
+    z-index: -1;
+}
+
+.is-mantenerse_en_forma::after{
+  background-image: url(https://images.unsplash.com/photo-1580475442877-f2831931fc51?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80);
+}
+.is-futuros::after{
+  background-image: url(https://images.unsplash.com/photo-1551727974-8af20a3322f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80);
+
+}

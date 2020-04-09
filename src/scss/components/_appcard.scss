@@ -1,22 +1,54 @@
 .AppGrid{
   background: #174d4d;
-  color: #fff;
-  padding-top: 4rem;
-  padding-bottom: 4rem;
+  color: var(--pink);
+  padding-top: 80px;
+  padding-bottom: 80px;
 }
 .appcard{
   display:flex;
   margin-bottom:32px;
+  position: relative;
+}
+.appcard-icon img{
+  width: 100%;
 }
 .appcard-icon{
-  background-color: #03363d;
   background-size: 35% 35%;
   box-shadow: 0 0.25rem 0.875rem #03363d;
-  height: 3.875rem;
+  height: 4.875rem;
   transition: background-color .25s;
-  width: 3.875rem;
+  width: 4.875rem;
   margin-right: 16px;
+  border-radius: 10px;
+  position: relative;
+  display: block;
+  z-index: 1;
+  border-radius: 16%;
+  overflow: hidden;
 }
-.appcard-content{}
-.appcard-title{}
-.appcard-description{}
+.appcard .like{
+  transition: all .2s ease;
+  top: 20px;
+  right: auto;
+  left: 20px;
+  opacity: 0;
+}
+.appcard .contributor-image {
+    width: 24px;
+}
+.appcard .contributor-info{
+    display: flex;
+    align-items: baseline;
+}
+.appcard .contributor-description {
+    margin-left: 4px;
+    display: none;
+}
+.appcard:hover .like {
+  transition: all .2s ease;
+  opacity: 1;
+}
+
+.is-detail .appcard-icon{
+  box-shadow: 0 0.25rem 0.875rem #aab8c2;
+}

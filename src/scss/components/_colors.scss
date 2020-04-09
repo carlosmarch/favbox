@@ -15,7 +15,7 @@
   --soft-grey-bg:#fafafa;
   --soft-brown-bg:#f5f0ea;
   --soft-yellow-bg:rgb(249, 233, 177);
-  
+
   --interaction:#0000ff;
   --default-color: #ead095;
   --soft-dafault-color: #e8e0cc;
@@ -23,7 +23,8 @@
   //UI components
   --body-type:var(--dark-green);
   --title-type:var(--dark-green);
-  --background:var(--soft-grey-bg);
+  --body-background:#fff;
+  --hero-bg: var(--pink);
 
 
   //More
@@ -32,27 +33,6 @@
   --podcast-color:#E9B806;
   --article-color:#55808E;
 
-}
-
-
-
-
-
-
-.is-revista {
-  background-color: var(--magazine-color);
-}
-
-.is-libro {
-  background-color: var(--book-color);
-}
-
-.is-podcast {
-  background-color: var(--podcast-color);
-}
-
-.is-articulo {
-  background-color: var(--article-color);
 }
 
 .bg-brown{

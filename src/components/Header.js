@@ -12,8 +12,7 @@ class Header extends Component {
           isHoveredCategorias: false,
           isHoveredTemas: false,
           categorias: [],
-          temas: [],
-          hasFavs: typeof Helpers.getFavs() !== 'undefined' && Helpers.getFavs().length > 0
+          temas: []
       };
       this.handleHoverCategorias = this.handleHoverCategorias.bind(this);
       this.handleHoverTemas = this.handleHoverTemas.bind(this);

@@ -19,13 +19,15 @@
 .big-title{
   font-size: 96px;
   line-height: 106px;
-  //color: var(--black);
   font-weight: bold;
   display: inline-block;
   @media (max-width: $breakpoint-m){
     font-size: 46px;
     line-height: 56px;
   }
+}
+.small-title{
+    font-size: 32px;
 }
 .big-description{
   font-size: 36px;

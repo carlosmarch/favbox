@@ -12,8 +12,8 @@ import Collectioncard from './components/Collectioncard';
 import Promocard from './components/Promocard';
 import Articlelist from './components/Articlelist';
 import Videocard from './components/Videocard';
+import Appcard from './components/Appcard';
 import LoadingSpinner from './components/LoadingSpinner';
-
 
 
 
@@ -63,45 +63,6 @@ class App extends Component {
     });
   }
 
-
-
-  //-------------------------//
-  //  HELPERS
-  //-------------------------//
-
-
-  //Get contributor data by contributor ID "rec9p8GxW7FJxPtg5" "recbofdaqGgFjL20L"
-  getContributor(contributorIdArray){
-    const contributorId = contributorIdArray && contributorIdArray[0];
-    return this.state.contributors.filter(contributor => contributor.id.indexOf(contributorId) !== -1);
-  }
-
-
-  //RETURN FILTERED ITEMS
-  getTopicItems(topicName, size){
-    const topicItems = [];
-    this.state.recommendations.filter(recommendation => recommendation.fields.temas?.includes(topicName)).map(filteredTopicItem => (
-        topicItems.push(filteredTopicItem)
-   ));
-   return topicItems.slice(0, size)
-  }
-
-  //Get items by category name
-  getCategoryItems(categoryName, size){
-    return this.state.recommendations.filter(recommendation => recommendation.fields.categorias?.includes(categoryName)).slice(0, size)
-  }
-
-
-  //Get items by collection name
-  getCollectionItems(collectionName, size){
-    const collections = [];
-    this.state.recommendations.filter(recommendation => recommendation.fields.colecciones?.includes(collectionName)).map(filteredCollectionItem => (
-        collections.push(filteredCollectionItem)
-   ));
-   return collections.slice(0, size)
-  }
-
-
   render() {
 
           return (
@@ -116,8 +77,8 @@ class App extends Component {
                         <BlockTitle title={'Libros'} description={'Las recomendaciones mas destacadas'} link={'categorias/libro'}/>
                         <div className="container container-xl">
                             <div className="grid">
-                              {this.state.isLoading ? <LoadingSpinner /> : this.getCategoryItems('libro', 4).map((records) =>
-                                <Card {...records.fields} key={records.id} itemId={records.id} autor={this.getContributor(records.fields.contribuidor)}/>
+                              {this.state.isLoading ? <LoadingSpinner /> : Helpers.getCategoryItems(this.state.recommendations, 'libro', 4).map((records) =>
+                                <Card {...records.fields} key={records.id} itemId={records.id} autor={Helpers.getContributor(this.state.contributors, records.fields.contribuidor)}/>
                               )}
                             </div>
                         </div>
@@ -130,8 +91,8 @@ class App extends Component {
                         <BlockTitle title={'Música'} description={'Las recomendaciones mas destacadas'} link={'categorias/música'}/>
                         <div className="container">
                             <div className="grid mt-s">
-                                {this.state.isLoading ? <LoadingSpinner /> : this.getCategoryItems('música', 8).map((records) =>
-                                  <Musiccard {...records.fields} key={records.id} itemId={records.id} autor={this.getContributor(records.fields.contribuidor)}/>
+                                {this.state.isLoading ? <LoadingSpinner /> : Helpers.getCategoryItems(this.state.recommendations,'música', 8).map((records) =>
+                                  <Musiccard {...records.fields} key={records.id} itemId={records.id} autor={Helpers.getContributor(this.state.contributors, records.fields.contribuidor)}/>
                                 )}
                             </div>
                         </div>
@@ -139,8 +100,8 @@ class App extends Component {
                         <BlockTitle title={'Podcasts'} description={'Las recomendaciones mas destacadas'} link={'categorias/podcast'} titleclass="mt-l"/>
                         <div className="container">
                             <div className="grid mt-s">
-                                {this.state.isLoading ? <LoadingSpinner /> : this.getCategoryItems('podcast', 4).map((records) =>
-                                  <Podcastcard {...records.fields} key={records.id} itemId={records.id} autor={this.getContributor(records.fields.contribuidor)}/>
+                                {this.state.isLoading ? <LoadingSpinner /> : Helpers.getCategoryItems(this.state.recommendations,'podcast', 4).map((records) =>
+                                  <Podcastcard {...records.fields} key={records.id} itemId={records.id} autor={Helpers.getContributor(this.state.contributors, records.fields.contribuidor)}/>
                                 )}
                             </div>
                         </div>
@@ -151,8 +112,8 @@ class App extends Component {
                         <BlockTitle title={'Revistas'} description={'Las recomendaciones mas destacadas'} link={'categorias/revista'}/>
                         <div className="container container-xl">
                           <div className="grid">
-                              {this.state.isLoading ? <LoadingSpinner /> : this.getCategoryItems('revista', 4).map((records) =>
-                                <Card {...records.fields} key={records.id} itemId={records.id} autor={this.getContributor(records.fields.contribuidor)}/>
+                              {this.state.isLoading ? <LoadingSpinner /> : Helpers.getCategoryItems(this.state.recommendations,'revista', 4).map((records) =>
+                                <Card {...records.fields} key={records.id} itemId={records.id} autor={Helpers.getContributor(this.state.contributors, records.fields.contribuidor)}/>
                               )}
                             <img className="lines" src={process.env.PUBLIC_URL + '/img/dot-3.svg'} alt="lines"/>
                           </div>
@@ -163,31 +124,13 @@ class App extends Component {
                     <div className="AppGrid mt-l">
                         <div className="container">
                               <div className="grid">
-                                    <div className="grid__item width-6/12 width-12/12@m">
-                                          <a className="appcard width-12/12 width-12/12@m" href="#" target="_blank" rel="noopener noreferrer">
-                                            <div className="appcard-icon"></div>
-                                            <div className="appcard-content">
-                                              <h5 className="appcard-title">App name</h5>
-                                              <div className="appcard-description">App description</div>
-                                            </div>
-                                          </a>
-                                          <a className="appcard width-12/12 width-12/12@m" href="#" target="_blank" rel="noopener noreferrer">
-                                            <div className="appcard-icon"></div>
-                                            <div className="appcard-content">
-                                              <h5 className="appcard-title">App name</h5>
-                                              <div className="appcard-description">App description</div>
-                                            </div>
-                                          </a>
-                                          <a className="appcard width-12/12 width-12/12@m" href="#" target="_blank" rel="noopener noreferrer">
-                                            <div className="appcard-icon"></div>
-                                            <div className="appcard-content">
-                                              <h5 className="appcard-title">App name</h5>
-                                              <div className="appcard-description">App description</div>
-                                            </div>
-                                          </a>
+                                    <div className="grid__item width-8/12 width-12/12@m grid">
+                                        {this.state.isLoading ? <LoadingSpinner /> : Helpers.getCategoryItems(this.state.recommendations,'app', 8).map((records) =>
+                                          <Appcard {...records.fields} key={records.id} itemId={records.id} autor={Helpers.getContributor(this.state.contributors, records.fields.contribuidor)}/>
+                                        )}
                                     </div>
-                                    <div className="grid__item width-6/12 width-12/12@m">
-                                        <BlockTitle title={'Apps'} description={'Algo para todo el mundo'} link={'categorias/app'}/>
+                                    <div className="grid__item width-4/12 width-12/12@m">
+                                        <BlockTitle title={'Apps'} description={'Apps para todo el mundo'} link={'categorias/app'}/>
                                     </div>
                               </div>
                         </div>
@@ -198,8 +141,8 @@ class App extends Component {
                         <BlockTitle title={'Videos'} description={'Las recomendaciones mas destacadas'} link={'categorias/video'}/>
                         <div className="container container-xl">
                           <div className="grid">
-                              {this.state.isLoading ? <LoadingSpinner /> : this.getCategoryItems('video', 4).map((records) =>
-                                <Videocard {...records.fields} key={records.id} itemId={records.id} autor={this.getContributor(records.fields.contribuidor)}/>
+                              {this.state.isLoading ? <LoadingSpinner /> : Helpers.getCategoryItems(this.state.recommendations,'video', 4).map((records) =>
+                                <Videocard {...records.fields} key={records.id} itemId={records.id} autor={Helpers.getContributor(this.state.contributors, records.fields.contribuidor)}/>
                               )}
                             <img className="lines" src={process.env.PUBLIC_URL + '/img/dot-2.svg'} alt="lines"/>
                           </div>
@@ -213,11 +156,11 @@ class App extends Component {
                         <BlockTitle title={'Colecciones'} description={'Las recomendaciones mas destacadas'}/>
                         <div className="container container-xl">
                           <div className="grid mt-s">
-                              <Collectioncard title={'darle al coco'} grid={'width-4/12'} number={this.getCollectionItems('darle al coco').length}/>
-                              <Collectioncard title={'mantenerse en forma'} grid={'width-4/12'} number={this.getCollectionItems('mantenerse en forma').length} />
+                              <Collectioncard title={'darle al coco'} grid={'width-4/12'} number={Helpers.getCollectionItems(this.state.recommendations, 'darle al coco').length}/>
+                              <Collectioncard title={'mantenerse en forma'} grid={'width-4/12'} number={Helpers.getCollectionItems(this.state.recommendations, 'mantenerse en forma').length} />
                               <Collectioncard title={'pandemias, contagios y visionarios'} grid={'width-4/12'} number="0" />
-                              <Collectioncard title={'aprender'} grid={'width-6/12'} number={this.getCollectionItems('aprender').length} />
-                              <Collectioncard title={'futuros'} grid={'width-6/12'} number={this.getCollectionItems('futuros').length} />
+                              <Collectioncard title={'aprender'} grid={'width-6/12'} number={Helpers.getCollectionItems(this.state.recommendations, 'aprender').length} />
+                              <Collectioncard title={'futuros'} grid={'width-6/12'} number={Helpers.getCollectionItems(this.state.recommendations, 'futuros').length} />
                           </div>
                         </div>
                     </div>
@@ -230,14 +173,14 @@ class App extends Component {
                         titleclass="big-title" descriptionclass="big-description" link={'categorias/artículo'}/>
                       <div className="container">
                         <div className="mt-s">
-                            {this.state.isLoading ? <LoadingSpinner /> : this.getCategoryItems('artículo', 20).map((records) =>
-                              <Articlelist {...records.fields} key={records.id} itemId={records.id} autor={this.getContributor(records.fields.contribuidor)}/>
+                            {this.state.isLoading ? <LoadingSpinner /> : Helpers.getCategoryItems(this.state.recommendations,'artículo', 20).map((records) =>
+                              <Articlelist {...records.fields} key={records.id} itemId={records.id} autor={Helpers.getContributor(this.state.contributors, records.fields.contribuidor)}/>
                             )}
-                            {this.state.isLoading ? <LoadingSpinner /> : this.getCategoryItems('newsletter', 20).map((records) =>
-                              <Articlelist {...records.fields} key={records.id} itemId={records.id} autor={this.getContributor(records.fields.contribuidor)}/>
+                            {this.state.isLoading ? <LoadingSpinner /> : Helpers.getCategoryItems(this.state.recommendations,'newsletter', 20).map((records) =>
+                              <Articlelist {...records.fields} key={records.id} itemId={records.id} autor={Helpers.getContributor(this.state.contributors, records.fields.contribuidor)}/>
                             )}
-                            {this.state.isLoading ? <LoadingSpinner /> : this.getCategoryItems('web', 20).map((records) =>
-                              <Articlelist {...records.fields} key={records.id} itemId={records.id} autor={this.getContributor(records.fields.contribuidor)}/>
+                            {this.state.isLoading ? <LoadingSpinner /> : Helpers.getCategoryItems(this.state.recommendations,'web', 20).map((records) =>
+                              <Articlelist {...records.fields} key={records.id} itemId={records.id} autor={Helpers.getContributor(this.state.contributors, records.fields.contribuidor)}/>
                             )}
                         </div>
                       </div>

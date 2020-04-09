@@ -7,7 +7,7 @@ class Musiccard extends Component {
 
 
     return (
-      <div className="musiccard width-3/12 width-6/12@m">
+      <a className="musiccard width-3/12 width-6/12@m" href={this.props.url} target="_blank" rel="noopener noreferrer">
         <div className="musiccard-album">
           <Like itemId={this.props.itemId}/>
           <div className="musiccard-album-contents">
@@ -18,7 +18,7 @@ class Musiccard extends Component {
         </div>
         <h6 className="musiccard-title">{this.props.title}</h6>
         <div className="musiccard-description">{this.props.description}</div>
-      </div>
+      </a>
     );
   }
 }

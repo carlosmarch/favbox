@@ -1,9 +1,10 @@
 .is-temas .PodcastGrid{
   background-image: url(/img/line-3.svg), url(/img/dot-5.svg);
-  background-size: 60%, contain;
-  background-position: 50%, 30% 30%;
+  background-size: contain, 50% 90%;
+  background-position: 0%, 30% 10%;
   background-repeat: no-repeat;
   padding: 40px 0;
+  background-color: var(--soft-grey-bg);
 }
 
 .podcastcard{

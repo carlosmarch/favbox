@@ -37,7 +37,7 @@ const routing = (
       </Switch>
       <BottomBar/>
       <Footer />
-
+      
   </Router>
 )
 
