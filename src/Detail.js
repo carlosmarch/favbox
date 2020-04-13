@@ -3,14 +3,8 @@ import React, { Component } from 'react';
 import * as Helpers from './Helpers';
 import * as Templates from './templates/Templates';
 
-import Card from './components/Card';
 import BlockTitle from './components/BlockTitle';
 import LoadingSpinner from './components/LoadingSpinner';
-import Musiccard from './components/Musiccard';
-import Podcastcard from './components/Podcastcard';
-import Articlelist from './components/Articlelist';
-import Videocard from './components/Videocard';
-import Appcard from './components/Appcard';
 import Notfound from './Notfound';
 
 
@@ -79,8 +73,6 @@ class Detail extends Component {
     });
   }
 
-
-
   componentDidUpdate(prevProps) {
     //If prev url is not the same render again
     if ( ( Helpers.getUrlTopic() !== prevProps.match.params.id )  || (  Helpers.getUrlCategory() !== prevProps.match.url.split("/")[1])  ) {
@@ -97,7 +89,7 @@ class Detail extends Component {
   }
 
 
-  //Returns unique categories filtered per category template block
+  //Returns current unique categories filtered per category template block
   matchCategoriesWithTemplates(catArr){
     return Helpers.getUniqueCategories(this.state.recommendations).filter(matchBlockCat => catArr.includes(matchBlockCat))
   }
@@ -135,7 +127,6 @@ class Detail extends Component {
                     ) : ('')}
 
                     {this.state.isLoading ? '' : this.matchCategoriesWithTemplates(catTemplate.appcard) && this.matchCategoriesWithTemplates(catTemplate.appcard).length ? (
-                      //If any category in pagedata match categories in template, then render items in template
                       Templates.renderAppItems(this.state.recommendations, this.state.contributors, this.state.category)
                     ) : ('')}
 

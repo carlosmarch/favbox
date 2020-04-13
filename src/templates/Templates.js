@@ -2,7 +2,6 @@ import React from 'react';
 
 import Card from '../components/Card';
 import BlockTitle from '../components/BlockTitle';
-import LoadingSpinner from '../components/LoadingSpinner';
 import Musiccard from '../components/Musiccard';
 import Podcastcard from '../components/Podcastcard';
 import Articlelist from '../components/Articlelist';
@@ -12,7 +11,7 @@ import Appcard from '../components/Appcard';
 import * as Helpers from '../Helpers';
 
 
-const catTemplate = {
+export const catTemplate = {
   card:         ['libro', 'revista'],
   musiccard:    ['música'],
   podcastcard : ['podcast'],

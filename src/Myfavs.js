@@ -3,14 +3,8 @@ import React, { Component } from 'react';
 import * as Helpers from './Helpers';
 import * as Templates from './templates/Templates';
 
-import Card from './components/Card';
 import BlockTitle from './components/BlockTitle';
 import LoadingSpinner from './components/LoadingSpinner';
-import Musiccard from './components/Musiccard';
-import Podcastcard from './components/Podcastcard';
-import Articlelist from './components/Articlelist';
-import Videocard from './components/Videocard';
-import Appcard from './components/Appcard';
 import Empty from './components/Empty';
 
 
