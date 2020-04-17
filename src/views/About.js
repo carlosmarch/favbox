@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import BlockTitle from './components/BlockTitle';
+import BlockTitle from '../components/BlockTitle';
 
 class About extends Component {
   render() {

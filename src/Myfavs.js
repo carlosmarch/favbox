@@ -7,17 +7,6 @@ import BlockTitle from './components/BlockTitle';
 import LoadingSpinner from './components/LoadingSpinner';
 import Empty from './components/Empty';
 
-
-const catTemplate = {
-  card:         ['libro', 'revista'],
-  musiccard:    ['música'],
-  podcastcard : ['podcast'],
-  articlelist : ['artículo', 'web', 'newsletter'],
-  videocard:    ['video'],
-  appcard:      ['app'],
-  cinemacard:   ['película', 'serie']
-};
-
 class Myfavs extends Component {
 
   constructor(props) {
@@ -88,28 +77,28 @@ class Myfavs extends Component {
 
                     <BlockTitle title={this.state.recommendations && !this.state.recommendations.length ? '' : 'Favoritos'} titleclass="big-title mt-s mb-s" descriptionclass="big-description mb-m"/>
 
-                    {this.state.isLoading ? <LoadingSpinner /> : this.matchCategoriesWithTemplates(catTemplate.card) && this.matchCategoriesWithTemplates(catTemplate.card).length ? (
-                      Templates.renderCardItems(this.state.recommendations, this.state.contributors, this.state.category)
+                    {this.state.isLoading ? <LoadingSpinner /> : this.matchCategoriesWithTemplates(Helpers.catTemplate.card) && this.matchCategoriesWithTemplates(Helpers.catTemplate.card).length ? (
+                      Templates.renderCardItems(this.state.recommendations, this.state.contributors)
                     ) : ('')}
 
-                    {this.state.isLoading ? '' : this.matchCategoriesWithTemplates(catTemplate.musiccard) && this.matchCategoriesWithTemplates(catTemplate.musiccard).length ? (
+                    {this.state.isLoading ? '' : this.matchCategoriesWithTemplates(Helpers.catTemplate.musiccard) && this.matchCategoriesWithTemplates(Helpers.catTemplate.musiccard).length ? (
                       Templates.renderMusicItems(this.state.recommendations, this.state.contributors, this.state.category)
                     ) : ('')}
 
-                    {this.state.isLoading ? '' : this.matchCategoriesWithTemplates(catTemplate.podcastcard) && this.matchCategoriesWithTemplates(catTemplate.podcastcard).length ? (
+                    {this.state.isLoading ? '' : this.matchCategoriesWithTemplates(Helpers.catTemplate.podcastcard) && this.matchCategoriesWithTemplates(Helpers.catTemplate.podcastcard).length ? (
                       Templates.renderPodcastItems(this.state.recommendations, this.state.contributors, this.state.category)
                     ) : ('')}
 
-                    {this.state.isLoading ? '' : this.matchCategoriesWithTemplates(catTemplate.videocard) && this.matchCategoriesWithTemplates(catTemplate.videocard).length ? (
+                    {this.state.isLoading ? '' : this.matchCategoriesWithTemplates(Helpers.catTemplate.videocard) && this.matchCategoriesWithTemplates(Helpers.catTemplate.videocard).length ? (
                       Templates.renderVideoItems(this.state.recommendations, this.state.contributors, this.state.category)
                     ) : ('')}
 
-                    {this.state.isLoading ? '' : this.matchCategoriesWithTemplates(catTemplate.appcard) && this.matchCategoriesWithTemplates(catTemplate.appcard).length ? (
+                    {this.state.isLoading ? '' : this.matchCategoriesWithTemplates(Helpers.catTemplate.appcard) && this.matchCategoriesWithTemplates(Helpers.catTemplate.appcard).length ? (
                       //If any category in pagedata match categories in template, then render items in template
                       Templates.renderAppItems(this.state.recommendations, this.state.contributors, this.state.category)
                     ) : ('')}
 
-                    {this.state.isLoading ? '' : this.matchCategoriesWithTemplates(catTemplate.articlelist) && this.matchCategoriesWithTemplates(catTemplate.articlelist).length ? (
+                    {this.state.isLoading ? '' : this.matchCategoriesWithTemplates(Helpers.catTemplate.articlelist) && this.matchCategoriesWithTemplates(Helpers.catTemplate.articlelist).length ? (
                       Templates.renderArticleItems(this.state.recommendations, this.state.contributors, this.state.category)
                     ) : ('')}
 

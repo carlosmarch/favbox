@@ -10,10 +10,11 @@ import BottomBar from './components/BottomBar';
 
 import App from './App';
 import Detail from './Detail';
-import About from './About';
-import Notfound from './Notfound';
+import About from './views/About';
+import Notfound from './views/Notfound';
 import Myfavs from './Myfavs';
 import Categories from './components/Categories';
+import Signup from './views/Signup';
 
 import * as serviceWorker from './serviceWorker';
 
@@ -33,15 +34,16 @@ const routing = (
         <Route exact path="/about" component={About} />
         <Route exact path="/favoritos" component={Myfavs} />
         <Route exact path="/categorias" component={Categories} />
+        <Route exact path="/signup" component={Signup} />
         <Route component={Notfound} />
       </Switch>
       <BottomBar/>
       <Footer />
-      
+
   </Router>
 )
 
-
+console.log('NODE_ENV',process.env.NODE_ENV, process.env.REACT_APP_AIRTABLE_BASE_ID)
 ReactDOM.render(routing, document.getElementById('root'))
 
 // If you want your app to work offline and load faster, you can change

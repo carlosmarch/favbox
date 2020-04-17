@@ -145,5 +145,5 @@ function truncateText(str, length, ending) {
      getTopicItems,
      getCollectionItems,
      getBlockCategoryItems,
-     getFavItems,
+     getFavItems
   };

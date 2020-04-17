@@ -15,8 +15,6 @@ import Videocard from './components/Videocard';
 import Appcard from './components/Appcard';
 import LoadingSpinner from './components/LoadingSpinner';
 
-
-
 class App extends Component {
 
 
@@ -56,6 +54,7 @@ class App extends Component {
       //console.log('allcontributors',contributors.records)
       //console.log('contributors',this.state.contributors)
       //console.log('recommendations',this.state.recommendations)
+      console.log('NODE_ENV',process.env.NODE_ENV, process.env.REACT_APP_AIRTABLE_BASE_ID)
 
     })
     .catch(err => {
@@ -141,7 +140,7 @@ class App extends Component {
                         <BlockTitle title={'Videos'} description={'Las recomendaciones mas destacadas'} link={'categorias/video'}/>
                         <div className="container container-xl">
                           <div className="grid">
-                              {this.state.isLoading ? <LoadingSpinner /> : Helpers.getCategoryItems(this.state.recommendations,'video', 4).map((records) =>
+                              {this.state.isLoading ? <LoadingSpinner /> : Helpers.getCategoryItems(this.state.recommendations,'video', 6).map((records) =>
                                 <Videocard {...records.fields} key={records.id} itemId={records.id} autor={Helpers.getContributor(this.state.contributors, records.fields.contribuidor)}/>
                               )}
                             <img className="lines" src={process.env.PUBLIC_URL + '/img/dot-2.svg'} alt="lines"/>
