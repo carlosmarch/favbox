@@ -18,8 +18,8 @@ import Signup from './views/Signup';
 
 import * as serviceWorker from './serviceWorker';
 
-window.$api = 'https://api.airtable.com/v0/appOyoqCMxKWB0IG8/recommendations?api_key=keyu0nFPUS8ZCnRmb';
-window.$api_contributors = 'https://api.airtable.com/v0/appOyoqCMxKWB0IG8/contributors?api_key=keyu0nFPUS8ZCnRmb';
+window.$api = 'https://api.airtable.com/v0/'+process.env.REACT_APP_AIRTABLE_BASE_ID+'/recommendations?api_key='+process.env.REACT_APP_AIRTABLE_API_KEY;
+window.$api_contributors = 'https://api.airtable.com/v0/'+process.env.REACT_APP_AIRTABLE_BASE_ID+'/contributors?api_key='+process.env.REACT_APP_AIRTABLE_API_KEY;
 
 const routing = (
   <Router>
@@ -43,7 +43,6 @@ const routing = (
   </Router>
 )
 
-console.log('NODE_ENV',process.env.NODE_ENV, process.env.REACT_APP_AIRTABLE_BASE_ID)
 ReactDOM.render(routing, document.getElementById('root'))
 
 // If you want your app to work offline and load faster, you can change

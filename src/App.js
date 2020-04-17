@@ -54,7 +54,6 @@ class App extends Component {
       //console.log('allcontributors',contributors.records)
       //console.log('contributors',this.state.contributors)
       //console.log('recommendations',this.state.recommendations)
-      console.log('NODE_ENV',process.env.NODE_ENV, process.env.REACT_APP_AIRTABLE_BASE_ID)
 
     })
     .catch(err => {
