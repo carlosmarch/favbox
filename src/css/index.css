@@ -87,7 +87,7 @@
   align-items: center;
 }
 
-.text-center {
+.text-center, .centered {
   text-align: center;
 }
 
@@ -528,6 +528,10 @@ a {
   padding-top: 8px;
 }
 
+.logo {
+  margin-top: 2px;
+}
+
 .menu li {
   display: inline-block;
   margin: 0 12px;
@@ -644,6 +648,7 @@ li#menuitem-temas.hoverstate div#dropdown-temas {
   padding: 6px 14px;
   min-width: 240px;
   height: 34px;
+  margin: 0;
 }
 
 .email-form__submit {
@@ -2376,4 +2381,66 @@ a.topic-card::before {
 
 .is-detail .appcard-icon {
   box-shadow: 0 0.25rem 0.875rem #aab8c2;
+}
+
+.signup {
+  background: var(--soft-brown-bg);
+  padding-top: 40px;
+}
+
+.card-16, .content {
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.content {
+  background: #FFFFFF;
+  padding: 56px 24px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+form input {
+  margin-bottom: 16px;
+}
+
+input {
+  background: #fcfdfd;
+  border-radius: 3px;
+  border: 1px solid rgba(3, 54, 61, 0.25);
+  box-shadow: none;
+  color: rgba(17, 51, 56, 0.73);
+  font: 16px/1;
+  height: 50px;
+  padding: 20px 15px;
+  width: 100%;
+}
+
+label, .field-label {
+  font-size: 13px;
+  color: var(--dark-green);
+}
+
+.signupbtn {
+  width: 100%;
+  background: var(--interaction);
+}
+
+.home {
+  background: var(--soft-dafault-color);
+  margin-top: 0 !important;
+  padding-top: 180px;
+}
+
+.main-title {
+  font-size: 48px;
+  line-height: 56px;
+  padding: 0;
+  margin-bottom: 24px;
+  font-family: "Sharp Grotesk Medium", sans-serif;
+  overflow-wrap: anywhere;
+}
+
+.main-image {
+  width: 100%;
 }

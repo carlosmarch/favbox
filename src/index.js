@@ -15,6 +15,7 @@ import Notfound from './views/Notfound';
 import Myfavs from './Myfavs';
 import Categories from './components/Categories';
 import Signup from './views/Signup';
+import Home from './views/Home';
 
 import * as serviceWorker from './serviceWorker';
 
@@ -35,9 +36,12 @@ const routing = (
         <Route exact path="/favoritos" component={Myfavs} />
         <Route exact path="/categorias" component={Categories} />
         <Route exact path="/signup" component={Signup} />
+        <Route exact path="/home" component={Home} />
         <Route component={Notfound} />
       </Switch>
+
       <BottomBar/>
+
       <Footer />
 
   </Router>

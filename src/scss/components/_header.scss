@@ -18,7 +18,9 @@
   font-weight: 800;
   padding-top: 8px;
 }
-
+.logo {
+  margin-top: 2px;
+}
 .menu li {
     display: inline-block;
     margin: 0 12px;
@@ -140,6 +142,7 @@ li#menuitem-temas.hoverstate{
   padding: 6px 14px;
   min-width: 240px;
   height: 34px;
+  margin: 0;
 }
 .email-form__submit {
   min-width: 186px;

@@ -45,7 +45,7 @@ class Header extends Component {
         <div className="container">
 
           <ul id="primarymenu" className="nav menu">
-
+            <li><Link to="/"><img className="logo" src={process.env.PUBLIC_URL + '/logo.svg'} alt="logo"/></Link></li>
             <li><Link to="/">Inicio</Link></li>
 
             <li id="menuitem-categorias" className={ this.state.isHoveredCategorias ? "hoverstate" : "" } onMouseEnter={this.handleHoverCategorias} onMouseLeave={this.handleHoverCategorias}>
