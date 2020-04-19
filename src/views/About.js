@@ -1,11 +1,16 @@
 import React, { Component } from "react";
 
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 import BlockTitle from '../components/BlockTitle';
 
 class About extends Component {
   render() {
 
     return (
+    <div className="app_wrapper about_view">
+
+      <Header />
       <div className="global">
         <div className="container container-s">
           <BlockTitle title={'About'}/>
@@ -16,6 +21,10 @@ class About extends Component {
           </div>
         </div>
       </div>
+
+      <Footer/>
+
+    </div>
     );
   }
 }

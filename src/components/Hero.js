@@ -12,8 +12,8 @@ class Hero extends Component {
           <div className="container">
                 <div className="grid">
                       <div className="grid__item width-6/12 width-12/12@m">
-                        <h1 className="hero-title">Me quedo <br></br>en casa</h1>
-                        <p className="hero-text">Hey my friend!! Aquí tienes un montón de recomendaciones seleccionadas de forma colaborativa para pasar estos días de encierro de una forma más llevadera.</p>
+                        <h1 className="hero-title">Stay home. <br></br>Stay safe.</h1>
+                        <p className="hero-text">Hey my friend!! Here you have a lot of recommendations selected collaboratively to spend these days of confinement in a more bearable way.</p>
                       </div>
                       <div className="grid__item width-6/12 no@m">
                         <div className="col-xs-12 col-md-6 col-md-offset-1 image-container">

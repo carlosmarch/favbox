@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import BlockTitle from './BlockTitle';
+import BlockTitle from '../components/BlockTitle';
 
 class Categories extends Component {
 
@@ -15,6 +15,7 @@ class Categories extends Component {
   render() {
 
     return (
+
       <div className="AllTopics">
           <div className="Categories mt-l">
             {this.state.categorias?.map((records) =>

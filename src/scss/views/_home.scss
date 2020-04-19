@@ -1,4 +1,4 @@
-.home{
+.home_view{
     background: var(--soft-dafault-color);
     margin-top: 0!important;
     padding-top: 180px;
@@ -14,4 +14,22 @@
 .picture-main-image{}
 .main-image{
   width: 100%;
+}
+
+.scratch{
+  position: relative;
+  display: inline-block;
+  color: #716a57;
+  &:before{
+    content: '';
+    background-image: url(/icons/ic-scratch.svg);
+    width: 222px;
+    height: 32px;
+    background-size: contain;
+    position: absolute;
+    left: -10px;
+    top: 15px;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
 }

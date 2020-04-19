@@ -1,5 +1,12 @@
+import React from 'react';
+import history from './history';
+import ReactDOM from 'react-dom';
+
+import Signup from '../views/Signup';
+import Login from '../views/Login';
+
 const Airtable = require('airtable');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const data = require('./dataController.js');
 
 const base = new Airtable({
@@ -7,16 +14,17 @@ const base = new Airtable({
 }).base(process.env.REACT_APP_AIRTABLE_BASE_ID);
 const table = base('contributors');
 
-const findUser = async (email, username) => {
+
+const findUser = async (email, name) => {
   let recordExists = false;
   const options = {
-    filterByFormula: `OR(email = '${email}', username = '${username}')`,
+    filterByFormula: `OR(email = '${email}', name = '${name}')`,
   };
 
   const users = await data.getAirtableRecords(table, options);
 
   users.filter(user => {
-    if (user.get('email') === email || user.get('username') === username) {
+    if (user.get('email') === email || user.get('name') === name) {
       return (recordExists = true);
     }
     return (recordExists = false);
@@ -25,37 +33,37 @@ const findUser = async (email, username) => {
   return recordExists;
 };
 
-exports.addUser = async (req, res, next) => {
-  const { fullname, email, username } = req.body;
 
-  const userExists = await findUser(email, username);
+
+export const addUser = async (req, next) => {
+
+  const { email, name } = req;
+  const userExists = await findUser(email, name);
 
   if (userExists) {
-    res.render('login', {
-      message: 'Username or Email already exists!',
-    });
+    ReactDOM.render(<Signup type={'info'} message={'Username or Email already exists! Try to login.'}/>, document.getElementById('root'))
     return;
   }
 
   table.create(
     {
       email,
-      username,
-      display_name: fullname,
+      name,
     },
     function(err, record) {
       if (err) {
         console.error(err);
         return;
       }
-      req.body.id = record.getId();
-      next();
+      console.log(record)
+      req.id = record.getId();
+      next(req);
     }
   );
 };
 
-exports.storePassword = (req, res) => {
-  const { password, id } = req.body;
+export const storePassword = (req, res) => {
+  const { password, id } = req;
 
   bcrypt.hash(password, 10, function(err, hash) {
     if (err) {
@@ -73,18 +81,23 @@ exports.storePassword = (req, res) => {
           console.error(err);
           return;
         }
-        res.render('login', {
-          message: 'Your account has been created!',
-        });
+        // res.render('login', {
+        //   message: 'Your account has been created!',
+        // });
+        //ReactDOM.render(<Signup type={'success'} message={'Your account has been created!'}/>, document.getElementById('root'))
+        history.push({
+          pathname: '/'
+        })
+
       }
     );
   });
 };
 
-exports.authenticate = (req, res) => {
-  const { username, password } = req.body;
+export const authenticate = (req, res) => {
+  const { email, password } = req;
   const options = {
-    filterByFormula: `OR(email = '${username}', username = '${username}')`,
+    filterByFormula: `OR(email = '${email}', name = '${email}')`,
   };
 
   data
@@ -94,12 +107,14 @@ exports.authenticate = (req, res) => {
         bcrypt.compare(password, user.get('password'), function(err, response) {
           if (response) {
             // Passwords match, response = true
-            res.render('profile', {
-              user: user.fields,
-            });
+            // res.render('profile', {
+            //   user: user.fields,
+            // });
+            console.log('Passwords match logged In')
+            ReactDOM.render(<Login type={'success'} message={'Passwords match logged In'}/>, document.getElementById('root'))
           } else {
             // Passwords don't match
-            console.log(err);
+            ReactDOM.render(<Login type={'error'} message={'Passwords dont match'}/>, document.getElementById('root'))
           }
         });
       });

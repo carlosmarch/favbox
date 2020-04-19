@@ -27,21 +27,25 @@ $breakpoint-m: 48em;
 .pb-m { padding-bottom: 40px; }
 .pb-s { padding-bottom: 20px; }
 
-.global{
-  @media (max-width: $breakpoint-m){
-    margin-top: 32px!important;
-    margin-bottom: 56px;
-  }
-}
-
 .inline {
     display: inline;
     align-items: center;
 }
-.text-center, .centered{
+.text-center{
+  text-align: center;
+}
+.centered{
+  display: block;
   text-align: center;
 }
 
+//Cards
+.card-16{
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+//Textured
 .textured{
   background: var(--soft-dafault-color);
 }

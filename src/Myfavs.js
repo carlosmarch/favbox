@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import * as Helpers from './Helpers';
 import * as Templates from './templates/Templates';
 
+import Header from './components/Header';
+import Footer from './components/Footer';
 import BlockTitle from './components/BlockTitle';
 import LoadingSpinner from './components/LoadingSpinner';
 import Empty from './components/Empty';
@@ -70,6 +72,9 @@ class Myfavs extends Component {
 
     return (
 
+      <div className="app_wrapper favs_view">
+
+        <Header />
 
         <div className="global">
           <main>
@@ -111,6 +116,10 @@ class Myfavs extends Component {
           </main>
 
         </div>
+
+        <Footer/>
+
+      </div>
     );
   }//Render
 

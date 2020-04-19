@@ -1,0 +1,19 @@
+.message{
+  padding: 12px;
+  font-size: 13px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+}
+.message.info{
+    background: var(--soft_blue);
+    color: hsla(216, 93%, 38%, 1);
+}
+.message.success {
+    color: hsla(152, 58%, 28%, 1);
+    background: hsla(152, 58%, 88%, 1);
+}
+
+.message.error {
+    color: hsla(18, 78%, 26%, 1);
+    background: hsla(9, 95%, 88%, 1);
+}

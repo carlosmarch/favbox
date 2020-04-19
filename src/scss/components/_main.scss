@@ -14,4 +14,8 @@ main{
 .global{
   margin-top: 94px;//header size
   min-height: calc(100vh - 193px);//header+footer size
+  @media (max-width: $breakpoint-m){
+    margin-top: 32px!important;
+    margin-bottom: 56px;
+  }
 }

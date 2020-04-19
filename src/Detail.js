@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import * as Helpers from './Helpers';
 import * as Templates from './templates/Templates';
 
+import Header from './components/Header';
+import Footer from './components/Footer';
 import BlockTitle from './components/BlockTitle';
 import LoadingSpinner from './components/LoadingSpinner';
 import Notfound from './views/Notfound';
@@ -89,6 +91,9 @@ class Detail extends Component {
     window.scrollTo(0, 0);
 
     return (
+      <div className="app_wrapper detail_view">
+
+        <Header />
 
         <div className="global">
           <main>
@@ -130,7 +135,10 @@ class Detail extends Component {
 
           </main>
 
+          <Footer/>
+
         </div>
+      </div>
     );
   }//Render
 

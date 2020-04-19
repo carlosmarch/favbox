@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 
 import * as Helpers from './Helpers';
 
+import Header from './components/Header';
+import Footer from './components/Footer';
+
 import Hero from './components/Hero';
 import BlockTitle from './components/BlockTitle';
 import Card from './components/Card';
@@ -64,8 +67,11 @@ class App extends Component {
   render() {
 
           return (
+            <div className="app_wrapper app_view">
 
-              <div className="global">
+              <Header />
+
+              <div className="global appview">
 
                 <Hero />
 
@@ -202,6 +208,11 @@ class App extends Component {
 
                 </main>
               </div>
+
+              <Footer />
+
+
+            </div>
           );//render
 
   }

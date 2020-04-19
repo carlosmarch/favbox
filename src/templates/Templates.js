@@ -21,6 +21,9 @@ export const catTemplate = {
   cinemacard:   ['película', 'serie']
 };
 
+// Render items by Template Blocks
+// First define item types to render in groups
+// Then render items in blocks with title & templates
 
 function renderCardItems(recommendations, contributors) {
   return (
