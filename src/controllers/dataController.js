@@ -1,4 +1,4 @@
-exports.getAirtableRecords = (table, options) => {
+export const getAirtableRecords = (table, options) => {
   let records = [];
   const params = {
     view: 'Grid view',

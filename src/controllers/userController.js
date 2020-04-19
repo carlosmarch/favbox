@@ -1,10 +1,14 @@
 import React from 'react';
-import history from './history';
+import history from '../history';
 import ReactDOM from 'react-dom';
+import session from "express-session";
+
 
 import Signup from '../views/Signup';
 import Login from '../views/Login';
 
+
+//AIRTABLE HELPERS
 const Airtable = require('airtable');
 const bcrypt = require('bcryptjs');
 const data = require('./dataController.js');
@@ -34,7 +38,7 @@ const findUser = async (email, name) => {
 };
 
 
-
+//USER MANAGEMENT
 export const addUser = async (req, next) => {
 
   const { email, name } = req;
@@ -55,14 +59,14 @@ export const addUser = async (req, next) => {
         console.error(err);
         return;
       }
-      console.log(record)
+      //console.log(record)
       req.id = record.getId();
       next(req);
     }
   );
 };
 
-export const storePassword = (req, res) => {
+export const storePassword = (req) => {
   const { password, id } = req;
 
   bcrypt.hash(password, 10, function(err, hash) {
@@ -86,7 +90,7 @@ export const storePassword = (req, res) => {
         // });
         //ReactDOM.render(<Signup type={'success'} message={'Your account has been created!'}/>, document.getElementById('root'))
         history.push({
-          pathname: '/'
+          pathname: '/profile'
         })
 
       }
@@ -94,7 +98,7 @@ export const storePassword = (req, res) => {
   });
 };
 
-export const authenticate = (req, res) => {
+export const authenticate = (req) => {
   const { email, password } = req;
   const options = {
     filterByFormula: `OR(email = '${email}', name = '${email}')`,
@@ -107,11 +111,10 @@ export const authenticate = (req, res) => {
         bcrypt.compare(password, user.get('password'), function(err, response) {
           if (response) {
             // Passwords match, response = true
-            // res.render('profile', {
-            //   user: user.fields,
-            // });
-            console.log('Passwords match logged In')
-            ReactDOM.render(<Login type={'success'} message={'Passwords match logged In'}/>, document.getElementById('root'))
+            localStorage.setItem('userSession', JSON.stringify(user.fields));
+            //res.redirect("/profile");
+            history.push({ pathname: '/profile' })
+
           } else {
             // Passwords don't match
             ReactDOM.render(<Login type={'error'} message={'Passwords dont match'}/>, document.getElementById('root'))
@@ -122,4 +125,14 @@ export const authenticate = (req, res) => {
     .catch(err => {
       console.log(Error(err));
     });
+};
+
+
+export const isLoggedIn = (req, next) => {
+  if (localStorage.getItem('userSession')) {
+    return;
+  }
+  //If session dont exist redirect to Login
+  ReactDOM.render(<Login />, document.getElementById('root'))
+  history.push({ pathname: '/login' })
 };

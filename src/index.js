@@ -1,7 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, Switch } from 'react-router-dom'
-import history from './controllers/history';
+import history from './history';
+
+import * as userController from './controllers/userController';
+
 import './css/index.css';
 
 import BottomBar from './components/BottomBar';
@@ -15,6 +18,7 @@ import Categories from './views/Categories';
 import Signup from './views/Signup';
 import Login from './views/Login';
 import Home from './views/Home';
+import Profile from './views/Profile';
 
 import * as serviceWorker from './serviceWorker';
 
@@ -27,15 +31,20 @@ const routing = (
 
       <Switch>
         <Route exact path="/" component={Home} />
+        <Route exact path="/feed" component={App} />
+
         <Route path="/categorias/:id" component={Detail} />
         <Route path="/temas/:id" component={Detail} />
         <Route path="/colecciones/:id" component={Detail} />
+
         <Route exact path="/about" component={About} />
         <Route exact path="/favoritos" component={Myfavs} />
         <Route exact path="/categorias" component={Categories} />
+
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/login" component={Login} />
-        <Route exact path="/feed" component={App} />
+        <Route exact path="/profile" component={Profile}/>
+
         <Route component={Notfound} />
       </Switch>
 
@@ -43,6 +52,7 @@ const routing = (
 
   </Router>
 )
+
 
 ReactDOM.render(routing, document.getElementById('root'))
 

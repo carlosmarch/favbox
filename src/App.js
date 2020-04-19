@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+import * as userController from './controllers/userController';
 import * as Helpers from './Helpers';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
-
 import Hero from './components/Hero';
 import BlockTitle from './components/BlockTitle';
 import Card from './components/Card';
@@ -18,8 +18,9 @@ import Videocard from './components/Videocard';
 import Appcard from './components/Appcard';
 import LoadingSpinner from './components/LoadingSpinner';
 
-class App extends Component {
 
+
+class App extends Component {
 
 
   constructor(props) {

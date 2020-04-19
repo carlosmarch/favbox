@@ -12,6 +12,7 @@
     "airtable": "^0.8.1",
     "array-unique": "^0.3.2",
     "bcryptjs": "^2.4.3",
+    "express-session": "^1.17.1",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-feather": "^2.0.3",

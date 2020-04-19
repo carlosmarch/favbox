@@ -89,34 +89,13 @@ class Header extends Component {
               </div>
             </li>
 
+            {/*
             <li><Link to="/about">About</Link></li>
-
             <li id="Favoritos-button" className="favlink"><Link to="/favoritos">❤ Favourites</Link></li>
+            */}
+            
+          </ul>
 
-
-        </ul>
-
-          <div className="form no@m">
-            <form className="email-form" onSubmit={this.handleSubmit}>
-              <div className="email-form__input-wrapper">
-                <input
-                  type="email"
-                  id="email"
-                  className="email-form__input"
-                  aria-required="true"
-                  aria-invalid="false"
-                  aria-describedby="signup-cta-error"
-                  placeholder="Email"
-                  autoComplete="email"
-                  onChange={this.emailChangeHandler}
-                  required
-                  />
-              </div>
-              <button type="submit" className="email-form__submit" mailto="">
-                <span className="email-form__submit__label">Get started!</span>
-              </button>
-            </form>
-          </div>
         </div>
       </header>
     );

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ReactDOM from 'react-dom';
+import history from '../history';
 import { Link } from 'react-router-dom';
 
 import Signup from '../views/Signup';
@@ -19,6 +20,10 @@ class HeaderMkt extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     ReactDOM.render(<Signup email={this.state.email}/>, document.getElementById('root'))
+    //@TODO Implement and refactor history
+    history.push({
+      pathname: '/signup'
+    })
   }
 
 
@@ -29,10 +34,10 @@ class HeaderMkt extends Component {
         <div className="container">
 
           <ul id="primarymenu" className="nav menu">
-            <li><Link to="/home"><img className="logo" src={process.env.PUBLIC_URL + '/logo.svg'} alt="logo"/></Link></li>
+            <li><Link to="/"><img className="logo" src={process.env.PUBLIC_URL + '/logo.svg'} alt="logo"/></Link></li>
             <li><Link to="/feed">Discover</Link></li>
-            <li><Link to="/signup">Sign in</Link></li>
-            <li><Link to="/login">Log in</Link></li>
+            <li><Link to="/about">About</Link></li>
+            <li><Link to="/login">Sign in</Link></li>
           </ul>
 
           <div className="form no@m">
@@ -48,7 +53,6 @@ class HeaderMkt extends Component {
                   placeholder="Email"
                   autoComplete="email"
                   onChange={this.emailChangeHandler}
-                  required
                   />
               </div>
               <button type="submit" className="email-form__submit" mailto="">
