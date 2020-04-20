@@ -1,7 +1,7 @@
 import React from 'react';
 import history from '../history';
 import ReactDOM from 'react-dom';
-import session from "express-session";
+
 
 
 import Signup from '../views/Signup';
@@ -20,6 +20,7 @@ const base = new Airtable({
 const table = base('contributors');
 
 
+//USER METHODS
 const findUser = async (email, name) => {
   let recordExists = false;
   let options = {};
@@ -135,6 +136,49 @@ export const authenticate = (req) => {
     });
 };
 
+export const getUserByEmail = (req, next) => {
+  const options = {
+    filterByFormula: `OR(email = '${req}', name = '${req}')`
+  }
+  data.getAirtableRecords(table, options)
+    .then( users => {
+      //console.log(users)
+      users.forEach(function(user) {
+        console.log(user, user.fields.likes)
+        return user;
+      });
+    })
+    .catch(err => {
+      console.log( Error(err));
+    });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+///////
+//////
+/////@TODO RESET PASSWORD
 
 export const isLoggedIn = (req, next) => {
   if (localStorage.getItem('userSession')) {

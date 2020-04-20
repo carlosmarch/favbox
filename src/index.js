@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom';
 import { Router, Route, Switch } from 'react-router-dom'
 import history from './history';
 
-import * as userController from './controllers/userController';
-
 import './css/index.css';
 
 import BottomBar from './components/BottomBar';

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import * as userController from './controllers/userController';
 import * as Helpers from './Helpers';
 
 import Header from './components/Header';
