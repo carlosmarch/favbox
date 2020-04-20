@@ -16,14 +16,22 @@ const data = require('./dataController.js');
 const base = new Airtable({
   apiKey: process.env.REACT_APP_AIRTABLE_API_KEY,
 }).base(process.env.REACT_APP_AIRTABLE_BASE_ID);
+
 const table = base('contributors');
 
 
 const findUser = async (email, name) => {
   let recordExists = false;
-  const options = {
-    filterByFormula: `OR(email = '${email}', name = '${name}')`,
-  };
+  let options = {};
+  if (email && name) {
+    options = {
+      filterByFormula: `OR(email = '${email}', name = '${name}')`
+    };
+  } else {
+    options = {
+      filterByFormula: `OR(email = '${email}', name = '${email}')`
+    };
+  }
 
   const users = await data.getAirtableRecords(table, options);
 
@@ -135,4 +143,97 @@ export const isLoggedIn = (req, next) => {
   //If session dont exist redirect to Login
   ReactDOM.render(<Login />, document.getElementById('root'))
   history.push({ pathname: '/login' })
+};
+
+
+// Built in node module provides utilities for parsing and formatting URL query strings
+const querystring = require("querystring");
+// The token will be using the user's ID and email address to generate a random string
+const generateToken = (id, email) => {
+  const source = `${id}${email}`;
+  let token = "";
+  for (let i = 0; i < source.length; i++) {
+    token += source.charAt(Math.floor(Math.random() * source.length));
+  }
+  return token;
+};
+const generateResetUrl = (token, email) => {
+  let url = "";
+  url = `login/resetlink/${token}?${querystring.stringify({ email })}`;
+  return url;
+};
+
+
+export const addToken = async (req, res, next) => {
+  const { name } = req.body;
+  // Check that the user exists. We wrote this helper function already in Part 1 but we need to refactor as it requires two parameters and we are only including one here
+  const userExists = await findUser(name);
+  if (userExists) {
+    // res.render("login", {
+    //   message: "Username or Email already exists!"
+    // });
+    ReactDOM.render(<Login type={'info'} message={'Username or Email already exists!'}/>, document.getElementById('root'))
+    return;
+  }
+  const options = {
+    filterByFormula: `OR(email = '${name}', name = '${name}')`
+  };
+  // Get the user
+  const users = await data.getAirtableRecords(table, options);
+  const user = users.map(record => ({
+    id: record.getId(),
+    email: record.get("email")
+  }));
+  const token = generateToken(user[0].id, user[0].email);
+  table.update(
+    user[0].id,
+    {
+      token
+    },
+    (err, record) => {
+      if (err) {
+        console.error(err);
+      }
+      req.body.url = generateResetUrl(token, user[0].email);
+      req.body.to = user[0].email;
+      next();
+    }
+  );
+};
+
+const nodemailer = require("nodemailer");
+
+export const sendEmail = async (req, res) => {
+  const subject = "Password Reset link for My Sweet App";
+  const { url, to } = req.body;
+  const body = `Hello,
+  You requested to have your password reset. Ignore if this is a mistake or you did not make this request. Otherwise, click the link below to reset your password.
+  <a href="http://localhost:3000//${url}">Reset My Password</a>
+  You can also copy and paste this link in your browser URL bar.
+  <a href="http://localhost:3000//${url}">http://localhost:3000//${url}</a>`;
+  const transporter = nodemailer.createTransport({
+    host: process.env.SMTP_HOST,
+    port: process.env.SMTP_PORT,
+    // secure: true,
+    auth: {
+      user: process.env.SMTP_USERNAME,
+      pass: process.env.SMTP_PASSWORD
+    }
+  });
+  const mailOptions = {
+    from: process.env.FROM_EMAIL,
+    to,
+    subject,
+    html: body
+  };
+  transporter.sendMail(mailOptions, (err, info) => {
+    if (err) {
+      console.log(err);
+    } else {
+      // email sent
+      res.render("forgot", {
+        message: "Please check your email for your password reset link"
+      });
+    }
+  });
 };

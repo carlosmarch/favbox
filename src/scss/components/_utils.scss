@@ -28,8 +28,11 @@ $breakpoint-m: 48em;
 .pb-s { padding-bottom: 20px; }
 
 .inline {
-    display: inline;
-    align-items: center;
+  display: inline;
+  align-items: center;
+}
+.block{
+  display: block;
 }
 .text-center{
   text-align: center;

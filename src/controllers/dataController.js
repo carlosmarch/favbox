@@ -1,4 +1,6 @@
-export const getAirtableRecords = (table, options) => {
+//const data = require('./dataController.js');
+//data.getAirtableRecords(table, options)
+exports.getAirtableRecords = (table, options) => {
   let records = [];
   const params = {
     view: 'Grid view',
@@ -28,5 +30,31 @@ export const getAirtableRecords = (table, options) => {
     };
 
     table.select(params).eachPage(processPage, processRecords);
+  });
+};
+
+
+
+exports.getAirtableRecordsDemo = (table, view) => {
+  let records = [];
+  return new Promise((resolve, reject) => {
+    // Cache results if called already
+    if (records.length > 0) {
+      resolve(records);
+    }
+    const processPage = (partialRecords, fetchNextPage) => {
+      records = [...records, ...partialRecords];
+      fetchNextPage();
+    };
+    const processRecords = (err) => {
+      if (err) {
+        reject(err);
+        return;
+      }
+      resolve(records);
+    };
+    table.select({
+      view,
+    }).eachPage(processPage, processRecords);
   });
 };

@@ -86,6 +86,7 @@ class SignUp extends Component {
                     component="input"
                     type="password"
                     autoComplete="current-password"
+                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                     onChange={this.passwordChangeHandler}
                     required
                   />

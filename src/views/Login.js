@@ -75,6 +75,7 @@ class Login extends Component {
 
                                   <button className="button submitbtn inline" type="submit">{this.state.isLoading ? 'loading' : 'Login'}</button>
                                 </form>
+                                <span>Forgot your password? <a className="link" href="/forgot">Reset Password</a></span>
                                 <span>Don’t have an account? <a className="link" href="/signup">Get started</a></span>
                               </div>
                     </div>

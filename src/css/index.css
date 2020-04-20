@@ -80,6 +80,10 @@
   align-items: center;
 }
 
+.block {
+  display: block;
+}
+
 .text-center {
   text-align: center;
 }
@@ -2463,16 +2467,19 @@ a.topic-card::before {
   background: #fdccc3;
 }
 
-.signup_view {
+.signup_view,
+.forgot_view {
   height: 100vh;
 }
 
-.signup_view .grid {
+.signup_view .grid,
+.forgot_view .grid {
   padding: 0;
   height: 100vh;
 }
 
-.signup_view .form-container {
+.signup_view .form-container,
+.forgot_view .form-container {
   padding: 56px 24px;
   max-width: 350px;
   margin: 0 auto;

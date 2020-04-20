@@ -19,6 +19,7 @@ import Signup from './views/Signup';
 import Login from './views/Login';
 import Home from './views/Home';
 import Profile from './views/Profile';
+import Forgot from './views/Forgot';
 
 import * as serviceWorker from './serviceWorker';
 
@@ -43,6 +44,7 @@ const routing = (
 
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/login" component={Login} />
+        <Route exact path="/forgot" component={Forgot} />
         <Route exact path="/profile" component={Profile}/>
 
         <Route component={Notfound} />
