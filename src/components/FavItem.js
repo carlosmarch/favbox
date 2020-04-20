@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Like from './Like';
-import Contributor from './Contributor';
 
 class FavItem extends Component {
 
@@ -38,7 +37,6 @@ class FavItem extends Component {
           </div>
           <div className="articlelist-description">
             <p>{this.props.description}</p>
-            <Contributor contributor={this.props.autor}/>
           </div>
           <Like itemId={this.props.itemId}/>
         </a>
@@ -48,7 +46,6 @@ class FavItem extends Component {
         <a className="articlelist" href={this.props.url} target="_blank" rel="noopener noreferrer" data-id={this.props.id}>
           <div className="articlelist-title">
             <h5>{this.props.title}</h5>
-            <Contributor contributor={this.props.autor}/>
           </div>
           <div className="articlelist-description">
             <div className="articlelist-category badge inline">{this.props.categorias}</div>

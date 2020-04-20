@@ -17,6 +17,8 @@ import Signup from './views/Signup';
 import Login from './views/Login';
 import Home from './views/Home';
 import Profile from './views/Profile';
+import Likes from './views/Likes';
+import Create from './views/Create';
 import Forgot from './views/Forgot';
 
 import * as serviceWorker from './serviceWorker';
@@ -43,6 +45,9 @@ const routing = (
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/forgot" component={Forgot} />
+
+        <Route exact path="/create" component={Create}/>
+        <Route exact path="/likes" component={Likes}/>
         <Route exact path="/profile" component={Profile}/>
 
         <Route component={Notfound} />

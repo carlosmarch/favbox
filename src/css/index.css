@@ -544,11 +544,8 @@ a.link:hover {
   margin: 0 52%;
 }
 
-form input {
-  margin-bottom: 16px;
-}
-
-input {
+input,
+select {
   background: #fcfdfd;
   border-radius: 3px;
   border: 1px solid rgba(3, 54, 61, 0.25);
@@ -558,6 +555,7 @@ input {
   height: 50px;
   padding: 20px 15px;
   width: 100%;
+  margin-bottom: 16px;
 }
 
 label, .field-label {
@@ -581,6 +579,11 @@ label, .field-label {
   .header {
     padding: 0px;
   }
+}
+
+.logged-in-header {
+  display: flex;
+  justify-content: space-between;
 }
 
 .nav {

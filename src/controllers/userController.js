@@ -2,21 +2,17 @@ import React from 'react';
 import history from '../history';
 import ReactDOM from 'react-dom';
 
-
-
 import Signup from '../views/Signup';
 import Login from '../views/Login';
 
-
-//AIRTABLE HELPERS
-const Airtable = require('airtable');
 const bcrypt = require('bcryptjs');
 const data = require('./dataController.js');
 
+//AIRTABLE HELPERS
+const Airtable = require('airtable');
 const base = new Airtable({
   apiKey: process.env.REACT_APP_AIRTABLE_API_KEY,
 }).base(process.env.REACT_APP_AIRTABLE_BASE_ID);
-
 const table = base('contributors');
 
 
@@ -68,7 +64,11 @@ export const addUser = async (req, next) => {
         console.error(err);
         return;
       }
-      //console.log(record)
+
+      //console.log('STORE',record.fields)
+      record.fields['id'] = record.id
+      setSession(record.fields)
+
       req.id = record.getId();
       next(req);
     }
@@ -120,7 +120,9 @@ export const authenticate = (req) => {
         bcrypt.compare(password, user.get('password'), function(err, response) {
           if (response) {
             // Passwords match, response = true
-            localStorage.setItem('userSession', JSON.stringify(user.fields));
+            //console.log('STORE',record.fields)
+            user.fields['id'] = user.id
+            setSession(user.fields)
             //res.redirect("/profile");
             history.push({ pathname: '/profile' })
 
@@ -154,7 +156,10 @@ export const getUserByEmail = (req, next) => {
 }
 
 
-
+export const setSession = (userRecord) => {
+  //user.fields
+  localStorage.setItem('userSession', JSON.stringify(userRecord));
+}
 
 
 

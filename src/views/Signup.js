@@ -27,6 +27,7 @@ class SignUp extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    //ADD USER WITH FORM DATA
     userController.addUser(this.state, userController.storePassword)
     this.setState({isLoading: true});
   }

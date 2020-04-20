@@ -69,6 +69,11 @@ function truncateText(str, length, ending) {
     return archive;
   }
 
+  function getSessionEmail(){
+    return JSON.parse(localStorage.getItem('userSession'))?.email;
+  }
+
+
   //-------------------------//
   //-------------------------//
   //-------------------------//
@@ -115,6 +120,7 @@ function truncateText(str, length, ending) {
   }
 
   //Get all items which match with fav storage id array
+  //OLD!!!
   function getFavItems(recommendations){
     return recommendations.filter(recommendation => getStorageFavs().some(favId => recommendation.id === favId));
   }
@@ -145,5 +151,6 @@ function truncateText(str, length, ending) {
      getTopicItems,
      getCollectionItems,
      getBlockCategoryItems,
-     getFavItems
+     getFavItems,
+     getSessionEmail
   };

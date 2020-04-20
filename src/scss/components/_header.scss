@@ -12,6 +12,10 @@
     padding: 0px;
   }
 }
+.logged-in-header{
+  display: flex;
+  justify-content: space-between;
+}
 .nav{
   display: inline-block;
   font-size: 16px;

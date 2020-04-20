@@ -9,10 +9,10 @@ import FavItem from '../components/FavItem';
 import LoadingSpinner from '../components/LoadingSpinner';
 
 //AIRTABLE HELPERS
-const data = require('../controllers/dataController.js');
-const recommendationController = require('../controllers/recommendationController.js');
-
 const Airtable = require('airtable');
+const data = require('../controllers/dataController.js');
+const recommendation = require('../controllers/recommendationController.js');
+
 const base = new Airtable({
   apiKey: process.env.REACT_APP_AIRTABLE_API_KEY,
 }).base(process.env.REACT_APP_AIRTABLE_BASE_ID);
@@ -24,11 +24,9 @@ const options = {
   filterByFormula: `OR(email = '${email}', name = '${email}')`
 }
 
-//@TODO
-//REVIEW DEFAULT VALUES && EMPTY USERS
-//REVIEW WHEN USER JUST SIGNED UP
 
-class Profile extends Component {
+
+class Likes extends Component {
 
   constructor(props) {
     super(props);
@@ -38,33 +36,28 @@ class Profile extends Component {
     };
   }
 
-  getUserPubItems(){
+  getUserFavs(){
     data.getAirtableRecords(table, options)
       .then( async (users) => {
-        //USERS SHOULD BE ONLY ONE THAT MATCH WITH EMAIL
-        console.log(users, email)
-        const userData = users[0].fields;//REVIEW WHEN NO SESSION && NO EMAIL
-        const hydratedUserWithPubItems = [];
+        //USERS SHOULD BE ONLY ONE,THE ONLY THAT MATCH WITH EMAIL
+        const user = users[0].fields;
+        const hydratedUserWithLikes = [];
         //REPLACE LIKES ID's WITH ALL THE CONTENT
-        hydratedUserWithPubItems.push(await recommendationController.hydrateUserPubItems(userData));
+        hydratedUserWithLikes.push(await recommendation.hydrateUserLikes(user));
+
         this.setState({
           isLoading: false,
-          userData: userData,
-          renderItems: userData.items
+          userData: user,
+          renderItems: user.likes
         });
-        console.log(this.state.userData)
+        //console.log(this.state.userData.likes)
+        return;
       })
-      .catch(err => {
-        console.log( Error(err));
-      });
   }
 
 
-
   componentDidMount() {
-    //@TODO CHECK NEW USERS WITH EMPTY DATA
-    //REVIEW WHEN USERS DON'T HAVE PUBLISHED ITEMS && FAV ITEMS
-    this.getUserPubItems()
+    this.getUserFavs()
   }
 
 
@@ -77,7 +70,7 @@ class Profile extends Component {
       <div className="global">
         <div className="container">
           <div className="ArticlesGrid mt-l">
-            <BlockTitle title={'Profile'}/>
+            <BlockTitle title={'Likes'}/>
 
             <div className="container">
               <div className="mt-s">
@@ -98,4 +91,4 @@ class Profile extends Component {
   }
 }
 
-export default Profile;
+export default Likes;

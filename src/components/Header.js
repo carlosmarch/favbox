@@ -53,7 +53,7 @@ class Header extends Component {
 
     return (
       <header className="header no@m">
-        <div className="container">
+        <div className="container logged-in-header">
 
           <ul id="primarymenu" className="nav menu">
 
@@ -88,12 +88,12 @@ class Header extends Component {
                 </ul>
               </div>
             </li>
+          </ul>
 
-            {/*
-            <li><Link to="/about">About</Link></li>
-            <li id="Favoritos-button" className="favlink"><Link to="/favoritos">❤ Favourites</Link></li>
-            */}
-            
+          <ul id="usermenu" className="nav menu">
+            <li><Link to="/create">Create</Link></li>
+            <li><Link to="/likes">Likes</Link></li>
+            <li><Link to="/profile">Profile</Link></li>
           </ul>
 
         </div>

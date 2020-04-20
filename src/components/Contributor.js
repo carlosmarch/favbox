@@ -1,5 +1,9 @@
 import React, { Component } from "react";
 
+//@TODO
+//REVIEW DEFAULT VALUES && EMPTY USERS
+
+
 class Contributor extends Component {
 
   render() {
