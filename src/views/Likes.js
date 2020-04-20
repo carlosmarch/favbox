@@ -74,9 +74,9 @@ class Likes extends Component {
 
             <div className="container">
               <div className="mt-s">
-                  {this.state.isLoading ? <LoadingSpinner /> : this.state.renderItems.map((records) =>
-                    <FavItem {...records} key={records.id} itemId={records.id} />
-                  )}
+              {this.state.isLoading ? <LoadingSpinner /> : this.state.renderItems && this.state.renderItems.length > 0 ? this.state.renderItems.map((records) =>
+                <FavItem {...records} key={records.id} itemId={records.id} />
+              ): 'No likes' }
               </div>
             </div>
           </div>

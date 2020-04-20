@@ -20,7 +20,7 @@ class Podcastcard extends Component {
         <div className="podcastcard-content">
           <h6 className="podcastcard-title">{this.props.title}</h6>
           <div className="podcastcard-description">{Helpers.truncateText(this.props.description, 70)}</div>
-          <Contributor contributor={this.props.autor[0].fields}/>
+          <Contributor contributor={this.props.autor[0]?.fields}/>
         </div>
 
       </a>

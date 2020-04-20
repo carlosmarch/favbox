@@ -41,9 +41,18 @@ class Profile extends Component {
   getUserPubItems(){
     data.getAirtableRecords(table, options)
       .then( async (users) => {
+
+        if (!users.length) {
+          //WHEN NO SESSION && NO EMAIL
+          this.setState({
+            isLoading: false,
+            renderItems: []
+          });
+         return
+        }
+        
         //USERS SHOULD BE ONLY ONE THAT MATCH WITH EMAIL
-        console.log(users, email)
-        const userData = users[0].fields;//REVIEW WHEN NO SESSION && NO EMAIL
+        const userData = users[0].fields;
         const hydratedUserWithPubItems = [];
         //REPLACE LIKES ID's WITH ALL THE CONTENT
         hydratedUserWithPubItems.push(await recommendationController.hydrateUserPubItems(userData));
@@ -81,9 +90,9 @@ class Profile extends Component {
 
             <div className="container">
               <div className="mt-s">
-                  {this.state.isLoading ? <LoadingSpinner /> : this.state.renderItems.map((records) =>
-                    <FavItem {...records} key={records.id} itemId={records.id} />
-                  )}
+              {this.state.isLoading ? <LoadingSpinner /> : this.state.renderItems && this.state.renderItems.length > 0 ? this.state.renderItems.map((records) =>
+                <FavItem {...records} key={records.id} itemId={records.id} />
+              ): 'No items' }
               </div>
             </div>
           </div>

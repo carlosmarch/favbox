@@ -12,7 +12,7 @@ class Musiccard extends Component {
           <Like itemId={this.props.itemId}/>
           <div className="musiccard-album-contents">
             <img className="play" src={process.env.PUBLIC_URL + '/img/play.svg'} alt="play"/>
-            <Contributor contributor={this.props.autor[0].fields}/>
+            <Contributor contributor={this.props.autor[0]?.fields}/>
           </div>
           <img className="musiccard-album-img" src={this.props.imageUrl} alt="cover"/>
         </div>

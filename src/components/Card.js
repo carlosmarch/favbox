@@ -20,7 +20,7 @@ class Card extends Component {
             {this.props.temas?.map((topic, key) => {return (<Link to={ '/temas/' + topic } key={key}>#{topic}</Link>)})}
 
           </div>
-          <Contributor contributor={this.props.autor[0].fields}/>
+          <Contributor contributor={this.props.autor[0]?.fields}/>
         </div>
       </a>
 

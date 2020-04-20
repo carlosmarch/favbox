@@ -25,8 +25,10 @@ export const getRecommendationById = (id) => {
 }
 
 export const hydrateUserLikes = async (user) => {
+  console.log('hydrateUserLikes',user)
   let likeIds = user.likes;
   let recommendationsWithDetails = [];
+  if (!likeIds) return [];
   for( const id of likeIds) {
     recommendationsWithDetails.push(await getRecommendationById(id))
   }
@@ -35,9 +37,10 @@ export const hydrateUserLikes = async (user) => {
 }
 
 export const hydrateUserPubItems = async (user) => {
-  console.log('hydrateUserPubItems',user.items)
+  console.log('hydrateUserPubItems',user)
   let pubitemIds = user.items;
   let pubitemWithDetails = [];
+  if (!pubitemIds) return [];
   for( const id of pubitemIds) {
     pubitemWithDetails.push(await getRecommendationById(id))
   }

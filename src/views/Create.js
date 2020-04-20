@@ -16,7 +16,7 @@ const base = new Airtable({
 const table = base('recommendations');
 
 //@TODO
-//REVIEW REQUIRED SELECT OPTION
+//REVIEW MESSAGING : SUCCESS && ERROR
 
 class Create extends Component {
 

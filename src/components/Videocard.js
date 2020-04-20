@@ -15,7 +15,7 @@ class Videocard extends Component {
         </a>
         <h6 className="videocard-title">{Helpers.truncateText(this.props.title, 40)}</h6>
         <div className="videocard-description">{Helpers.truncateText(this.props.description, 90)}</div>
-        <Contributor contributor={this.props.autor[0].fields}/>
+        <Contributor contributor={this.props.autor[0]?.fields}/>
       </div>
     );
   }
