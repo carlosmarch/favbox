@@ -8,21 +8,16 @@ import BlockTitle from '../components/BlockTitle';
 import FavItem from '../components/FavItem';
 import LoadingSpinner from '../components/LoadingSpinner';
 
+const recommendationController = require('../controllers/recommendationController.js');
+const userController = require('../controllers/userController.js');
+
 //AIRTABLE HELPERS
 const Airtable = require('airtable');
 const data = require('../controllers/dataController.js');
-const recommendation = require('../controllers/recommendationController.js');
-
 const base = new Airtable({
   apiKey: process.env.REACT_APP_AIRTABLE_API_KEY,
 }).base(process.env.REACT_APP_AIRTABLE_BASE_ID);
 const table = base('contributors');
-
-const email = Helpers.getSessionEmail();
-
-const options = {
-  filterByFormula: `OR(email = '${email}', name = '${email}')`
-}
 
 
 
@@ -37,13 +32,28 @@ class Likes extends Component {
   }
 
   getUserFavs(){
+
+    const email = userController.getSession()?.email;
+    const options = {
+      filterByFormula: `OR(email = '${email}', name = '${email}')`
+    }
+
+    if (!email) {
+      //WHEN NO SESSION && NO EMAIL
+      this.setState({
+        isLoading: false,
+        renderItems: []
+      });
+     return
+    }
+
     data.getAirtableRecords(table, options)
       .then( async (users) => {
         //USERS SHOULD BE ONLY ONE,THE ONLY THAT MATCH WITH EMAIL
         const user = users[0].fields;
         const hydratedUserWithLikes = [];
         //REPLACE LIKES ID's WITH ALL THE CONTENT
-        hydratedUserWithLikes.push(await recommendation.hydrateUserLikes(user));
+        hydratedUserWithLikes.push(await recommendationController.hydrateUserLikes(user));
 
         this.setState({
           isLoading: false,
@@ -74,9 +84,12 @@ class Likes extends Component {
 
             <div className="container">
               <div className="mt-s">
-              {this.state.isLoading ? <LoadingSpinner /> : this.state.renderItems && this.state.renderItems.length > 0 ? this.state.renderItems.map((records) =>
-                <FavItem {...records} key={records.id} itemId={records.id} />
-              ): 'No likes' }
+                { this.state.isLoading
+                    ? <LoadingSpinner />
+                    : this.state.renderItems && this.state.renderItems.length > 0
+                        ? this.state.renderItems.map( (records) => <FavItem {...records} key={records.id} itemId={records.id} /> )
+                        : 'No items'
+                }
               </div>
             </div>
           </div>

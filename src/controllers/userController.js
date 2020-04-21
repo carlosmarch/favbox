@@ -64,8 +64,7 @@ export const addUser = async (req, next) => {
         console.error(err);
         return;
       }
-
-      //console.log('STORE',record.fields)
+      //Add id to user data record
       record.fields['id'] = record.id
       setSession(record.fields)
 
@@ -138,6 +137,7 @@ export const authenticate = (req) => {
     });
 };
 
+
 export const getUserByEmail = (req, next) => {
   const options = {
     filterByFormula: `OR(email = '${req}', name = '${req}')`
@@ -146,7 +146,7 @@ export const getUserByEmail = (req, next) => {
     .then( users => {
       //console.log(users)
       users.forEach(function(user) {
-        console.log(user, user.fields.likes)
+        //console.log(user, user.fields.likes)
         return user;
       });
     })
@@ -156,13 +156,18 @@ export const getUserByEmail = (req, next) => {
 }
 
 
+//
+// User Session Helpers
+//
 export const setSession = (userRecord) => {
-  //user.fields
+  //Arrives user.fields
+  delete userRecord.password //Don´t store pass
   localStorage.setItem('userSession', JSON.stringify(userRecord));
 }
 
-
-
+export const getSession = () => {
+  return JSON.parse(localStorage.getItem('userSession'));
+}
 
 
 

@@ -1,0 +1,30 @@
+.profile_view{}
+.profile-user{
+  display: flex;
+  align-items: center;
+}
+
+.profile-user-image-holder{
+  flex: 0 0 auto;
+  width: 120px;
+  height: 120px;
+  position: relative;
+  overflow: hidden;
+  background-color: #FFFFFF;
+  border: 1px solid #EEEDF2;
+  border-radius: 50%;
+  box-shadow: 0 4px 15px 0 rgba(40, 44, 53, 0.06), 0 2px 2px 0 rgba(40, 44, 53, 0.08);
+  z-index: 1;
+}
+.profile-user-info{
+  margin-left: 32px;
+}
+.profile-user-name{}
+.profile-user-description{}
+.profile-user-data{
+  span:not(:last-child):after {
+    content: "\2022";
+    margin-right: 8px;
+    margin-left: 8px;
+  }
+}

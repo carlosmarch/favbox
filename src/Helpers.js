@@ -69,9 +69,7 @@ function truncateText(str, length, ending) {
     return archive;
   }
 
-  function getSessionEmail(){
-    return JSON.parse(localStorage.getItem('userSession'))?.email;
-  }
+
 
 
   //-------------------------//
@@ -151,6 +149,5 @@ function truncateText(str, length, ending) {
      getTopicItems,
      getCollectionItems,
      getBlockCategoryItems,
-     getFavItems,
-     getSessionEmail
+     getFavItems
   };

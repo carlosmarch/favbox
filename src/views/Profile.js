@@ -8,21 +8,16 @@ import BlockTitle from '../components/BlockTitle';
 import FavItem from '../components/FavItem';
 import LoadingSpinner from '../components/LoadingSpinner';
 
-//AIRTABLE HELPERS
-const data = require('../controllers/dataController.js');
+const dataController = require('../controllers/dataController.js');
 const recommendationController = require('../controllers/recommendationController.js');
+const userController = require('../controllers/userController.js');
 
+//AIRTABLE HELPERS
 const Airtable = require('airtable');
 const base = new Airtable({
   apiKey: process.env.REACT_APP_AIRTABLE_API_KEY,
 }).base(process.env.REACT_APP_AIRTABLE_BASE_ID);
 const table = base('contributors');
-
-const email = Helpers.getSessionEmail();
-
-const options = {
-  filterByFormula: `OR(email = '${email}', name = '${email}')`
-}
 
 //@TODO
 //REVIEW DEFAULT VALUES && EMPTY USERS
@@ -39,18 +34,24 @@ class Profile extends Component {
   }
 
   getUserPubItems(){
-    data.getAirtableRecords(table, options)
-      .then( async (users) => {
 
-        if (!users.length) {
-          //WHEN NO SESSION && NO EMAIL
-          this.setState({
-            isLoading: false,
-            renderItems: []
-          });
-         return
-        }
-        
+    const email = userController.getSession()?.email;
+    const options = {
+      filterByFormula: `OR(email = '${email}', name = '${email}')`
+    }
+
+    if (!email) {
+      //WHEN NO SESSION && NO EMAIL
+      this.setState({
+        isLoading: false,
+        renderItems: []
+      });
+     return
+    }
+
+
+    dataController.getAirtableRecords(table, options)
+      .then( async (users) => {
         //USERS SHOULD BE ONLY ONE THAT MATCH WITH EMAIL
         const userData = users[0].fields;
         const hydratedUserWithPubItems = [];
@@ -86,13 +87,31 @@ class Profile extends Component {
       <div className="global">
         <div className="container">
           <div className="ArticlesGrid mt-l">
-            <BlockTitle title={'Profile'}/>
-
             <div className="container">
-              <div className="mt-s">
-              {this.state.isLoading ? <LoadingSpinner /> : this.state.renderItems && this.state.renderItems.length > 0 ? this.state.renderItems.map((records) =>
-                <FavItem {...records} key={records.id} itemId={records.id} />
-              ): 'No items' }
+
+              <div className="profile-user mt-xl">
+                <div className="profile-user-image-holder">
+
+                </div>
+                <div className="profile-user-info">
+                  <div className="profile-user-name"><h3>{userController.getSession()?.name}</h3></div>
+                  <div className="profile-user-description"><p>{userController.getSession()?.description}</p></div>
+                  <div className="profile-user-data">
+                    <span>{ userController.getSession()?.hasOwnProperty('likes') ? userController.getSession().likes.length : '0'} Likes</span>
+                    <span>{ userController.getSession()?.hasOwnProperty('items') ? userController.getSession().items.length : '0'} Published</span>
+                    <span>{ userController.getSession()?.hasOwnProperty('following') ? userController.getSession().following.length : '0'} Following</span>
+                    <span>{ userController.getSession()?.hasOwnProperty('followers') ? userController.getSession().followers.length : '0'} Followers</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-m">
+              { this.state.isLoading
+                  ? <LoadingSpinner />
+                  : this.state.renderItems && this.state.renderItems.length > 0
+                      ? this.state.renderItems.map( (records) => <FavItem {...records} key={records.id} itemId={records.id} /> )
+                      : 'No items'
+              }
               </div>
             </div>
           </div>
