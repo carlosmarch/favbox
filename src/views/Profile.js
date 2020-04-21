@@ -87,7 +87,7 @@ class Profile extends Component {
       <div className="global">
         <div className="container">
           <div className="ArticlesGrid mt-l">
-            <div className="container">
+            <div className="container container-s">
 
               <div className="profile-user mt-xl">
                 <div className="profile-user-image-holder">

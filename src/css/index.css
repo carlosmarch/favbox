@@ -2618,6 +2618,10 @@ a.topic-card::before {
   margin-left: 32px;
 }
 
+.profile-user-data {
+  margin-top: 16px;
+}
+
 .profile-user-data span:not(:last-child):after {
   content: "\2022";
   margin-right: 8px;

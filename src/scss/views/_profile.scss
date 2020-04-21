@@ -22,6 +22,7 @@
 .profile-user-name{}
 .profile-user-description{}
 .profile-user-data{
+  margin-top: 16px;
   span:not(:last-child):after {
     content: "\2022";
     margin-right: 8px;
