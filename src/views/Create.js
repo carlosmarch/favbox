@@ -1,14 +1,15 @@
 import React, { Component } from "react";
+import ImageUploader from "react-images-upload";
 
 import * as Helpers from '../Helpers';
 
 import Header from '../components/Header';
 import Message from '../components/Message';
 
-//AIRTABLE HELPERS
-const data = require('../controllers/dataController.js');
 const recommendationController = require('../controllers/recommendationController.js');
 
+
+//AIRTABLE HELPERS
 const Airtable = require('airtable');
 const base = new Airtable({
   apiKey: process.env.REACT_APP_AIRTABLE_API_KEY,
@@ -24,9 +25,11 @@ class Create extends Component {
     super();
     this.state = {
       isLoading: true,
-      contribuidor: [JSON.parse(localStorage.getItem('userSession'))?.id]
+      contribuidor: [JSON.parse(localStorage.getItem('userSession'))?.id],
+      pictures: []
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.onDrop = this.onDrop.bind(this);
   }
 
   titleChangeHandler = (event) => {
@@ -60,6 +63,14 @@ class Create extends Component {
     this.setState({isLoading: true});
   }
 
+  onDrop(pictureFiles, pictureDataURLs) {
+    console.log('onDrop', pictureFiles, pictureDataURLs)
+     this.setState({
+       pictures: this.state.pictures.concat(pictureFiles)
+     });
+   }
+
+
   getUniqueCategories(){
     fetch(window.$api)
     .then((resp) => resp.json())
@@ -79,7 +90,6 @@ class Create extends Component {
   }
 
   componentDidMount() {
-
     const uniqueCats = window.$categories
     const uniqueTops = window.$topics
 
@@ -113,71 +123,89 @@ class Create extends Component {
               {this.props.message ? <Message type={this.props.type} message={this.props.message}/> : ''}
 
               <form onSubmit={this.handleSubmit} className="signup-form">
-                <div>
-                  <label>Title</label>
-                  <input
-                    name="title"
-                    component="input"
-                    type="text"
-                    onChange={this.titleChangeHandler}
-                    required
-                  />
-                </div>
-                <div>
-                  <label>Description</label>
-                  <input
-                    name="description"
-                    component="input"
-                    type="text"
-                    onChange={this.descriptionChangeHandler}
-                    required
-                  />
-                </div>
-                <div>
-                  <label>Featured Image</label>
-                  <input
-                    name="imageUrl"
-                    component="input"
-                    type="text"
-                    onChange={this.imageUrlChangeHandler}
-                    required
-                  />
-                </div>
-                <div>
-                  <label>Item Url</label>
-                  <input
-                    name="url"
-                    component="input"
-                    type="text"
-                    onChange={this.urlChangeHandler}
-                    required
-                  />
-                </div>
-                <div>
-                  <label>Category</label>
-                  <select
-                    name="categorias"
-                    onChange={this.categoriasChangeHandler}
-                    required
-                  >
-                  <option hidden disabled selected value=""> Select a category </option>
-                  {this.state.isLoading ? '' :this.state.uniqueCategories.map((category, i) => <option key={i} value={category}>{category}</option>)}
-                  </select>
-                </div>
-                <div>
-                  <label>Topic</label>
-                  <select
-                    name="temas"
-                    onChange={this.temasChangeHandler}
-                  >
-                  <option hidden disabled selected value=""> Select a topic </option>
-                  {this.state.isLoading ? '' :this.state.uniqueTopics.map((topic, i) => <option key={i} value={topic}>{topic}</option>)}
-                  </select>
-                </div>
-                
-                <button className="button submitbtn inline mt-s" type="submit">{this.state.isLoading ? 'loading' : 'Create Item'}</button>
+                <div className="grid">
+                    <div className="grid__item width-5/12 width-12/12@m">
+                        <div>
+                          <ImageUploader
+                            className={'create-item-uploader'}
+                            withPreview={true}
+                            withIcon={true}
+                            singleImage={true}
+                            buttonText="Choose image"
+                            onChange={this.onDrop}
+                            imgExtension={[".jpg", ".gif", ".png", ".gif"]}
+                            maxFileSize={5242880}
+                          />
+                        </div>
+                    </div>
+                    <div className="grid__item width-7/12 width-12/12@m">
+                        <div>
+                          <label>Title</label>
+                          <input
+                            name="title"
+                            component="input"
+                            type="text"
+                            onChange={this.titleChangeHandler}
+                            required
+                          />
+                        </div>
+                        <div>
+                          <label>Description</label>
+                          <input
+                            name="description"
+                            component="input"
+                            type="text"
+                            onChange={this.descriptionChangeHandler}
+                            required
+                          />
+                        </div>
+                        <div>
+                          <label>Featured Image</label>
+                          <input
+                            name="imageUrl"
+                            component="input"
+                            type="text"
+                            onChange={this.imageUrlChangeHandler}
+                            required
+                          />
+                        </div>
+                        <div>
+                          <label>Item Url</label>
+                          <input
+                            name="url"
+                            component="input"
+                            type="text"
+                            onChange={this.urlChangeHandler}
+                            required
+                          />
+                        </div>
+                        <div>
+                          <label>Category</label>
+                          <select
+                            name="categorias"
+                            onChange={this.categoriasChangeHandler}
+                            required
+                          >
+                          <option hidden disabled selected value=""> Select a category </option>
+                          {this.state.isLoading ? '' :this.state.uniqueCategories.map((category, i) => <option key={i} value={category}>{category}</option>)}
+                          </select>
+                        </div>
+                        <div>
+                          <label>Topic</label>
+                          <select
+                            name="temas"
+                            onChange={this.temasChangeHandler}
+                          >
+                          <option hidden disabled selected value=""> Select a topic </option>
+                          {this.state.isLoading ? '' :this.state.uniqueTopics.map((topic, i) => <option key={i} value={topic}>{topic}</option>)}
+                          </select>
+                        </div>
 
+                        <button className="button submitbtn inline mt-s" type="submit">{this.state.isLoading ? 'loading' : 'Create Item'}</button>
+                    </div>
+              </div>
             </form>
+
             </div>
 
           </div>

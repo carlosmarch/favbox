@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 import Signup from '../views/Signup';
 
+
 class Header extends Component {
 
   constructor(){
@@ -91,7 +92,9 @@ class Header extends Component {
           </ul>
 
           <ul id="usermenu" className="nav menu">
-            <li><Link to="/create">Create</Link></li>
+            <li>
+              <Link to="/create">Create</Link>
+            </li>
             <li><Link to="/likes">Likes</Link></li>
             <li><Link to="/profile">Profile</Link></li>
           </ul>

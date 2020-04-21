@@ -563,6 +563,70 @@ label, .field-label {
   color: var(--dark-green);
 }
 
+.create-item-uploader {
+  background: var(--soft-grey-bg);
+}
+
+.create-item-uploader .fileContainer {
+  background: none;
+  box-shadow: none;
+  border-radius: 8px;
+  padding: 24px 0;
+  height: 480px;
+  justify-content: flex-end;
+  border: 2px dashed rgba(3, 54, 61, 0.25);
+  border-radius: 6px;
+}
+
+.create-item-uploader .fileContainer .uploadPictureContainer {
+  width: 100%;
+  margin: 0;
+  padding: 10px;
+  background: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: inherit;
+  box-shadow: none;
+  border: none;
+}
+
+.create-item-uploader .uploadPicturesWrapper {
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.create-item-uploader .fileContainer .deleteImage {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #fff;
+  background: var(--dark-green);
+  border-radius: 50%;
+  text-align: center;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 30px;
+  width: 30px;
+  height: 30px;
+}
+
+.create-item-uploader .fileContainer .chooseFileButton {
+  padding: 6px 23px;
+  background: var(--dark-green);
+  border-radius: 2px;
+  color: white;
+  font-weight: 300;
+  font-size: 14px;
+  margin: 10px 0;
+  transition: all 0.2s ease-in;
+  cursor: pointer;
+  outline: none;
+  border: none;
+}
+
 .header {
   width: 100%;
   position: relative;

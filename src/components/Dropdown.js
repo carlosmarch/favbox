@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+
 class Dropdown extends Component {
   render() {
     //object to array
@@ -21,4 +22,3 @@ class Dropdown extends Component {
 }
 
 export default Dropdown;
-//ReactDOM.render(<Dropdown />, document.getElementById('root'))
