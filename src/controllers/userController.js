@@ -169,6 +169,14 @@ export const getSession = () => {
   return JSON.parse(localStorage.getItem('userSession'));
 }
 
+export const isAuthenticated = () => {
+  if( localStorage.getItem('userSession') === null ){
+    return false
+  }else{
+    return true
+  }
+}
+
 
 
 

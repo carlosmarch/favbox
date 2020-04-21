@@ -7,7 +7,7 @@ import Header from '../components/Header';
 import Message from '../components/Message';
 
 const recommendationController = require('../controllers/recommendationController.js');
-
+const dataController = require('../controllers/dataController.js');
 
 //AIRTABLE HELPERS
 const Airtable = require('airtable');
@@ -15,6 +15,7 @@ const base = new Airtable({
   apiKey: process.env.REACT_APP_AIRTABLE_API_KEY,
 }).base(process.env.REACT_APP_AIRTABLE_BASE_ID);
 const table = base('recommendations');
+
 
 //@TODO
 //REVIEW MESSAGING : SUCCESS && ERROR
@@ -26,7 +27,7 @@ class Create extends Component {
     this.state = {
       isLoading: true,
       contribuidor: [JSON.parse(localStorage.getItem('userSession'))?.id],
-      pictures: []
+      image:[]
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.onDrop = this.onDrop.bind(this);
@@ -66,8 +67,10 @@ class Create extends Component {
   onDrop(pictureFiles, pictureDataURLs) {
     console.log('onDrop', pictureFiles, pictureDataURLs)
      this.setState({
-       pictures: this.state.pictures.concat(pictureFiles)
+       image: this.state.image.concat(pictureFiles)
      });
+
+     dataController.uploadToCloudinary(pictureDataURLs)
    }
 
 
@@ -124,21 +127,10 @@ class Create extends Component {
 
               <form onSubmit={this.handleSubmit} className="signup-form">
                 <div className="grid">
-                    <div className="grid__item width-5/12 width-12/12@m">
-                        <div>
-                          <ImageUploader
-                            className={'create-item-uploader'}
-                            withPreview={true}
-                            withIcon={true}
-                            singleImage={true}
-                            buttonText="Choose image"
-                            onChange={this.onDrop}
-                            imgExtension={[".jpg", ".gif", ".png", ".gif"]}
-                            maxFileSize={5242880}
-                          />
-                        </div>
+                    <div className="grid__item width-3/12 width-12/12@m">
+
                     </div>
-                    <div className="grid__item width-7/12 width-12/12@m">
+                    <div className="grid__item width-6/12 width-12/12@m">
                         <div>
                           <label>Title</label>
                           <input
@@ -170,7 +162,7 @@ class Create extends Component {
                           />
                         </div>
                         <div>
-                          <label>Item Url</label>
+                          <label>Item Link</label>
                           <input
                             name="url"
                             component="input"

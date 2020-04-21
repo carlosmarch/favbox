@@ -527,6 +527,19 @@ a.link:hover {
   width: 100%;
 }
 
+.button-outline {
+  transition: all 0.2s ease 0s;
+  border: 2px solid var(--dark-green);
+  color: var(--dark-green);
+  background: none;
+  border-style: solid;
+}
+
+.button-outline:hover {
+  background-color: var(--dark-green);
+  color: #fff;
+}
+
 .loader-container {
   min-height: 400px;
   padding-top: 80px;
@@ -754,9 +767,17 @@ li#menuitem-temas.hoverstate div#dropdown-temas {
   border-radius: 4px;
 }
 
+ul#usermenu svg {
+  height: 18px;
+}
+
 .form {
   display: inline-block;
   float: right;
+}
+
+.form-wrap {
+  display: flex;
 }
 
 .email-form {
@@ -798,6 +819,21 @@ li#menuitem-temas.hoverstate div#dropdown-temas {
   height: 34px;
   font-size: 14px;
   line-height: 0;
+}
+
+.button-header-login {
+  text-align: center;
+  height: 34px;
+  display: inline-block;
+  padding-left: 16px;
+  padding-right: 16px;
+  opacity: 1;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 30px;
+  min-width: 140px;
+  margin-left: 24px;
+  border-radius: 6px;
 }
 
 .bottombar {
@@ -2676,6 +2712,15 @@ a.topic-card::before {
   border-radius: 50%;
   box-shadow: 0 4px 15px 0 rgba(40, 44, 53, 0.06), 0 2px 2px 0 rgba(40, 44, 53, 0.08);
   z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--soft-yellow-bg);
+}
+
+.profile-user-image-holder svg {
+  width: 38px;
+  height: 38px;
 }
 
 .profile-user-info {

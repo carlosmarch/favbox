@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 
-import Button from './Button';
-
 class Promocard extends Component {
   render() {
 
@@ -18,11 +16,11 @@ class Promocard extends Component {
                   <span className="letter">Y</span>
                   <span className="letter">!</span>
                 </div>
-                <h3>Cuéntanos qué te gusta</h3>
-                <p>Encontraremos recomendaciones para tí y podrás compartir tus pasatiempos preferidos.</p>
+                <h3>Tell us what you like</h3>
+                <p>We will find recommendations for you and you can share your favorite inspiration sources.</p>
               </div>
               <div className="grid__item width-2/12 width-12/12@m">
-                <Button text="Empezar!" />
+                <a className="button" href="/signup">Get started!</a>
               </div>
           </div>
         </div>

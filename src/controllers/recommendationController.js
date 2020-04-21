@@ -25,7 +25,7 @@ export const getRecommendationById = (id) => {
 }
 
 export const hydrateUserLikes = async (user) => {
-  console.log('hydrateUserLikes',user)
+  //console.log('hydrateUserLikes',user)
   let likeIds = user.likes;
   let recommendationsWithDetails = [];
   if (!likeIds) return [];
@@ -37,7 +37,7 @@ export const hydrateUserLikes = async (user) => {
 }
 
 export const hydrateUserPubItems = async (user) => {
-  console.log('hydrateUserPubItems',user)
+  //console.log('hydrateUserPubItems',user)
   let pubitemIds = user.items;
   let pubitemWithDetails = [];
   if (!pubitemIds) return [];
@@ -52,7 +52,7 @@ export const hydrateUserPubItems = async (user) => {
 
 //CREATE ITEM
 const findItem = async (title, url) => {
-  console.log('findItem', title, url)
+  //console.log('findItem', title, url)
   let recordExists = false;
   let options = {};
   if (title && url) {
@@ -80,8 +80,8 @@ const findItem = async (title, url) => {
 
 //ITEM MANAGEMENT
 export const addItem = async (req, next) => {
-  console.log('addItem', req)
-  const { title, description, url, imageUrl, categorias, contribuidor, temas } = req;
+  //console.log('addItem', req)
+  const { title, description, url, imageUrl, categorias, contribuidor, temas, image } = req;
   const itemExists = await findItem(title, url);
 
   if (itemExists) {
@@ -97,7 +97,8 @@ export const addItem = async (req, next) => {
       imageUrl,
       categorias,
       contribuidor,
-      temas
+      temas,
+      image
     },
     function(err, record) {
       if (err) {

@@ -7,6 +7,7 @@ import Footer from '../components/Footer';
 import BlockTitle from '../components/BlockTitle';
 import FavItem from '../components/FavItem';
 import LoadingSpinner from '../components/LoadingSpinner';
+import {ReactComponent as UserIcon} from '../icons/User.svg';
 
 const dataController = require('../controllers/dataController.js');
 const recommendationController = require('../controllers/recommendationController.js');
@@ -19,9 +20,6 @@ const base = new Airtable({
 }).base(process.env.REACT_APP_AIRTABLE_BASE_ID);
 const table = base('contributors');
 
-//@TODO
-//REVIEW DEFAULT VALUES && EMPTY USERS
-//REVIEW WHEN USER JUST SIGNED UP
 
 class Profile extends Component {
 
@@ -62,7 +60,6 @@ class Profile extends Component {
           userData: userData,
           renderItems: userData.items
         });
-        console.log(this.state.userData)
       })
       .catch(err => {
         console.log( Error(err));
@@ -91,7 +88,7 @@ class Profile extends Component {
 
               <div className="profile-user mt-xl">
                 <div className="profile-user-image-holder">
-
+                  <UserIcon />
                 </div>
                 <div className="profile-user-info">
                   <div className="profile-user-name"><h3>{userController.getSession()?.name}</h3></div>

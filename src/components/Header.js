@@ -1,9 +1,13 @@
 import React, { Component } from "react";
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
+import {ReactComponent as UserIcon} from '../icons/User.svg';
+import {ReactComponent as LikeIcon} from '../icons/Heart.svg';
+import {ReactComponent as AppIcon} from '../icons/App.svg';
 
 import Signup from '../views/Signup';
 
+const userController = require('../controllers/userController.js');
 
 class Header extends Component {
 
@@ -90,14 +94,25 @@ class Header extends Component {
               </div>
             </li>
           </ul>
+          { userController.isAuthenticated() ? (
+            <ul id="usermenu" className="nav menu">
+              <li>
+                <AppIcon className="test"/>
+                <Link to="/create">Create</Link>
+              </li>
+              <li>
+                <LikeIcon />
+                <Link to="/likes">Likes</Link>
+              </li>
+              <li>
+                <UserIcon />
+                <Link to="/profile">Profile</Link>
+              </li>
+            </ul>
+          ) : (
+            <a className="button button-outline button-header-login"><Link to="/signup">SignUp</Link></a>
+          )}
 
-          <ul id="usermenu" className="nav menu">
-            <li>
-              <Link to="/create">Create</Link>
-            </li>
-            <li><Link to="/likes">Likes</Link></li>
-            <li><Link to="/profile">Profile</Link></li>
-          </ul>
 
         </div>
       </header>

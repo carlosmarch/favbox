@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { Link } from 'react-router-dom';
+
 import Message from '../components/Message';
 
 const userController = require('../controllers/userController');
@@ -36,8 +38,13 @@ class SignUp extends Component {
   render() {
 
     return (
-      <div className="app_wrapper signup_view">
 
+      <div className="app_wrapper signup_view">
+        <header className="header no@m">
+          <div className="container text-center">
+            <a href="/"><img className="logo" src={process.env.PUBLIC_URL + '/logo.svg'} alt="logo"/></a>
+          </div>
+        </header>
         <div className="global">
           <div className="container container-s">
 
@@ -91,6 +98,7 @@ class SignUp extends Component {
                     onChange={this.passwordChangeHandler}
                     required
                   />
+                <span>Between 8 and 16 characters, one digit, at least one lowercase and at least one uppercase.</span>
                 </div>
 
                 <button className="button submitbtn inline" type="submit">{this.state.isLoading ? 'loading' : 'SignUp'}</button>

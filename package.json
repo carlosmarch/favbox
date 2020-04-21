@@ -12,6 +12,8 @@
     "airtable": "^0.8.1",
     "array-unique": "^0.3.2",
     "bcryptjs": "^2.4.3",
+    "cloudinary": "^1.21.0",
+    "core-util-is": "^1.0.2",
     "express-session": "^1.17.1",
     "nodemailer": "^6.4.6",
     "react": "^16.13.0",
@@ -22,8 +24,7 @@
     "react-native-dotenv": "^0.2.0",
     "react-redux": "^7.2.0",
     "react-scripts": "3.4.0",
-    "use-global-hook": "^0.1.12",
-    "webpack": "^4.42.1"
+    "use-global-hook": "^0.1.12"
   },
   "scripts": {
     "start": "react-scripts start",

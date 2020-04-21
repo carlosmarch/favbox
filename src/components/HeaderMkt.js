@@ -35,13 +35,11 @@ class HeaderMkt extends Component {
 
           <ul id="primarymenu" className="nav menu">
             <li><Link to="/"><img className="logo" src={process.env.PUBLIC_URL + '/logo.svg'} alt="logo"/></Link></li>
-            <li><Link to="/feed">Discover</Link></li>
-            <li><Link to="/about">About</Link></li>
-            <li><Link to="/login">Sign in</Link></li>
+            <li><Link to="/feed">Discover inspiration</Link></li>
           </ul>
 
-          <div className="form no@m">
-            <form className="email-form" onSubmit={this.handleSubmit}>
+          <div className="form form-wrap">
+            <form className="email-form no@m" onSubmit={this.handleSubmit}>
               <div className="email-form__input-wrapper">
                 <input
                   type="email"
@@ -59,6 +57,8 @@ class HeaderMkt extends Component {
                 <span className="email-form__submit__label">Get started!</span>
               </button>
             </form>
+
+            <a className="button button-outline button-header-login"><Link to="/login">Sign in</Link></a>
           </div>
         </div>
       </header>

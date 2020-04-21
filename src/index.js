@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, Switch } from 'react-router-dom'
+import { Router, Route, Switch, Redirect } from 'react-router-dom'
 import history from './history';
 
 import './css/index.css';
@@ -22,15 +22,33 @@ import Create from './views/Create';
 import Forgot from './views/Forgot';
 
 import * as serviceWorker from './serviceWorker';
+const userController = require('./controllers/userController.js');
 
 window.$api = 'https://api.airtable.com/v0/'+process.env.REACT_APP_AIRTABLE_BASE_ID+'/recommendations?api_key='+process.env.REACT_APP_AIRTABLE_API_KEY;
 window.$api_contributors = 'https://api.airtable.com/v0/'+process.env.REACT_APP_AIRTABLE_BASE_ID+'/contributors?api_key='+process.env.REACT_APP_AIRTABLE_API_KEY;
 
+const AuthenticatedRoute = ({ component: Component, ...rest}) => (
+  <Route
+    {...rest}
+    render={props =>
+      userController.isAuthenticated() ? (
+        <Component {...props}/>
+      ) : (
+        <Redirect to={{
+            pathname:'/login',
+            state:{from: props.location}
+          }}
+        />
+      )
+    }
+  />
+)
 
 const routing = (
   <Router history={history}>
 
       <Switch>
+
         <Route exact path="/" component={Home} />
         <Route exact path="/feed" component={App} />
 
@@ -46,11 +64,12 @@ const routing = (
         <Route exact path="/login" component={Login} />
         <Route exact path="/forgot" component={Forgot} />
 
-        <Route exact path="/create" component={Create}/>
-        <Route exact path="/likes" component={Likes}/>
-        <Route exact path="/profile" component={Profile}/>
+        <AuthenticatedRoute path="/create" component={Create}/>
+        <AuthenticatedRoute path="/likes" component={Likes}/>
+        <AuthenticatedRoute path="/profile" component={Profile}/>
 
         <Route component={Notfound} />
+
       </Switch>
 
       <BottomBar/>
