@@ -41,7 +41,10 @@ $breakpoint-m: 48em;
   display: block;
   text-align: center;
 }
-
+.flex-justify{
+  display: flex;
+  justify-content: space-between;
+}
 //Cards
 .card-16{
   box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);

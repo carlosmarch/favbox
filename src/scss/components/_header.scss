@@ -128,10 +128,11 @@ ul#usermenu svg {
 
 .form{
   display: inline-block;
-  float: right;
 }
 .form-wrap{
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .email-form {
   display: flex;

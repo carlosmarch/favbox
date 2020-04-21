@@ -58,7 +58,7 @@ class Header extends Component {
 
     return (
       <header className="header no@m">
-        <div className="container logged-in-header">
+        <div className="container flex-justify">
 
           <ul id="primarymenu" className="nav menu">
 
