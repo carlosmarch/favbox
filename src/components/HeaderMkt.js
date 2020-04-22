@@ -24,10 +24,11 @@ class HeaderMkt extends Component {
   }
   handleSubmit = (event) => {
     event.preventDefault();
-    ReactDOM.render(<Signup email={this.state.email}/>, document.getElementById('root'))
-    //@TODO Implement and refactor history
     history.push({
-      pathname: '/signup'
+      pathname: '/signup',
+      state: {
+        email: this.state.email
+      }
     })
   }
 
@@ -77,8 +78,7 @@ class HeaderMkt extends Component {
                   <span className="email-form__submit__label">Get started!</span>
                 </button>
               </form>
-
-              <a className="button button-outline button-header-login"><Link to="/login">Sign in</Link></a>
+              <Link to="/login" className="button button-outline button-header-login">Sign in</Link>
             </div>
           )}
         </div>

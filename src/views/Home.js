@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from 'react-router-dom';
 
 import HeaderMkt from '../components/HeaderMkt';
 import Footer from '../components/Footer';
@@ -18,7 +19,7 @@ class Home extends Component {
                   <div className="grid__item width-6/12 width-12/12@m">
                     <h1 className="main-title">The community platform for the <span className="scratch">future</span> people.</h1>
                     <p className="hero-text">We make it easy to find inspiration, references, and grow informed online communities that are built to last.</p>
-                    <a className="button" href="/feed">Take a look</a>
+                    <Link to="/feed" className="button">Discover</Link>
                   </div>
                   <div className="grid__item width-6/12 no@m">
                     <picture className="picture-main-image">

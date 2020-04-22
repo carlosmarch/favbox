@@ -54,7 +54,7 @@ export const addUser = async (req, next) => {
       pathname: '/signup',
       state: {
         type: 'error',
-        message: 'Username or Email already exists! Try to login.'
+        message: 'Username or Email already exists!'
       }
     })
     //ReactDOM.render(<Signup type={'info'} message={'Username or Email already exists! Try to login.'}/>, document.getElementById('root'))

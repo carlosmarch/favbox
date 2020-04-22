@@ -57,7 +57,7 @@ class SignUp extends Component {
       <div className="app_wrapper signup_view">
         <header className="header no@m">
           <div className="container text-center">
-            <a href="/"><img className="logo" src={process.env.PUBLIC_URL + '/logo.svg'} alt="logo"/></a>
+            <Link to="/"><img className="logo" src={process.env.PUBLIC_URL + '/logo.svg'} alt="logo"/></Link>
           </div>
         </header>
         <div className="global">
@@ -69,7 +69,7 @@ class SignUp extends Component {
                 <p>Absolutely free.</p>
               </div>
 
-              {this.props.location.state?.message ?
+              {history.location.state && this.props.location.state?.message ?
                 <Message type={this.props.location.state.type} message={this.props.location.state.message}/>
                 : ''}
 
@@ -82,20 +82,22 @@ class SignUp extends Component {
                     type="text"
                     autoComplete="name"
                     onChange={this.nameChangeHandler}
+                    placeholder="Dieter Rams"
                     required
                   />
                 </div>
                 <div>
                   <label>Email</label>
-                  {this.props.email ?
+                  {history.location.state && this.props.location.state?.email ?
                     <input
                     name="email"
                     component="input"
                     type="email"
                     autoComplete="email"
                     onChange={this.emailChangeHandler}
+                    placeholder="dieter@rams.com"
                     required
-                    value={this.props.email} />
+                    value={this.props.location.state.email} />
                   :
                     <input
                     name="email"
@@ -103,6 +105,7 @@ class SignUp extends Component {
                     type="email"
                     autoComplete="email"
                     onChange={this.emailChangeHandler}
+                    placeholder="dieter@rams.com"
                     required />
                   }
                 </div>
@@ -113,16 +116,16 @@ class SignUp extends Component {
                     component="input"
                     type="password"
                     autoComplete="current-password"
-                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                    pattern=".{8,}"
                     onChange={this.passwordChangeHandler}
+                    placeholder="At least 8 characters"
                     required
                   />
-                <span>Between 8 and 16 characters, one digit, at least one lowercase and at least one uppercase.</span>
                 </div>
 
                 <button className="button submitbtn inline" type="submit">{this.state.isLoading ? 'loading' : 'SignUp'}</button>
               </form>
-              <span className="centered">Already have an account? <a className="link" href="/login">Login</a></span>
+              <span className="centered">Already have an account? <Link to="/login" className="link">Login</Link></span>
             </div>
 
           </div>

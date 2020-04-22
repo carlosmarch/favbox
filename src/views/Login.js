@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from 'react-router-dom';
 import history from '../history';
 import Message from '../components/Message';
 
@@ -60,6 +61,7 @@ class Login extends Component {
                     <div className="right-pane-content">
                               <div className="form-container">
                                 <div className="right-pane-text mb-s">
+                                  <Link to="/"><img className="logo" src={process.env.PUBLIC_URL + '/logo.svg'} alt="logo"/></Link>
                                   <h5 className="big-title">Welcome back.</h5>
                                   <p>Enter your details below.</p>
                                 </div>
@@ -77,6 +79,7 @@ class Login extends Component {
                                       type="email"
                                       autoComplete="email"
                                       onChange={this.emailChangeHandler}
+                                      placeholder="dieter@rams.com"
                                       required
                                     />
                                   </div>
@@ -88,13 +91,14 @@ class Login extends Component {
                                       type="password"
                                       autoComplete="current-password"
                                       onChange={this.passwordChangeHandler}
+                                      placeholder="Introduce your password"
                                       required
                                     />
                                   </div>
 
                                   <button className="button submitbtn inline" type="submit">{this.state.isLoading ? 'loading' : 'Login'}</button>
                                 </form>
-                                <span>Don’t have an account? <a className="link" href="/signup">Get started</a></span>
+                                <span>Don’t have an account? <Link to="/signup" className="link">Get started!</Link></span>
                               </div>
                     </div>
                   </div>

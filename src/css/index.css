@@ -581,6 +581,10 @@ label, .field-label {
   color: var(--dark-green);
 }
 
+::placeholder {
+  color: #ccc;
+}
+
 .create-item-uploader {
   background: var(--soft-grey-bg);
 }
