@@ -85,7 +85,7 @@ const findItem = async (title, url) => {
 //ITEM MANAGEMENT
 export const addItem = async (req) => {
   //console.log('addItem', req)
-  const { title, description, url, imageUrl, categorias, contribuidor, temas } = req;
+  const { title, description, url, imageUrl, categorias, temas, contribuidor } = req;
   const itemExists = await findItem(title, url);
 
   if (itemExists) {
@@ -104,8 +104,8 @@ export const addItem = async (req) => {
       url,
       imageUrl,
       categorias,
-      contribuidor,
-      temas
+      temas,
+      contribuidor
     },
     function(err, record) {
       if (err) {
@@ -120,10 +120,13 @@ export const addItem = async (req) => {
       req.id = record.getId();
       //Success creating item!
       history.push({
+        pathname: '/create',
+        state: { type: 'success',  message: 'Item created succesfully!' }
+      })
+      history.push({
         pathname: '/profile',
         state: { type: 'success',  message: 'Item created succesfully!' }
       })
-
     }
   );
 };
@@ -147,12 +150,19 @@ export const uploadToCloudinary = (file, next) => {
       var url = response.secure_url;
       file.imageUrl = url;
       next(file)//next function add item
-    }else{
+    }
+    if (xhr.status == 400) {
       history.push({
         pathname: '/create',
         state: { type: 'error', message: 'Something happened when uploading. Please try again.'}
       })
     }
+    //@TODO Look for errors
+    // history.push({
+    //   pathname: '/create',
+    //   state: { type: 'error', message: 'Something happened when uploading. Please try again.'}
+    // })
+
   }.bind(this);
 }
 
