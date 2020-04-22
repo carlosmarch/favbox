@@ -126,6 +126,13 @@ export const authenticate = (req) => {
   data
     .getAirtableRecords(table, options)
     .then(users => {
+      if( users && !users.length){
+        history.push({
+          pathname: '/login',
+          state: { type: 'info', message: 'The email is not registered' }
+        })
+        return
+      }
       users.forEach(function(user) {
         bcrypt.compare(password, user.get('password'), function(err, response) {
           if (response) {
@@ -137,10 +144,7 @@ export const authenticate = (req) => {
             //console.log('authenticate','Passwords yes match')
             history.push({
               pathname: '/profile',
-              state: {
-                type: 'success',
-                message: 'Logged in!'
-              }
+              state: { type: 'success', message: 'Logged in!' }
             })
 
           } else {
@@ -148,10 +152,7 @@ export const authenticate = (req) => {
             //console.log('authenticate','Passwords dont match')
             history.push({
               pathname: '/login',
-              state: {
-                type: 'error',
-                message: 'Passwords dont match'
-              }
+              state: { type: 'error', message: 'That combination is not correct...' }
             })
 
           }

@@ -39,6 +39,7 @@ class Login extends Component {
         delete state.type
         history.replace({ ...history.location, state });
     }
+    this.setState({isLoading: false});
   }
 
   componentWillReceiveProps(nextProps) {
@@ -92,6 +93,7 @@ class Login extends Component {
                                       autoComplete="current-password"
                                       onChange={this.passwordChangeHandler}
                                       placeholder="Introduce your password"
+                                      pattern=".{8,}"
                                       required
                                     />
                                   </div>

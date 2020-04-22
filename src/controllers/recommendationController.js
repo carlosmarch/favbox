@@ -92,7 +92,7 @@ export const addItem = async (req) => {
     console.log('itemExists')
     history.push({
       pathname: '/create',
-      state: { type: 'error', message: 'It seems that this already exists. Please try again with another one.' }
+      state: { type: 'error', message: 'It seems that it already exists. Please try again with another one.' }
     })
     return;
   }

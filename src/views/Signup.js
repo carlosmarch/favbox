@@ -44,6 +44,7 @@ class SignUp extends Component {
         delete state.type
         history.replace({ ...history.location, state });
     }
+    this.setState({isLoading: false});
   }
 
   componentWillReceiveProps(nextProps) {
