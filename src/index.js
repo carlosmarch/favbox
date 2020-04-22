@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { Router, Route, Switch, Redirect } from 'react-router-dom'
 import history from './history';
 
+
 import './css/index.css';
 
 import BottomBar from './components/BottomBar';
@@ -43,6 +44,7 @@ const AuthenticatedRoute = ({ component: Component, ...rest}) => (
     }
   />
 )
+
 
 const routing = (
   <Router history={history}>

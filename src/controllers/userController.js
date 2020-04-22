@@ -69,7 +69,7 @@ export const addUser = async (req, next) => {
       setSession(record.fields)
 
       req.id = record.getId();
-      next(req);
+      next(req);//Store Pass method called from Signup.js
     }
   );
 };
@@ -119,14 +119,19 @@ export const authenticate = (req) => {
         bcrypt.compare(password, user.get('password'), function(err, response) {
           if (response) {
             // Passwords match, response = true
-            //console.log('STORE',record.fields)
+            //ADD ID TO USER SESSION INFO
             user.fields['id'] = user.id
             setSession(user.fields)
             //res.redirect("/profile");
-            history.push({ pathname: '/profile' })
+            console.log('authenticate','Passwords yes match')
+            //ReactDOM.render(<Login type={'success'} message={'Logged In'}/>, document.getElementById('root'))
+            history.push({
+              pathname: '/profile'
+            })
 
           } else {
             // Passwords don't match
+            console.log('authenticate','Passwords dont match')
             ReactDOM.render(<Login type={'error'} message={'Passwords dont match'}/>, document.getElementById('root'))
           }
         });
@@ -161,6 +166,7 @@ export const getUserByEmail = (req, next) => {
 //
 export const setSession = (userRecord) => {
   //Arrives user.fields
+  console.log('setSession')
   delete userRecord.password //Don´t store pass
   localStorage.setItem('userSession', JSON.stringify(userRecord));
 }
