@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
 import {ReactComponent as UserIcon} from '../icons/User.svg';
 import {ReactComponent as LikeIcon} from '../icons/Heart.svg';
-import {ReactComponent as AppIcon} from '../icons/App.svg';
+import {ReactComponent as AddIcon} from '../icons/Plus.svg';
 
 import Signup from '../views/Signup';
 
@@ -97,7 +97,7 @@ class Header extends Component {
           { userController.isAuthenticated() ? (
             <ul id="usermenu" className="nav menu">
               <li>
-                <Link to="/create"><AppIcon className="test"/> Create</Link>
+                <Link to="/create" className="link"><AddIcon /> Create</Link>
               </li>
               <li>
                 <Link to="/likes"><LikeIcon /> Likes</Link>

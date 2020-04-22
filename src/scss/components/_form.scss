@@ -10,7 +10,9 @@ select{
     padding: 20px 15px;
     width: 100%;
     margin-bottom: 16px;
-    text-transform: capitalize;
+    &::first-letter{
+      text-transform: uppercase;
+    }
 }
 label, .field-label {
   font-size: 13px;

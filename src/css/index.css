@@ -494,6 +494,14 @@ a.link:hover {
   transition: all 0.2s ease 0s;
 }
 
+a.link:hover svg, a.link:hover path {
+  fill: #000099;
+}
+
+a.link svg, a.link path {
+  fill: var(--interaction);
+}
+
 .button {
   text-align: center;
   height: 48px;
@@ -574,7 +582,11 @@ select {
   padding: 20px 15px;
   width: 100%;
   margin-bottom: 16px;
-  text-transform: capitalize;
+}
+
+input::first-letter,
+select::first-letter {
+  text-transform: uppercase;
 }
 
 label, .field-label {

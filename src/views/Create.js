@@ -8,6 +8,7 @@ import Message from '../components/Message';
 const recommendationController = require('../controllers/recommendationController.js');
 const dataController = require('../controllers/dataController.js');
 
+
 //@TODO
 //REVIEW MESSAGING : SUCCESS && ERROR
 
@@ -42,13 +43,10 @@ class Create extends Component {
     this.setState({temas: [event.target.value]});
   }
 
-
-
   handleSubmit(event) {
     event.preventDefault();
-    //ADD USER WITH FORM DATA
-    recommendationController.addItem(this.state)
     this.setState({isLoading: true});
+    recommendationController.uploadToCloudinary(this.state, recommendationController.addItem) //Upload to cloudinary, the to airtable
   }
 
 
@@ -67,6 +65,9 @@ class Create extends Component {
 
     })
   }
+
+
+
 
   componentDidMount() {
     const uniqueCats = window.$categories
@@ -92,7 +93,8 @@ class Create extends Component {
 
     //Add required to image uploader input
     var inputUpload = document.getElementsByName("featured_image")[0]
-    inputUpload.required = true
+    inputUpload.required = true;
+
   }
 
   componentWillReceiveProps(nextProps) {
@@ -100,36 +102,14 @@ class Create extends Component {
   }
 
 
-
-
   onDrop(pictureFiles, pictureDataURLs) {
      //console.log('onDrop', pictureFiles)
-     this.uploadToCloudinary(pictureFiles[0])
-     //@TODO UPLOAD ONLY ON SUBMIT
-
+     //this.uploadToCloudinary(pictureFiles[0])
+     this.setState({imageUrl: pictureFiles[0]});
    }
 
 
-  uploadToCloudinary = (file) => {
-    var url = `https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}/upload`;
-    var xhr = new XMLHttpRequest();
-    var fd = new FormData();
-    xhr.open('POST', url, true);
-    xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-    fd.append('upload_preset', 'cloudinary_airtable_preset');
-    fd.append('tags', 'browser_upload'); // Optional - add tag for image admin in Cloudinary
-    fd.append('file', file);
-    xhr.send(fd);
-    xhr.onreadystatechange = function(e) {
-      if (xhr.readyState == 4 && xhr.status == 200) {
-        // File uploaded successfully
-        var response = JSON.parse(xhr.responseText);
-        var url = response.secure_url;
-        console.log('oooo 200 File uploaded successfully', url)
-        this.setState({imageUrl: url});
-      }
-    }.bind(this);
-  }
+
 
   render() {
 
@@ -168,7 +148,17 @@ class Create extends Component {
                          {history.location.state && this.props.location.state?.message ?
                            <Message type={this.props.location.state.type} message={this.props.location.state.message}/>
                            : ''}
-
+                           <div>
+                             <label>Item Link (External Reference)</label>
+                             <input
+                               name="url"
+                               component="input"
+                               type="text"
+                               onChange={this.urlChangeHandler}
+                               placeholder="External url for the item source"
+                               required
+                             />
+                           </div>
                           <div>
                             <label>Title</label>
                             <input
@@ -188,17 +178,6 @@ class Create extends Component {
                               type="text"
                               onChange={this.descriptionChangeHandler}
                               placeholder="Short description for the item"
-                              required
-                            />
-                          </div>
-                          <div>
-                            <label>Item Link</label>
-                            <input
-                              name="url"
-                              component="input"
-                              type="text"
-                              onChange={this.urlChangeHandler}
-                              placeholder="External url for the item source"
                               required
                             />
                           </div>

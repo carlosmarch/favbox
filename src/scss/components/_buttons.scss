@@ -25,6 +25,12 @@ a.link{
   &:hover {
     color: hsla(240, 100%, 30%, 1);
     transition: all 0.2s ease 0s;
+    svg, path {
+      fill: hsla(240, 100%, 30%, 1);
+    }
+  }
+  svg, path {
+    fill: var(--interaction);
   }
 }
 .button {
