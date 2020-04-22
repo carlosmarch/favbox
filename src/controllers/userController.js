@@ -6,7 +6,7 @@ import Signup from '../views/Signup';
 import Login from '../views/Login';
 
 const bcrypt = require('bcryptjs');
-const data = require('./dataController.js');
+const data = require('./dataController');
 
 //AIRTABLE HELPERS
 const Airtable = require('airtable');
@@ -50,7 +50,14 @@ export const addUser = async (req, next) => {
   const userExists = await findUser(email, name);
 
   if (userExists) {
-    ReactDOM.render(<Signup type={'info'} message={'Username or Email already exists! Try to login.'}/>, document.getElementById('root'))
+    history.push({
+      pathname: '/signup',
+      state: {
+        type: 'error',
+        message: 'Username or Email already exists! Try to login.'
+      }
+    })
+    //ReactDOM.render(<Signup type={'info'} message={'Username or Email already exists! Try to login.'}/>, document.getElementById('root'))
     return;
   }
 
@@ -98,7 +105,11 @@ export const storePassword = (req) => {
         // });
         //ReactDOM.render(<Signup type={'success'} message={'Your account has been created!'}/>, document.getElementById('root'))
         history.push({
-          pathname: '/profile'
+          pathname: '/profile',
+          state: {
+            type: 'success',
+            message: 'Your account has been created!!'
+          }
         })
 
       }
@@ -122,17 +133,27 @@ export const authenticate = (req) => {
             //ADD ID TO USER SESSION INFO
             user.fields['id'] = user.id
             setSession(user.fields)
-            //res.redirect("/profile");
-            console.log('authenticate','Passwords yes match')
-            //ReactDOM.render(<Login type={'success'} message={'Logged In'}/>, document.getElementById('root'))
+
+            //console.log('authenticate','Passwords yes match')
             history.push({
-              pathname: '/profile'
+              pathname: '/profile',
+              state: {
+                type: 'success',
+                message: 'Logged in!'
+              }
             })
 
           } else {
             // Passwords don't match
-            console.log('authenticate','Passwords dont match')
-            ReactDOM.render(<Login type={'error'} message={'Passwords dont match'}/>, document.getElementById('root'))
+            //console.log('authenticate','Passwords dont match')
+            history.push({
+              pathname: '/login',
+              state: {
+                type: 'error',
+                message: 'Passwords dont match'
+              }
+            })
+
           }
         });
       });
@@ -166,7 +187,6 @@ export const getUserByEmail = (req, next) => {
 //
 export const setSession = (userRecord) => {
   //Arrives user.fields
-  console.log('setSession')
   delete userRecord.password //Don´t store pass
   localStorage.setItem('userSession', JSON.stringify(userRecord));
 }

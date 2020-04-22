@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
-
+import history from '../history';
 import Message from '../components/Message';
 
 const userController = require('../controllers/userController');
@@ -10,21 +10,24 @@ class SignUp extends Component {
   constructor() {
     super();
     this.state = {
-      isLoading: false,
+      isLoading: false
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   nameChangeHandler = (event) => {
     this.setState({name: event.target.value});
+    this.setState({isLoading: false});
   }
 
   emailChangeHandler = (event) => {
     this.setState({email: event.target.value});
+    this.setState({isLoading: false});
   }
 
   passwordChangeHandler = (event) => {
     this.setState({password: event.target.value});
+    this.setState({isLoading: false});
   }
 
   handleSubmit(event) {
@@ -33,7 +36,19 @@ class SignUp extends Component {
     userController.addUser(this.state, userController.storePassword)
     this.setState({isLoading: true});
   }
+  componentDidMount(){
+    //Clear history state messages
+    if (history.location.state && history.location.state.message) {
+        let state = { ...history.location.state };
+        delete state.message
+        delete state.type
+        history.replace({ ...history.location, state });
+    }
+  }
 
+  componentWillReceiveProps(nextProps) {
+    this.setState({isLoading: false});
+  }
 
   render() {
 
@@ -53,7 +68,11 @@ class SignUp extends Component {
                 <h3 className="centered">Get started</h3>
                 <p>Absolutely free.</p>
               </div>
-              {this.props.message ? <Message type={this.props.type} message={this.props.message}/> : ''}
+
+              {this.props.location.state?.message ?
+                <Message type={this.props.location.state.type} message={this.props.location.state.message}/>
+                : ''}
+
               <form onSubmit={this.handleSubmit} className="signup-form">
                 <div>
                   <label>Name</label>

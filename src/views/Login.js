@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import history from '../history';
 import Message from '../components/Message';
 
 const userController = require('../controllers/userController');
@@ -10,15 +10,17 @@ class Login extends Component {
   constructor() {
     super();
     this.state = {
-      isLoading: false
+      isLoading: this.props?.location.state?.loading ? this.props.location.state.loading : false
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   emailChangeHandler = (event) => {
     this.setState({email: event.target.value});
+    this.setState({isLoading: false});
   }
   passwordChangeHandler = (event) => {
     this.setState({password: event.target.value});
+    this.setState({isLoading: false});
   }
 
   handleSubmit(event) {
@@ -28,9 +30,21 @@ class Login extends Component {
     this.setState({isLoading: true});
   }
 
+  componentDidMount(){
+    //Clear history state messages
+    if (history.location.state && history.location.state.message) {
+        let state = { ...history.location.state };
+        delete state.message
+        delete state.type
+        history.replace({ ...history.location, state });
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({isLoading: false});
+  }
 
   render() {
-
     return (
       <div className="app_wrapper login_view">
           <div className="grid">
@@ -49,7 +63,11 @@ class Login extends Component {
                                   <h5 className="big-title">Welcome back.</h5>
                                   <p>Enter your details below.</p>
                                 </div>
-                                {this.props.message ? <Message type={this.props.type} message={this.props.message}/> : ''}
+
+                                {this.props.location.state?.message ?
+                                  <Message type={this.props.location.state.type} message={this.props.location.state.message}/>
+                                  : ''}
+
                                 <form onSubmit={this.handleSubmit} className="login-form">
                                   <div>
                                     <label>Email</label>
