@@ -1,3 +1,7 @@
+import React from 'react';
+import history from '../history';
+import ReactDOM from 'react-dom';
+
 const data = require('./dataController.js');
 
 //AIRTABLE HELPERS
@@ -81,11 +85,18 @@ const findItem = async (title, url) => {
 //ITEM MANAGEMENT
 export const addItem = async (req, next) => {
   //console.log('addItem', req)
-  const { title, description, url, imageUrl, categorias, contribuidor, temas, image } = req;
+  const { title, description, url, imageUrl, categorias, contribuidor, temas } = req;
   const itemExists = await findItem(title, url);
 
   if (itemExists) {
     console.log('itemExists')
+    history.push({
+      pathname: '/create',
+      state: {
+        type: 'error',
+        message: 'It seems that this already exists. Please try again with another one.'
+      }
+    })
     return;
   }
 
@@ -97,17 +108,31 @@ export const addItem = async (req, next) => {
       imageUrl,
       categorias,
       contribuidor,
-      temas,
-      image
+      temas
     },
     function(err, record) {
       if (err) {
         console.error(err);
+        history.push({
+          pathname: '/create',
+          state: {
+            type: 'error',
+            message: 'Something happened when uploading. Please try again.'
+          }
+        })
         return;
       }
       //console.log(record)
       req.id = record.getId();
-      //next(req);
+      //Success creating item!
+      history.push({
+        pathname: '/profile',
+        state: {
+          type: 'success',
+          message: 'Item created succesfully!'
+        }
+      })
+
     }
   );
 };

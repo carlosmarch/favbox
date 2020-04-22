@@ -121,8 +121,10 @@ li#menuitem-temas.hoverstate{
 ul#usermenu svg {
     height: 18px;
 }
-
-
+ul#usermenu li a {
+    vertical-align: top;
+    display: inline-flex;
+}
 
 
 

@@ -574,6 +574,7 @@ select {
   padding: 20px 15px;
   width: 100%;
   margin-bottom: 16px;
+  text-transform: capitalize;
 }
 
 label, .field-label {
@@ -581,7 +582,8 @@ label, .field-label {
   color: var(--dark-green);
 }
 
-::placeholder {
+::placeholder,
+:disabled {
   color: #ccc;
 }
 
@@ -778,6 +780,11 @@ li#menuitem-temas.hoverstate div#dropdown-temas {
 
 ul#usermenu svg {
   height: 18px;
+}
+
+ul#usermenu li a {
+  vertical-align: top;
+  display: inline-flex;
 }
 
 .form {

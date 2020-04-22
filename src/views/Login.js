@@ -11,7 +11,7 @@ class Login extends Component {
   constructor() {
     super();
     this.state = {
-      isLoading: this.props?.location.state?.loading ? this.props.location.state.loading : false
+      isLoading: false
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }

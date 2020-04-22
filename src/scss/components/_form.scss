@@ -10,13 +10,15 @@ select{
     padding: 20px 15px;
     width: 100%;
     margin-bottom: 16px;
+    text-transform: capitalize;
 }
 label, .field-label {
   font-size: 13px;
   color: var(--dark-green);
 }
 
-::placeholder{
+::placeholder,
+:disabled{
   color:#ccc;
 }
 

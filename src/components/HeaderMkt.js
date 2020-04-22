@@ -46,16 +46,13 @@ class HeaderMkt extends Component {
           { userController.isAuthenticated() ? (
             <ul id="usermenu" className="nav menu">
               <li>
-                <AppIcon className="test"/>
-                <Link to="/create">Create</Link>
+                <Link to="/create"><AppIcon /> Create</Link>
               </li>
               <li>
-                <LikeIcon />
-                <Link to="/likes">Likes</Link>
+                <Link to="/likes"><LikeIcon /> Likes</Link>
               </li>
               <li>
-                <UserIcon />
-                <Link to="/profile">Profile</Link>
+                <Link to="/profile"><UserIcon /> Profile</Link>
               </li>
             </ul>
           ) : (
