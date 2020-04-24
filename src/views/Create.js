@@ -133,7 +133,7 @@ class Create extends Component {
                                name="featured_image"
                                className={'create-item-uploader'}
                                withPreview={true}
-                               withIcon={true}
+                               withIcon={false}
                                singleImage={true}
                                buttonText="Choose image"
                                onChange={this.onDrop}

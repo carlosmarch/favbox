@@ -66,7 +66,10 @@ function truncateText(str, length, ending) {
     for (; key = keys[i]; i++) {
         archive.push( key );
     }
-    return archive;
+    //REMOVE USER SESSION
+    const filtered = archive.filter(item => item !== "userSession")
+    const cleanArchive = filtered.filter(function (el) { return el != null; });
+    return cleanArchive;
   }
 
 
@@ -149,5 +152,6 @@ function truncateText(str, length, ending) {
      getTopicItems,
      getCollectionItems,
      getBlockCategoryItems,
-     getFavItems
+     getFavItems,
+     getStorageFavs
   };

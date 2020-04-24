@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import { Link } from 'react-router-dom';
 import * as Helpers from '../Helpers';
 
 import Header from '../components/Header';
@@ -8,6 +8,7 @@ import BlockTitle from '../components/BlockTitle';
 import FavItem from '../components/FavItem';
 import LoadingSpinner from '../components/LoadingSpinner';
 import {ReactComponent as UserIcon} from '../icons/User.svg';
+import {ReactComponent as AddIcon} from '../icons/Plus.svg';
 
 const dataController = require('../controllers/dataController.js');
 const recommendationController = require('../controllers/recommendationController.js');
@@ -34,9 +35,7 @@ class Profile extends Component {
   getUserPubItems(){
 
     const email = userController.getSession()?.email;
-    const options = {
-      filterByFormula: `OR(email = '${email}', name = '${email}')`
-    }
+
 
     if (!email) {
       //WHEN NO SESSION && NO EMAIL
@@ -47,7 +46,7 @@ class Profile extends Component {
      return
     }
 
-
+    const options = { filterByFormula: `OR(email = '${email}', name = '${email}')` }
     dataController.getAirtableRecords(table, options)
       .then( async (users) => {
         //USERS SHOULD BE ONLY ONE THAT MATCH WITH EMAIL
@@ -60,6 +59,8 @@ class Profile extends Component {
           userData: userData,
           renderItems: userData.items
         });
+        //SOTORE IN LOCAL TO AVOID EXTRA CALLS IN OTHER VIEWS?? not used
+        //userController.setStorage('pubItems', userData.items)
       })
       .catch(err => {
         console.log( Error(err));
@@ -76,7 +77,7 @@ class Profile extends Component {
 
 
   render() {
-
+    console.log('getStorageFavs',Helpers.getStorageFavs().length)
     return (
     <div className="app_wrapper profile_view">
 
@@ -94,7 +95,7 @@ class Profile extends Component {
                   <div className="profile-user-name"><h3>{userController.getSession()?.name}</h3></div>
                   <div className="profile-user-description"><p>{userController.getSession()?.description}</p></div>
                   <div className="profile-user-data">
-                    <span>{ userController.getSession()?.hasOwnProperty('likes') ? userController.getSession().likes.length : '0'} Likes</span>
+                    <span>{ Helpers.getStorageFavs() ? Helpers.getStorageFavs()?.length : '0'} Likes</span>
                     <span>{ userController.getSession()?.hasOwnProperty('items') ? userController.getSession().items.length : '0'} Published</span>
                     <span>{ userController.getSession()?.hasOwnProperty('following') ? userController.getSession().following.length : '0'} Following</span>
                     <span>{ userController.getSession()?.hasOwnProperty('followers') ? userController.getSession().followers.length : '0'} Followers</span>
@@ -107,7 +108,10 @@ class Profile extends Component {
                   ? <LoadingSpinner />
                   : this.state.renderItems && this.state.renderItems.length > 0
                       ? this.state.renderItems.map( (records) => <FavItem {...records} key={records.id} itemId={records.id} /> )
-                      : 'No items'
+                      : <div className="empty-pubrecords">
+                          <Link to="/create" className="link inline-block mb-s"><AddIcon /> Create</Link>
+                          <div>Wlcome! Now you can share your referents and they will appear here.</div>
+                        </div>
               }
               </div>
             </div>

@@ -1,8 +1,9 @@
 import React from 'react';
 import history from '../history';
 import ReactDOM from 'react-dom';
-
+import * as Helpers from '../Helpers';
 const data = require('./dataController.js');
+const userController = require('./userController.js');
 
 //AIRTABLE HELPERS
 const Airtable = require('airtable');
@@ -12,6 +13,8 @@ const base = new Airtable({
 const table = base('recommendations');
 
 
+
+//METHODS
 export const getRecommendationById = (id) => {
   return new Promise((resolve, reject) => {
     const processRecord = (err, record) => {
@@ -69,10 +72,10 @@ const findItem = async (title, url) => {
     };
   }
 
-  const users = await data.getAirtableRecords(table, options);
+  const items = await data.getAirtableRecords(table, options);
 
-  users.filter(user => {
-    if (user.get('title') === title || user.get('url') === url) {
+  items.filter(item => {
+    if (item.get('title') === title || item.get('url') === url) {
       return (recordExists = true);
     }
     return (recordExists = false);
@@ -167,8 +170,41 @@ export const uploadToCloudinary = (file, next) => {
 }
 
 
+//MIXES LOCAL STORAGE ITEMS WITH AIRTABLE LIKES
+//THEN UPDATES TABLE AND RETURNS LIKES WITH DETAILS
+//@PARAMS Array with like id's
+export const getRealFavItems = async (userlikes) => {
+  //Get storage favs
+  let storageFavs = Helpers.getStorageFavs()
+  if (!userlikes) userlikes = [];
+  //Get matching
+  let matchingFavs = userlikes.filter(recommendation => storageFavs.some(favId => recommendation.id === favId))
+  let matchingIds = [];
+  matchingFavs.map((item) => matchingIds.push(item.id) )
+  //storage + only matching
+  let union = [...storageFavs, ...matchingIds];
+  let withoutDuplicates = Array.from(new Set(union));
+  //console.log('RealFavItems', userlikes, withoutDuplicates )
+  let withoutDuplicatesWithDetails = [];
+  for( const id of withoutDuplicates) {
+    withoutDuplicatesWithDetails.push(await getRecommendationById(id))
+  }
+  userController.updateUserLikes(withoutDuplicates)
+  return withoutDuplicatesWithDetails
+}
 
-//remove
+
+
+
+
+
+
+
+
+
+
+//GET METADATA
+//NOT USED
 const getMeta = () => {
   fetch('https://cors-anywhere.herokuapp.com/' + 'https://ggili.com/aprendiendo-de-las-vegas-libro-2856.html')
     .then(res => {

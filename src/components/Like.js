@@ -1,19 +1,23 @@
 import React, { Component } from "react";
+import {ReactComponent as LikeIcon} from '../icons/Heart.svg';
+import {ReactComponent as LikeIconActive} from '../icons/HeartFull.svg';
 
 class Like extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      isLike: localStorage.getItem(this.props.itemId) !== null //Default False -> if NOT NULL ||  if Exists -> True
+      isLike: localStorage.getItem(this.props.itemId) !== null  //Default False -> if NOT NULL ||  if Exists -> True
     };
+
   }
 
-  handleLike = (e) => {
 
+  handleLike = (e) => {
+    console.log('handleLike',this.props.itemId)
     e.preventDefault();
     const item = e.target.value;
-
+    console.log('item',item)
     if (localStorage.getItem(item) === null) {
       //Set a like
       localStorage.setItem(item, true);
@@ -28,10 +32,19 @@ class Like extends Component {
   }
 
   render() {
+    let likeicon;
+    //likeicon.removeEventListener('click')
+    if (this.state.isLike) {
+      likeicon = <LikeIconActive />;
+    } else {
+      likeicon = <LikeIcon />;
+    }
 
     return (
       <div className="like">
-        <button className={`likebutton is-like-${this.state.isLike}`} value={this.props.itemId} onClick={this.handleLike}>❤</button>
+        <button className={`likebutton is-like-${this.state.isLike}`} value={this.props.itemId} onClick={this.handleLike}>
+            {likeicon}
+        </button>
       </div>
     );
   }

@@ -37,3 +37,32 @@
     margin-left: 8px;
   }
 }
+
+
+.profile-data-list{padding: 56px}
+.profile-data-list li{
+  display: flex;
+}
+.profile-data-list-icon{
+  width: 40px;
+  height: 40px;
+  background: var(--interaction);
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+.profile-data-list-info{
+  margin-left: 24px;
+}
+
+@media (max-width: $breakpoint-m) {
+  .profile-user {
+    display: block;
+    text-align: center;
+  }
+  .profile-user-image-holder{
+      margin: 0 auto;
+  }
+}

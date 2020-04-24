@@ -1,0 +1,68 @@
+.favitem {
+  border-top: 1px solid rgba(0,0,0,.25);
+  display: flex;
+  grid-column: span 12;
+  padding: 24px 0;
+  width: 100%;
+  text-decoration: none;
+  font-size: 20px;
+  line-height: 28px;
+  min-height: 140px;
+  align-items: center;
+  position: relative;
+  a{
+    color: var(--interaction);
+  }
+}
+
+.favitem-image-holder{
+  width: 160px;
+}
+.favitem-image-holder-img{
+  width: 100%;
+}
+
+.favitem-description{
+  width: 80%;
+  margin-left: 24px;
+}
+.favitem-link{
+  flex: 1 1;
+  width: auto;
+  text-align: right;
+  position: relative;
+}
+
+.favitem-title .badge {
+  margin-bottom: 12px;
+  display: inline-block;
+  padding: 0 8px;
+}
+
+.favitem .like {
+    top: 24px;
+    right: 0px;
+}
+
+.favitem {
+  @media (max-width: $breakpoint-m) {
+    display: block;
+  }
+}
+.favitem-title{
+  @media (max-width: $breakpoint-m) {
+    width: 100%;
+  }
+}
+.favitem-description{
+  @media (max-width: $breakpoint-m) {
+    width: 100%;
+    margin-left: 0%;
+  }
+}
+.favitem-link{
+  @media (max-width: $breakpoint-m) {
+    margin-top: 16px;
+    text-align: left;
+  }
+}

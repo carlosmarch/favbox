@@ -7,6 +7,7 @@ import Login from '../views/Login';
 
 const bcrypt = require('bcryptjs');
 const data = require('./dataController');
+const userController = require('./userController.js');
 
 //AIRTABLE HELPERS
 const Airtable = require('airtable');
@@ -45,10 +46,8 @@ const findUser = async (email, name) => {
 
 //USER MANAGEMENT
 export const addUser = async (req, next) => {
-
   const { email, name } = req;
   const userExists = await findUser(email, name);
-
   if (userExists) {
     history.push({
       pathname: '/signup',
@@ -57,10 +56,8 @@ export const addUser = async (req, next) => {
         message: 'Username or Email already exists!'
       }
     })
-    //ReactDOM.render(<Signup type={'info'} message={'Username or Email already exists! Try to login.'}/>, document.getElementById('root'))
     return;
   }
-
   table.create(
     {
       email,
@@ -83,7 +80,6 @@ export const addUser = async (req, next) => {
 
 export const storePassword = (req) => {
   const { password, id } = req;
-
   bcrypt.hash(password, 10, function(err, hash) {
     if (err) {
       console.error(err);
@@ -100,10 +96,6 @@ export const storePassword = (req) => {
           console.error(err);
           return;
         }
-        // res.render('login', {
-        //   message: 'Your account has been created!',
-        // });
-        //ReactDOM.render(<Signup type={'success'} message={'Your account has been created!'}/>, document.getElementById('root'))
         history.push({
           pathname: '/profile',
           state: {
@@ -126,13 +118,6 @@ export const authenticate = (req) => {
   data
     .getAirtableRecords(table, options)
     .then(users => {
-      if( users && !users.length){
-        history.push({
-          pathname: '/login',
-          state: { type: 'info', message: 'The email is not registered' }
-        })
-        return
-      }
       users.forEach(function(user) {
         bcrypt.compare(password, user.get('password'), function(err, response) {
           if (response) {
@@ -144,7 +129,10 @@ export const authenticate = (req) => {
             //console.log('authenticate','Passwords yes match')
             history.push({
               pathname: '/profile',
-              state: { type: 'success', message: 'Logged in!' }
+              state: {
+                type: 'success',
+                message: 'Logged in!'
+              }
             })
 
           } else {
@@ -152,7 +140,10 @@ export const authenticate = (req) => {
             //console.log('authenticate','Passwords dont match')
             history.push({
               pathname: '/login',
-              state: { type: 'error', message: 'That combination is not correct...' }
+              state: {
+                type: 'error',
+                message: 'Passwords dont match'
+              }
             })
 
           }
@@ -183,12 +174,31 @@ export const getUserByEmail = (req, next) => {
 }
 
 
-//
+export const updateUserLikes = (likeArr) => {
+  let id = getSession()?.id
+  if (!id) return;
+  table.update(
+    id,
+    {
+      likes: likeArr,
+    },
+    function(err) {
+      if (err) {
+        console.error(err);
+        return;
+      }
+    }
+  );
+}
+
+
+
+// @LOCALSTORAGE
 // User Session Helpers
 //
 export const setSession = (userRecord) => {
   //Arrives user.fields
-  delete userRecord.password //Don´t store pass
+  delete userRecord.password //Don´t store encrypted pass
   localStorage.setItem('userSession', JSON.stringify(userRecord));
 }
 
@@ -204,133 +214,11 @@ export const isAuthenticated = () => {
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-///////
-//////
-/////@TODO RESET PASSWORD
-
-export const isLoggedIn = (req, next) => {
-  if (localStorage.getItem('userSession')) {
-    return;
-  }
-  //If session dont exist redirect to Login
-  ReactDOM.render(<Login />, document.getElementById('root'))
-  history.push({ pathname: '/login' })
-};
-
-
-// Built in node module provides utilities for parsing and formatting URL query strings
-const querystring = require("querystring");
-// The token will be using the user's ID and email address to generate a random string
-const generateToken = (id, email) => {
-  const source = `${id}${email}`;
-  let token = "";
-  for (let i = 0; i < source.length; i++) {
-    token += source.charAt(Math.floor(Math.random() * source.length));
-  }
-  return token;
-};
-const generateResetUrl = (token, email) => {
-  let url = "";
-  url = `login/resetlink/${token}?${querystring.stringify({ email })}`;
-  return url;
-};
-
-
-export const addToken = async (req, res, next) => {
-  const { name } = req.body;
-  // Check that the user exists. We wrote this helper function already in Part 1 but we need to refactor as it requires two parameters and we are only including one here
-  const userExists = await findUser(name);
-  if (userExists) {
-    // res.render("login", {
-    //   message: "Username or Email already exists!"
-    // });
-    ReactDOM.render(<Login type={'info'} message={'Username or Email already exists!'}/>, document.getElementById('root'))
-    return;
-  }
-  const options = {
-    filterByFormula: `OR(email = '${name}', name = '${name}')`
-  };
-  // Get the user
-  const users = await data.getAirtableRecords(table, options);
-  const user = users.map(record => ({
-    id: record.getId(),
-    email: record.get("email")
-  }));
-  const token = generateToken(user[0].id, user[0].email);
-  table.update(
-    user[0].id,
-    {
-      token
-    },
-    (err, record) => {
-      if (err) {
-        console.error(err);
-      }
-      req.body.url = generateResetUrl(token, user[0].email);
-      req.body.to = user[0].email;
-      next();
-    }
-  );
-};
-
-const nodemailer = require("nodemailer");
-
-export const sendEmail = async (req, res) => {
-  const subject = "Password Reset link for My Sweet App";
-  const { url, to } = req.body;
-  const body = `Hello,
-  You requested to have your password reset. Ignore if this is a mistake or you did not make this request. Otherwise, click the link below to reset your password.
-  <a href="http://localhost:3000//${url}">Reset My Password</a>
-  You can also copy and paste this link in your browser URL bar.
-  <a href="http://localhost:3000//${url}">http://localhost:3000//${url}</a>`;
-  const transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST,
-    port: process.env.SMTP_PORT,
-    // secure: true,
-    auth: {
-      user: process.env.SMTP_USERNAME,
-      pass: process.env.SMTP_PASSWORD
-    }
-  });
-  const mailOptions = {
-    from: process.env.FROM_EMAIL,
-    to,
-    subject,
-    html: body
-  };
-  transporter.sendMail(mailOptions, (err, info) => {
-    if (err) {
-      console.log(err);
-    } else {
-      // email sent
-      res.render("forgot", {
-        message: "Please check your email for your password reset link"
-      });
-    }
-  });
-};
+//@LOCALSTORAGE
+//DATA HELPERS NOT USED
+export const setStorage = (key, data) => {
+  localStorage.setItem(key, JSON.stringify(data));
+}
+export const getStorage = (key) => {
+  return JSON.parse(localStorage.getItem(key));
+}
