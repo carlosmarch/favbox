@@ -14,7 +14,7 @@ class BottomBar extends Component {
 
     this.toggleClass= this.toggleClass.bind(this);
     this.state = {
-      activeIndex: 0
+      activeIndex: null
     }
   }
 
@@ -28,31 +28,19 @@ class BottomBar extends Component {
     return (
       <div className="bottombar">
         <div className="bottombar-wapper">
-              <div className="bottombar-item tab-inicio">
-                <Link to="/feed" className={`bottombar-item-icon ${this.state.activeIndex===0 ? 'tab-active': ''}`}  onClick={this.toggleClass.bind(this, 0)}>
-                  <DiscoverIcon className=""/>
-                </Link>
-              </div>
-              <div className="bottombar-item tab-categorias">
-                <Link to="/categorias" className={`bottombar-item-icon ${this.state.activeIndex===1 ? 'tab-active': ''}`} onClick={this.toggleClass.bind(this, 1)}>
-                  <SearchIcon className=""/>
-                </Link>
-              </div>
-              <div className="bottombar-item tab-favoritos">
-                <Link to="/feed" className={`bottombar-item-icon ${this.state.activeIndex===2 ? 'tab-active': ''}`}  onClick={this.toggleClass.bind(this, 2)}>
-                  <AppIcon className=""/>
-                </Link>
-              </div>
-              <div className="bottombar-item tab-favoritos">
-                <Link to="/likes" className={`bottombar-item-icon ${this.state.activeIndex===2 ? 'tab-active': ''}`}  onClick={this.toggleClass.bind(this, 2)}>
-                  <LikeIcon className=""/>
-                </Link>
-              </div>
-              <div className="bottombar-item tab-favoritos">
-                <Link to="/profile" className={`bottombar-item-icon ${this.state.activeIndex===2 ? 'tab-active': ''}`}  onClick={this.toggleClass.bind(this, 2)}>
-                  <UserIcon className=""/>
-                </Link>
-              </div>
+              <Link to="/feed" className={`bottombar-item-icon ${this.state.activeIndex===0 ? 'tab-active': ''}`}  onClick={this.toggleClass.bind(this, 0)}>
+                <DiscoverIcon className=""/>
+              </Link>
+              <Link to="/search" className={`bottombar-item-icon ${this.state.activeIndex===1 ? 'tab-active': ''}`} onClick={this.toggleClass.bind(this, 1)}>
+                <SearchIcon className=""/>
+              </Link>
+              <Link to="/likes" className={`bottombar-item-icon ${this.state.activeIndex===2 ? 'tab-active': ''}`}  onClick={this.toggleClass.bind(this, 2)}>
+                <LikeIcon className=""/>
+              </Link>
+              <Link to="/profile" className={`bottombar-item-icon ${this.state.activeIndex===3 ? 'tab-active': ''}`}  onClick={this.toggleClass.bind(this, 3)}>
+                <UserIcon className=""/>
+              </Link>
+              <span class="active-line"></span>
         </div>
       </div>
 

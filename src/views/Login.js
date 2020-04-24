@@ -51,7 +51,7 @@ class Login extends Component {
       <div className="app_wrapper login_view">
           <div className="grid">
 
-                  <div className="grid__item width-3/12 width-12/12@m left-pane">
+                  <div className="grid__item width-3/12 width-12/12@m left-pane no@m">
                     <div className="left-pane-quote">
                       <div className="left-pane-quote-text">
                         I can get inspiration & cultural references from people around the world.
@@ -60,6 +60,7 @@ class Login extends Component {
                   </div>
                   <div className="grid__item width-9/12 width-12/12@m right-pane">
                     <div className="right-pane-content">
+                      <div className="container">
                               <div className="form-container">
                                 <div className="right-pane-text mb-s">
                                   <Link to="/"><img className="logo" src={process.env.PUBLIC_URL + '/logo.svg'} alt="logo"/></Link>
@@ -102,6 +103,7 @@ class Login extends Component {
                                 </form>
                                 <span>Don’t have an account? <Link to="/signup" className="link">Get started!</Link></span>
                               </div>
+                      </div>
                     </div>
                   </div>
 

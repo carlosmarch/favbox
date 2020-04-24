@@ -13,7 +13,7 @@ import Detail from './Detail';
 import About from './views/About';
 import Notfound from './views/Notfound';
 import Myfavs from './Myfavs';
-import Categories from './views/Categories';
+import Search from './views/Search';
 import Signup from './views/Signup';
 import Login from './views/Login';
 import Home from './views/Home';
@@ -36,7 +36,7 @@ const AuthenticatedRoute = ({ component: Component, ...rest}) => (
         <Component {...props}/>
       ) : (
         <Redirect to={{
-            pathname:'/login',
+            pathname:'/signup',
             state:{from: props.location}
           }}
         />
@@ -60,7 +60,7 @@ const routing = (
 
         <Route exact path="/about" component={About} />
         <Route exact path="/favoritos" component={Myfavs} />
-        <Route exact path="/categorias" component={Categories} />
+        <Route exact path="/search" component={Search} />
 
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/login" component={Login} />

@@ -19,7 +19,7 @@ const Airtable = require('airtable');
 const base = new Airtable({
   apiKey: process.env.REACT_APP_AIRTABLE_API_KEY,
 }).base(process.env.REACT_APP_AIRTABLE_BASE_ID);
-const table = base('contributors');
+
 
 
 class Profile extends Component {
@@ -45,7 +45,7 @@ class Profile extends Component {
       });
      return
     }
-
+    const table = base('contributors');
     const options = { filterByFormula: `OR(email = '${email}', name = '${email}')` }
     dataController.getAirtableRecords(table, options)
       .then( async (users) => {
@@ -83,7 +83,6 @@ class Profile extends Component {
 
       <Header />
       <div className="global">
-        <div className="container">
           <div className="ArticlesGrid mt-l">
             <div className="container container-s">
 
@@ -110,13 +109,12 @@ class Profile extends Component {
                       ? this.state.renderItems.map( (records) => <FavItem {...records} key={records.id} itemId={records.id} /> )
                       : <div className="empty-pubrecords">
                           <Link to="/create" className="link inline-block mb-s"><AddIcon /> Create</Link>
-                          <div>Wlcome! Now you can share your referents and they will appear here.</div>
+                          <div>Welcome! Now you can share your referents and they will appear here.</div>
                         </div>
               }
               </div>
+              <button class="link auto block pt-l" onClick={userController.signOut}>Sign Out</button>
             </div>
-          </div>
-
         </div>
       </div>
 

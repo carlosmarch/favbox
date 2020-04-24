@@ -15,7 +15,15 @@
 .login-form{
   margin-bottom: 16px;
 }
-
+.login_view{
+  @media (max-width: $breakpoint-m){
+    .form-container{
+      padding: 56px 24px;
+      max-width: 350px;
+      margin: 0 auto;
+    }
+  }
+}
 
 //
 //Login
@@ -71,6 +79,9 @@
   vertical-align: middle;
   padding-top: 100px;
   padding-bottom: 100px;
+  @media (max-width: $breakpoint-m) {
+    padding-top: 0px;
+  }
 }
 .login_view .form-container{
   max-width: 540px;

@@ -177,24 +177,29 @@ export const getRealFavItems = async (userlikes) => {
   //Get storage favs
   let storageFavs = Helpers.getStorageFavs()
   if (!userlikes) userlikes = [];
-  //Get matching
+  //Get matching id's
   let matchingFavs = userlikes.filter(recommendation => storageFavs.some(favId => recommendation.id === favId))
   let matchingIds = [];
   matchingFavs.map((item) => matchingIds.push(item.id) )
-  //storage + only matching
+  //Make one array storage + only matching
   let union = [...storageFavs, ...matchingIds];
   let withoutDuplicates = Array.from(new Set(union));
-  //console.log('RealFavItems', userlikes, withoutDuplicates )
   let withoutDuplicatesWithDetails = [];
   for( const id of withoutDuplicates) {
     withoutDuplicatesWithDetails.push(await getRecommendationById(id))
   }
   userController.updateUserLikes(withoutDuplicates)
+  syncSetStorageFavs(withoutDuplicates)
   return withoutDuplicatesWithDetails
 }
 
 
-
+export const syncSetStorageFavs = (favArr) => {
+  let withoutDuplicates = Array.from(new Set(favArr));
+  for( const id of withoutDuplicates) {
+    localStorage.setItem(id, true);
+  }
+}
 
 
 

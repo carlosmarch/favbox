@@ -53,16 +53,19 @@
   justify-content: center;
   display: flex;
 }
-.profile-data-list-info{
-  margin-left: 24px;
-}
 
 @media (max-width: $breakpoint-m) {
+  .profile-user-info{
+    margin-left: 0px;
+  }
   .profile-user {
     display: block;
     text-align: center;
   }
   .profile-user-image-holder{
       margin: 0 auto;
+  }
+  .profile-user-info{
+    margin-top: 24px;
   }
 }

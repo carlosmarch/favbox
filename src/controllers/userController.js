@@ -214,6 +214,14 @@ export const isAuthenticated = () => {
   }
 }
 
+export const signOut = () =>{
+  localStorage.clear();
+  history.push({
+    pathname: '/'
+  })
+}
+
+
 //@LOCALSTORAGE
 //DATA HELPERS NOT USED
 export const setStorage = (key, data) => {

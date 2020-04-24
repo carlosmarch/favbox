@@ -17,7 +17,8 @@
 }
 
 .rotating-wrapper{
-  transform: translate(-5%, -5%) skewX(-40deg);
+  transform: translate(-15%, -5%) skewX(-40deg);
+  overflow: hidden;
 }
 .rotating-text{
   width: 500px;

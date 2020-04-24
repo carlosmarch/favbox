@@ -16,6 +16,7 @@ main{
   min-height: calc(100vh - 193px);//header+footer size
   @media (max-width: $breakpoint-m){
     margin-top: 32px!important;
-    margin-bottom: 56px;
+    margin-bottom: 0px;
+    min-height: 100vh;
   }
 }

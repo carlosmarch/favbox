@@ -6,26 +6,51 @@ $breakpoint-m: 48em;
     display: none!important;
   }
 }
-.mt-xl{ margin-top: 160px;}
+.no\@dkt{
+  @media (min-width: $breakpoint-m){
+    display: none!important;
+  }
+}
+.mt-xl{ margin-top: 160px;
+  @media (max-width: $breakpoint-m){margin-top: 32px;}}
 .mt-l{ margin-top: 80px;
   @media (max-width: $breakpoint-m){margin-top: 24px;}}
-.mt-m{ margin-top: 40px; }
-.mt-s{ margin-top: 20px; }
+.mt-m{ margin-top: 40px;
+  @media (max-width: $breakpoint-m){margin-top: 16px;}}
+.mt-s{ margin-top: 24px;
+  @media (max-width: $breakpoint-m){margin-top: 8px;}}
 
-.mb-xl{ margin-bottom: 160px; }
-.mb-l { margin-bottom: 80px; }
-.mb-m { margin-bottom: 40px; }
-.mb-s { margin-bottom: 20px; }
+.mb-xl{ margin-bottom: 160px;
+  @media (max-width: $breakpoint-m){margin-bottom: 32px;}}
+.mb-l { margin-bottom: 80px;
+  @media (max-width: $breakpoint-m){margin-bottom: 24px;}}
+.mb-m { margin-bottom: 40px;
+  @media (max-width: $breakpoint-m){margin-bottom: 16px;}}
+.mb-s { margin-bottom: 20px;
+  @media (max-width: $breakpoint-m){margin-bottom: 8px;}}
 
-.pt-xl{ padding-top: 160px;}
-.pt-l{ padding-top: 80px; }
-.pt-m{ padding-top: 40px; }
-.pt-s{ padding-top: 20px; }
+.pt-xl{ padding-top: 160px;
+  @media (max-width: $breakpoint-m){padding-top: 32px;}}
+.pt-l{ padding-top: 80px;
+  @media (max-width: $breakpoint-m){padding-top: 24px;}}
+.pt-m{ padding-top: 40px;
+  @media (max-width: $breakpoint-m){padding-top: 16px;}}
+.pt-s{ padding-top: 20px;
+  @media (max-width: $breakpoint-m){padding-top: 8px;}}
 
-.pb-xl{ padding-bottom: 160px; }
-.pb-l { padding-bottom: 80px; }
-.pb-m { padding-bottom: 40px; }
-.pb-s { padding-bottom: 20px; }
+.pb-xl{ padding-bottom: 160px;
+  @media (max-width: $breakpoint-m){padding-bottom: 32px;}}
+.pb-l { padding-bottom: 80px;
+  @media (max-width: $breakpoint-m){padding-bottom: 24px;}}
+.pb-m { padding-bottom: 40px;
+  @media (max-width: $breakpoint-m){padding-bottom: 16px;}}
+.pb-s { padding-bottom: 20px;
+  @media (max-width: $breakpoint-m){padding-bottom: 8px;}}
+
+
+
+
+
 
 .inline {
   display: inline;
@@ -44,15 +69,21 @@ $breakpoint-m: 48em;
   display: block;
   text-align: center;
 }
+.auto{
+  margin: auto;
+}
 .flex-justify{
   display: flex;
   justify-content: space-between;
 }
+
+
 //Cards
 .card-16{
   box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
 }
+
 
 //Textured
 .textured{

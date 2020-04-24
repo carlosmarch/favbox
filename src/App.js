@@ -35,10 +35,6 @@ class App extends Component {
     fetch(window.$api)
     .then((resp) => resp.json())
     .then(data => {
-      //console.log('allrecords',data.records)
-      //PREVENT RERENDER WITH setState
-      //STORE GLOBALLY & THEN SET ALL DATA
-      //this.setState({ recommendations: data.records }); //PREVENT RERENDER
       Helpers.storeUniqueTopics(data.records)
       Helpers.storeUniqueCategories(data.records)
       window.$alldata = data.records;

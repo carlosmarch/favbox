@@ -5,13 +5,11 @@
   grid-column: span 12;
   .rotating {
       animation: rotating 2s linear infinite;
-      transform: translate(-5%, -5%) skewX(-40deg);
+      transform: translate(-10%, -10%) skewX(-40deg);
+      overflow: hidden;
   }
   .rotating-text {
-      width: 120px;
+      width: 80px;
       margin: 0 52%;
   }
-
-
-
 }
