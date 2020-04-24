@@ -50,17 +50,6 @@ class Likes extends Component {
         //USERS SHOULD BE ONLY ONE,THE ONLY THAT MATCH WITH EMAIL
         const user = users[0].fields;
 
-        // //WORKING GOOD
-        // //REPLACE LIKES ID's WITH ALL THE REAL ITEM CONTENT
-        // const hydratedUserWithLikes = [];
-        // hydratedUserWithLikes.push(await recommendationController.hydrateUserLikes(user));
-        //
-        // this.setState({
-        //   isLoading: false,
-        //   userData: user,
-        //   renderItems: user.likes
-        // });
-
         const hydratedFavItems = await recommendationController.getRealFavItems(user.likes)
         this.setState({
           isLoading: false,

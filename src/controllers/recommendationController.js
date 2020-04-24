@@ -176,6 +176,12 @@ export const uploadToCloudinary = (file, next) => {
 export const getRealFavItems = async (userlikes) => {
   //Get storage favs
   let storageFavs = Helpers.getStorageFavs()
+  console.log('ENTER', storageFavs, typeof(storageFavs), userlikes)
+  if ( Object.keys(storageFavs).length === 0 ){
+    syncSetStorageFavs(userlikes)
+    storageFavs = Helpers.getStorageFavs()
+    console.log(storageFavs)
+  }
   if (!userlikes) userlikes = [];
   //Get matching id's
   let matchingFavs = userlikes.filter(recommendation => storageFavs.some(favId => recommendation.id === favId))

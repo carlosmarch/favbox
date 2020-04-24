@@ -4,6 +4,7 @@
     box-sizing: border-box;
 }
 .app_wrapper {
+  overflow-x: hidden;
   @media (max-width: $breakpoint-m){
     padding-bottom: 60px;
   }

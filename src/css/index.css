@@ -398,6 +398,10 @@ p.description,
   box-sizing: border-box;
 }
 
+.app_wrapper {
+  overflow-x: hidden;
+}
+
 @media (max-width: 48em) {
   .app_wrapper {
     padding-bottom: 60px;
@@ -3015,6 +3019,72 @@ a.topic-card::before {
   top: 15px;
   background-position: center;
   background-repeat: no-repeat;
+}
+
+.picture-main-image {
+  display: block;
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+  height: 500px;
+  top: -80px;
+}
+
+.picture-main-image::before {
+  content: '';
+  display: block;
+  background: var(--soft-dafault-color);
+  animation-name: reveal;
+  animation-duration: 1.4s;
+  z-index: 32;
+  height: 100%;
+  position: absolute;
+  transition: all ease-in;
+}
+
+.main-image {
+  animation-name: scale;
+  animation-duration: 1.8s;
+  transition: all ease-in;
+  width: 750px;
+  left: -80px;
+  position: absolute;
+}
+
+@-webkit-keyframes reveal {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}
+
+@keyframes reveal {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}
+
+@-webkit-keyframes scale {
+  from {
+    transform: scale(1.2);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes scale {
+  from {
+    transform: scale(1.2);
+  }
+  to {
+    transform: scale(1);
+  }
 }
 
 .profile-user {
