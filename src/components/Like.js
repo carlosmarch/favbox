@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import {ReactComponent as LikeIcon} from '../icons/Heart.svg';
 import {ReactComponent as LikeIconActive} from '../icons/HeartFull.svg';
+import history from '../history';
+const userController = require('../controllers/userController.js');
 
 class Like extends Component {
 
@@ -17,7 +19,10 @@ class Like extends Component {
     console.log('handleLike',this.props.itemId)
     e.preventDefault();
     const item = e.target.value;
-    console.log('item',item)
+    if ( !userController.isAuthenticated() ){
+      history.push({ pathname: '/signup' })
+      return
+    }
     if (localStorage.getItem(item) === null) {
       //Set a like
       localStorage.setItem(item, true);

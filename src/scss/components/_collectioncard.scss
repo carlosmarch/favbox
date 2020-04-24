@@ -119,8 +119,13 @@ HERO HEADER
 
 .is-mantenerse_en_forma::after{
   background-image: url(https://images.unsplash.com/photo-1580475442877-f2831931fc51?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80);
+  @media (max-width: $breakpoint-m) {
+    display: none;
+  }
 }
 .is-futuros::after{
   background-image: url(https://images.unsplash.com/photo-1551727974-8af20a3322f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80);
-
+  @media (max-width: $breakpoint-m) {
+    display: none;
+  }
 }

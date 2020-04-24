@@ -4,7 +4,13 @@
     padding-top: 180px;
     @media (max-width: $breakpoint-m) {
       margin-top: -32px;
-      padding-top: 80px;
+      padding-top: 40px;
+      ~ .bottombar{
+        display: none; //Hide BottomBar on homepage
+      }
+      .global{
+        min-height: calc(100vh - 72px);
+      }
     }
 }
 .main-title {

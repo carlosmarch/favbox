@@ -7,12 +7,15 @@ select{
     color: rgba(17,51,56,.73);
     font-size: 14px;
     height: 50px;
-    padding: 20px 15px;
+    padding: 0 20px;
     width: 100%;
     margin-bottom: 16px;
     &::first-letter{
       text-transform: uppercase;
     }
+    -moz-appearance: none;
+	  -webkit-appearance: none;
+	  appearance: none;
 }
 label, .field-label {
   font-size: 13px;

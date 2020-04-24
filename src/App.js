@@ -17,6 +17,7 @@ import Videocard from './components/Videocard';
 import Appcard from './components/Appcard';
 import LoadingSpinner from './components/LoadingSpinner';
 
+const userController = require('./controllers/userController.js');
 
 
 class App extends Component {
@@ -28,6 +29,7 @@ class App extends Component {
       isLoading: true,
       recommendations: [],
       contributors: [],
+      isAuthenticated: userController.isAuthenticated()
     };
   }
 
@@ -186,8 +188,7 @@ class App extends Component {
                       </div>
                     </div>
 
-
-                    <Promocard />
+                    { this.state.isAuthenticated ? '' : <Promocard /> }
 
 
                     <div className="TopicCollection mt-l no@m">

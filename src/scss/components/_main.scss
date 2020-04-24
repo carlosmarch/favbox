@@ -3,7 +3,11 @@
     padding: 0;
     box-sizing: border-box;
 }
-
+.app_wrapper {
+  @media (max-width: $breakpoint-m){
+    padding-bottom: 60px;
+  }
+}
 body {
     background: var(--background);
 }
