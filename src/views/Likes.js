@@ -60,7 +60,7 @@ class Likes extends Component {
           });
         }
 
-        const hydratedFavItems = await recommendationController.getRealFavItems(user.likes)
+        const hydratedFavItems = await recommendationController.getHydratedFavItems(user.likes)
         this.setState({
           isLoading: false,
           userData: user,

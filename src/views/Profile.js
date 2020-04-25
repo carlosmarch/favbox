@@ -54,11 +54,13 @@ class Profile extends Component {
         const hydratedUserWithPubItems = [];
         //REPLACE LIKES ID's WITH ALL THE CONTENT
         hydratedUserWithPubItems.push(await recommendationController.hydrateUserPubItems(userData));
+        recommendationController.getFavItems(userData?.likes)
         this.setState({
           isLoading: false,
           userData: userData,
           renderItems: userData?.items,
-          pubItems: userData?.items?.length
+          pubItems: userData?.items?.length,
+          likeItems: recommendationController.getFavItems(userData?.likes)
         });
         //SOTORE IN LOCAL TO AVOID EXTRA CALLS IN OTHER VIEWS?? not used
         //userController.setStorage('pubItems', userData.items)

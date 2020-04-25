@@ -169,14 +169,12 @@ export const uploadToCloudinary = (file, next) => {
 //MIXES LOCAL STORAGE ITEMS WITH AIRTABLE LIKES
 //THEN UPDATES TABLE AND RETURNS LIKES WITH DETAILS
 //@PARAMS Array with like id's
-export const getRealFavItems = async (userlikes) => {
+export const getHydratedFavItems = async (userlikes) => {
   //Get storage favs
   let storageFavs = Helpers.getStorageFavs()
-  console.log('ENTER', storageFavs, typeof(storageFavs), userlikes)
   if ( Object.keys(storageFavs).length === 0 ){
     syncSetStorageFavs(userlikes)
     storageFavs = Helpers.getStorageFavs()
-    console.log(storageFavs)
   }
   if (!userlikes) userlikes = [];
   //Get matching id's
@@ -194,6 +192,28 @@ export const getRealFavItems = async (userlikes) => {
   syncSetStorageFavs(withoutDuplicates)
   return withoutDuplicatesWithDetails
 }
+
+
+export const getFavItems = async (userlikes) => {
+  //Get storage favs
+  let storageFavs = Helpers.getStorageFavs()
+  if ( Object.keys(storageFavs).length === 0 ){
+    syncSetStorageFavs(userlikes)
+    storageFavs = Helpers.getStorageFavs()
+  }
+  if (!userlikes) userlikes = [];
+  //Get matching id's
+  let matchingFavs = userlikes.filter(recommendation => storageFavs.some(favId => recommendation.id === favId))
+  let matchingIds = [];
+  matchingFavs.map((item) => matchingIds.push(item.id) )
+  //Make one array storage + only matching
+  let union = [...storageFavs, ...matchingIds];
+  let withoutDuplicates = Array.from(new Set(union));
+  userController.updateUserLikes(withoutDuplicates)
+  syncSetStorageFavs(withoutDuplicates)
+  return withoutDuplicates
+}
+
 
 
 export const syncSetStorageFavs = (favArr) => {
