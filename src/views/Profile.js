@@ -57,8 +57,8 @@ class Profile extends Component {
         this.setState({
           isLoading   : false,
           renderItems : userData?.items,
-          pubItems    : userData?.items?.length,
-          likeItems   : userData?.likes?.length ? userData?.likes?.length : '0',
+          pubItems    : userData?.items?.length ? userData?.items?.length : '0',
+          likeItems   : userData?.likes?.length ? userData?.likes?.length : '0'
         });
       })
       .catch(err => {
