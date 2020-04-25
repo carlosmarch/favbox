@@ -123,10 +123,6 @@ export const addItem = async (req) => {
       req.id = record.getId();
       //Success creating item!
       history.push({
-        pathname: '/create',
-        state: { type: 'success',  message: 'Item created succesfully!' }
-      })
-      history.push({
         pathname: '/profile',
         state: { type: 'success',  message: 'Item created succesfully!' }
       })

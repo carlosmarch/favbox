@@ -53,11 +53,11 @@ class Likes extends Component {
 
         if (!user?.likes) {
           //WHEN SESSION && NO LIKES
+          user.likes = []
           this.setState({
             isLoading: false,
             renderItems: []
           });
-         return
         }
 
         const hydratedFavItems = await recommendationController.getRealFavItems(user.likes)
