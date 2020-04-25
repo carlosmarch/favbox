@@ -33,6 +33,7 @@ class SignUp extends Component {
   handleSubmit(event) {
     event.preventDefault();
     //ADD USER WITH FORM DATA THEN STORE PASSWORD
+    console.log('SignUp state',this.state)
     userController.addUser(this.state, userController.storePassword)
     this.setState({isLoading: true});
   }

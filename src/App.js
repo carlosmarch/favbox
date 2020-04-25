@@ -71,8 +71,6 @@ class App extends Component {
 
               <div className="global appview">
 
-                <Hero />
-
                 <main>
 
                     <div className="GridCard mb-l">

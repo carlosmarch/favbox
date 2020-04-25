@@ -28,21 +28,17 @@ class Profile extends Component {
     super(props);
     this.state = {
       isLoading : true,
-      userData  : []
+      userData  : [],
+      renderItems : [],
+      pubItems  : 0,
+      likeItems : Helpers.getStorageFavs() ? Helpers.getStorageFavs()?.length : '0',
     };
   }
 
   getUserPubItems(){
-
     const email = userController.getSession()?.email;
-
-
     if (!email) {
-      //WHEN NO SESSION && NO EMAIL
-      this.setState({
-        isLoading: false,
-        renderItems: []
-      });
+      this.setState({ isLoading: false, renderItems: [] });//WHEN NO SESSION && NO EMAIL
      return
     }
     const table = base('contributors');
@@ -50,14 +46,19 @@ class Profile extends Component {
     dataController.getAirtableRecords(table, options)
       .then( async (users) => {
         //USERS SHOULD BE ONLY ONE THAT MATCH WITH EMAIL
-        const userData = users[0].fields;
+        const userData = users[0]?.fields;
+        if (!userData?.items) {
+          this.setState({ isLoading: false, renderItems: [] });//WHEN SESSION && NO ITEMS
+         return
+        }
         const hydratedUserWithPubItems = [];
         //REPLACE LIKES ID's WITH ALL THE CONTENT
         hydratedUserWithPubItems.push(await recommendationController.hydrateUserPubItems(userData));
         this.setState({
           isLoading: false,
           userData: userData,
-          renderItems: userData.items
+          renderItems: userData?.items,
+          pubItems: userData?.items?.length
         });
         //SOTORE IN LOCAL TO AVOID EXTRA CALLS IN OTHER VIEWS?? not used
         //userController.setStorage('pubItems', userData.items)
@@ -77,7 +78,7 @@ class Profile extends Component {
 
 
   render() {
-    console.log('getStorageFavs',Helpers.getStorageFavs().length)
+
     return (
     <div className="app_wrapper profile_view">
 
@@ -94,10 +95,10 @@ class Profile extends Component {
                   <div className="profile-user-name"><h3>{userController.getSession()?.name}</h3></div>
                   <div className="profile-user-description"><p>{userController.getSession()?.description}</p></div>
                   <div className="profile-user-data">
-                    <span>{ Helpers.getStorageFavs() ? Helpers.getStorageFavs()?.length : '0'} Likes</span>
-                    <span>{ userController.getSession()?.hasOwnProperty('items') ? userController.getSession().items.length : '0'} Published</span>
-                    <span>{ userController.getSession()?.hasOwnProperty('following') ? userController.getSession().following.length : '0'} Following</span>
-                    <span>{ userController.getSession()?.hasOwnProperty('followers') ? userController.getSession().followers.length : '0'} Followers</span>
+                    <span>{ this.state.likeItems } Likes</span>
+                    <span>{ this.state.pubItems } Published</span>
+                    <span>0 Following</span>
+                    <span>0 Followers</span>
                   </div>
                 </div>
               </div>
@@ -109,7 +110,7 @@ class Profile extends Component {
                       ? this.state.renderItems.map( (records) => <FavItem {...records} key={records.id} itemId={records.id} /> )
                       : <div className="empty-pubrecords">
                           <Link to="/create" className="link inline-block mb-s"><AddIcon /> Create</Link>
-                          <div>Welcome! Now you can share your referents and they will appear here.</div>
+                          <div>Welcome 🎉! Now you can share your referents and they will appear here.</div>
                         </div>
               }
               </div>
