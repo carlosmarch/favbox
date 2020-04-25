@@ -20,7 +20,6 @@ import Home from './views/Home';
 import Profile from './views/Profile';
 import Likes from './views/Likes';
 import Create from './views/Create';
-import Forgot from './views/Forgot';
 
 import * as serviceWorker from './serviceWorker';
 const userController = require('./controllers/userController.js');
@@ -64,7 +63,6 @@ const routing = (
 
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/login" component={Login} />
-        <Route exact path="/forgot" component={Forgot} />
 
         <AuthenticatedRoute path="/create" component={Create}/>
         <AuthenticatedRoute path="/likes" component={Likes}/>

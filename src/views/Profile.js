@@ -4,7 +4,6 @@ import * as Helpers from '../Helpers';
 
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import BlockTitle from '../components/BlockTitle';
 import FavItem from '../components/FavItem';
 import LoadingSpinner from '../components/LoadingSpinner';
 import {ReactComponent as UserIcon} from '../icons/User.svg';
@@ -28,11 +27,11 @@ class Profile extends Component {
     super(props);
     this.state = {
       isLoading : true,
-      userData  : [],
       renderItems : [],
       pubItems  : 0,
-      likeItems : Helpers.getStorageFavs() ? Helpers.getStorageFavs()?.length : '0',
+      likeItems : Helpers.getStorageFavs() ? Helpers.getStorageFavs()?.length : '0'
     };
+
   }
 
   getUserPubItems(){
@@ -49,21 +48,18 @@ class Profile extends Component {
         const userData = users[0]?.fields;
         if (!userData?.items) {
           this.setState({ isLoading: false, renderItems: [] });//WHEN SESSION && NO ITEMS
-         return
         }
+        if (!userData?.likes) userData.likes = []
         const hydratedUserWithPubItems = [];
-        //REPLACE LIKES ID's WITH ALL THE CONTENT
-        hydratedUserWithPubItems.push(await recommendationController.hydrateUserPubItems(userData));
-        recommendationController.getFavItems(userData?.likes)
+        //REPLACE LIKES ID's WITH ALL THE ITEM'S CONTENT
+        hydratedUserWithPubItems.push(await recommendationController.hydrateUserPubItems(userData) );
+        userController.setLocalStorageFavs(userData.likes)
         this.setState({
-          isLoading: false,
-          userData: userData,
-          renderItems: userData?.items,
-          pubItems: userData?.items?.length,
-          likeItems: recommendationController.getFavItems(userData?.likes)
+          isLoading   : false,
+          renderItems : userData?.items,
+          pubItems    : userData?.items?.length,
+          likeItems   : userData?.likes?.length ? userData?.likes?.length : '0',
         });
-        //SOTORE IN LOCAL TO AVOID EXTRA CALLS IN OTHER VIEWS?? not used
-        //userController.setStorage('pubItems', userData.items)
       })
       .catch(err => {
         console.log( Error(err));
@@ -73,8 +69,7 @@ class Profile extends Component {
 
 
   componentDidMount() {
-    //@TODO CHECK NEW USERS WITH EMPTY DATA
-    //REVIEW WHEN USERS DON'T HAVE PUBLISHED ITEMS && FAV ITEMS
+    //REVIEW WHEN USER LIKES HIS OWN ITEMS && UPDATE COUNTER
     this.getUserPubItems()
   }
 
@@ -112,11 +107,11 @@ class Profile extends Component {
                       ? this.state.renderItems.map( (records) => <FavItem {...records} key={records.id} itemId={records.id} /> )
                       : <div className="empty-pubrecords">
                           <Link to="/create" className="link inline-block mb-s"><AddIcon /> Create</Link>
-                          <div>Welcome 🎉! Now you can share your referents and they will appear here.</div>
+                          <div>Welcome <span role="img" aria-label="welcome">🎉</span>! Now you can share your referents and they will appear here.</div>
                         </div>
               }
               </div>
-              <button class="underline grey auto block pt-l" onClick={userController.signOut}>Sign Out</button>
+              <button className="underline grey auto block pt-l" onClick={userController.signOut}>Sign Out</button>
             </div>
         </div>
       </div>

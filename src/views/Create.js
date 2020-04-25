@@ -6,7 +6,6 @@ import Header from '../components/Header';
 import Message from '../components/Message';
 
 const recommendationController = require('../controllers/recommendationController.js');
-const dataController = require('../controllers/dataController.js');
 
 
 //@TODO

@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 
-import * as Helpers from '../Helpers';
-
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import BlockTitle from '../components/BlockTitle';
@@ -32,35 +30,22 @@ class Likes extends Component {
 
   getUserFavs(){
     const email = userController.getSession()?.email;
-    const options = {
-      filterByFormula: `OR(email = '${email}', name = '${email}')`
-    }
+    const options = { filterByFormula: `OR(email = '${email}', name = '${email}')` }
 
     if (!email) {
       //WHEN NO SESSION && NO EMAIL
-      this.setState({
-        isLoading: false,
-        renderItems: []
-      });
+      this.setState({ isLoading: false, renderItems: [] });
      return
     }
 
     data.getAirtableRecords(table, options)
       .then( async (users) => {
         //USERS SHOULD BE ONLY ONE,THE ONLY THAT MATCH WITH EMAIL
-        console.log(users)
         const user = users[0]?.fields;
-
-        if (!user?.likes) {
-          //WHEN SESSION && NO LIKES
-          user.likes = []
-          this.setState({
-            isLoading: false,
-            renderItems: []
-          });
-        }
-
+        if (!user?.likes) user.likes = []
         const hydratedFavItems = await recommendationController.getHydratedFavItems(user.likes)
+        userController.setLocalStorageFavs(user.likes)
+
         this.setState({
           isLoading: false,
           userData: user,

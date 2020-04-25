@@ -1,10 +1,8 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
-import { Tag, Heart, Layers } from 'react-feather';
 import {ReactComponent as LikeIcon} from '../icons/Heart.svg';
 import {ReactComponent as UserIcon} from '../icons/User.svg';
 import {ReactComponent as SearchIcon} from '../icons/Search.svg';
-import {ReactComponent as AppIcon} from '../icons/App.svg';
 import {ReactComponent as DiscoverIcon} from '../icons/Discover.svg';
 
 class BottomBar extends Component {
@@ -40,7 +38,7 @@ class BottomBar extends Component {
               <Link to="/profile" className={`bottombar-item-icon ${this.state.activeIndex===3 ? 'tab-active': ''}`}  onClick={this.toggleClass.bind(this, 3)}>
                 <UserIcon className=""/>
               </Link>
-              <span class="active-line"></span>
+              <span className="active-line"></span>
         </div>
       </div>
 

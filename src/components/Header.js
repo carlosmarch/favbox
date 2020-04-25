@@ -107,7 +107,7 @@ class Header extends Component {
               </li>
             </ul>
           ) : (
-            <a className="button button-outline button-header-login"><Link to="/signup">SignUp</Link></a>
+            <div className="button button-outline button-header-login"><Link to="/signup">SignUp</Link></div>
           )}
 
 

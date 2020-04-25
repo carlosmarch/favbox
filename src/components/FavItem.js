@@ -3,10 +3,6 @@ import Like from './Like';
 
 class FavItem extends Component {
 
-  constructor() {
-    super();
-  }
-
   render() {
       return (
         <a className="favitem" href={this.props.url} target="_blank" rel="noopener noreferrer" data-id={this.props.id}>

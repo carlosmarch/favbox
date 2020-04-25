@@ -3,7 +3,7 @@ import * as Helpers from '../Helpers';
 
 import BlockTitle from '../components/BlockTitle';
 import LoadingSpinner from '../components/LoadingSpinner';
-const dataController = require('../controllers/dataController.js');
+
 
 class Search extends Component {
 

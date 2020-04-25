@@ -1,7 +1,6 @@
-import React from 'react';
 import history from '../history';
-import ReactDOM from 'react-dom';
 import * as Helpers from '../Helpers';
+
 const data = require('./dataController.js');
 const userController = require('./userController.js');
 
@@ -43,7 +42,7 @@ export const hydrateUserLikes = async (user) => {
   return user;
 }
 
-export const hydrateUserPubItems = async (user) => {
+export const hydrateUserPubItems = async (user, next) => {
   //console.log('hydrateUserPubItems',user)
   let pubitemIds = user.items;
   let pubitemWithDetails = [];
@@ -57,7 +56,7 @@ export const hydrateUserPubItems = async (user) => {
 
 
 
-//CREATE ITEM
+//RETURNS BOOLEAN
 const findItem = async (title, url) => {
   //console.log('findItem', title, url)
   let recordExists = false;
@@ -143,14 +142,14 @@ export const uploadToCloudinary = (file, next) => {
   fd.append('file', file.imageUrl);
   xhr.send(fd);
   xhr.onreadystatechange = function(e) {
-    if (xhr.readyState == 4 && xhr.status == 200) {
+    if (xhr.readyState === 4 && xhr.status === 200) {
       // File uploaded successfully
       var response = JSON.parse(xhr.responseText);
       var url = response.secure_url;
       file.imageUrl = url;
       next(file)//next function add item
     }
-    if (xhr.status == 400) {
+    if (xhr.status === 400) {
       history.push({
         pathname: '/create',
         state: { type: 'error', message: 'Something happened when uploading. Please try again.'}
@@ -166,16 +165,16 @@ export const uploadToCloudinary = (file, next) => {
 }
 
 
-//MIXES LOCAL STORAGE ITEMS WITH AIRTABLE LIKES
+//MIXES LOCAL STORAGE ITEMS WITH AIRTABLE LIKES PRIORIZING LOCALSTORAGE
 //THEN UPDATES TABLE AND RETURNS LIKES WITH DETAILS
 //@PARAMS Array with like id's
-export const getHydratedFavItems = async (userlikes) => {
+export const syncMixLocalwithTableFavs = async (userlikes) => {
   //Get storage favs
   let storageFavs = Helpers.getStorageFavs()
-  if ( Object.keys(storageFavs).length === 0 ){
-    syncSetStorageFavs(userlikes)
-    storageFavs = Helpers.getStorageFavs()
-  }
+  // if ( Object.keys(storageFavs).length === 0 ){
+  //   syncSetStorageFavs(userlikes)
+  //   storageFavs = Helpers.getStorageFavs()
+  // }
   if (!userlikes) userlikes = [];
   //Get matching id's
   let matchingFavs = userlikes.filter(recommendation => storageFavs.some(favId => recommendation.id === favId))
@@ -188,40 +187,22 @@ export const getHydratedFavItems = async (userlikes) => {
   for( const id of withoutDuplicates) {
     withoutDuplicatesWithDetails.push(await getRecommendationById(id))
   }
+  //UDATE with arr of local + table likes
   userController.updateUserLikes(withoutDuplicates)
-  syncSetStorageFavs(withoutDuplicates)
   return withoutDuplicatesWithDetails
 }
 
 
-export const getFavItems = async (userlikes) => {
-  //Get storage favs
-  let storageFavs = Helpers.getStorageFavs()
-  if ( Object.keys(storageFavs).length === 0 ){
-    syncSetStorageFavs(userlikes)
-    storageFavs = Helpers.getStorageFavs()
-  }
+
+export const getHydratedFavItems = async (userlikes) => {
   if (!userlikes) userlikes = [];
-  //Get matching id's
-  let matchingFavs = userlikes.filter(recommendation => storageFavs.some(favId => recommendation.id === favId))
-  let matchingIds = [];
-  matchingFavs.map((item) => matchingIds.push(item.id) )
-  //Make one array storage + only matching
-  let union = [...storageFavs, ...matchingIds];
-  let withoutDuplicates = Array.from(new Set(union));
-  userController.updateUserLikes(withoutDuplicates)
-  syncSetStorageFavs(withoutDuplicates)
-  return withoutDuplicates
-}
-
-
-
-export const syncSetStorageFavs = (favArr) => {
-  let withoutDuplicates = Array.from(new Set(favArr));
-  for( const id of withoutDuplicates) {
-    localStorage.setItem(id, true);
+  let itemsWithDetails = [];
+  for( const id of userlikes) {
+    itemsWithDetails.push(await getRecommendationById(id))
   }
+  return itemsWithDetails
 }
+
 
 
 
@@ -232,23 +213,23 @@ export const syncSetStorageFavs = (favArr) => {
 
 //GET METADATA
 //NOT USED
-const getMeta = () => {
-  fetch('https://cors-anywhere.herokuapp.com/' + 'https://ggili.com/aprendiendo-de-las-vegas-libro-2856.html')
-    .then(res => {
-      console.log('HEYYY', res, res.method)
-    });
-}
-
-const doCORSRequest = (options, printResult) => {
-
-  var x = new XMLHttpRequest();
-  x.open(options.method, 'https://cors-anywhere.herokuapp.com/' + 'https://ggili.com/aprendiendo-de-las-vegas-libro-2856.html' );
-  x.onload = x.onerror = function() {
-    printResult(
-      options.method + ' ' + options.url + '\n' +
-      x.status + ' ' + x.statusText + '\n\n' +
-      (x.responseText || '')
-    );
-  };
-  x.send(options.data);
-}
+// const getMeta = () => {
+//   fetch('https://cors-anywhere.herokuapp.com/' + 'https://ggili.com/aprendiendo-de-las-vegas-libro-2856.html')
+//     .then(res => {
+//       console.log('HEYYY', res, res.method)
+//     });
+// }
+//
+// const doCORSRequest = (options, printResult) => {
+//
+//   var x = new XMLHttpRequest();
+//   x.open(options.method, 'https://cors-anywhere.herokuapp.com/' + 'https://ggili.com/aprendiendo-de-las-vegas-libro-2856.html' );
+//   x.onload = x.onerror = function() {
+//     printResult(
+//       options.method + ' ' + options.url + '\n' +
+//       x.status + ' ' + x.statusText + '\n\n' +
+//       (x.responseText || '')
+//     );
+//   };
+//   x.send(options.data);
+// }

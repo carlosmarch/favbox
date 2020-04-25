@@ -1,13 +1,7 @@
-import React from 'react';
 import history from '../history';
-import ReactDOM from 'react-dom';
-
-import Signup from '../views/Signup';
-import Login from '../views/Login';
 
 const bcrypt = require('bcryptjs');
 const data = require('./dataController');
-const userController = require('./userController.js');
 
 //AIRTABLE HELPERS
 const Airtable = require('airtable');
@@ -175,10 +169,11 @@ export const getUserByEmail = (req, next) => {
 
 
 export const updateUserLikes = (likeArr) => {
-  let id = getSession()?.id
-  if (!id) return;
+  const userId = getSession()?.id
+  console.log('updateUserLikes', userId, likeArr)
+  if (!userId) return;
   table.update(
-    id,
+    userId,
     {
       likes: likeArr,
     },
@@ -192,6 +187,14 @@ export const updateUserLikes = (likeArr) => {
 }
 
 
+export const setLocalStorageFavs = (likeArr) => {
+  if ( typeof(likeArr) === 'undefined') return
+  //clear storage favs
+  removeStorageFavs()
+  for( const id of likeArr) {
+    localStorage.setItem(id, true);
+  }
+}
 
 // @LOCALSTORAGE
 // User Session Helpers
@@ -221,6 +224,12 @@ export const signOut = () =>{
   })
 }
 
+export const removeStorageFavs = () =>{
+  //Get userSession, delete  all the rest & Set Session again
+  let userSession = JSON.parse(localStorage.getItem('userSession'));
+  localStorage.clear();
+  localStorage.setItem('userSession', JSON.stringify(userSession));
+}
 
 //@LOCALSTORAGE
 //DATA HELPERS NOT USED

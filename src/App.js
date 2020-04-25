@@ -5,7 +5,6 @@ import * as Helpers from './Helpers';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Hero from './components/Hero';
 import BlockTitle from './components/BlockTitle';
 import Card from './components/Card';
 import Musiccard from './components/Musiccard';

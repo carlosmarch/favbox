@@ -2,10 +2,6 @@
 //const data = require('./dataController.js');
 //data.getAirtableRecords(table, options)
 
-
-//const cloudinary = require('cloudinary/lib/cloudinary');
-//import {Image} from 'cloudinary-react';
-
 export const getAirtableRecords = (table, options) => {
   let records = [];
   const params = {
@@ -38,32 +34,3 @@ export const getAirtableRecords = (table, options) => {
     table.select(params).eachPage(processPage, processRecords);
   });
 };
-
-
-
-//CLOUDINARY
-// export const uploadToCloudinary = (image) => {
-//     console.log(image)
-//     cloudinary.config({
-//         cloud_name: process.env.REACT_APP_CLOUDINARY_CLOUD_NAME,
-//         api_key: process.env.REACT_APP_CLOUDINARY_API_KEY,
-//         api_secret: process.env.REACT_APP_CLOUDINARY_API_SECRET
-//     });
-//     return new Promise((resolve, reject) => {
-//       cloudinary.uploader.upload_stream(
-//         {
-//           resource_type: 'image',
-//           width: 800,
-//           crop: 'scale',
-//           quality: 80
-//         },
-//         function(error, result){
-//           if(error) {
-//             reject(error);
-//           } else {
-//             resolve({"url":result.url});
-//           }
-//         }
-//       ).end(image.buffer);
-//     })
-// }

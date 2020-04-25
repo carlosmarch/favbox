@@ -58,6 +58,7 @@ function truncateText(str, length, ending) {
     }
   }
 
+  //@STORAGE
   //Returns an array of favorite items ID
   function getStorageFavs() {
     var archive = [],
@@ -66,12 +67,11 @@ function truncateText(str, length, ending) {
     for (; key = keys[i]; i++) {
         archive.push( key );
     }
-    //REMOVE USER SESSION
+    //REMOVE USER SESSION FROM LIKES
     const filtered = archive.filter(item => item !== "userSession")
     const cleanArchive = filtered.filter(function (el) { return el != null; });
     return cleanArchive;
   }
-
 
   //-------------------------//
   //-------------------------//
