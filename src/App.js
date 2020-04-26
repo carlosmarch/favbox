@@ -84,7 +84,7 @@ class App extends Component {
                     </div>
 
                     <div className="GridCard mb-l">
-                        <BlockTitle title={'Pelis & series'} description={'Las recomendaciones mas destacadas'} link={'categorias/peliculas'}/>
+                        <BlockTitle title={'Pelis & series'} description={'Las recomendaciones mas destacadas'} link={'categorias/series'}/>
                         <div className="container container-xl">
                             <div className="grid">
                               {this.state.isLoading ? <LoadingSpinner /> : Helpers.getCategoryItems(this.state.recommendations, 'película', 4).map((records) =>
