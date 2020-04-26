@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
-import * as Helpers from '../Helpers';
 
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -11,7 +10,6 @@ import {ReactComponent as AddIcon} from '../icons/Plus.svg';
 
 const dataController = require('../controllers/dataController.js');
 const recommendationController = require('../controllers/recommendationController.js');
-const userController = require('../controllers/userController.js');
 
 //AIRTABLE HELPERS
 const Airtable = require('airtable');
@@ -109,7 +107,7 @@ class ExternalProfile extends Component {
                         </div>
               }
               </div>
-              
+
             </div>
         </div>
       </div>

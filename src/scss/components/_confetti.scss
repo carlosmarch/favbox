@@ -1,0 +1,21 @@
+.wrapper-confetti {
+  position: absolute;
+  min-height: 100vh;
+  width: 100%;
+}
+
+[class|="confetti"] {
+  position: absolute;
+}
+
+.confetti-red {
+  background-color: #E94A3F;
+}
+
+.confetti-yellow {
+  background-color: #FAA040;
+}
+
+.confetti-blue {
+  background-color: #5FC9F5;
+}

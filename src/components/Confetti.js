@@ -1,38 +1,74 @@
-import React from ‘react’;
-import { findDOMNode } from ‘react-dom’;
-import $ from ‘jquery’;
+import React, { Component } from 'react';
+import { findDOMNode } from 'react-dom';
+import $ from 'jquery';
 
-class FullDesc extends React.Component {
+class Confetti extends React.Component {
 
   constructor() {
      super();
    }
 
 
-  handleToggle = () => {
-     const el = findDOMNode(this.refs.toggle);
-     $(el).slideToggle();
-   };
+
+  componentDidMount(){
+
+    const create = (i) => {
+      console.log('create')
+      var width = Math.random() * 8;
+      var height = width * 0.4;
+      var colourIdx = Math.ceil(Math.random() * 3);
+      var colour = "confetti-red";
+      switch(colourIdx) {
+        case 1:
+          colour = "confetti-yellow";
+          break;
+        case 2:
+          colour = "confetti-blue";
+          break;
+        default:
+          colour = "confetti-red";
+      }
+      $('<div class="confetti-'+i+' '+colour+'"></div>').css({
+        "width" : width+"px",
+        "height" : height+"px",
+        "top" : -Math.random()*20+"%",
+        "left" : Math.random()*100+"%",
+        "opacity" : Math.random()+0.5,
+        "transform" : "rotate("+Math.random()*360+"deg)"
+      }).appendTo('.wrapper-confetti');
+
+      drop(i);
+    }
+
+    const drop = (x) => {
+      $('.confetti-'+x).animate({
+        top: "100%",
+        left: "+="+Math.random()*15+"%"
+      }, Math.random()*3000 + 3000, function() {
+        reset(x);
+      });
+    }
+
+    const reset = (x) => {
+      $('.confetti-'+x).animate({
+        "top" : -Math.random()*20+"%",
+        "left" : "-="+Math.random()*15+"%"
+      }, 0, function() {
+        drop(x);
+      });
+    }
+
+    for (var i = 0; i < 200; i++) {
+       create(i);
+    }
+
+  }
 
 
   render() {
-       return (
-       <div className=”long-desc”>
-        <ul className=”profile-info”>
-         <li>
-           <span className=”info-title”>User Name : </span> Shuvo Habib
-         </li>
-       </ul>
-      <ul className=”profile-info additional-profile-info-list” ref=”toggle”>
-        <li>
-          <span className=”info-email”>Office Email</span> me@shuvohabib.com
-        </li>
-       </ul>
-        <div className=”ellipsis-click” onClick={this.handleToggle}>
-          <i className=”fa-ellipsis-h”/>
-        </div>
-       </div>
-       );
+     return (
+       <div className="wrapper-confetti"></div>
+     );
   }
 }
-export default FullDesc;
+export default Confetti;

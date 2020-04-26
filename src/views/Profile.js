@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
+import history from '../history';
 import * as Helpers from '../Helpers';
 
 import Header from '../components/Header';
@@ -8,6 +9,7 @@ import FavItem from '../components/FavItem';
 import LoadingSpinner from '../components/LoadingSpinner';
 import {ReactComponent as UserIcon} from '../icons/User.svg';
 import {ReactComponent as AddIcon} from '../icons/Plus.svg';
+import Confetti from '../components/Confetti';
 
 const dataController = require('../controllers/dataController.js');
 const recommendationController = require('../controllers/recommendationController.js');
@@ -29,9 +31,9 @@ class Profile extends Component {
       isLoading : true,
       renderItems : [],
       pubItems  : 0,
-      likeItems : Helpers.getStorageFavs() ? Helpers.getStorageFavs()?.length : '0'
+      likeItems : Helpers.getStorageFavs() ? Helpers.getStorageFavs()?.length : '0',
+      makeConfetti : this.checkConfetti()
     };
-
   }
 
   getUserPubItems(){
@@ -66,10 +68,23 @@ class Profile extends Component {
       });
   }
 
-
+  checkConfetti(){
+    if (this.props.location.state?.type === 'success' ){
+      return true
+    }else{
+      return false
+    }
+  }
 
   componentDidMount() {
-    //REVIEW WHEN USER LIKES HIS OWN ITEMS && UPDATE COUNTER
+    //Clear history state messages
+    if (history.location.state && history.location.state.message) {
+        let state = { ...history.location.state };
+        delete state.message
+        delete state.type
+        history.replace({ ...history.location, state });
+    }
+
     this.getUserPubItems()
   }
 
@@ -78,6 +93,8 @@ class Profile extends Component {
 
     return (
     <div className="app_wrapper profile_view">
+
+      { this.state.makeConfetti ? <Confetti /> : ''}
 
       <Header />
       <div className="global">
@@ -107,7 +124,11 @@ class Profile extends Component {
                       ? this.state.renderItems.map( (records) => <FavItem {...records} key={records.id} itemId={records.id} /> )
                       : <div className="empty-pubrecords">
                           <Link to="/create" className="link inline-block mb-s"><AddIcon /> Create</Link>
-                          <div>Welcome <span role="img" aria-label="welcome">🎉</span>! Now you can share your referents and they will appear here.</div>
+                          <div>
+                            Welcome <span role="img" aria-label="welcome">🎉</span>! Now you can share your referents and they will appear here.
+                            <br></br>
+                            Or start browsing favs in <Link to="/feed" className="underline">Discover</Link>
+                          </div>
                         </div>
               }
               </div>

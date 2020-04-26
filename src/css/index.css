@@ -406,6 +406,11 @@ p.description,
   box-sizing: border-box;
 }
 
+body {
+  background: var(--background);
+  overflow-x: hidden;
+}
+
 .app_wrapper {
   overflow-x: hidden;
 }
@@ -414,10 +419,6 @@ p.description,
   .app_wrapper {
     padding-bottom: 60px;
   }
-}
-
-body {
-  background: var(--background);
 }
 
 main {
@@ -638,7 +639,7 @@ a {
 
 .link-inverted:hover {
   color: var(--interaction);
-  text-decoration: underline;
+  text-decoration: underline !important;
 }
 
 .button {
@@ -2902,6 +2903,28 @@ a.topic-card::before {
 .user-badge svg {
   width: 16px;
   height: 16px;
+}
+
+.wrapper-confetti {
+  position: absolute;
+  min-height: 100vh;
+  width: 100%;
+}
+
+[class|="confetti"] {
+  position: absolute;
+}
+
+.confetti-red {
+  background-color: #E94A3F;
+}
+
+.confetti-yellow {
+  background-color: #FAA040;
+}
+
+.confetti-blue {
+  background-color: #5FC9F5;
 }
 
 .signup_view,

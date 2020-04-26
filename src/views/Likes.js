@@ -41,6 +41,11 @@ class Likes extends Component {
     data.getAirtableRecords(table, options)
       .then( async (users) => {
         //USERS SHOULD BE ONLY ONE,THE ONLY THAT MATCH WITH EMAIL
+        if (!users?.length){
+          //WHEN NO USERS
+          this.setState({ isLoading: false, renderItems: [] });
+          return
+        }
         const user = users[0]?.fields;
         if (!user?.likes) user.likes = []
         const hydratedFavItems = await recommendationController.getHydratedFavItems(user.likes)

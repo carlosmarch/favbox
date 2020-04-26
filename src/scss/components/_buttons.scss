@@ -37,7 +37,7 @@ a{
   color: var(--body-type);
   &:hover {
     color: var(--interaction);
-    text-decoration:underline;
+    text-decoration: underline!important;
   }
 }
 .button {

@@ -112,6 +112,16 @@ export const authenticate = (req) => {
   data
     .getAirtableRecords(table, options)
     .then(users => {
+      if(!users.length){
+        // Not registered
+        history.push({
+          pathname: '/login',
+          state: {
+            type: 'info',
+            message: 'That email is not registered... Try to signup!'
+          }
+        })
+      }
       users.forEach(function(user) {
         bcrypt.compare(password, user.get('password'), function(err, response) {
           if (response) {
@@ -120,11 +130,10 @@ export const authenticate = (req) => {
             user.fields['id'] = user.id
             setSession(user.fields)
 
-            //console.log('authenticate','Passwords yes match')
             history.push({
               pathname: '/profile',
               state: {
-                type: 'success',
+                type: 'info',
                 message: 'Logged in!'
               }
             })
