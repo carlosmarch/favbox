@@ -632,6 +632,15 @@ a {
   fill: var(--interaction);
 }
 
+.link-inverted {
+  color: var(--body-type);
+}
+
+.link-inverted:hover {
+  color: var(--interaction);
+  text-decoration: underline;
+}
+
 .button {
   text-align: center;
   height: 48px;
@@ -2383,10 +2392,6 @@ a.topic-card::before {
   position: relative;
 }
 
-.articlelist a {
-  color: var(--interaction);
-}
-
 .articlelist:hover .articlelist-title::after {
   transition: all 0.2s ease 0s;
   right: -16px;
@@ -2679,6 +2684,14 @@ a.topic-card::before {
   padding-bottom: 80px;
 }
 
+.AppGrid a {
+  color: var(--pink);
+}
+
+.AppGrid a:hover {
+  color: var(--pink);
+}
+
 .appcard {
   display: flex;
   margin-bottom: 32px;
@@ -2689,27 +2702,32 @@ a.topic-card::before {
   width: 100%;
 }
 
+.appcard-icon-wrap {
+  margin-right: 16px;
+}
+
 .appcard-icon {
   background-size: 35% 35%;
   box-shadow: 0 0.25rem 0.875rem #03363d;
   height: 4.875rem;
   transition: background-color .25s;
   width: 4.875rem;
-  margin-right: 16px;
   border-radius: 10px;
   position: relative;
   display: block;
   z-index: 1;
   border-radius: 16%;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .appcard .like {
   transition: all .2s ease;
-  top: 20px;
-  right: auto;
-  left: 20px;
   opacity: 0;
+  top: auto;
+  right: auto;
 }
 
 .appcard .contributor-image {
@@ -3035,7 +3053,7 @@ a.topic-card::before {
 .scratch:before {
   content: '';
   background-image: url(/icons/ic-scratch.svg);
-  width: 222px;
+  width: 100%;
   height: 32px;
   background-size: contain;
   position: absolute;

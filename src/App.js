@@ -45,7 +45,7 @@ class App extends Component {
     })
     .then((resp2, data) => resp2.json())
     .then(contributors => {
-
+      delete contributors.records['password'];
       this.setState({
         isLoading: false,
         recommendations: window.$alldata.sort(() => Math.random() - 0.5),//random order
@@ -83,8 +83,19 @@ class App extends Component {
                         </div>
                     </div>
 
-
-
+                    <div className="GridCard mb-l">
+                        <BlockTitle title={'Pelis & series'} description={'Las recomendaciones mas destacadas'} link={'categorias/peliculas'}/>
+                        <div className="container container-xl">
+                            <div className="grid">
+                              {this.state.isLoading ? <LoadingSpinner /> : Helpers.getCategoryItems(this.state.recommendations, 'película', 4).map((records) =>
+                                <Card {...records.fields} key={records.id} itemId={records.id} autor={Helpers.getContributor(this.state.contributors, records.fields.contribuidor)}/>
+                              )}
+                              {this.state.isLoading ? '' : Helpers.getCategoryItems(this.state.recommendations, 'serie', 4).map((records) =>
+                                <Card {...records.fields} key={records.id} itemId={records.id} autor={Helpers.getContributor(this.state.contributors, records.fields.contribuidor)}/>
+                              )}
+                            </div>
+                        </div>
+                    </div>
 
                     <div className="MusicGrid">
                         <BlockTitle title={'Música'} description={'Las recomendaciones mas destacadas'} link={'categorias/música'}/>

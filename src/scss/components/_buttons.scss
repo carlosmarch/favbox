@@ -33,6 +33,13 @@ a{
     fill: var(--interaction);
   }
 }
+.link-inverted{
+  color: var(--body-type);
+  &:hover {
+    color: var(--interaction);
+    text-decoration:underline;
+  }
+}
 .button {
     text-align: center;
     height: 48px;

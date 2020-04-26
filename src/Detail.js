@@ -104,27 +104,31 @@ class Detail extends Component {
                       : <BlockTitle title={this.state.topic} description={'Las recomendaciones de '+this.state.topic+' mas destacadas'} titleclass="big-title mt-s" descriptionclass="big-description mb-m"/>
                     }
 
-                    {this.state.isLoading ? <LoadingSpinner /> : this.matchCategoriesWithTemplates(Helpers.catTemplate.card) && this.matchCategoriesWithTemplates(Helpers.catTemplate.card).length ? (
+                    {this.state.isLoading ? <LoadingSpinner /> : this.matchCategoriesWithTemplates(Templates.catTemplate.card) && this.matchCategoriesWithTemplates(Templates.catTemplate.card).length ? (
                       Templates.renderCardItems(this.state.recommendations, this.state.contributors)
                     ) : ('')}
 
-                    {this.state.isLoading ? '' : this.matchCategoriesWithTemplates(Helpers.catTemplate.musiccard) && this.matchCategoriesWithTemplates(Helpers.catTemplate.musiccard).length ? (
+                    {this.state.isLoading ? '' : this.matchCategoriesWithTemplates(Templates.catTemplate.cinemacard) && this.matchCategoriesWithTemplates(Templates.catTemplate.cinemacard).length ? (
+                      Templates.renderCinemaItems(this.state.recommendations, this.state.contributors, this.state.category)
+                    ) : ('')}
+
+                    {this.state.isLoading ? '' : this.matchCategoriesWithTemplates(Templates.catTemplate.musiccard) && this.matchCategoriesWithTemplates(Templates.catTemplate.musiccard).length ? (
                       Templates.renderMusicItems(this.state.recommendations, this.state.contributors, this.state.category)
                     ) : ('')}
 
-                    {this.state.isLoading ? '' : this.matchCategoriesWithTemplates(Helpers.catTemplate.podcastcard) && this.matchCategoriesWithTemplates(Helpers.catTemplate.podcastcard).length ? (
+                    {this.state.isLoading ? '' : this.matchCategoriesWithTemplates(Templates.catTemplate.podcastcard) && this.matchCategoriesWithTemplates(Templates.catTemplate.podcastcard).length ? (
                       Templates.renderPodcastItems(this.state.recommendations, this.state.contributors, this.state.category)
                     ) : ('')}
 
-                    {this.state.isLoading ? '' : this.matchCategoriesWithTemplates(Helpers.catTemplate.videocard) && this.matchCategoriesWithTemplates(Helpers.catTemplate.videocard).length ? (
+                    {this.state.isLoading ? '' : this.matchCategoriesWithTemplates(Templates.catTemplate.videocard) && this.matchCategoriesWithTemplates(Templates.catTemplate.videocard).length ? (
                       Templates.renderVideoItems(this.state.recommendations, this.state.contributors, this.state.category)
                     ) : ('')}
 
-                    {this.state.isLoading ? '' : this.matchCategoriesWithTemplates(Helpers.catTemplate.appcard) && this.matchCategoriesWithTemplates(Helpers.catTemplate.appcard).length ? (
+                    {this.state.isLoading ? '' : this.matchCategoriesWithTemplates(Templates.catTemplate.appcard) && this.matchCategoriesWithTemplates(Templates.catTemplate.appcard).length ? (
                       Templates.renderAppItems(this.state.recommendations, this.state.contributors, this.state.category)
                     ) : ('')}
 
-                    {this.state.isLoading ? '' : this.matchCategoriesWithTemplates(Helpers.catTemplate.articlelist) && this.matchCategoriesWithTemplates(Helpers.catTemplate.articlelist).length ? (
+                    {this.state.isLoading ? '' : this.matchCategoriesWithTemplates(Templates.catTemplate.articlelist) && this.matchCategoriesWithTemplates(Templates.catTemplate.articlelist).length ? (
                       Templates.renderArticleItems(this.state.recommendations, this.state.contributors, this.state.category)
                     ) : ('')}
 

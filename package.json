@@ -1,7 +1,7 @@
 {
-  "homepage": "https://carlosmarch.github.io/",
+  "homepage": "http://favbox.herokuapp.com/",
   "start_url": "/",
-  "name": "mequedoencasa",
+  "name": "favbox",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

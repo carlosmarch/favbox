@@ -11,8 +11,8 @@ class Appcard extends Component {
       <a className="appcard width-6/12 width-12/12@m" href={this.props.url} target="_blank" rel="noopener noreferrer">
 
         <div className="appcard-icon-wrap">
-          <Like itemId={this.props.itemId}/>
           <div className="appcard-icon">
+            <Like itemId={this.props.itemId}/>
             <img className="appcard-img" src={this.props.imageUrl} alt="icon"/>
           </div>
         </div>

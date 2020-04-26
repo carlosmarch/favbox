@@ -118,24 +118,6 @@ function truncateText(str, length, ending) {
     return recommendations.filter( (recommendation) => catArr.some((tag) => recommendation.fields.categorias?.includes(tag)) );
   }
 
-  //Get all items which match with fav storage id array
-  //OLD!!!
-  function getFavItems(recommendations){
-    return recommendations.filter(recommendation => getStorageFavs().some(favId => recommendation.id === favId));
-  }
-
-
-
-  export const catTemplate = {
-    card:         ['libro', 'revista'],
-    musiccard:    ['música'],
-    podcastcard : ['podcast'],
-    articlelist : ['artículo', 'web', 'newsletter'],
-    videocard:    ['video'],
-    appcard:      ['app'],
-    cinemacard:   ['película', 'serie']
-  };
-
 
   export {
      storeUniqueTopics,
@@ -150,6 +132,5 @@ function truncateText(str, length, ending) {
      getTopicItems,
      getCollectionItems,
      getBlockCategoryItems,
-     getFavItems,
      getStorageFavs
   };

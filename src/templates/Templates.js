@@ -114,6 +114,20 @@ function renderAppItems(recommendations, contributors, pagetype){
   )
 }
 
+function renderCinemaItems(recommendations, contributors, pagetype) {
+  return (
+    <div className="GridCard">
+        <BlockTitle title={pagetype==='categorias' ? '' : 'Cinema & Series'} titleclass={pagetype==='favoritos' ? 'small-title' : ''} />
+        <div className="container container-xl">
+            <div className="grid">
+              {Helpers.getBlockCategoryItems(recommendations, catTemplate.cinemacard).map((records) =>
+                <Card {...records.fields} key={records.id} itemId={records.id} autor={Helpers.getContributor(contributors, records.fields.contribuidor)}/>
+              )}
+            </div>
+        </div>
+    </div>
+  )
+}
 
 export {
    renderCardItems,
@@ -121,5 +135,6 @@ export {
    renderPodcastItems,
    renderArticleItems,
    renderVideoItems,
-   renderAppItems
+   renderAppItems,
+   renderCinemaItems
 };

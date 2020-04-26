@@ -12,12 +12,12 @@ import App from './App';
 import Detail from './Detail';
 import About from './views/About';
 import Notfound from './views/Notfound';
-import Myfavs from './Myfavs';
 import Search from './views/Search';
 import Signup from './views/Signup';
 import Login from './views/Login';
 import Home from './views/Home';
 import Profile from './views/Profile';
+import ExternalProfile from './views/ExternalProfile';
 import Likes from './views/Likes';
 import Create from './views/Create';
 
@@ -56,9 +56,9 @@ const routing = (
         <Route path="/categorias/:id" component={Detail} />
         <Route path="/temas/:id" component={Detail} />
         <Route path="/colecciones/:id" component={Detail} />
+        <Route path="/profile/:id" component={ExternalProfile} />
 
         <Route exact path="/about" component={About} />
-        <Route exact path="/favoritos" component={Myfavs} />
         <Route exact path="/search" component={Search} />
 
         <Route exact path="/signup" component={Signup} />

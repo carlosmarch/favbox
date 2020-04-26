@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import {ReactComponent as UserIcon} from '../icons/User.svg';
+import { Link } from 'react-router-dom';
 
 //@TODO
 //REVIEW DEFAULT VALUES && EMPTY USERS
@@ -11,6 +12,7 @@ class Contributor extends Component {
     if(!this.props.contributor) return(
       <div className="contributor"></div>
     )
+
     return (
 
       <div className="contributor">
@@ -18,7 +20,7 @@ class Contributor extends Component {
           <UserIcon />
         </div>
         <div className="contributor-info">
-          <div className="contributor-name">{this.props.contributor.name}</div>
+          <Link to={`/profile/${this.props.contributor.name}`} className="contributor-name link-inverted">{this.props.contributor.name}</Link>
           <div className="contributor-description">{this.props.contributor.description}</div>
         </div>
       </div>
