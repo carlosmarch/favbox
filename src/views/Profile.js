@@ -132,7 +132,7 @@ class Profile extends Component {
                         </div>
               }
               </div>
-              <div className="mt-l mb-l">
+              <div className="mt-l mb-xl">
                 <button className="underline grey auto block" onClick={userController.signOut}>Sign Out</button>
               </div>
             </div>

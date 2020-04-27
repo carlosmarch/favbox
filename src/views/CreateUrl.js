@@ -105,7 +105,7 @@ class CreateUrl extends Component {
 
    linkPreview(itemUrl){
       $.ajax({
-          url: "http://api.linkpreview.net",
+          url: "https://api.linkpreview.net",
           dataType: 'jsonp',
           data: {q: itemUrl, key: process.env.REACT_APP_LINKPREVIEW_KEY },
           success: function (data) {

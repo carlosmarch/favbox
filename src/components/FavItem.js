@@ -11,8 +11,8 @@ class FavItem extends Component {
           </div>
           <div className="favitem-description">
             <div className="favitem-category badge inline">{this.props.categorias}</div>
-            <h5>{this.props.title}</h5>
-            <p className="description-small">{this.props.description}</p>
+            <h6>{this.props.title}</h6>
+            <p className="description">{this.props.description}</p>
           </div>
           <Like itemId={this.props.itemId}/>
         </a>

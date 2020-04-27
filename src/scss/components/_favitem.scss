@@ -51,7 +51,17 @@
 
 .favitem {
   @media (max-width: $breakpoint-m) {
-    display: block;
+    display: flex;
+  }
+}
+.favitem-image-holder{
+  @media (max-width: $breakpoint-m) {
+    width: 100px;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 16px;
   }
 }
 .favitem-title{

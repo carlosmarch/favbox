@@ -1051,19 +1051,23 @@ a.bottombar-item-icon.tab-active path {
 }
 
 .bottombar-item-icon:nth-child(1).tab-active ~ .active-line {
-  left: calc(12.5% - 20px);
+  left: calc( ( ( 1 * (100%/5) ) - (100%/5)/2 ) - 20px);
 }
 
 .bottombar-item-icon:nth-child(2).tab-active ~ .active-line {
-  left: calc(37.5% - 20px);
+  left: calc( ( ( 2 * (100%/5) ) - (100%/5)/2 ) - 20px);
 }
 
 .bottombar-item-icon:nth-child(3).tab-active ~ .active-line {
-  left: calc(62.5% - 20px);
+  left: calc( ( ( 3 * (100%/5) ) - (100%/5)/2 ) - 20px);
 }
 
 .bottombar-item-icon:nth-child(4).tab-active ~ .active-line {
-  left: calc(87.5% - 20px);
+  left: calc( ( ( 4 * (100%/5) ) - (100%/5)/2 ) - 20px);
+}
+
+.bottombar-item-icon:nth-child(5).tab-active ~ .active-line {
+  left: calc( ( ( 5 * (100%/5) ) - (100%/5)/2 ) - 20px);
 }
 
 .hero-section {
@@ -2776,7 +2780,18 @@ a.topic-card::before {
 
 @media (max-width: 48em) {
   .favitem {
-    display: block;
+    display: flex;
+  }
+}
+
+@media (max-width: 48em) {
+  .favitem-image-holder {
+    width: 100px;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 16px;
   }
 }
 

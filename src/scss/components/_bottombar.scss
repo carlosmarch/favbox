@@ -72,15 +72,21 @@ a.bottombar-item-icon.tab-active path {
 //   }
 // }
 // ( (100% / totalitems) / 2 ) - 20px half the circle
-.bottombar-item-icon:nth-child(1).tab-active ~ .active-line{
-  left: calc(12.5% - 20px);
+$totalItems: 5;
+@for $i from 1 through $totalItems {
+  .bottombar-item-icon:nth-child(#{$i}).tab-active ~ .active-line{
+    left: calc( ( ( #{$i} * (100%/5) ) - (100%/5)/2 ) - 20px);
+  }
 }
-.bottombar-item-icon:nth-child(2).tab-active ~ .active-line{
-  left: calc(37.5% - 20px);
-}
-.bottombar-item-icon:nth-child(3).tab-active ~ .active-line{
-  left: calc(62.5% - 20px);
-}
-.bottombar-item-icon:nth-child(4).tab-active ~ .active-line{
-  left: calc(87.5% - 20px);
-}
+// .bottombar-item-icon:nth-child(1).tab-active ~ .active-line{
+//   left: calc(12.5% - 20px);
+// }
+// .bottombar-item-icon:nth-child(2).tab-active ~ .active-line{
+//   left: calc(37.5% - 20px);
+// }
+// .bottombar-item-icon:nth-child(3).tab-active ~ .active-line{
+//   left: calc(62.5% - 20px);
+// }
+// .bottombar-item-icon:nth-child(4).tab-active ~ .active-line{
+//   left: calc(87.5% - 20px);
+// }
