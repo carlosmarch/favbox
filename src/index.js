@@ -19,7 +19,6 @@ import Home from './views/Home';
 import Profile from './views/Profile';
 import ExternalProfile from './views/ExternalProfile';
 import Likes from './views/Likes';
-import Create from './views/Create';
 import CreateUrl from './views/CreateUrl';
 
 import * as serviceWorker from './serviceWorker';

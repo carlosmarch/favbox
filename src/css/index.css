@@ -3361,3 +3361,7 @@ a.topic-card::before {
   outline: none;
   border: none;
 }
+
+.AllTopics {
+  margin-bottom: 120px;
+}
