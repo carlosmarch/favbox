@@ -48,6 +48,9 @@ body{
 h1,h2,h3,h4,h5,h6{
   font-family: "Sharp Grotesk SmBold", Open Sans,sans-serif;
   //color: var(--title-type);
+  &::first-letter{
+    text-transform: uppercase;
+  }
 }
 h1 {
   font-size: 68px;
@@ -78,8 +81,8 @@ h5 {
   }
 }
 h6 {
-  font-size: 20px;
-  line-height: 28px;
+  font-size: 18px;
+  line-height: 24px;
   @media (max-width: $breakpoint-m) {
     font-size: 14px;
     line-height: 20px;
@@ -89,6 +92,9 @@ h6 {
 p{
   font-size: 20px;
   line-height: 30px;
+  &::first-letter{
+    text-transform: uppercase;
+  }
 }
 
 p.hero {
@@ -102,4 +108,9 @@ p.description,
 .description{
   font-size: 16px;
   line-height: 20px;
+}
+p.description-small,
+.description-small{
+  font-size: 14px;
+  line-height: 16px;
 }

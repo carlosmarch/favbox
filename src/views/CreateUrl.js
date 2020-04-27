@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import history from '../history';
-import ImageUploader from "react-images-upload";
 import { findDOMNode } from 'react-dom';
 import $ from 'jquery';
 
@@ -18,6 +17,7 @@ class CreateUrl extends Component {
     this.state = {
       isLoading   : true,//until getting dropdown categories
       isLoadingUrl: false,
+      showForm:false,
       contribuidor: [JSON.parse(localStorage.getItem('userSession'))?.id]
     };
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -114,12 +114,12 @@ class CreateUrl extends Component {
       });
 
       const handleData = (data) => {
-
-        this.setState({isLoading: false});
-
+        this.setState({
+          isLoadingUrl: false,
+          showForm: true
+        });
         if(data){
           if(data?.title){
-            console.log('heeeey', data.title)
             this.setState({title: data.title});
           }
           if(data?.description){
@@ -129,13 +129,33 @@ class CreateUrl extends Component {
             this.setState({imageUrl: data.image});
           }
         }else{
+          //No data
+          history.push({
+            state: {
+              type: 'info',
+              message: 'That link has not provided info'
+            }
+          })
           return
         }
       }
 
    }
 
-
+   itemPreview(props){
+     return (
+       <div className="favitem no-b">
+         <div className="favitem-image-holder">
+         {props?.imageUrl ? <img className="favitem-image-holder-img" src={props?.imageUrl} alt="cover"/> : ''}
+         </div>
+         <div className="favitem-description">
+           <div className="favitem-category badge inline mt-s">{props?.categorias ? props?.categorias : 'category' }</div>
+           <h6>{props?.title ? props?.title : 'title'}</h6>
+           <p className="description-small">{props?.description ? props?.description : 'description'}</p>
+         </div>
+       </div>
+     );
+   }
 
   render() {
 
@@ -162,13 +182,13 @@ class CreateUrl extends Component {
                            : ''}
 
                          <div className="input-icon-container">
-                           <label>Item Link (External Reference)</label>
+                           <label>Item Link</label>
                            <input id="url"
                              name="url"
                              component="input"
                              type="text"
                              onChange={this.urlChangeHandler}
-                             placeholder="External url for the item source"
+                             placeholder="External url for the item"
                              required
                              autoFocus
                              value={this.state.url}
@@ -177,7 +197,13 @@ class CreateUrl extends Component {
                           {this.state.isLoadingUrl ? <div class="loader-icon-container"><i class="loader-icon"></i></div> : ''}
                          </div>
 
-                         <div className="create-item-step-2">
+                         <div className={`create-item-step-2 ${this.state.showForm ? 'show-form' : ''} `}>
+
+                           <div className="itemPreview mb-m">
+                              <h6>Preview</h6>
+                              {this.itemPreview(this.state)}
+                           </div>
+
                            <div>
                              <label>Title</label>
                              <input id="title"
@@ -221,7 +247,7 @@ class CreateUrl extends Component {
                                onChange={this.categoriasChangeHandler}
                                required
                              >
-                                <option hidden disabled selected value="" data-selected="true">Select a category</option>
+                                <option hidden selected value="">Select a category</option>
                                 {this.state.isLoading ? '' : this.state?.uniqueCategories.map((category, i) => <option key={i} value={category}>{category}</option>)}
                              </select>
                            </div>
@@ -231,14 +257,14 @@ class CreateUrl extends Component {
                                name="temas"
                                onChange={this.temasChangeHandler}
                              >
-                                <option hidden disabled selected value="" data-selected="true">Select a topic</option>
+                                <option hidden selected value="">Select a topic</option>
                                 {this.state.isLoading ? '' :this.state?.uniqueTopics.map((topic, i) => <option key={i} value={topic}>{topic}</option>)}
                              </select>
                            </div>
+
+                           <button className="button submitbtn inline mt-s" type="submit">{this.state.isLoading ? 'loading' : 'Create Item'}</button>
+
                          </div>
-
-                        <button className="button submitbtn inline mt-s" type="submit">{this.state.isLoading ? 'loading' : 'Create Item'}</button>
-
                   </div>
               </div>
             </form>
@@ -251,6 +277,7 @@ class CreateUrl extends Component {
       </div>
     );
   }
+
 }
 
 export default CreateUrl;

@@ -79,7 +79,9 @@ $breakpoint-m: 48em;
 .underline{
   text-decoration: underline;
 }
-
+.no-b{
+  border: none!important;
+}
 //Cards
 .card-16{
   box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);

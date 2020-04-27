@@ -17,9 +17,14 @@
 
 .favitem-image-holder{
   width: 160px;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .favitem-image-holder-img{
-  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .favitem-description{

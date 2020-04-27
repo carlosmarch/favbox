@@ -1,0 +1,140 @@
+.create-item-step-2{
+  opacity:0;
+}
+.show-form{
+  opacity:1;
+}
+
+.itemPreview .favitem-image-holder{
+  background: var(--soft-grey-bg);
+}
+
+
+//BIG INPUT
+.big-input{
+  font-size: 22px;
+  font-family: "Sharp Grotesk SmBold", Open Sans,sans-serif;
+  background: #fff;
+  border: none;
+  border-bottom: 2px solid var(--dark-green);
+  border-radius: 0;
+  padding: 0 40px 0 16px;
+  margin-bottom: 32px;
+}
+
+//Input loader
+.input-icon-container {
+  position: relative;
+}
+.loader-icon-container {
+  position: absolute;
+  right: 10px;
+  top: calc(50% - 20px);
+}
+.loader-icon {
+  position: relative;
+  height: 20px;
+  width: 20px;
+  display: inline-block;
+  animation: around 5.4s infinite;
+}
+
+@keyframes around {
+  0% {
+    transform: rotate(0deg)
+  }
+  100% {
+    transform: rotate(360deg)
+  }
+}
+
+.loader-icon::after, .loader-icon::before {
+  content: "";
+  background: transparent;
+  position: absolute;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  border-width: 2px;
+  border-color: var(--dark-green) var(--dark-green) transparent transparent;
+  border-style: solid;
+  border-radius: 20px;
+  box-sizing: border-box;
+  top: 0;
+  left: 0;
+  animation: around 0.7s ease-in-out infinite;
+}
+
+.loader-icon::after {
+  animation: around 0.7s ease-in-out 0.1s infinite;
+  background: transparent;
+}
+
+
+
+//FILE UPLOADER
+//@npm imageUploader
+.create-item-uploader{
+  background: var(--soft-grey-bg);
+}
+
+.create-item-uploader .fileContainer {
+  background: none;
+  box-shadow: none;
+  border-radius: 8px;
+  padding: 24px 0;
+  height: 480px;
+  justify-content: flex-end;
+  border: 2px dashed rgba(3,54,61,.25);
+  border-radius: 6px;
+  @media (max-width: $breakpoint-m) {
+    height: 140px;
+  }
+}
+.create-item-uploader .fileContainer .uploadPictureContainer {
+  width: 100%;
+  margin: 0;
+  padding: 10px;
+  background: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: inherit;
+  box-shadow: none;
+  border: none;
+}
+.create-item-uploader .uploadPicturesWrapper{
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.create-item-uploader .fileContainer .deleteImage {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #fff;
+    background: var(--dark-green);
+    border-radius: 50%;
+    text-align: center;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 30px;
+    width: 30px;
+    height: 30px;
+}
+
+.create-item-uploader .fileContainer .chooseFileButton {
+    padding: 6px 23px;
+    background: var(--dark-green);
+    border-radius: 2px;
+    color: #fff;
+    font-weight: 300;
+    font-size: 14px;
+    margin: 10px 0;
+    transition: all 0.2s ease-in;
+    cursor: pointer;
+    outline: none;
+    border: none;
+}
