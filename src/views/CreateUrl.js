@@ -104,7 +104,6 @@ class CreateUrl extends Component {
   }
 
    linkPreview(itemUrl){
-
       $.ajax({
           url: "http://api.linkpreview.net",
           dataType: 'jsonp',
@@ -147,7 +146,7 @@ class CreateUrl extends Component {
           <div className="container container-s">
 
             <div className="form-container">
-              <div className="mb-s text-center">
+              <div className="mb-m text-center">
                 <h3 className="centered">Add an item</h3>
                 <p>Tell everyone why it´s awesome.</p>
               </div>

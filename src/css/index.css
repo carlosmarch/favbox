@@ -742,7 +742,7 @@ label, .field-label {
 }
 
 textarea {
-  height: 128px;
+  height: 104px;
   padding-top: 16px;
   padding-top: 16px;
   padding-bottom: 16px;
@@ -800,7 +800,7 @@ button:focus {
 
 .loader-icon::after, .loader-icon::before {
   content: "";
-  background: white;
+  background: transparent;
   position: absolute;
   display: inline-block;
   width: 100%;
