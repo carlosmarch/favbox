@@ -3,12 +3,7 @@ import { findDOMNode } from 'react-dom';
 import $ from 'jquery';
 
 class Confetti extends React.Component {
-
-  constructor() {
-     super();
-   }
-
-
+  
 
   componentDidMount(){
 

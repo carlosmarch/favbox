@@ -9,7 +9,6 @@ const recommendationController = require('../controllers/recommendationControlle
 
 
 //@TODO
-//REVIEW MESSAGING : SUCCESS && ERROR
 
 class Create extends Component {
 

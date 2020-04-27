@@ -64,8 +64,6 @@ class ExternalProfile extends Component {
 
 
   componentDidMount() {
-    console.log('HEY', this.state.urlName)
-    //REVIEW WHEN USER LIKES HIS OWN ITEMS && UPDATE COUNTER
     this.getUserPubItems()
   }
 

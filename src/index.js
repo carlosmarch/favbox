@@ -20,6 +20,7 @@ import Profile from './views/Profile';
 import ExternalProfile from './views/ExternalProfile';
 import Likes from './views/Likes';
 import Create from './views/Create';
+import CreateUrl from './views/CreateUrl';
 
 import * as serviceWorker from './serviceWorker';
 const userController = require('./controllers/userController.js');
@@ -64,7 +65,7 @@ const routing = (
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/login" component={Login} />
 
-        <AuthenticatedRoute path="/create" component={Create}/>
+        <AuthenticatedRoute path="/create" component={CreateUrl}/>
         <AuthenticatedRoute path="/likes" component={Likes}/>
         <AuthenticatedRoute path="/profile" component={Profile}/>
 

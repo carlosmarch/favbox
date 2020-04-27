@@ -202,34 +202,3 @@ export const getHydratedFavItems = async (userlikes) => {
   }
   return itemsWithDetails
 }
-
-
-
-
-
-
-
-
-
-//GET METADATA
-//NOT USED
-// const getMeta = () => {
-//   fetch('https://cors-anywhere.herokuapp.com/' + 'https://ggili.com/aprendiendo-de-las-vegas-libro-2856.html')
-//     .then(res => {
-//       console.log('HEYYY', res, res.method)
-//     });
-// }
-//
-// const doCORSRequest = (options, printResult) => {
-//
-//   var x = new XMLHttpRequest();
-//   x.open(options.method, 'https://cors-anywhere.herokuapp.com/' + 'https://ggili.com/aprendiendo-de-las-vegas-libro-2856.html' );
-//   x.onload = x.onerror = function() {
-//     printResult(
-//       options.method + ' ' + options.url + '\n' +
-//       x.status + ' ' + x.statusText + '\n\n' +
-//       (x.responseText || '')
-//     );
-//   };
-//   x.send(options.data);
-// }
