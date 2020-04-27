@@ -756,7 +756,8 @@ button:focus {
 }
 
 ::placeholder,
-:disabled {
+:disabled,
+option[data-selected="true"] {
   color: #ccc;
 }
 

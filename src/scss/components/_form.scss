@@ -36,7 +36,8 @@ button:focus {
     outline: none;
 }
 ::placeholder,
-:disabled{
+:disabled,
+option[data-selected="true"]{
   color:#ccc;
 }
 

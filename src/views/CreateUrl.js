@@ -221,8 +221,8 @@ class CreateUrl extends Component {
                                onChange={this.categoriasChangeHandler}
                                required
                              >
-                             <option hidden disabled selected value="">Select a category</option>
-                             {this.state.isLoading ? '' : this.state?.uniqueCategories.map((category, i) => <option key={i} value={category}>{category}</option>)}
+                                <option hidden disabled selected value="" data-selected="true">Select a category</option>
+                                {this.state.isLoading ? '' : this.state?.uniqueCategories.map((category, i) => <option key={i} value={category}>{category}</option>)}
                              </select>
                            </div>
                            <div>
@@ -231,8 +231,8 @@ class CreateUrl extends Component {
                                name="temas"
                                onChange={this.temasChangeHandler}
                              >
-                             <option hidden disabled selected value="">Select a topic</option>
-                             {this.state.isLoading ? '' :this.state?.uniqueTopics.map((topic, i) => <option key={i} value={topic}>{topic}</option>)}
+                                <option hidden disabled selected value="" data-selected="true">Select a topic</option>
+                                {this.state.isLoading ? '' :this.state?.uniqueTopics.map((topic, i) => <option key={i} value={topic}>{topic}</option>)}
                              </select>
                            </div>
                          </div>
