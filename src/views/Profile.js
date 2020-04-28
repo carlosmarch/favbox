@@ -20,8 +20,7 @@ const Airtable = require('airtable');
 const base = new Airtable({
   apiKey: process.env.REACT_APP_AIRTABLE_API_KEY,
 }).base(process.env.REACT_APP_AIRTABLE_BASE_ID);
-
-
+const table = base('contributors');
 
 class Profile extends Component {
 
@@ -37,35 +36,40 @@ class Profile extends Component {
   }
 
   getUserPubItems(){
-    const email = userController.getSession()?.email;
-    if (!email) {
+    const userId = userController.getSession()?.id;
+    if (!userId) {
       this.setState({ isLoading: false, renderItems: [] });//WHEN NO SESSION && NO EMAIL
      return
     }
-    const table = base('contributors');
-    const options = { filterByFormula: `OR(email = '${email}', name = '${email}')` }
-    dataController.getAirtableRecords(table, options)
-      .then( async (users) => {
-        //USERS SHOULD BE ONLY ONE THAT MATCH WITH EMAIL
-        const userData = users[0]?.fields;
-        if (!userData?.items) {
-          this.setState({ isLoading: false, renderItems: [] });//WHEN SESSION && NO ITEMS
-        }
-        if (!userData?.likes) userData.likes = []
-        const hydratedUserWithPubItems = [];
-        //REPLACE LIKES ID's WITH ALL THE ITEM'S CONTENT
-        hydratedUserWithPubItems.push(await recommendationController.hydrateUserPubItems(userData) );
-        userController.setLocalStorageFavs(userData.likes)
-        this.setState({
-          isLoading   : false,
-          renderItems : userData?.items,
-          pubItems    : userData?.items?.length ? userData?.items?.length : '0',
-          likeItems   : userData?.likes?.length ? userData?.likes?.length : '0'
-        });
-      })
-      .catch(err => {
-        console.log( Error(err));
+
+    table.find(userId, async (err, user) => {
+      if (err) {
+        console.error(err)
+        return
+      }
+
+      const userData = user.fields;
+      if (!userData?.items) {
+        this.setState({ isLoading: false, renderItems: [] });//WHEN SESSION && NO ITEMS
+      }
+      if (!userData?.likes) userData.likes = []
+
+      await recommendationController.hydrateUserPubItems(userData)
+
+      userController.setLocalStorageFavs(userData.likes)
+
+      this.setState({
+        isLoading   : false,
+        renderItems : userData?.items,
+        pubItems    : userData?.items?.length ? userData?.items?.length : '0',
+        likeItems   : userData?.likes?.length ? userData?.likes?.length : '0'
       });
+
+    });
+
+
+
+
   }
 
   checkConfetti(){
@@ -121,7 +125,7 @@ class Profile extends Component {
               { this.state.isLoading
                   ? <LoadingSpinner />
                   : this.state.renderItems && this.state.renderItems.length > 0
-                      ? this.state.renderItems.map( (records) => <FavItem {...records} key={records.id} itemId={records.id} /> )
+                      ? this.state.renderItems.map( (records, key) => <FavItem {...records} key={key} itemId={records.id} /> )
                       : <div className="empty-pubrecords">
                           <Link to="/create" className="link inline-block mb-s"><AddIcon /> Create</Link>
                           <div>

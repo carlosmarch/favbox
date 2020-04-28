@@ -34,7 +34,7 @@ class Like extends Component {
       history.push({ pathname: '/signup' })
       return
     }
-
+    //@TODO Clean this inside of an array
     if (localStorage.getItem(item) === null) {
       //CREATE a like
       //First local

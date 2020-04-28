@@ -9,26 +9,17 @@ const base = new Airtable({
   apiKey: process.env.REACT_APP_AIRTABLE_API_KEY,
 }).base(process.env.REACT_APP_AIRTABLE_BASE_ID);
 const table = base('contributors');
-
+const tablePrivate = base('contributorsPrivate');
 
 //USER METHODS
-const findUser = async (email, name) => {
+const findUser = async (email) => {
   let recordExists = false;
-  let options = {};
-  if (email && name) {
-    options = {
-      filterByFormula: `OR(email = '${email}', name = '${name}')`
-    };
-  } else {
-    options = {
-      filterByFormula: `OR(email = '${email}', name = '${email}')`
-    };
-  }
+  let options = { filterByFormula: `OR(email = '${email}')` };
 
-  const users = await data.getAirtableRecords(table, options);
+  const users = await data.getAirtableRecords(tablePrivate, options);
 
   users.filter(user => {
-    if (user.get('email') === email || user.get('name') === name) {
+    if (user.get('email') === email) {
       return (recordExists = true);
     }
     return (recordExists = false);
@@ -41,33 +32,39 @@ const findUser = async (email, name) => {
 //USER MANAGEMENT
 export const addUser = async (req, next) => {
   const { email, name } = req;
-  const userExists = await findUser(email, name);
+  const userExists = await findUser(email);
   if (userExists) {
     history.push({
       pathname: '/signup',
       state: {
         type: 'error',
-        message: 'Username or Email already exists!'
+        message: 'Email already exists!'
       }
     })
     return;
   }
-  table.create(
-    {
-      email,
-      name,
-    },
-    function(err, record) {
+  table.create( { name }, function(err, record) {
+      //CREATE USER NAME
       if (err) {
         console.error(err);
         return;
       }
-      //Add id to user data record
       record.fields['id'] = record.id
       setSession(record.fields)
-
       req.id = record.getId();
-      next(req);//Store Pass method called from Signup.js
+      let userData = [req.id] //Needs to be an object
+
+      tablePrivate.create( { email, userData, }, function(err, record) {
+          //CREATE PASS && MAIL IN NEW TABLE
+          if (err) {
+            console.error(err);
+            return;
+          }
+          req.id = record.getId();
+          next(req);//Store Pass method called from Signup.js
+      })
+
+
     }
   );
 };
@@ -80,12 +77,7 @@ export const storePassword = (req) => {
       return;
     }
 
-    table.update(
-      id,
-      {
-        password: hash,
-      },
-      function(err) {
+    tablePrivate.update( id, { password: hash, }, function(err) {
         if (err) {
           console.error(err);
           return;
@@ -105,13 +97,12 @@ export const storePassword = (req) => {
 
 export const authenticate = (req) => {
   const { email, password } = req;
-  const options = {
-    filterByFormula: `OR(email = '${email}', name = '${email}')`,
-  };
+  const options = { filterByFormula: `OR(email = '${email}')` };
 
   data
-    .getAirtableRecords(table, options)
+    .getAirtableRecords(tablePrivate, options)
     .then(users => {
+      console.log(users)
       if(!users.length){
         // Not registered
         history.push({
@@ -127,16 +118,26 @@ export const authenticate = (req) => {
           if (response) {
             // Passwords match, response = true
             //ADD ID TO USER SESSION INFO
-            user.fields['id'] = user.id
-            setSession(user.fields)
+            let userid = user.fields['userData'][0]
+            //console.log('authenticate', user, userid)
+            table.find(userid, (err, record) => {
+                if (err) {
+                  console.error(err)
+                  return
+                }
+                //SESSION SHOULD BE PUBLIC DATA!!! Call table with id
+                record.fields['id'] = record.id
+                setSession(record.fields)
 
-            history.push({
-              pathname: '/profile',
-              state: {
-                type: 'info',
-                message: 'Logged in!'
-              }
-            })
+                history.push({
+                  pathname: '/profile',
+                  state: {
+                    type: 'info',
+                    message: 'Logged in!'
+                  }
+                })
+                
+            });
 
           } else {
             // Passwords don't match
@@ -179,14 +180,9 @@ export const getUserByEmail = (req, next) => {
 
 export const updateUserLikes = (likeArr) => {
   const userId = getSession()?.id
-  console.log('updateUserLikes', userId, likeArr)
+  //console.log('updateUserLikes', userId, likeArr)
   if (!userId) return;
-  table.update(
-    userId,
-    {
-      likes: likeArr,
-    },
-    function(err) {
+  table.update( userId, { likes: likeArr, }, function(err) {
       if (err) {
         console.error(err);
         return;
@@ -195,15 +191,6 @@ export const updateUserLikes = (likeArr) => {
   );
 }
 
-
-export const setLocalStorageFavs = (likeArr) => {
-  if ( typeof(likeArr) === 'undefined') return
-  //clear storage favs
-  removeStorageFavs()
-  for( const id of likeArr) {
-    localStorage.setItem(id, true);
-  }
-}
 
 // @LOCALSTORAGE
 // User Session Helpers
@@ -233,6 +220,17 @@ export const signOut = () =>{
   })
 }
 
+
+export const setLocalStorageFavs = (likeArr) => {
+  if ( typeof(likeArr) === 'undefined') return
+  //clear storage favs
+  removeStorageFavs()
+  for( const id of likeArr) {
+    localStorage.setItem(id, true); //@TODO Clean this inside of an array
+  }
+}
+
+
 export const removeStorageFavs = () =>{
   //Get userSession, delete  all the rest & Set Session again
   let userSession = JSON.parse(localStorage.getItem('userSession'));
@@ -240,8 +238,12 @@ export const removeStorageFavs = () =>{
   localStorage.setItem('userSession', JSON.stringify(userSession));
 }
 
+
+
+
 //@LOCALSTORAGE
-//DATA HELPERS NOT USED
+//DATA HELPERS
+//NOT USED!!!!!
 export const setStorage = (key, data) => {
   localStorage.setItem(key, JSON.stringify(data));
 }

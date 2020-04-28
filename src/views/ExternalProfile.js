@@ -45,9 +45,7 @@ class ExternalProfile extends Component {
           this.setState({ isLoading: false, renderItems: [] });//WHEN SESSION && NO ITEMS
         }
         if (!userData?.likes) userData.likes = []
-        const hydratedUserWithPubItems = [];
-        //REPLACE LIKES ID's WITH ALL THE ITEM'S CONTENT
-        hydratedUserWithPubItems.push(await recommendationController.hydrateUserPubItems(userData) );
+        await recommendationController.hydrateUserPubItems(userData)
 
         this.setState({
           isLoading   : false,
@@ -98,7 +96,7 @@ class ExternalProfile extends Component {
               { this.state.isLoading
                   ? <LoadingSpinner />
                   : this.state.renderItems && this.state.renderItems.length > 0
-                      ? this.state.renderItems.map( (records) => <FavItem {...records} key={records.id} itemId={records.id} /> )
+                      ? this.state.renderItems.map( (records, key) => <FavItem {...records} key={key} itemId={records.id} /> )
                       : <div className="empty-pubrecords">
                           <Link to="/create" className="link inline-block mb-s"><AddIcon /> Create</Link>
                           <div>Welcome <span role="img" aria-label="welcome">🎉</span>! Now you can share your referents and they will appear here.</div>

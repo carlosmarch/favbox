@@ -24,41 +24,38 @@ class Likes extends Component {
     super(props);
     this.state = {
       isLoading : true,
-      userData  : []
+      renderItems : [],
     };
   }
 
   getUserFavs(){
-    const email = userController.getSession()?.email;
-    const options = { filterByFormula: `OR(email = '${email}', name = '${email}')` }
-
-    if (!email) {
+    const userId = userController.getSession()?.id;
+    if (!userId) {
       //WHEN NO SESSION && NO EMAIL
       this.setState({ isLoading: false, renderItems: [] });
      return
     }
 
-    data.getAirtableRecords(table, options)
-      .then( async (users) => {
-        //USERS SHOULD BE ONLY ONE,THE ONLY THAT MATCH WITH EMAIL
-        if (!users?.length){
-          //WHEN NO USERS
-          this.setState({ isLoading: false, renderItems: [] });
-          return
-        }
-        const user = users[0]?.fields;
-        if (!user?.likes) user.likes = []
-        const hydratedFavItems = await recommendationController.getHydratedFavItems(user.likes)
-        userController.setLocalStorageFavs(user.likes)
+    table.find(userId, async (err, user) => {
+      console.log('likes',user)
+      if (err) {
+        console.error(err)
+        this.setState({ isLoading: false, renderItems: [] });
+        return
+      }
 
-        this.setState({
-          isLoading: false,
-          userData: user,
-          renderItems: hydratedFavItems
-        });
-        //console.log('hydratedFavItems',  user.likes, hydratedFavItems)
-        return;
-      })
+      const userData = user?.fields;
+      if (!userData?.likes) userData.likes = []
+      userController.setLocalStorageFavs(userData.likes)
+      let userLikes = await recommendationController.getHydratedFavItems(userData.likes)
+
+      this.setState({
+        isLoading: false,
+        renderItems: userLikes
+      });
+      //console.log('hydratedFavItems',  user.likes, hydratedFavItems)
+      return;
+    })
   }
 
   componentDidMount() {
@@ -83,7 +80,7 @@ class Likes extends Component {
                 { this.state.isLoading
                     ? <LoadingSpinner />
                     : this.state.renderItems && this.state.renderItems.length > 0
-                        ? this.state.renderItems.map( (records) => <FavItem {...records} key={records.id} itemId={records.id} /> )
+                        ? this.state.renderItems.map( (records, key) => <FavItem {...records} key={key} itemId={records.id} /> )
                         : <div className="empty-pubrecords">
                             <LikeIcon className="icon-40 icon-grey mb-s"/>
                             <div>Hey! Your favourite items will appear here. You can start by clicking the heart icon on any item.</div>
