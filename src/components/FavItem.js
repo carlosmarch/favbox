@@ -1,11 +1,12 @@
 import React, { Component } from "react";
+import { Link } from 'react-router-dom';
 import Like from './Like';
 
 class FavItem extends Component {
 
   render() {
       return (
-        <a className="favitem" href={this.props.url} target="_blank" rel="noopener noreferrer" data-id={this.props.id}>
+        <Link to={`/item/${this.props.id}`} className="favitem" data-id={this.props.id}>
           <div className="favitem-image-holder">
             <img className="favitem-image-holder-img" src={this.props.imageUrl} alt="cover"/>
           </div>
@@ -15,7 +16,7 @@ class FavItem extends Component {
             <p className="description">{this.props.description}</p>
           </div>
           <Like itemId={this.props.itemId}/>
-        </a>
+        </Link>
       );
   }
 }

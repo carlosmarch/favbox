@@ -20,6 +20,7 @@ import Profile from './views/Profile';
 import ExternalProfile from './views/ExternalProfile';
 import Likes from './views/Likes';
 import CreateUrl from './views/CreateUrl';
+import Item from './views/Item';
 
 import * as serviceWorker from './serviceWorker';
 const userController = require('./controllers/userController.js');
@@ -57,6 +58,7 @@ const routing = (
         <Route path="/temas/:id" component={Detail} />
         <Route path="/colecciones/:id" component={Detail} />
         <Route path="/profile/:id" component={ExternalProfile} />
+        <Route path="/item/:id" component={Item} />
 
         <Route exact path="/about" component={About} />
         <Route exact path="/search" component={Search} />

@@ -37,7 +37,6 @@ class Likes extends Component {
     }
 
     table.find(userId, async (err, user) => {
-      console.log('likes',user)
       if (err) {
         console.error(err)
         this.setState({ isLoading: false, renderItems: [] });

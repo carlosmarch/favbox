@@ -24,7 +24,7 @@ class Like extends Component {
 
 
   handleLike = (e) => {
-    console.log('handleLike',this.props.itemId)
+    //console.log('handleLike',this.props.itemId)
     e.preventDefault();
     const item = e.target.value;
     const userid = userController.getSession()?.id;

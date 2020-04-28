@@ -1,0 +1,30 @@
+.item_view{}
+.item_view{
+  .grid{
+    padding-bottom: 0;
+    padding: 32px;
+  }
+}
+.item-container{
+  margin-bottom: 120px;
+  .item-content{
+    position:relative;
+    .like{
+      right: -8px;
+      top: -16px;
+    }
+  }
+  .item-img{
+    max-width: 100%;
+  }
+}
+
+.back-icon{
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
+}

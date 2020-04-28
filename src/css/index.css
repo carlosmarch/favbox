@@ -471,6 +471,10 @@ main {
   max-width: 1340px;
 }
 
+.container-m {
+  max-width: 1016px;
+}
+
 .container-s {
   max-width: 800px;
 }
@@ -3364,4 +3368,36 @@ a.topic-card::before {
 
 .AllTopics {
   margin-bottom: 120px;
+}
+
+.item_view .grid {
+  padding-bottom: 0;
+  padding: 32px;
+}
+
+.item-container {
+  margin-bottom: 120px;
+}
+
+.item-container .item-content {
+  position: relative;
+}
+
+.item-container .item-content .like {
+  right: -8px;
+  top: -16px;
+}
+
+.item-container .item-img {
+  max-width: 100%;
+}
+
+.back-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
 }

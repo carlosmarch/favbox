@@ -102,7 +102,7 @@ export const authenticate = (req) => {
   data
     .getAirtableRecords(tablePrivate, options)
     .then(users => {
-      console.log(users)
+      //console.log(users)
       if(!users.length){
         // Not registered
         history.push({
@@ -136,7 +136,7 @@ export const authenticate = (req) => {
                     message: 'Logged in!'
                   }
                 })
-                
+
             });
 
           } else {
@@ -197,7 +197,7 @@ export const updateUserLikes = (likeArr) => {
 //
 export const setSession = (userRecord) => {
   //Arrives user.fields
-  delete userRecord.password //Don´t store encrypted pass
+  delete userRecord.password //Don´t store ever encrypted pass
   localStorage.setItem('userSession', JSON.stringify(userRecord));
 }
 
