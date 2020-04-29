@@ -39,7 +39,7 @@ class Likes extends Component {
     table.find(userId, async (err, user) => {
       if (err) {
         console.error(err)
-        this.setState({ isLoading: false, renderItems: [] });
+        userController.signOut()
         return
       }
 

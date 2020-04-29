@@ -44,7 +44,7 @@ class Profile extends Component {
 
     table.find(userId, async (err, user) => {
       if (err) {
-        console.error(err)
+        userController.signOut()
         return
       }
 

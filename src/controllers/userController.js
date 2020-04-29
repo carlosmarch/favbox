@@ -14,10 +14,9 @@ const tablePrivate = base('contributorsPrivate');
 //USER METHODS
 const findUser = async (email) => {
   let recordExists = false;
-  let options = { filterByFormula: `OR(email = '${email}')` };
+  let options = { filterByFormula: `(email = '${email}')` };
 
   const users = await data.getAirtableRecords(tablePrivate, options);
-
   users.filter(user => {
     if (user.get('email') === email) {
       return (recordExists = true);
@@ -97,7 +96,7 @@ export const storePassword = (req) => {
 
 export const authenticate = (req) => {
   const { email, password } = req;
-  const options = { filterByFormula: `OR(email = '${email}')` };
+  const options = { filterByFormula: `(email = '${email}')` };
 
   data
     .getAirtableRecords(tablePrivate, options)
@@ -158,24 +157,6 @@ export const authenticate = (req) => {
       console.log(Error(err));
     });
 };
-
-
-export const getUserByEmail = (req, next) => {
-  const options = {
-    filterByFormula: `OR(email = '${req}', name = '${req}')`
-  }
-  data.getAirtableRecords(table, options)
-    .then( users => {
-      //console.log(users)
-      users.forEach(function(user) {
-        //console.log(user, user.fields.likes)
-        return user;
-      });
-    })
-    .catch(err => {
-      console.log( Error(err));
-    });
-}
 
 
 export const updateUserLikes = (likeArr) => {

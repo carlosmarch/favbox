@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
+import history from '../history';
 import {ReactComponent as UserIcon} from '../icons/User.svg';
 import {ReactComponent as LikeIcon} from '../icons/Heart.svg';
 import {ReactComponent as AddIcon} from '../icons/Plus.svg';
@@ -50,7 +51,13 @@ class Header extends Component {
   }
   handleSubmit = (event) => {
     event.preventDefault();
-    ReactDOM.render(<Signup email={this.state.email}/>, document.getElementById('root'))
+    //ReactDOM.render(<Signup email={this.state.email}/>, document.getElementById('root'))
+    history.push({
+      pathname: '/signup',
+      state: {
+        email: this.state.email
+      }
+    })
   }
 
 

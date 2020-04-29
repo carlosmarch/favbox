@@ -3,12 +3,11 @@ import { findDOMNode } from 'react-dom';
 import $ from 'jquery';
 
 class Confetti extends React.Component {
-  
+
 
   componentDidMount(){
 
     const create = (i) => {
-      console.log('create')
       var width = Math.random() * 8;
       var height = width * 0.4;
       var colourIdx = Math.ceil(Math.random() * 3);

@@ -59,7 +59,9 @@
     align-items: center;
     -webkit-transition: .2s linear;
     transition: .2s linear;
-
+    &:hover{
+      background: var(--soft-grey-bg);
+    }
     .link-box-icon{
         fill: var(--interaction);
     }

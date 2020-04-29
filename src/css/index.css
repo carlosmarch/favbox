@@ -3441,6 +3441,10 @@ a.topic-card::before {
   transition: .2s linear;
 }
 
+.link-box:hover {
+  background: var(--soft-grey-bg);
+}
+
 .link-box .link-box-icon {
   fill: var(--interaction);
 }
