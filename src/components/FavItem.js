@@ -2,11 +2,13 @@ import React, { Component } from "react";
 import { Link } from 'react-router-dom';
 import Like from './Like';
 
+//@TODO ITEM ID
+
 class FavItem extends Component {
 
   render() {
       return (
-        <Link to={`/item/${this.props.id}`} className="favitem" data-id={this.props.id}>
+        <Link to={`/item/${this.props.itemId}`} data-id={this.props.itemId} className="favitem">
           <div className="favitem-image-holder">
             <img className="favitem-image-holder-img" src={this.props.imageUrl} alt="cover"/>
           </div>

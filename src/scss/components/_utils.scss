@@ -11,6 +11,9 @@ $breakpoint-m: 48em;
     display: none!important;
   }
 }
+.no-m{
+  margin: 0;
+}
 .mt-xl{ margin-top: 160px;
   @media (max-width: $breakpoint-m){margin-top: 32px;}}
 .mt-l{ margin-top: 80px;

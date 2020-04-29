@@ -9,6 +9,7 @@ import LoadingSpinner from '../components/LoadingSpinner';
 import Like from '../components/Like';
 import Contributor from '../components/Contributor';
 import {ReactComponent as BackIcon} from '../icons/Back.svg';
+import {ReactComponent as WebIcon} from '../icons/Globe.svg';
 
 const dataController = require('../controllers/dataController.js');
 const recommendationController = require('../controllers/recommendationController.js');
@@ -80,7 +81,7 @@ class Item extends Component {
       <Header />
       <div className="global">
         <div className="container container-m">
-            <Link to="/feed" className="back-icon"><BackIcon className="" /></Link>
+            <Link to="/feed" className="back-icon" onClick={history.goBack}><BackIcon className="" /></Link>
             {this.state.isLoading ? <LoadingSpinner /> : this.itemTemplate()}
         </div>
       </div>
@@ -101,13 +102,27 @@ class Item extends Component {
                 </div>
                 <div className="grid__item width-6/12 width-12/12@m">
                   <div className="item-content">
-                      <Like itemId={this.state?.urlItemId}/>
-                      <h2>{this.state.itemData?.title}</h2>
-                      <p className="hero-text">{this.state.itemData?.description}</p>
-                      <div className="card-topics">
-                        {this.state.itemData?.temas?.map((topic, key) => {return (<Link to={ '/temas/' + topic } key={key}>#{topic}</Link>)})}
+
+                      <div className="item-content-top">
+                        <Like itemId={this.state.itemData?.urlItemId}/>
+                        <Link to={ '/categorias/' + this.state.itemData?.categorias } className="badge">{this.state.itemData?.categorias}</Link>
+                        { this.state.itemData?.temas?.map((topic, key) => { return (<Link to={ '/temas/' + topic } className="badge badge-outline" key={key}>#{topic}</Link>) }) }
+
+                        <h2>{this.state.itemData?.title}</h2>
+                        <p className="hero-text">{this.state.itemData?.description}</p>
+                        <Contributor contributor={this.state.contributorData} className="no-m"/>
                       </div>
-                      <Contributor contributor={this.state.contributorData}/>
+
+                      <div className="item-content-bottom">
+                        <a href={this.state.itemData?.url} target="_blank" className="link-box">
+                          <WebIcon className="link-box-icon" />
+                          <div className="link-box-content">
+                            <span>Website</span>
+                            <span>{this.state.itemData?.url}</span>
+                          </div>
+                        </a>
+                      </div>
+
                   </div>
                 </div>
             </div>

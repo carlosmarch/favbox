@@ -55,7 +55,7 @@ export const addUser = async (req, next) => {
       let userData = [req.id] //Needs to be an object
 
       tablePrivate.create( { email, userData, }, function(err, record) {
-          //CREATE PASS && MAIL IN NEW TABLE
+          //CREATE PASS && MAIL IN PRIVATE TABLE
           if (err) {
             console.error(err);
             return;

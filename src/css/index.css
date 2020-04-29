@@ -11,6 +11,10 @@
   }
 }
 
+.no-m {
+  margin: 0;
+}
+
 .mt-xl {
   margin-top: 160px;
 }
@@ -263,6 +267,7 @@
   --title-type:var(--dark-green);
   --body-background:#fff;
   --hero-bg: var(--pink);
+  --border: rgb(230, 236, 240);
   --magazine-color:#D1501A;
   --book-color:#35977E;
   --podcast-color:#E9B806;
@@ -2001,18 +2006,6 @@ button.likebutton svg {
   text-decoration: underline;
 }
 
-.badge {
-  padding: 2px 8px;
-  border-radius: 4px;
-  background-color: var(--soft_blue);
-  font-size: 13px;
-  line-height: 20px;
-  font-weight: 500;
-  letter-spacing: 0px;
-  text-transform: none;
-  display: inline;
-}
-
 .lines {
   position: absolute;
   pointer-events: none;
@@ -2354,7 +2347,7 @@ a.topic-card::before {
 }
 
 .articlelist {
-  border-top: 1px solid rgba(0, 0, 0, 0.25);
+  border-top: 1px solid var(--border);
   display: flex;
   grid-column: span 12;
   padding: 24px 0;
@@ -2401,12 +2394,6 @@ a.topic-card::before {
   width: auto;
   text-align: right;
   position: relative;
-}
-
-.articlelist-title .badge {
-  margin-bottom: 12px;
-  display: inline-block;
-  padding: 0 8px;
 }
 
 .articlelist .like {
@@ -2534,12 +2521,6 @@ a.topic-card::before {
   .podcastcard-content {
     margin-left: 16px;
   }
-}
-
-.podcastcard-content .badge {
-  margin-bottom: 6px;
-  display: inline-block;
-  padding: 0 8px;
 }
 
 .podcastcard-description {
@@ -2729,7 +2710,7 @@ a.topic-card::before {
 }
 
 .favitem {
-  border-top: 1px solid rgba(0, 0, 0, 0.25);
+  border-top: 1px solid var(--border);
   display: flex;
   grid-column: span 12;
   padding: 24px 0;
@@ -2851,6 +2832,11 @@ a.topic-card::before {
   fill: var(--grey);
 }
 
+.icon-interaction, .icon-interaction svg, .icon-interaction path {
+  fill: var(--interaction);
+  fill: var(--interaction);
+}
+
 .icon-16 {
   width: 16px;
   height: 16px;
@@ -2869,6 +2855,16 @@ a.topic-card::before {
 .icon-40 {
   width: 40px;
   height: 40px;
+}
+
+.back-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
 }
 
 .empty-pubrecords {
@@ -2893,6 +2889,24 @@ a.topic-card::before {
 .user-badge svg {
   width: 16px;
   height: 16px;
+}
+
+.badge {
+  padding: 0px 6px;
+  border-radius: 4px;
+  background-color: var(--soft_blue);
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 500;
+  letter-spacing: 0px;
+  text-transform: none;
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+.badge-outline {
+  background-color: transparent;
+  border: 1px solid var(--border);
 }
 
 .wrapper-confetti {
@@ -3370,6 +3384,10 @@ a.topic-card::before {
   margin-bottom: 120px;
 }
 
+.item_view ~ .bottombar {
+  display: none;
+}
+
 .item_view .grid {
   padding-bottom: 0;
   padding: 32px;
@@ -3379,25 +3397,86 @@ a.topic-card::before {
   margin-bottom: 120px;
 }
 
-.item-container .item-content {
-  position: relative;
+.item-img {
+  max-width: 100%;
 }
 
-.item-container .item-content .like {
+.item-content {
+  position: relative;
+  height: 100%;
+}
+
+.item-content-top {
+  height: calc( 100% - 80px);
+}
+
+.item-content-bottom {
+  margin-top: 20px;
+}
+
+.item-content .like {
   right: -8px;
   top: -16px;
 }
 
-.item-container .item-img {
-  max-width: 100%;
+.item-content .badge {
+  margin-right: 8px;
 }
 
-.back-icon {
-  width: 40px;
-  height: 40px;
+.link-box {
   display: flex;
   align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
+  background: #fff;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-flow: row nowrap;
+  flex-flow: row;
+  min-height: 60px;
+  padding: 8px;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-transition: .2s linear;
+  transition: .2s linear;
+}
+
+.link-box .link-box-icon {
+  fill: var(--interaction);
+}
+
+.link-box .link-box-content {
+  margin-left: 8px;
+}
+
+.link-box .link-box-content span {
+  display: flex;
+}
+
+.link-box .link-box-content span:nth-child(2) {
+  font-size: 14px;
+  color: var(--grey);
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 48em) {
+  .item_view .grid {
+    padding: 16px;
+  }
+  .item-img {
+    width: 180px;
+    display: block;
+    margin: 0 auto;
+  }
+  .item-wrapper .item-container {
+    margin-bottom: 0;
+  }
+  .item-wrapper .card-16 {
+    box-shadow: 0 0 0 #fff;
+    border-radius: 0;
+  }
 }

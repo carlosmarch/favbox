@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from 'react-router-dom';
 import * as Helpers from '../Helpers';
 import Like from './Like';
 import Contributor from './Contributor';
@@ -8,7 +9,7 @@ class Podcastcard extends Component {
 
 
     return (
-      <a className="podcastcard width-6/12 width-12/12@m" href={this.props.url} target="_blank" rel="noopener noreferrer">
+      <Link to={`/item/${this.props.itemId}`} data-id={this.props.itemId} className="podcastcard width-6/12 width-12/12@m">
 
         <div className="podcastcard-album">
           <div className="podcastcard-album-contents">
@@ -23,7 +24,7 @@ class Podcastcard extends Component {
           <Contributor contributor={this.props.autor[0]?.fields}/>
         </div>
 
-      </a>
+      </Link>
     );
   }
 }

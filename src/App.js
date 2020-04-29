@@ -87,10 +87,10 @@ class App extends Component {
                         <BlockTitle title={'Pelis & series'} description={'Las recomendaciones mas destacadas'} link={'categorias/serie'}/>
                         <div className="container container-xl">
                             <div className="grid">
-                              {this.state.isLoading ? <LoadingSpinner /> : Helpers.getCategoryItems(this.state.recommendations, 'película', 4).map((records) =>
+                              {this.state.isLoading ? <LoadingSpinner /> : Helpers.getCategoryItems(this.state.recommendations, 'película', 8).map((records) =>
                                 <Card {...records.fields} key={records.id} itemId={records.id} autor={Helpers.getContributor(this.state.contributors, records.fields.contribuidor)}/>
                               )}
-                              {this.state.isLoading ? '' : Helpers.getCategoryItems(this.state.recommendations, 'serie', 4).map((records) =>
+                              {this.state.isLoading ? '' : Helpers.getCategoryItems(this.state.recommendations, 'serie', 8).map((records) =>
                                 <Card {...records.fields} key={records.id} itemId={records.id} autor={Helpers.getContributor(this.state.contributors, records.fields.contribuidor)}/>
                               )}
                             </div>

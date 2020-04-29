@@ -70,7 +70,7 @@ class Likes extends Component {
 
       <Header />
       <div className="global">
-        <div className="container">
+        <div className="container container-m">
           <div className="ArticlesGrid mt-l">
             <BlockTitle title={'Likes'}/>
 

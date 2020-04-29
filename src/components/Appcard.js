@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from 'react-router-dom';
 import * as Helpers from '../Helpers';
 import Like from './Like';
 import Contributor from './Contributor';
@@ -8,7 +9,7 @@ class Appcard extends Component {
 
     return (
 
-      <a className="appcard width-6/12 width-12/12@m" href={this.props.url} target="_blank" rel="noopener noreferrer">
+      <Link to={`/item/${this.props.itemId}`} data-id={this.props.itemId} className="appcard width-6/12 width-12/12@m">
 
         <div className="appcard-icon-wrap">
           <div className="appcard-icon">
@@ -22,7 +23,7 @@ class Appcard extends Component {
           <div className="appcard-description">{Helpers.truncateText(this.props.description, 50)}</div>
           <Contributor contributor={this.props.autor[0]?.fields}/>
         </div>
-      </a>
+      </Link>
     );
   }
 }

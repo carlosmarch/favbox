@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from 'react-router-dom';
 import Like from './Like';
 import Contributor from './Contributor';
 
@@ -7,7 +8,7 @@ class Musiccard extends Component {
 
 
     return (
-      <a className="musiccard width-3/12 width-6/12@m" href={this.props.url} target="_blank" rel="noopener noreferrer">
+      <Link to={`/item/${this.props.itemId}`} data-id={this.props.itemId} className="musiccard width-3/12 width-6/12@m">
         <div className="musiccard-album">
           <Like itemId={this.props.itemId}/>
           <div className="musiccard-album-contents">
@@ -18,7 +19,7 @@ class Musiccard extends Component {
         </div>
         <h6 className="musiccard-title">{this.props.title}</h6>
         <div className="musiccard-description">{this.props.description}</div>
-      </a>
+      </Link>
     );
   }
 }
