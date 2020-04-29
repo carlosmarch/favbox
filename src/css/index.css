@@ -3384,10 +3384,6 @@ a.topic-card::before {
   margin-bottom: 120px;
 }
 
-.item_view ~ .bottombar {
-  display: none;
-}
-
 .item_view .grid {
   padding-bottom: 0;
   padding: 32px;

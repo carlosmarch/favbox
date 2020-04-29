@@ -115,7 +115,7 @@ class Item extends Component {
 
                       <div className="item-content-bottom">
                         <a href={this.state.itemData?.url} target="_blank" className="link-box">
-                          <WebIcon className="link-box-icon" />
+                          <WebIcon className="link-box-icon icon-24" />
                           <div className="link-box-content">
                             <span>Website</span>
                             <span>{this.state.itemData?.url}</span>
