@@ -4,7 +4,7 @@ import history from '../history';
 import {ReactComponent as UserIcon} from '../icons/User.svg';
 import {ReactComponent as LikeIcon} from '../icons/Heart.svg';
 import {ReactComponent as AddIcon} from '../icons/Plus.svg';
-
+import * as Helpers from '../Helpers';
 const userController = require('../controllers/userController.js');
 
 class Header extends Component {
@@ -26,27 +26,18 @@ class Header extends Component {
       this.setState(prevState => ({
           isHoveredCategorias: !prevState.isHoveredCategorias
       }));
-
-      this.setState({
-        categorias: window.$categories,
-        temas: window.$topics
-      });
   }
 
   handleHoverTemas(){
       this.setState(prevState => ({
           isHoveredTemas: !prevState.isHoveredTemas
       }));
-      this.setState({
-        categorias: window.$categories,
-        temas: window.$topics
-      });
   }
 
   emailChangeHandler = (event) => {
     this.setState({email: event.target.value});
   }
-  
+
   handleSubmit = (event) => {
     event.preventDefault();
     //ReactDOM.render(<Signup email={this.state.email}/>, document.getElementById('root'))
@@ -58,6 +49,26 @@ class Header extends Component {
     })
   }
 
+
+  getUniqueCategories(){
+    fetch(window.$api)
+    .then((resp) => resp.json())
+    .then(data => {
+      Helpers.storeUniqueTopics(data.records)
+      Helpers.storeUniqueCategories(data.records)
+    })
+  }
+
+  componentDidMount() {
+    if ( !window.$categories || !window.$topics) {
+      this.getUniqueCategories()
+    }else{
+      this.setState({
+        categorias: window.$categories,
+        temas: window.$topics
+      });
+    }
+  }
 
   render() {
 

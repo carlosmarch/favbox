@@ -22,6 +22,10 @@ $breakpoint-m: 48em;
   @media (max-width: $breakpoint-m){margin-top: 16px;}}
 .mt-s{ margin-top: 24px;
   @media (max-width: $breakpoint-m){margin-top: 8px;}}
+.mt-xs{ margin-top: 16px;
+  @media (max-width: $breakpoint-m){margin-top: 6px;}}
+.mt-xxs{ margin-top: 8px;
+  @media (max-width: $breakpoint-m){margin-top: 4px;}}
 
 .mb-xl{ margin-bottom: 160px;
   @media (max-width: $breakpoint-m){margin-bottom: 32px;}}
@@ -31,6 +35,10 @@ $breakpoint-m: 48em;
   @media (max-width: $breakpoint-m){margin-bottom: 16px;}}
 .mb-s { margin-bottom: 24px;
   @media (max-width: $breakpoint-m){margin-bottom: 8px;}}
+.mb-xs { margin-bottom: 16px;
+  @media (max-width: $breakpoint-m){margin-bottom: 6px;}}
+.mb-xxs { margin-bottom: 8px;
+  @media (max-width: $breakpoint-m){margin-bottom: 4px;}}
 
 .pt-xl{ padding-top: 160px;
   @media (max-width: $breakpoint-m){padding-top: 32px;}}
@@ -40,6 +48,10 @@ $breakpoint-m: 48em;
   @media (max-width: $breakpoint-m){padding-top: 16px;}}
 .pt-s{ padding-top: 24px;
   @media (max-width: $breakpoint-m){padding-top: 8px;}}
+.pt-xs{ padding-top: 16px;
+  @media (max-width: $breakpoint-m){padding-top: 6px;}}
+.pt-xxs{ padding-top: 8px;
+  @media (max-width: $breakpoint-m){padding-top: 4px;}}
 
 .pb-xl{ padding-bottom: 160px;
   @media (max-width: $breakpoint-m){padding-bottom: 32px;}}
@@ -49,6 +61,10 @@ $breakpoint-m: 48em;
   @media (max-width: $breakpoint-m){padding-bottom: 16px;}}
 .pb-s { padding-bottom: 24px;
   @media (max-width: $breakpoint-m){padding-bottom: 8px;}}
+.pb-xs { padding-bottom: 16px;
+  @media (max-width: $breakpoint-m){padding-bottom: 6px;}}
+.pb-xxs { padding-bottom: 8px;
+  @media (max-width: $breakpoint-m){padding-bottom: 4px;}}
 
 
 
@@ -84,7 +100,7 @@ $breakpoint-m: 48em;
 }
 .underline-hover{
   &:hover{
-    text-decoration: underline;  
+    text-decoration: underline;
   }
 }
 .no-b{

@@ -75,16 +75,13 @@ class CreateUrl extends Component {
 
 
   componentDidMount() {
-    const uniqueCats = window.$categories
-    const uniqueTops = window.$topics
-
-    if ( !uniqueCats || !uniqueTops) {
+    if ( !window.$categories || !window.$topics) {
       this.getUniqueCategories()
     }else{
       this.setState({
         isLoading: false,
-        uniqueCategories: uniqueCats,
-        uniqueTopics : uniqueTops
+        uniqueCategories: window.$categories,
+        uniqueTopics : window.$topics
       });
     }
 

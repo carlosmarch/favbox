@@ -11,6 +11,7 @@
 
 .item-container{
   margin-bottom: 120px;
+  display: inline-block;
 }
 
 
@@ -21,13 +22,13 @@
 .item-content{
   position:relative;
   height: 100%;
+  flex-direction: column;
 }
 .item-content-top{
-  height: calc(100% - 80px);
+  height: calc(100% - 80px);//item-content-bottom height
 }
 .item-content-bottom {
   margin-top: 20px;
-  position: absolute;
   bottom: 0;
   width: 100%;
 }
@@ -82,10 +83,13 @@
 }
 
 @media (max-width: $breakpoint-m){
-
+  .app_wrapper.item_view {
+    padding-bottom: 48px;
+  }
   .item_view{
     .grid{
-      padding: 16px;
+      padding: 0px;
+      margin: 0 auto;
     }
   }
 
@@ -116,5 +120,8 @@
   }
   .is-liked-name{
     margin-right: 4px;
+  }
+  .is-liked-name:not(:last-child):after {
+    content: ' · ';
   }
 }

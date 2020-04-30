@@ -55,6 +55,26 @@
   }
 }
 
+.mt-xs {
+  margin-top: 16px;
+}
+
+@media (max-width: 48em) {
+  .mt-xs {
+    margin-top: 6px;
+  }
+}
+
+.mt-xxs {
+  margin-top: 8px;
+}
+
+@media (max-width: 48em) {
+  .mt-xxs {
+    margin-top: 4px;
+  }
+}
+
 .mb-xl {
   margin-bottom: 160px;
 }
@@ -92,6 +112,26 @@
 @media (max-width: 48em) {
   .mb-s {
     margin-bottom: 8px;
+  }
+}
+
+.mb-xs {
+  margin-bottom: 16px;
+}
+
+@media (max-width: 48em) {
+  .mb-xs {
+    margin-bottom: 6px;
+  }
+}
+
+.mb-xxs {
+  margin-bottom: 8px;
+}
+
+@media (max-width: 48em) {
+  .mb-xxs {
+    margin-bottom: 4px;
   }
 }
 
@@ -135,6 +175,26 @@
   }
 }
 
+.pt-xs {
+  padding-top: 16px;
+}
+
+@media (max-width: 48em) {
+  .pt-xs {
+    padding-top: 6px;
+  }
+}
+
+.pt-xxs {
+  padding-top: 8px;
+}
+
+@media (max-width: 48em) {
+  .pt-xxs {
+    padding-top: 4px;
+  }
+}
+
 .pb-xl {
   padding-bottom: 160px;
 }
@@ -172,6 +232,26 @@
 @media (max-width: 48em) {
   .pb-s {
     padding-bottom: 8px;
+  }
+}
+
+.pb-xs {
+  padding-bottom: 16px;
+}
+
+@media (max-width: 48em) {
+  .pb-xs {
+    padding-bottom: 6px;
+  }
+}
+
+.pb-xxs {
+  padding-bottom: 8px;
+}
+
+@media (max-width: 48em) {
+  .pb-xxs {
+    padding-bottom: 4px;
   }
 }
 
@@ -3439,6 +3519,7 @@ a.topic-card::before {
 
 .item-container {
   margin-bottom: 120px;
+  display: inline-block;
 }
 
 .item-img {
@@ -3448,6 +3529,7 @@ a.topic-card::before {
 .item-content {
   position: relative;
   height: 100%;
+  flex-direction: column;
 }
 
 .item-content-top {
@@ -3456,7 +3538,6 @@ a.topic-card::before {
 
 .item-content-bottom {
   margin-top: 20px;
-  position: absolute;
   bottom: 0;
   width: 100%;
 }
@@ -3515,8 +3596,12 @@ a.topic-card::before {
 }
 
 @media (max-width: 48em) {
+  .app_wrapper.item_view {
+    padding-bottom: 48px;
+  }
   .item_view .grid {
-    padding: 16px;
+    padding: 0px;
+    margin: 0 auto;
   }
   .item-img {
     width: 180px;
@@ -3546,4 +3631,8 @@ a.topic-card::before {
 
 .is-liked-by .is-liked-name {
   margin-right: 4px;
+}
+
+.is-liked-by .is-liked-name:not(:last-child):after {
+  content: ' · ';
 }

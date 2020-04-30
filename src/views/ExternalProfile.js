@@ -98,8 +98,8 @@ class ExternalProfile extends Component {
                   : this.state.renderItems && this.state.renderItems.length > 0
                       ? this.state.renderItems.map( (records, key) => <FavItem {...records} key={key} itemId={records.id} /> )
                       : <div className="empty-pubrecords">
-                          <Link to="/create" className="link inline-block mb-s"><AddIcon /> Create</Link>
-                          <div>Welcome <span role="img" aria-label="welcome">🎉</span>! Now you can share your referents and they will appear here.</div>
+                          <h6 className="grey mb-xxs">Nothing here...</h6>
+                          <div>{this.state.urlName} has his profile still empty. Tell him to upload his favs!</div>
                         </div>
               }
               </div>
