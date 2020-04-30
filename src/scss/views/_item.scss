@@ -1,5 +1,5 @@
 .item_view ~ .bottombar{
-  //display: none;
+  display: none;
 }
 
 .item_view{
@@ -105,5 +105,16 @@
   }
   .item-content-bottom{
     position: relative;
+  }
+}
+
+.is-liked-by{
+  color: var(--grey);
+  margin-bottom: 8px;
+  svg{
+    margin-right: 8px;
+  }
+  .is-liked-name{
+    margin-right: 4px;
   }
 }

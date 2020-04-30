@@ -16,6 +16,11 @@
   fill:var(--interaction);
 }
 
+.icon-14{
+  width: 14px;
+  height: 14px;
+}
+
 .icon-16{
   width: 16px;
   height: 16px;
@@ -44,4 +49,5 @@
     justify-content: center;
     border-radius: 50%;
     box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
 }

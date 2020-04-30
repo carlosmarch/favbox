@@ -82,6 +82,11 @@ $breakpoint-m: 48em;
 .underline{
   text-decoration: underline;
 }
+.underline-hover{
+  &:hover{
+    text-decoration: underline;  
+  }
+}
 .no-b{
   border: none!important;
 }
