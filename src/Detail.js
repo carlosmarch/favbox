@@ -20,6 +20,7 @@ class Detail extends Component {
       category: Helpers.getUrlCategory(),
       topic: Helpers.getUrlTopic()
     };
+    window.scrollTo(0, 0);
   }
 
 

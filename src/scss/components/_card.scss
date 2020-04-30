@@ -52,6 +52,11 @@
   transition: .2s ease-out;
   padding: 24px;
   background-color: var(--default-color);//default bg color
+  // .contributor{
+  //   @media (max-width: $breakpoint-m) {
+  //       display: none;
+  //   }
+  // }
 }
 
 .card-content:hover {
@@ -62,6 +67,9 @@
 .card-title {
   text-transform: capitalize;
   margin: 8px 0;
+  @media (max-width: $breakpoint-m) {
+      font-size: 18px;
+  }
 }
 
 .card-topics {

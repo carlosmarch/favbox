@@ -1994,6 +1994,12 @@ button.likebutton svg {
   margin: 8px 0;
 }
 
+@media (max-width: 48em) {
+  .card-title {
+    font-size: 18px;
+  }
+}
+
 .card-topics {
   margin-top: 16px;
   font-size: 14px;
@@ -3431,6 +3437,7 @@ a.topic-card::before {
   margin-top: 20px;
   position: absolute;
   bottom: 0;
+  width: 100%;
 }
 
 .item-content .like {
@@ -3469,7 +3476,7 @@ a.topic-card::before {
 }
 
 .link-box .link-box-icon {
-  fill: var(--interaction);
+  width: 24px;
 }
 
 .link-box .link-box-content {

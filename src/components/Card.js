@@ -14,8 +14,8 @@ class Card extends Component {
         <div className={`card-content ${"is-" + this.props.categorias}`}>
           <div className="card-category badge inline">{this.props.categorias}</div>
           <h3 className="card-title">{this.props.title}</h3>
-          <div className="card-description">{this.props.description}</div>
-          <Contributor contributor={this.props.autor[0]?.fields}/>
+          <div className="card-description no@m">{this.props.description}</div>
+          <Contributor contributor={this.props.autor[0]?.fields} />
         </div>
       </Link>
 

@@ -29,6 +29,7 @@
   margin-top: 20px;
   position: absolute;
   bottom: 0;
+  width: 100%;
 }
 
 
@@ -65,7 +66,7 @@
       background: var(--soft-grey-bg);
     }
     .link-box-icon{
-        fill: var(--interaction);
+      width:24px;
     }
     .link-box-content{
       margin-left: 8px;

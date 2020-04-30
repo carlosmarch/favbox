@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Link } from 'react-router-dom';
 import history from '../history';
 
+import * as Helpers from '../Helpers';
+
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import LoadingSpinner from '../components/LoadingSpinner';
@@ -32,13 +34,6 @@ class Item extends Component {
   }
 
   componentDidMount() {
-    //Clear history state messages
-    if (history.location.state && history.location.state.message) {
-        let state = { ...history.location.state };
-        delete state.message
-        delete state.type
-        history.replace({ ...history.location, state });
-    }
 
     table.find(this.state.urlItemId, async (err, item) => {
       if (err) {
@@ -75,7 +70,7 @@ class Item extends Component {
       <Header />
       <div className="global">
         <div className="container container-m">
-            <Link className="back-icon" onClick={history.goBack}><BackIcon className="" /></Link>
+            <div className="back-icon" onClick={this.props.history.goBack}><BackIcon className="" /></div>
             {this.state.isLoading ? <LoadingSpinner /> : this.itemTemplate()}
         </div>
       </div>
@@ -109,10 +104,10 @@ class Item extends Component {
 
                       <div className="item-content-bottom">
                         <a href={this.state.itemData?.url} target="_blank" rel="noopener noreferrer" className="link-box">
-                          <WebIcon className="link-box-icon icon-32" />
+                          <WebIcon className="link-box-icon icon-24" />
                           <div className="link-box-content">
                             <span>Website</span>
-                            <span>{this.state.itemData?.url}</span>
+                            <span>{Helpers.truncateText(this.state.itemData?.url, 40)}</span>
                           </div>
                         </a>
                       </div>
