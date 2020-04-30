@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import history from '../history';
-import { findDOMNode } from 'react-dom';
 import $ from 'jquery';
 
 import * as Helpers from '../Helpers';
@@ -194,7 +193,7 @@ class CreateUrl extends Component {
                              value={this.state.url}
                              className="big-input"
                            />
-                          {this.state.isLoadingUrl ? <div class="loader-icon-container"><i class="loader-icon"></i></div> : ''}
+                          {this.state.isLoadingUrl ? <div className="loader-icon-container"><i className="loader-icon"></i></div> : ''}
                          </div>
 
                          <div className={`create-item-step-2 ${this.state.showForm ? 'show-form' : ''} `}>
@@ -247,7 +246,7 @@ class CreateUrl extends Component {
                                onChange={this.categoriasChangeHandler}
                                required
                              >
-                                <option hidden selected value="">Select a category</option>
+                                <option hidden defaultValue value="">Select a category</option>
                                 {this.state.isLoading ? '' : this.state?.uniqueCategories.map((category, i) => <option key={i} value={category}>{category}</option>)}
                              </select>
                            </div>
@@ -257,7 +256,7 @@ class CreateUrl extends Component {
                                name="temas"
                                onChange={this.temasChangeHandler}
                              >
-                                <option hidden selected value="">Select a topic</option>
+                                <option hidden defaultValue value="">Select a topic</option>
                                 {this.state.isLoading ? '' :this.state?.uniqueTopics.map((topic, i) => <option key={i} value={topic}>{topic}</option>)}
                              </select>
                            </div>

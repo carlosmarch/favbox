@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
 import history from '../history';
-import * as Helpers from '../Helpers';
 
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -11,9 +10,6 @@ import Contributor from '../components/Contributor';
 import {ReactComponent as BackIcon} from '../icons/Back.svg';
 import {ReactComponent as WebIcon} from '../icons/Globe.svg';
 
-const dataController = require('../controllers/dataController.js');
-const recommendationController = require('../controllers/recommendationController.js');
-const userController = require('../controllers/userController.js');
 
 //AIRTABLE HELPERS
 const Airtable = require('airtable');
@@ -32,9 +28,18 @@ class Item extends Component {
       urlItemId : decodeURIComponent(window.location.pathname.split("/").pop()),
       itemData  : []
     };
+    window.scrollTo(0, 0);
   }
 
-  getItemData(){
+  componentDidMount() {
+    //Clear history state messages
+    if (history.location.state && history.location.state.message) {
+        let state = { ...history.location.state };
+        delete state.message
+        delete state.type
+        history.replace({ ...history.location, state });
+    }
+
     table.find(this.state.urlItemId, async (err, item) => {
       if (err) {
         console.error(err)
@@ -58,30 +63,19 @@ class Item extends Component {
       });
 
     });
-  }
-  componentDidMount() {
-    //Clear history state messages
-    if (history.location.state && history.location.state.message) {
-        let state = { ...history.location.state };
-        delete state.message
-        delete state.type
-        history.replace({ ...history.location, state });
-    }
 
-    this.getItemData()
 
   }
 
 
   render() {
-
     return (
     <div className="app_wrapper item_view">
 
       <Header />
       <div className="global">
         <div className="container container-m">
-            <Link to="/feed" className="back-icon" onClick={history.goBack}><BackIcon className="" /></Link>
+            <Link className="back-icon" onClick={history.goBack}><BackIcon className="" /></Link>
             {this.state.isLoading ? <LoadingSpinner /> : this.itemTemplate()}
         </div>
       </div>
@@ -114,8 +108,8 @@ class Item extends Component {
                       </div>
 
                       <div className="item-content-bottom">
-                        <a href={this.state.itemData?.url} target="_blank" className="link-box">
-                          <WebIcon className="link-box-icon icon-24" />
+                        <a href={this.state.itemData?.url} target="_blank" rel="noopener noreferrer" className="link-box">
+                          <WebIcon className="link-box-icon icon-32" />
                           <div className="link-box-content">
                             <span>Website</span>
                             <span>{this.state.itemData?.url}</span>

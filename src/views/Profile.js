@@ -11,7 +11,6 @@ import {ReactComponent as UserIcon} from '../icons/User.svg';
 import {ReactComponent as AddIcon} from '../icons/Plus.svg';
 import Confetti from '../components/Confetti';
 
-const dataController = require('../controllers/dataController.js');
 const recommendationController = require('../controllers/recommendationController.js');
 const userController = require('../controllers/userController.js');
 
@@ -33,9 +32,26 @@ class Profile extends Component {
       likeItems : Helpers.getStorageFavs() ? Helpers.getStorageFavs()?.length : '0',
       makeConfetti : this.checkConfetti()
     };
+    window.scrollTo(0, 0);
   }
 
-  getUserPubItems(){
+  checkConfetti(){
+    if (this.props.location.state?.type === 'success' ){
+      return true
+    }else{
+      return false
+    }
+  }
+
+  componentDidMount() {
+    //Clear history state messages
+    if (history.location.state && history.location.state.message) {
+        let state = { ...history.location.state };
+        delete state.message
+        delete state.type
+        history.replace({ ...history.location, state });
+    }
+
     const userId = userController.getSession()?.id;
     if (!userId) {
       this.setState({ isLoading: false, renderItems: [] });//WHEN NO SESSION && NO EMAIL
@@ -67,29 +83,6 @@ class Profile extends Component {
 
     });
 
-
-
-
-  }
-
-  checkConfetti(){
-    if (this.props.location.state?.type === 'success' ){
-      return true
-    }else{
-      return false
-    }
-  }
-
-  componentDidMount() {
-    //Clear history state messages
-    if (history.location.state && history.location.state.message) {
-        let state = { ...history.location.state };
-        delete state.message
-        delete state.type
-        history.replace({ ...history.location, state });
-    }
-
-    this.getUserPubItems()
   }
 
 

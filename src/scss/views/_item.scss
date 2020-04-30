@@ -23,10 +23,12 @@
   height: 100%;
 }
 .item-content-top{
-  height: calc( 100% - 80px ); //Link box height + margin
+  height: calc(100% - 80px);
 }
 .item-content-bottom {
   margin-top: 20px;
+  position: absolute;
+  bottom: 0;
 }
 
 
@@ -100,5 +102,7 @@
       border-radius: 0;
     }
   }
-
+  .item-content-bottom{
+    position: relative;
+  }
 }

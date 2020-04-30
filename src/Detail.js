@@ -88,8 +88,6 @@ class Detail extends Component {
 
   render() {
 
-    window.scrollTo(0, 0);
-
     return (
       <div className="app_wrapper detail_view">
 

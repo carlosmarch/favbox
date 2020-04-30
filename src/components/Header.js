@@ -1,12 +1,9 @@
 import React, { Component } from "react";
-import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
 import history from '../history';
 import {ReactComponent as UserIcon} from '../icons/User.svg';
 import {ReactComponent as LikeIcon} from '../icons/Heart.svg';
 import {ReactComponent as AddIcon} from '../icons/Plus.svg';
-
-import Signup from '../views/Signup';
 
 const userController = require('../controllers/userController.js');
 
@@ -49,6 +46,7 @@ class Header extends Component {
   emailChangeHandler = (event) => {
     this.setState({email: event.target.value});
   }
+  
   handleSubmit = (event) => {
     event.preventDefault();
     //ReactDOM.render(<Signup email={this.state.email}/>, document.getElementById('root'))

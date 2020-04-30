@@ -12,7 +12,6 @@ const userController = require('../controllers/userController.js');
 
 //AIRTABLE HELPERS
 const Airtable = require('airtable');
-const data = require('../controllers/dataController.js');
 const base = new Airtable({
   apiKey: process.env.REACT_APP_AIRTABLE_API_KEY,
 }).base(process.env.REACT_APP_AIRTABLE_BASE_ID);
@@ -26,6 +25,7 @@ class Likes extends Component {
       isLoading : true,
       renderItems : [],
     };
+    window.scrollTo(0, 0);
   }
 
   getUserFavs(){
@@ -60,6 +60,7 @@ class Likes extends Component {
   componentDidMount() {
     //Set User Favs
     this.getUserFavs()
+
   }
 
 

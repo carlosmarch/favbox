@@ -257,6 +257,7 @@
   --pink:rgb(255, 215, 179);
   --black:#181818;
   --grey:#808491;
+  --grey-soft:#B5B8BF;
   --soft-grey-bg:#fafafa;
   --soft-brown-bg:#f5f0ea;
   --soft-yellow-bg:rgb(249, 233, 177);
@@ -440,7 +441,7 @@ body {
 
 @media (max-width: 48em) {
   .app_wrapper {
-    padding-bottom: 60px;
+    padding-bottom: 96px;
   }
 }
 
@@ -785,7 +786,7 @@ select option {
 }
 
 ::placeholder, :disabled {
-  color: #ccc;
+  color: var(--grey-soft);
 }
 
 .header {
@@ -2832,6 +2833,11 @@ a.topic-card::before {
   fill: var(--grey);
 }
 
+.icon-grey-soft, .icon-grey-soft svg, .icon-grey-soft path {
+  fill: var(--grey-soft);
+  fill: var(--grey-soft);
+}
+
 .icon-interaction, .icon-interaction svg, .icon-interaction path {
   fill: var(--interaction);
   fill: var(--interaction);
@@ -3380,8 +3386,23 @@ a.topic-card::before {
   border: none;
 }
 
-.AllTopics {
-  margin-bottom: 120px;
+.input-search-icon-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.input-search-icon-container svg {
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+}
+
+.input-search-icon-container .big-input {
+  margin: 0;
+  padding-left: 32px;
 }
 
 .item_view .grid {
@@ -3403,11 +3424,13 @@ a.topic-card::before {
 }
 
 .item-content-top {
-  height: calc( 100% - 80px);
+  height: calc(100% - 80px);
 }
 
 .item-content-bottom {
   margin-top: 20px;
+  position: absolute;
+  bottom: 0;
 }
 
 .item-content .like {
@@ -3478,5 +3501,8 @@ a.topic-card::before {
   .item-wrapper .card-16 {
     box-shadow: 0 0 0 #fff;
     border-radius: 0;
+  }
+  .item-content-bottom {
+    position: relative;
   }
 }

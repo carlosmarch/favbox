@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { findDOMNode } from 'react-dom';
 import $ from 'jquery';
 
-class Confetti extends React.Component {
+class Confetti extends Component {
 
 
   componentDidMount(){

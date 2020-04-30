@@ -1,8 +1,5 @@
 import history from '../history';
-import * as Helpers from '../Helpers';
-
 const data = require('./dataController.js');
-const userController = require('./userController.js');
 
 //AIRTABLE HELPERS
 const Airtable = require('airtable');
@@ -168,29 +165,29 @@ export const uploadToCloudinary = (file, next) => {
 //MIXES LOCAL STORAGE ITEMS WITH AIRTABLE LIKES PRIORIZING LOCALSTORAGE
 //THEN UPDATES TABLE AND RETURNS LIKES WITH DETAILS
 //@PARAMS Array with like id's
-export const syncMixLocalwithTableFavs = async (userlikes) => {
-  //Get storage favs
-  let storageFavs = Helpers.getStorageFavs()
-  // if ( Object.keys(storageFavs).length === 0 ){
-  //   syncSetStorageFavs(userlikes)
-  //   storageFavs = Helpers.getStorageFavs()
-  // }
-  if (!userlikes) userlikes = [];
-  //Get matching id's
-  let matchingFavs = userlikes.filter(recommendation => storageFavs.some(favId => recommendation.id === favId))
-  let matchingIds = [];
-  matchingFavs.map((item) => matchingIds.push(item.id) )
-  //Make one array storage + only matching
-  let union = [...storageFavs, ...matchingIds];
-  let withoutDuplicates = Array.from(new Set(union));
-  let withoutDuplicatesWithDetails = [];
-  for( const id of withoutDuplicates) {
-    withoutDuplicatesWithDetails.push(await getRecommendationById(id))
-  }
-  //UDATE with arr of local + table likes
-  userController.updateUserLikes(withoutDuplicates)
-  return withoutDuplicatesWithDetails
-}
+// export const syncMixLocalwithTableFavs = async (userlikes) => {
+//   //Get storage favs
+//   let storageFavs = Helpers.getStorageFavs()
+//   // if ( Object.keys(storageFavs).length === 0 ){
+//   //   syncSetStorageFavs(userlikes)
+//   //   storageFavs = Helpers.getStorageFavs()
+//   // }
+//   if (!userlikes) userlikes = [];
+//   //Get matching id's
+//   let matchingFavs = userlikes.filter(recommendation => storageFavs.some(favId => recommendation.id === favId))
+//   let matchingIds = [];
+//   matchingFavs.map((item) => matchingIds.push(item.id) )
+//   //Make one array storage + only matching
+//   let union = [...storageFavs, ...matchingIds];
+//   let withoutDuplicates = Array.from(new Set(union));
+//   let withoutDuplicatesWithDetails = [];
+//   for( const id of withoutDuplicates) {
+//     withoutDuplicatesWithDetails.push(await getRecommendationById(id))
+//   }
+//   //UDATE with arr of local + table likes
+//   userController.updateUserLikes(withoutDuplicates)
+//   return withoutDuplicatesWithDetails
+// }
 
 
 

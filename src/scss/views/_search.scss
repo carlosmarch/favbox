@@ -1,3 +1,18 @@
-.AllTopics{
-  margin-bottom:120px;
+.search_view{}
+
+.input-search-icon-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-top: 40px;
+    svg{
+      position: absolute;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+    }
+    .big-input{
+      margin: 0;
+      padding-left: 32px;
+    }
 }
