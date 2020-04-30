@@ -28,7 +28,8 @@ class ExternalProfile extends Component {
       renderItems : [],
       pubItems    : 0,
       likeItems   : 0,
-      urlName     : decodeURIComponent(window.location.pathname.split("/").pop())
+      urlName     : decodeURIComponent(window.location.pathname.split("/").pop()),
+      userData    : [],
     };
 
   }
@@ -51,7 +52,8 @@ class ExternalProfile extends Component {
           isLoading   : false,
           renderItems : userData?.items,
           pubItems    : userData?.items?.length ? userData?.items?.length : '0',
-          likeItems   : userData?.likes?.length ? userData?.likes?.length : '0'
+          likeItems   : userData?.likes?.length ? userData?.likes?.length : '0',
+          userData    : userData
         });
       })
       .catch(err => {
@@ -82,7 +84,7 @@ class ExternalProfile extends Component {
                 </div>
                 <div className="profile-user-info">
                   <div className="profile-user-name"><h3>{this.state.urlName}</h3></div>
-                  <div className="profile-user-description"><p>{this.state?.urlName}</p></div>
+                  <div className="profile-user-description"><p>{this.state?.userData?.description}</p></div>
                   <div className="profile-user-data">
                     <span>{ this.state.likeItems } Likes</span>
                     <span>{ this.state.pubItems } Published</span>

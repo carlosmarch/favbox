@@ -56,6 +56,10 @@ class Header extends Component {
     .then(data => {
       Helpers.storeUniqueTopics(data.records)
       Helpers.storeUniqueCategories(data.records)
+      this.setState({
+        categorias: window.$categories,
+        temas: window.$topics
+      });
     })
   }
 
