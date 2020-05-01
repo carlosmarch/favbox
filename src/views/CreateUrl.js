@@ -41,11 +41,11 @@ class CreateUrl extends Component {
   passwordChangeHandler = (event) => {
     this.setState({password: event.target.value});
   }
-  categoriasChangeHandler = (event) => {
-    this.setState({categorias: event.target.value});
+  categoriesChangeHandler = (event) => {
+    this.setState({categories: event.target.value});
   }
-  temasChangeHandler = (event) => {
-    this.setState({temas: [event.target.value]});
+  topicsChangeHandler = (event) => {
+    this.setState({topics: [event.target.value]});
   }
 
   handleSubmit(event) {
@@ -145,7 +145,7 @@ class CreateUrl extends Component {
          {props?.imageUrl ? <img className="favitem-image-holder-img" src={props?.imageUrl} alt="cover"/> : ''}
          </div>
          <div className="favitem-description">
-           <div className="favitem-category badge inline mt-s">{props?.categorias ? props?.categorias : 'category' }</div>
+           <div className="favitem-category badge inline mt-s">{props?.categories ? props?.categories : 'category' }</div>
            <h6>{props?.title ? props?.title : 'title'}</h6>
            <p className="description-small">{props?.description ? props?.description : 'description'}</p>
          </div>
@@ -240,7 +240,7 @@ class CreateUrl extends Component {
                              <label>Category</label>
                              <select id="categorias"
                                name="categorias"
-                               onChange={this.categoriasChangeHandler}
+                               onChange={this.categoriesChangeHandler}
                                required
                              >
                                 <option hidden defaultValue value="">Select a category</option>
@@ -251,7 +251,7 @@ class CreateUrl extends Component {
                              <label>Topic</label>
                              <select id="topics"
                                name="temas"
-                               onChange={this.temasChangeHandler}
+                               onChange={this.topicsChangeHandler}
                              >
                                 <option hidden defaultValue value="">Select a topic</option>
                                 {this.state.isLoading ? '' :this.state?.uniqueTopics.map((topic, i) => <option key={i} value={topic}>{topic}</option>)}

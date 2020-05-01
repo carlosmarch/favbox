@@ -95,14 +95,14 @@
 /*
 HERO HEADER
 */
-.is-colecciones .title-block:nth-of-type(1){
+.is-collection .title-block:nth-of-type(1){
   //min-height: 340px;
 }
-.is-colecciones .GridCard .grid{
+.is-collection .GridCard .grid{
     background: #fff;
     padding-top: 60px;
 }
-.is-colecciones::after {
+.is-collection::after {
     content: '';
     width: 40vw;
     left: 60%;

@@ -54,9 +54,9 @@ const routing = (
         <Route exact path="/" component={Home} />
         <Route exact path="/feed" component={App} />
 
-        <Route path="/categorias/:id" component={Detail} />
-        <Route path="/temas/:id" component={Detail} />
-        <Route path="/colecciones/:id" component={Detail} />
+        <Route path="/categories/:id" component={Detail} />
+        <Route path="/topics/:id" component={Detail} />
+        <Route path="/collection/:id" component={Detail} />
         <Route path="/profile/:id" component={ExternalProfile} />
         <Route path="/item/:id" component={Item} />
 

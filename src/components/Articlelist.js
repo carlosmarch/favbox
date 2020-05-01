@@ -23,7 +23,7 @@ class Articlelist extends Component {
       return (
         <a className="articlelist" href={this.props.url} target="_blank" rel="noopener noreferrer">
           <div className="articlelist-title">
-            <div className="articlelist-category badge inline">{this.props.categorias}</div>
+            <div className="articlelist-category badge inline">{this.props.categories}</div>
             <h5>{this.props.title}</h5>
           </div>
           <div className="articlelist-description">
@@ -41,7 +41,7 @@ class Articlelist extends Component {
             <Contributor contributor={this.props.autor[0]?.fields}/>
           </div>
           <div className="articlelist-description">
-            <div className="articlelist-category badge inline">{this.props.categorias}</div>
+            <div className="articlelist-category badge inline">{this.props.categories}</div>
             <p>{this.props.description}</p>
           </div>
           <Like itemId={this.props.itemId}/>

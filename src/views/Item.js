@@ -98,8 +98,8 @@ class Item extends Component {
 
                       <div className="item-content-top">
                         <Like itemId={this.state?.urlItemId}/>
-                        <Link to={ '/categorias/' + this.state.itemData?.categorias } className="badge">{this.state.itemData?.categorias}</Link>
-                        { this.state.itemData?.temas?.map((topic, key) => { return (<Link to={ '/temas/' + topic } className="badge badge-outline" key={key}>#{topic}</Link>) }) }
+                        <Link to={ '/categories/' + this.state.itemData?.categories } className="badge">{this.state.itemData?.categories}</Link>
+                        { this.state.itemData?.topics?.map((topic, key) => { return (<Link to={ '/topics/' + topic } className="badge badge-outline" key={key}>#{topic}</Link>) }) }
                         <h2>{this.state.itemData?.title}</h2>
                         <Contributor contributor={this.state.contributorData} className="no-m"/>
                         <p className="hero-text">{this.state.itemData?.description}</p>

@@ -12,13 +12,13 @@ import * as Helpers from '../Helpers';
 
 
 export const catTemplate = {
-  card:         ['libro', 'revista'],
-  musiccard:    ['música'],
+  card:         ['book', 'magazine'],
+  musiccard:    ['music'],
   podcastcard : ['podcast'],
-  articlelist : ['artículo', 'web', 'newsletter'],
+  articlelist : ['article', 'web', 'newsletter'],
   videocard:    ['video'],
   appcard:      ['app'],
-  cinemacard:   ['película', 'serie']
+  cinemacard:   ['movie', 'show']
 };
 
 // Render items by Template Blocks
@@ -42,7 +42,7 @@ function renderCardItems(recommendations, contributors) {
 function renderMusicItems(recommendations, contributors, pagetype) {
   return(
     <div className="MusicGrid-detail mt-l">
-      <BlockTitle title={pagetype==='categorias' ? '' : 'Música'} titleclass={pagetype==='favoritos' ? 'small-title' : ''}/>
+      <BlockTitle title={pagetype==='categories' ? '' : 'Music'}/>
       <div className="container">
           <div className="grid">
               {Helpers.getBlockCategoryItems(recommendations, catTemplate.musiccard).map((records) =>
@@ -58,7 +58,7 @@ function renderPodcastItems(recommendations, contributors, pagetype){
   return(
     <div className="PodcastGrid mt-l">
       <div className="container mt-l">
-        <BlockTitle title={pagetype==='categorias' ? '' : 'Para escuchar'} titleclass={pagetype==='favoritos' ? 'small-title' : ''}/>
+        <BlockTitle title={pagetype==='categories' ? '' : 'Listen'}/>
         <div className="grid">
             {Helpers.getBlockCategoryItems(recommendations, catTemplate.podcastcard).map((records) =>
               <Podcastcard {...records.fields} key={records.id} itemId={records.id} autor={Helpers.getContributor(contributors, records.fields.contribuidor)}/>
@@ -72,7 +72,7 @@ function renderPodcastItems(recommendations, contributors, pagetype){
 function renderArticleItems(recommendations, contributors, pagetype){
   return(
     <div className="ArticlesGrid mt-l">
-      <BlockTitle title={pagetype==='categorias' ? '' : 'Más'} titleclass={pagetype==='favoritos' ? 'small-title' : ''} />
+      <BlockTitle title={pagetype==='categories' ? '' : 'More'} />
       <div className="container">
         <div className="grid">
             {Helpers.getBlockCategoryItems(recommendations, catTemplate.articlelist).map((records) =>
@@ -87,7 +87,7 @@ function renderArticleItems(recommendations, contributors, pagetype){
 function renderVideoItems(recommendations, contributors, pagetype){
   return(
     <div className="ArticlesGrid mt-l">
-      <BlockTitle title={pagetype==='categorias' ? '' : 'Videos'} titleclass={pagetype==='favoritos' ? 'small-title' : ''} />
+      <BlockTitle title={pagetype==='categories' ? '' : 'Videos'} />
       <div className="container">
         <div className="grid">
             {Helpers.getBlockCategoryItems(recommendations, catTemplate.videocard).map((records) =>
@@ -102,7 +102,7 @@ function renderVideoItems(recommendations, contributors, pagetype){
 function renderAppItems(recommendations, contributors, pagetype){
   return(
     <div className="AppGrid-detail mt-l">
-        <BlockTitle title={pagetype==='categorias' ? '' : 'Apps'} titleclass={pagetype==='favoritos' ? 'small-title' : ''} />
+        <BlockTitle title={pagetype==='categories' ? '' : 'Apps'} />
         <div className="container">
               <div className="grid">
                   {Helpers.getBlockCategoryItems(recommendations, catTemplate.appcard).map((records) =>
@@ -117,7 +117,7 @@ function renderAppItems(recommendations, contributors, pagetype){
 function renderCinemaItems(recommendations, contributors, pagetype) {
   return (
     <div className="GridCard">
-        <BlockTitle title={pagetype==='categorias' ? '' : 'Cinema & Series'} titleclass={pagetype==='favoritos' ? 'small-title' : ''} />
+        <BlockTitle title={pagetype==='categories' ? '' : 'Movies & Series'} />
         <div className="container container-xl">
             <div className="grid">
               {Helpers.getBlockCategoryItems(recommendations, catTemplate.cinemacard).map((records) =>

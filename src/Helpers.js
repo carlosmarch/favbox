@@ -1,7 +1,7 @@
 //Stores in window global var unique topics from all the records
 function storeUniqueTopics(records){
   //store window unique topics
-  var topics = records.map(function(item) {return item.fields.temas;})
+  var topics = records.map(function(item) {return item.fields.topics;})
   const mergeAllTopics = Array.prototype.concat.apply([], topics);
   const uniqueTopics = mergeAllTopics.filter((val,id,array) => array.indexOf(val) === id);
   //global variable for the dropdown
@@ -11,7 +11,7 @@ function storeUniqueTopics(records){
 //Stores in window global var unique categories from all the records
 function storeUniqueCategories(records){
   //store window unique categories
-  var categories = records.map(function(item) {return item.fields.categorias;})
+  var categories = records.map(function(item) {return item.fields.categories;})
   const mergeAllCategories = Array.prototype.concat.apply([], categories);
   const uniqueCategories = mergeAllCategories.filter((val,id,array) => array.indexOf(val) === id);
   //global variable for the dropdown
@@ -20,14 +20,14 @@ function storeUniqueCategories(records){
 
 //Returns unique categories from all the records
 function getUniqueCategories(records){
-  var categories = records.map(function(item) {return item.fields.categorias;})
+  var categories = records.map(function(item) {return item.fields.categories;})
   const mergeAllCategories = Array.prototype.concat.apply([], categories);
   return mergeAllCategories.filter((val,id,array) => array.indexOf(val) === id);
 }
 
 //Returns unique topics from all the records
 function getUniqueTopics(records){
-  var topics = records.map(function(item) {return item.fields.temas;})
+  var topics = records.map(function(item) {return item.fields.topics;})
   const mergeAllTopics = Array.prototype.concat.apply([], topics);
   return mergeAllTopics.filter((val,id,array) => array.indexOf(val) === id);
 }
@@ -90,13 +90,13 @@ function truncateText(str, length, ending) {
 
   //Get items by category name
   function getCategoryItems(recommendations, categoryName, size){
-    return recommendations.filter(recommendation => recommendation.fields.categorias?.includes(categoryName)).slice(0, size)
+    return recommendations.filter(recommendation => recommendation.fields.categories?.includes(categoryName)).slice(0, size)
   }
 
   //Get items by topic name
   function getTopicItems(recommendations, topicName, size){
     const topicItems = [];
-    recommendations.filter(recommendation => recommendation.fields.temas?.includes(topicName)).map(filteredTopicItem => (
+    recommendations.filter(recommendation => recommendation.fields.topics?.includes(topicName)).map(filteredTopicItem => (
         topicItems.push(filteredTopicItem)
    ));
    return topicItems.slice(0, size)
@@ -106,7 +106,7 @@ function truncateText(str, length, ending) {
   //Get items by collection name
   function getCollectionItems(recommendations, collectionName, size){
     const collections = [];
-    recommendations.filter(recommendation => recommendation.fields.colecciones?.includes(collectionName)).map(filteredCollectionItem => (
+    recommendations.filter(recommendation => recommendation.fields.collection?.includes(collectionName)).map(filteredCollectionItem => (
         collections.push(filteredCollectionItem)
    ));
    return collections.slice(0, size)
@@ -115,7 +115,7 @@ function truncateText(str, length, ending) {
 
   //Get all items which includes any of categories in passed array
   function getBlockCategoryItems(recommendations, catArr){
-    return recommendations.filter( (recommendation) => catArr.some((tag) => recommendation.fields.categorias?.includes(tag)) );
+    return recommendations.filter( (recommendation) => catArr.some((tag) => recommendation.fields.categories?.includes(tag)) );
   }
 
 

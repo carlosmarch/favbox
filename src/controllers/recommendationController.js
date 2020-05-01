@@ -84,7 +84,7 @@ const findItem = async (title, url) => {
 //ITEM MANAGEMENT
 export const addItem = async (req) => {
   //console.log('addItem', req)
-  const { title, description, url, imageUrl, categorias, temas, contribuidor } = req;
+  const { title, description, url, imageUrl, categories, topics, contribuidor } = req;
   const itemExists = await findItem(title, url);
 
   if (itemExists) {
@@ -102,8 +102,8 @@ export const addItem = async (req) => {
       description,
       url,
       imageUrl,
-      categorias,
-      temas,
+      categories,
+      topics,
       contribuidor
     },
     function(err, record) {

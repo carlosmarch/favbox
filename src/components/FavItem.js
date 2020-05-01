@@ -13,7 +13,7 @@ class FavItem extends Component {
             <img className="favitem-image-holder-img" src={this.props.imageUrl} alt="cover"/>
           </div>
           <div className="favitem-description">
-            <div className="favitem-category badge inline">{this.props.categorias}</div>
+            <div className="favitem-category badge inline">{this.props.categories}</div>
             <h6>{this.props.title}</h6>
             <p className="description">{this.props.description}</p>
           </div>

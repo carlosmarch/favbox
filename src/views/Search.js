@@ -71,14 +71,14 @@ class Search extends Component {
 
         <div className="AllTopics">
             <div className="Categories mt-l">
-              {this.state.isLoading ? <LoadingSpinner /> : this.state.categorias?.map((records, key) =>
-                <BlockTitle title={records} link={`categorias/${records}`} key={key}/>
+              {this.state.isLoading ? <LoadingSpinner /> : this.state.categories?.map((records, key) =>
+                <BlockTitle title={records} link={`categories/${records}`} key={key}/>
               )}
             </div>
 
             <div className="Topics mb-l">
-              {this.state.isLoading ? '' : this.state.temas?.map((records, key) =>
-                <BlockTitle title={records} link={`temas/${records}`} key={key}/>
+              {this.state.isLoading ? '' : this.state.topics?.map((records, key) =>
+                <BlockTitle title={records} link={`topics/${records}`} key={key}/>
               )}
             </div>
         </div>

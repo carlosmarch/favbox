@@ -34,7 +34,6 @@ class App extends Component {
 
   componentDidMount() {
     if(window.$alldata && window.$allcontributors){
-      console.log('hey DATA')
       this.setState({
         isLoading: false,
         recommendations: window.$alldata.sort(() => Math.random() - 0.5),//random order
@@ -79,10 +78,10 @@ class App extends Component {
                 <main>
 
                     <section className="GridCard">
-                        <BlockTitle title={'Libros'} description={'Las recomendaciones mas destacadas'} link={'categorias/libro'}/>
+                        <BlockTitle title={'Books'} link={'categories/book'}/>
                         <div className="container container-xl">
                             <div className="grid">
-                              {this.state.isLoading ? <LoadingSpinner /> : Helpers.getCategoryItems(this.state.recommendations, 'libro', 4).map((records) =>
+                              {this.state.isLoading ? <LoadingSpinner /> : Helpers.getCategoryItems(this.state.recommendations, 'book', 4).map((records) =>
                                 <Card {...records.fields} key={records.id} itemId={records.id} autor={Helpers.getContributor(this.state.contributors, records.fields.contribuidor)}/>
                               )}
                             </div>
@@ -90,13 +89,13 @@ class App extends Component {
                     </section>
 
                     <section className="GridCard block">
-                        <BlockTitle title={'Pelis & series'} description={'Las recomendaciones mas destacadas'} link={'categorias/serie'}/>
+                        <BlockTitle title={'Movies & shows'} link={'categories/show'}/>
                         <div className="container container-xl">
                             <div className="grid">
-                              {this.state.isLoading ? <LoadingSpinner /> : Helpers.getCategoryItems(this.state.recommendations, 'película', 8).map((records) =>
+                              {this.state.isLoading ? <LoadingSpinner /> : Helpers.getCategoryItems(this.state.recommendations, 'movie', 8).map((records) =>
                                 <Card {...records.fields} key={records.id} itemId={records.id} autor={Helpers.getContributor(this.state.contributors, records.fields.contribuidor)}/>
                               )}
-                              {this.state.isLoading ? '' : Helpers.getCategoryItems(this.state.recommendations, 'serie', 8).map((records) =>
+                              {this.state.isLoading ? '' : Helpers.getCategoryItems(this.state.recommendations, 'show', 8).map((records) =>
                                 <Card {...records.fields} key={records.id} itemId={records.id} autor={Helpers.getContributor(this.state.contributors, records.fields.contribuidor)}/>
                               )}
                             </div>
@@ -104,16 +103,16 @@ class App extends Component {
                     </section>
 
                     <section className="MusicGrid block">
-                        <BlockTitle title={'Música'} description={'Las recomendaciones mas destacadas'} link={'categorias/música'}/>
+                        <BlockTitle title={'Music'} link={'categories/music'}/>
                         <div className="container">
                             <div className="grid">
-                                {this.state.isLoading ? <LoadingSpinner /> : Helpers.getCategoryItems(this.state.recommendations,'música', 8).map((records) =>
+                                {this.state.isLoading ? <LoadingSpinner /> : Helpers.getCategoryItems(this.state.recommendations,'music', 8).map((records) =>
                                   <Musiccard {...records.fields} key={records.id} itemId={records.id} autor={Helpers.getContributor(this.state.contributors, records.fields.contribuidor)}/>
                                 )}
                             </div>
                         </div>
 
-                        <BlockTitle title={'Podcasts'} description={'Las recomendaciones mas destacadas'} link={'categorias/podcast'} titleclass="mt-l"/>
+                        <BlockTitle title={'Podcasts'} link={'categories/podcast'} titleclass="mt-l"/>
                         <div className="container">
                             <div className="grid mt-s">
                                 {this.state.isLoading ? <LoadingSpinner /> : Helpers.getCategoryItems(this.state.recommendations,'podcast', 4).map((records) =>
@@ -125,10 +124,10 @@ class App extends Component {
 
 
                     <section className="GridCard block">
-                        <BlockTitle title={'Revistas'} description={'Las recomendaciones mas destacadas'} link={'categorias/revista'}/>
+                        <BlockTitle title={'Magazines'} link={'categories/magazine'}/>
                         <div className="container container-xl">
                           <div className="grid">
-                              {this.state.isLoading ? <LoadingSpinner /> : Helpers.getCategoryItems(this.state.recommendations,'revista', 4).map((records) =>
+                              {this.state.isLoading ? <LoadingSpinner /> : Helpers.getCategoryItems(this.state.recommendations,'magazine', 4).map((records) =>
                                 <Card {...records.fields} key={records.id} itemId={records.id} autor={Helpers.getContributor(this.state.contributors, records.fields.contribuidor)}/>
                               )}
                             <img className="lines" src={process.env.PUBLIC_URL + '/img/dot-3.svg'} alt="lines"/>
@@ -146,7 +145,7 @@ class App extends Component {
                                         )}
                                     </div>
                                     <div className="grid__item width-4/12 width-12/12@m">
-                                        <BlockTitle title={'Apps'} description={'Apps para todo el mundo'} link={'categorias/app'}/>
+                                        <BlockTitle title={'Apps'} description={'Apps for everyone'} link={'categories/app'}/>
                                     </div>
                               </div>
                         </div>
@@ -154,7 +153,7 @@ class App extends Component {
 
 
                     <section className="GridVideo block">
-                        <BlockTitle title={'Videos'} description={'Las recomendaciones mas destacadas'} link={'categorias/video'}/>
+                        <BlockTitle title={'Videos'} link={'categories/video'}/>
                         <div className="container container-xl">
                           <div className="grid">
                               {this.state.isLoading ? <LoadingSpinner /> : Helpers.getCategoryItems(this.state.recommendations,'video', 6).map((records) =>
@@ -168,7 +167,7 @@ class App extends Component {
 
 
                     <section className="GridColection block">
-                        <BlockTitle title={'Colecciones'} description={'Las recomendaciones mas destacadas'}/>
+                        <BlockTitle title={'Collections'} description={'Collections made to inspire'}/>
                         <div className="container container-xl">
                           <div className="grid mt-s">
                               <Collectioncard title={'darle al coco'} grid={'width-4/12'} number={Helpers.getCollectionItems(this.state.recommendations, 'darle al coco').length}/>
@@ -181,12 +180,12 @@ class App extends Component {
 
                     <section className="ArticlesGrid block">
                       <BlockTitle
-                        title={'Qué leer'}
-                        description={'Artículos, newsletters y webs para entretenerse un rato navegando.'}
-                        titleclass="big-title" descriptionclass="big-description" link={'categorias/artículo'}/>
+                        title={'What to read'}
+                        description={'Articles, newsletters & webs.'}
+                        titleclass="big-title" descriptionclass="big-description" link={'categories/article'}/>
                       <div className="container">
                         <div className="mt-s">
-                            {this.state.isLoading ? <LoadingSpinner /> : Helpers.getCategoryItems(this.state.recommendations,'artículo', 20).map((records) =>
+                            {this.state.isLoading ? <LoadingSpinner /> : Helpers.getCategoryItems(this.state.recommendations,'article', 20).map((records) =>
                               <Articlelist {...records.fields} key={records.id} itemId={records.id} autor={Helpers.getContributor(this.state.contributors, records.fields.contribuidor)}/>
                             )}
                             {this.state.isLoading ? <LoadingSpinner /> : Helpers.getCategoryItems(this.state.recommendations,'newsletter', 20).map((records) =>
@@ -205,8 +204,8 @@ class App extends Component {
                     <section className="TopicCollection no@m">
                       <div className="container container-s">
                         <div className="grid">
-                          {window.$topics && window.$topics.map((temas, key) =>
-                              <Link to={`/temas/${temas}`} key={key} className="topic-card width-3/12 width-6/12@m">{temas}</Link>
+                          {window.$topics && window.$topics.map((topics, key) =>
+                              <Link to={`/topics/${topics}`} key={key} className="topic-card width-3/12 width-6/12@m">{topics}</Link>
                           )}
                         </div>
                       </div>

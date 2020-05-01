@@ -12,25 +12,25 @@ class Header extends Component {
   constructor(){
       super();
       this.state = {
-          isHoveredCategorias: false,
-          isHoveredTemas: false,
-          categorias: [],
-          temas: [],
+          isHoveredCategories: false,
+          isHoveredTopics: false,
+          categories: [],
+          topics: [],
           email:''
       };
-      this.handleHoverCategorias = this.handleHoverCategorias.bind(this);
-      this.handleHoverTemas = this.handleHoverTemas.bind(this);
+      this.handleHoverCategories = this.handleHoverCategories.bind(this);
+      this.handleHoverTopics = this.handleHoverTopics.bind(this);
   }
 
-  handleHoverCategorias(){
+  handleHoverCategories(){
       this.setState(prevState => ({
-          isHoveredCategorias: !prevState.isHoveredCategorias
+          isHoveredCategories: !prevState.isHoveredCategories
       }));
   }
 
-  handleHoverTemas(){
+  handleHoverTopics(){
       this.setState(prevState => ({
-          isHoveredTemas: !prevState.isHoveredTemas
+          isHoveredTopics: !prevState.isHoveredTopics
       }));
   }
 
@@ -57,8 +57,8 @@ class Header extends Component {
       Helpers.storeUniqueTopics(data.records)
       Helpers.storeUniqueCategories(data.records)
       this.setState({
-        categorias: window.$categories,
-        temas: window.$topics
+        categories: window.$categories,
+        topics: window.$topics
       });
     })
   }
@@ -68,8 +68,8 @@ class Header extends Component {
       this.getUniqueCategories()
     }else{
       this.setState({
-        categorias: window.$categories,
-        temas: window.$topics
+        categories: window.$categories,
+        topics: window.$topics
       });
     }
   }
@@ -86,14 +86,14 @@ class Header extends Component {
 
             <li><Link to="/feed">Discover</Link></li>
             { userController.isAuthenticated() ? (
-            <li id="menuitem-categorias" className={ this.state.isHoveredCategorias ? "hoverstate" : "" } onMouseEnter={this.handleHoverCategorias} onMouseLeave={this.handleHoverCategorias}>
+            <li id="menuitem-categorias" className={ this.state.isHoveredCategories ? "hoverstate" : "" } onMouseEnter={this.handleHoverCategories} onMouseLeave={this.handleHoverCategories}>
               <div>Feel like?</div>
               <svg viewBox="0 0 30 30" className="chevron"><polygon points="15,17.4 4.8,7 2,9.8 15,23 28,9.8 25.2,7 "></polygon></svg>
               <div id={'dropdown-categorias'} className="drop-overlay">
                 <ul>
-                  {this.state.categorias && this.state.categorias.map((categoria, key) =>
+                  {this.state.categories && this.state.categories.map((category, key) =>
                     <li key={key}>
-                      <Link to={`/categorias/${categoria}`}>{categoria}</Link>
+                      <Link to={`/categories/${category}`}>{category}</Link>
                     </li>
                   )}
                 </ul>
@@ -101,14 +101,14 @@ class Header extends Component {
             </li>
             ) : '' }
             { userController.isAuthenticated() ? (
-            <li id="menuitem-temas" className={ this.state.isHoveredTemas ? "hoverstate" : "" } onMouseEnter={this.handleHoverTemas} onMouseLeave={this.handleHoverTemas}>
+            <li id="menuitem-temas" className={ this.state.isHoveredTopics ? "hoverstate" : "" } onMouseEnter={this.handleHoverTopics} onMouseLeave={this.handleHoverTopics}>
               <div>Topics</div>
               <svg viewBox="0 0 30 30" className="chevron"><polygon points="15,17.4 4.8,7 2,9.8 15,23 28,9.8 25.2,7 "></polygon></svg>
               <div id={'dropdown-temas'} className="drop-overlay">
                 <ul>
-                  {this.state.temas && this.state.temas.map((tema, key) =>
+                  {this.state.topics && this.state.topics.map((topic, key) =>
                     <li key={key}>
-                      <Link to={`/temas/${tema}`}>{tema}</Link>
+                      <Link to={`/topics/${topic}`}>{topic}</Link>
                     </li>
                   )}
                 </ul>

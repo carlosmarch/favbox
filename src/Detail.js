@@ -100,7 +100,7 @@ class Detail extends Component {
 
                     {!this.state.isLoading && window.$pagedata.length && window.$pagedata.length === 0
                       ? <Notfound/>
-                      : <BlockTitle title={this.state.topic} description={'Las recomendaciones de '+this.state.topic+' mas destacadas'} titleclass="big-title mt-s" descriptionclass="big-description mb-m"/>
+                      : <BlockTitle title={this.state.topic} titleclass="big-title mt-s" descriptionclass="big-description mb-m"/>
                     }
 
                     {this.state.isLoading ? <LoadingSpinner /> : this.matchCategoriesWithTemplates(Templates.catTemplate.card) && this.matchCategoriesWithTemplates(Templates.catTemplate.card).length ? (
