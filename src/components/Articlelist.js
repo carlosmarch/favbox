@@ -11,16 +11,6 @@ class Articlelist extends Component {
     };
   }
 
-  UNSAFE_componentWillMount() {
-    window.addEventListener('resize', this.handleWindowSizeChange);
-  }
-
-  // make sure to remove the listener
-  // when the component is not mounted anymore
-  UNSAFE_componentWillUnmount() {
-    window.removeEventListener('resize', this.handleWindowSizeChange);
-  }
-
   handleWindowSizeChange = () => {
     this.setState({ width: window.innerWidth });
   };

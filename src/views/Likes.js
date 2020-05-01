@@ -28,7 +28,7 @@ class Likes extends Component {
     window.scrollTo(0, 0);
   }
 
-  getUserFavs(){
+  componentDidMount() {
     const userId = userController.getSession()?.id;
     if (!userId) {
       //WHEN NO SESSION && NO EMAIL
@@ -55,11 +55,6 @@ class Likes extends Component {
       //console.log('hydratedFavItems',  user.likes, hydratedFavItems)
       return;
     })
-  }
-
-  componentDidMount() {
-    //Set User Favs
-    this.getUserFavs()
 
   }
 

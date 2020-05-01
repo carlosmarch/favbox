@@ -46,8 +46,8 @@ class Home extends Component {
 
                     </div>
                     <div className="grid__item width-6/12 no@m">
-                      <picture className="picture-main-image">
-                        <img className="main-image" src="https://images.unsplash.com/photo-1446511437394-36cdff3ae1b3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" alt="cover"></img>
+                      <picture className="picture-main-image reveal">
+                        <img className="main-image scale" src="https://images.unsplash.com/photo-1446511437394-36cdff3ae1b3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" alt="cover"></img>
                       </picture>
                     </div>
               </div>
@@ -59,11 +59,13 @@ class Home extends Component {
             <div className="container">
                 <div className="grid">
                     <div className="grid__item width-7/12 width-12/12@m">
-                      <img className="img-fit" src={process.env.PUBLIC_URL + '/img/hero-img.png'} alt="international person"/>
+                      <picture className="">
+                        <img className="img-fit" src={process.env.PUBLIC_URL + '/img/hero-img.png'} alt="international person"/>
+                      </picture>
                     </div>
                     <div className="grid__item width-5/12 width-12/12@m v-center">
                       <h2 className="alt-font">Let people know what inspires you.</h2>
-                      <p className="hero-text">Share your collection of favourite resources to inspire. Don't know what to read or watch? Find and save your next book or movie.</p>
+                      <p className="hero-text">Share your collection of favourite resources to inspire. Don´t know what to read or watch? Find and save your next book or movie.</p>
                     </div>
                 </div>
             </div>
@@ -97,7 +99,9 @@ class Home extends Component {
                       <p className="hero-text">Imagine to know what your industry leaders are reading or watching? Now it's possible.</p>
                     </div>
                     <div className="grid__item width-6/12 width-12/12@m">
-                      <img className="img-fit" src={process.env.PUBLIC_URL + '/img/hero-img-girl.png'} alt="international person"/>
+                      <picture className="">
+                        <img className="img-fit" src={process.env.PUBLIC_URL + '/img/hero-img-girl.png'} alt="international person"/>
+                      </picture>
                     </div>
                 </div>
             </div>

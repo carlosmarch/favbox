@@ -33,6 +33,15 @@ class App extends Component {
   }
 
   componentDidMount() {
+    if(window.$alldata && window.$allcontributors){
+      console.log('hey DATA')
+      this.setState({
+        isLoading: false,
+        recommendations: window.$alldata.sort(() => Math.random() - 0.5),//random order
+        contributors: window.$allcontributors.records}
+      );
+      return
+    }
     fetch(window.$api)
     .then((resp) => resp.json())
     .then(data => {
@@ -45,19 +54,16 @@ class App extends Component {
     })
     .then((resp2, data) => resp2.json())
     .then(contributors => {
-      delete contributors.records['password'];
+      window.$allcontributors = contributors;
       this.setState({
         isLoading: false,
         recommendations: window.$alldata.sort(() => Math.random() - 0.5),//random order
         contributors: contributors.records}
       );
-      //console.log('allcontributors',contributors.records)
-      //console.log('contributors',this.state.contributors)
-      //console.log('recommendations',this.state.recommendations)
-
     })
     .catch(err => {
       // Error
+      console.err(err)
     });
   }
 
@@ -167,9 +173,7 @@ class App extends Component {
                           <div className="grid mt-s">
                               <Collectioncard title={'darle al coco'} grid={'width-4/12'} number={Helpers.getCollectionItems(this.state.recommendations, 'darle al coco').length}/>
                               <Collectioncard title={'mantenerse en forma'} grid={'width-4/12'} number={Helpers.getCollectionItems(this.state.recommendations, 'mantenerse en forma').length} />
-                              <Collectioncard title={'pandemias, contagios y visionarios'} grid={'width-4/12'} number="0" />
-                              <Collectioncard title={'aprender'} grid={'width-6/12'} number={Helpers.getCollectionItems(this.state.recommendations, 'aprender').length} />
-                              <Collectioncard title={'futuros'} grid={'width-6/12'} number={Helpers.getCollectionItems(this.state.recommendations, 'futuros').length} />
+                              <Collectioncard title={'futuros'} grid={'width-4/12'} number={Helpers.getCollectionItems(this.state.recommendations, 'futuros').length} />
                           </div>
                         </div>
                     </section>
