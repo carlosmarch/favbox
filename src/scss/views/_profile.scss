@@ -27,7 +27,9 @@
 .profile-user-info{
   margin-left: 32px;
 }
-.profile-user-name{}
+.profile-user-name{
+  text-transform: capitalize;
+}
 .profile-user-description{}
 .profile-user-data{
   margin-top: 16px;

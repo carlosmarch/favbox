@@ -1,57 +1,59 @@
 :root{
 
-  --brown:#f4f0eb;
-  --cyan: #6afcee;
-  --yellow:#ffd954;
-  --purple:#7837e6;
-  --orange:#fb7961;
-  --soft_blue:#c6dcfd;
-  --dark-green:#03363d;
-  --pink:rgb(255, 215, 179);
+  --dark-green   : #03363d;
+  --gold         : #ead095;
+  --high-blue    : #0000ff;
 
 
-  //UI colors
-  --black:#181818;
-  --grey:#808491;
-  --grey-soft:#B5B8BF;
-  --soft-grey-bg:#fafafa;
-  --soft-brown-bg:#f5f0ea;
-  --soft-yellow-bg:rgb(249, 233, 177);
-
-  --interaction:#0000ff;
-  --default-color: #ead095;
-  --soft-dafault-color: #e8e0cc;
-
-  //UI components
-  --body-type:var(--dark-green);
-  --title-type:var(--dark-green);
-  --body-background:#fff;
-  --hero-bg: var(--pink);
-  --border: rgb(230, 236, 240);
+  --brown        : #f4f0eb;
+  --cyan         : #6afcee;
+  --yellow       : #ffd954;
+  --purple       : #7837e6;
+  --orange       : #fb7961;
+  --soft-blue    : #c6dcfd;
+  --pink         : rgb(255, 215, 179);
 
   //More
-  --magazine-color:#D1501A;
-  --book-color:#35977E;
-  --podcast-color:#E9B806;
-  --article-color:#55808E;
+  --secondary-orange  : #D1501A;
+  --secondary-green   : #35977E;
+  --secondary-yellow  : #E9B806;
+  --secondary-blue    : #55808E;
+
+  //UI colors TYPE
+  --black        : #181818;
+  --grey         : #808491;
+  --grey-soft    : #B5B8BF;
+
+  //UI colors BLOCKS
+  --soft-grey-bg         : #fafafa;
+  --soft-brown-bg        : #f5f0ea;
+  --soft-yellow-bg       : rgb(249, 233, 177);
+  --soft-dafault-color   : #e8e0cc;
+
+  //UI components
+  --body-type         : var(--dark-green);
+  --title-type        : var(--dark-green);
+  --body-background   : #fff;
+  --hero-bg           : var(--pink);
+  --border            : rgb(230, 236, 240);
+
+  //THEME
+  --primary           : var(--dark-green);
+  --secondary         : var(--gold);
+  --interaction       : var(--high-blue);
+  --default-color     : var(--gold);
 
 }
 
-.bg-brown{
-  background-color: var(--brown);
-}
-.bg-cyan{
-  background-color: var(--cyan);
-}
-.bg-yellow{
-  background-color: var(--yellow);
-}
-.bg-purple{
-  background-color: var(--purple);
-}
-.bg-orange{
-  background-color: var(--orange);
-}
-.grey{
-  color: var(--grey)
-}
+//Color
+.grey{ color: var(--grey) }
+.interaction{ color: var(--interaction) }
+
+//background
+.bg-soft-grey{ background-color: var(--soft-grey-bg);}
+.bg-brown{ background-color: var(--brown);}
+.bg-cyan{ background-color: var(--cyan);}
+.bg-yellow{ background-color: var(--yellow);}
+.bg-purple{ background-color: var(--purple);}
+.bg-orange{ background-color: var(--orange);}
+.bg-pink{ background-color: var(--pink);}

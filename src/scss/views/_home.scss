@@ -1,9 +1,7 @@
 .home_view{
-    background: var(--soft-dafault-color);
     margin-top: 0!important;
-    padding-top: 180px;
     @media (max-width: $breakpoint-m) {
-      margin-top: -32px;
+      margin-top: -32px;//@TODO ¿?
       padding-top: 40px;
       ~ .bottombar{
         display: none; //Hide BottomBar on homepage
@@ -14,15 +12,15 @@
     }
 }
 .main-title {
-    font-size: 48px;
-    line-height: 56px;
-    padding: 0;
-    margin-bottom: 24px;
-    font-family: "Sharp Grotesk Medium", sans-serif;
-    overflow-wrap: anywhere;
-    @media (max-width: $breakpoint-m) {
-      font-size: 40px;
-    }
+  font-size: 56px;
+  line-height: 60px;
+  padding: 0;
+  margin-bottom: 24px;
+  font-family: "Sharp Grotesk Medium", sans-serif;
+  overflow-wrap: anywhere;
+  @media (max-width: $breakpoint-m) {
+    font-size: 40px;
+  }
 }
 .picture-main-image{}
 .main-image{
@@ -72,6 +70,17 @@
   width: 750px;
   left: -80px;
   position: absolute;
+}
+
+//THEMES
+.home-hero{
+  padding: 140px 0 40px 0;
+  @media (max-width: $breakpoint-m) {
+    padding: 0;
+  }
+}
+.home-gold{
+  background: var(--soft-dafault-color);
 }
 
 @-webkit-keyframes reveal {

@@ -6,9 +6,9 @@ class Promocard extends Component {
 
     return (
 
-      <div className="Promo mt-l no@m">
+      <div className="Promo">
         <div className="container">
-          <div className="Promocard grid mt-xl">
+          <div className="Promocard grid">
               <div className="grid__item width-10/12 width-12/12@m">
                 <div className="sticker">
                   <span className="letter">H</span>
@@ -16,8 +16,8 @@ class Promocard extends Component {
                   <span className="letter">Y</span>
                   <span className="letter">!</span>
                 </div>
-                <h3>Tell us what you like</h3>
-                <p>We will find recommendations for you and you can share your favorite inspiration sources.</p>
+                <h3 className="mt-xs">Tell the world what inspires you</h3>
+                <p>We will find recommendations for you and you will be able share your favorite inspiration sources</p>
               </div>
               <div className="grid__item width-2/12 width-12/12@m">
                 <a className="button" href="/signup">Get started!</a>

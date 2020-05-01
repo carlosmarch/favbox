@@ -103,7 +103,7 @@ class Profile extends Component {
                   <UserIcon />
                 </div>
                 <div className="profile-user-info">
-                  <div className="profile-user-name"><h3>{userController.getSession()?.name}</h3></div>
+                  <div className="profile-user-name"><h3 className="alt-font">{userController.getSession()?.name}</h3></div>
                   <div className="profile-user-description"><p>{userController.getSession()?.description}</p></div>
                   <div className="profile-user-data">
                     <span>{ this.state.likeItems } Likes</span>

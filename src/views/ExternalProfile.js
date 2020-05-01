@@ -83,7 +83,7 @@ class ExternalProfile extends Component {
                   <UserIcon />
                 </div>
                 <div className="profile-user-info">
-                  <div className="profile-user-name"><h3>{this.state.urlName}</h3></div>
+                  <div className="profile-user-name"><h3 className="alt-font">{this.state.urlName}</h3></div>
                   <div className="profile-user-description"><p>{this.state?.userData?.description}</p></div>
                   <div className="profile-user-data">
                     <span>{ this.state.likeItems } Likes</span>

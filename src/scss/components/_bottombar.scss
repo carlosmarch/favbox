@@ -61,8 +61,8 @@ a.bottombar-item-icon.tab-active path {
   background: var(--dark-green);
   -webkit-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  -webkit-transition-duration: 100ms;
-  transition-duration: 100ms;
+  -webkit-transition-duration: 200ms;
+  transition-duration: 200ms;
   z-index: -1;
   left: -60px;
 }

@@ -64,7 +64,7 @@ class App extends Component {
   render() {
 
           return (
-            <div className="app_wrapper app_view">
+            <div className={ userController.isAuthenticated() ? 'app_wrapper app_view' : 'app_wrapper app-view-not-logged' }>
 
               <Header />
 
@@ -72,7 +72,7 @@ class App extends Component {
 
                 <main>
 
-                    <div className="GridCard mb-l">
+                    <section className="GridCard">
                         <BlockTitle title={'Libros'} description={'Las recomendaciones mas destacadas'} link={'categorias/libro'}/>
                         <div className="container container-xl">
                             <div className="grid">
@@ -81,9 +81,9 @@ class App extends Component {
                               )}
                             </div>
                         </div>
-                    </div>
+                    </section>
 
-                    <div className="GridCard mb-l">
+                    <section className="GridCard block">
                         <BlockTitle title={'Pelis & series'} description={'Las recomendaciones mas destacadas'} link={'categorias/serie'}/>
                         <div className="container container-xl">
                             <div className="grid">
@@ -95,12 +95,12 @@ class App extends Component {
                               )}
                             </div>
                         </div>
-                    </div>
+                    </section>
 
-                    <div className="MusicGrid">
+                    <section className="MusicGrid block">
                         <BlockTitle title={'Música'} description={'Las recomendaciones mas destacadas'} link={'categorias/música'}/>
                         <div className="container">
-                            <div className="grid mt-s">
+                            <div className="grid">
                                 {this.state.isLoading ? <LoadingSpinner /> : Helpers.getCategoryItems(this.state.recommendations,'música', 8).map((records) =>
                                   <Musiccard {...records.fields} key={records.id} itemId={records.id} autor={Helpers.getContributor(this.state.contributors, records.fields.contribuidor)}/>
                                 )}
@@ -115,10 +115,10 @@ class App extends Component {
                                 )}
                             </div>
                         </div>
-                    </div>
+                    </section>
 
 
-                    <div className="GridCard">
+                    <section className="GridCard block">
                         <BlockTitle title={'Revistas'} description={'Las recomendaciones mas destacadas'} link={'categorias/revista'}/>
                         <div className="container container-xl">
                           <div className="grid">
@@ -128,10 +128,10 @@ class App extends Component {
                             <img className="lines" src={process.env.PUBLIC_URL + '/img/dot-3.svg'} alt="lines"/>
                           </div>
                         </div>
-                    </div>
+                    </section>
 
 
-                    <div className="AppGrid mt-l">
+                    <section className="AppGrid block">
                         <div className="container">
                               <div className="grid">
                                     <div className="grid__item width-8/12 width-12/12@m grid">
@@ -144,25 +144,24 @@ class App extends Component {
                                     </div>
                               </div>
                         </div>
-                    </div>
+                    </section>
 
 
-                    <div className="GridVideo mt-l">
+                    <section className="GridVideo block">
                         <BlockTitle title={'Videos'} description={'Las recomendaciones mas destacadas'} link={'categorias/video'}/>
                         <div className="container container-xl">
                           <div className="grid">
                               {this.state.isLoading ? <LoadingSpinner /> : Helpers.getCategoryItems(this.state.recommendations,'video', 6).map((records) =>
                                 <Videocard {...records.fields} key={records.id} itemId={records.id} autor={Helpers.getContributor(this.state.contributors, records.fields.contribuidor)}/>
                               )}
-                            <img className="lines" src={process.env.PUBLIC_URL + '/img/dot-2.svg'} alt="lines"/>
                           </div>
                         </div>
-                    </div>
+                    </section>
 
 
 
 
-                    <div className="GridColection mt-l">
+                    <section className="GridColection block">
                         <BlockTitle title={'Colecciones'} description={'Las recomendaciones mas destacadas'}/>
                         <div className="container container-xl">
                           <div className="grid mt-s">
@@ -173,10 +172,10 @@ class App extends Component {
                               <Collectioncard title={'futuros'} grid={'width-6/12'} number={Helpers.getCollectionItems(this.state.recommendations, 'futuros').length} />
                           </div>
                         </div>
-                    </div>
+                    </section>
 
 
-                    <div className="ArticlesGrid mt-l">
+                    <section className="ArticlesGrid block">
                       <BlockTitle
                         title={'Qué leer'}
                         description={'Artículos, newsletters y webs para entretenerse un rato navegando.'}
@@ -194,20 +193,20 @@ class App extends Component {
                             )}
                         </div>
                       </div>
-                    </div>
+                    </section>
 
-                    { this.state.isAuthenticated ? '' : <Promocard /> }
+                    { this.state.isAuthenticated ? '' : <section className="block no@m"><Promocard /></section> }
 
 
-                    <div className="TopicCollection mt-l no@m">
+                    <section className="TopicCollection no@m">
                       <div className="container container-s">
-                        <div className=" grid mt-s">
+                        <div className="grid">
                           {window.$topics && window.$topics.map((temas, key) =>
                               <Link to={`/temas/${temas}`} key={key} className="topic-card width-3/12 width-6/12@m">{temas}</Link>
                           )}
                         </div>
                       </div>
-                    </div>
+                    </section>
 
 
 

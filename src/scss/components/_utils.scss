@@ -11,9 +11,21 @@ $breakpoint-m: 48em;
     display: none!important;
   }
 }
-.no-m{
-  margin: 0;
-}
+
+//Margins && paddings
+.m-xl{ margin: 160px;
+  @media (max-width: $breakpoint-m){margin: 32px;}}
+.m-l{ margin: 80px;
+  @media (max-width: $breakpoint-m){margin: 24px;}}
+.m-m{ margin: 40px;
+  @media (max-width: $breakpoint-m){margin: 16px;}}
+.m-s{ margin: 24px;
+  @media (max-width: $breakpoint-m){margin: 8px;}}
+.m-xs{ margin: 16px;
+  @media (max-width: $breakpoint-m){margin: 6px;}}
+.m-xxs{ margin: 8px;
+  @media (max-width: $breakpoint-m){margin: 4px;}}
+
 .mt-xl{ margin-top: 160px;
   @media (max-width: $breakpoint-m){margin-top: 32px;}}
 .mt-l{ margin-top: 80px;
@@ -39,6 +51,19 @@ $breakpoint-m: 48em;
   @media (max-width: $breakpoint-m){margin-bottom: 6px;}}
 .mb-xxs { margin-bottom: 8px;
   @media (max-width: $breakpoint-m){margin-bottom: 4px;}}
+
+.p-xl{ padding: 160px;
+  @media (max-width: $breakpoint-m){padding: 32px;}}
+.p-l{ padding: 80px;
+  @media (max-width: $breakpoint-m){padding: 24px;}}
+.p-m{ padding: 40px;
+  @media (max-width: $breakpoint-m){padding: 16px;}}
+.p-s{ padding: 24px;
+  @media (max-width: $breakpoint-m){padding: 8px;}}
+.p-xs{ padding: 16px;
+  @media (max-width: $breakpoint-m){padding: 6px;}}
+.p-xxs{ padding: 8px;
+  @media (max-width: $breakpoint-m){padding: 4px;}}
 
 .pt-xl{ padding-top: 160px;
   @media (max-width: $breakpoint-m){padding-top: 32px;}}
@@ -66,11 +91,17 @@ $breakpoint-m: 48em;
 .pb-xxs { padding-bottom: 8px;
   @media (max-width: $breakpoint-m){padding-bottom: 4px;}}
 
+.no-m{
+  margin: 0;
+}
+.no-p{
+  padding: 0;
+}
 
 
 
 
-
+//Helpers
 .inline {
   display: inline;
   align-items: center;
@@ -91,9 +122,17 @@ $breakpoint-m: 48em;
 .auto{
   margin: auto;
 }
+.flex{
+  display:flex;
+}
 .flex-justify{
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+.v-center{
+  align-content: center;
+  display: grid;
 }
 .underline{
   text-decoration: underline;
@@ -106,10 +145,26 @@ $breakpoint-m: 48em;
 .no-b{
   border: none!important;
 }
+
 //Cards
 .card-16{
   box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
+}
+
+//Images
+.img-fit{
+  width: 100%;
+}
+
+//Blocks
+//LAYOUT
+.block{
+  width: 100%;
+  padding: 120px 0 80px 0;
+  @media (max-width: $breakpoint-m){
+    padding: 40px 0;
+  }
 }
 
 
