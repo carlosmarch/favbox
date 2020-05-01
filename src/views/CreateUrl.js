@@ -163,7 +163,7 @@ class CreateUrl extends Component {
 
             <div className="form-container">
               <div className="mb-m text-center">
-                <h3 className="centered">Add an item</h3>
+                <h3 className="centered alt-font">Add some inspiration</h3>
                 <p>Tell everyone why it´s awesome.</p>
               </div>
 

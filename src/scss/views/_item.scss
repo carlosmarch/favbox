@@ -120,6 +120,7 @@
   }
   .is-liked-name{
     margin-right: 4px;
+    text-transform: capitalize;
   }
   .is-liked-name:not(:last-child):after {
     content: ' ·';

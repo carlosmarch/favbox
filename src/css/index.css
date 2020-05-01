@@ -2396,12 +2396,12 @@ button.likebutton svg {
 /*
 HERO HEADER
 */
-.is-colecciones .GridCard .grid {
+.is-collection .GridCard .grid {
   background: #fff;
   padding-top: 60px;
 }
 
-.is-colecciones::after {
+.is-collection::after {
   content: '';
   width: 40vw;
   left: 60%;
@@ -3825,6 +3825,7 @@ a.topic-card::before {
 
 .is-liked-by .is-liked-name {
   margin-right: 4px;
+  text-transform: capitalize;
 }
 
 .is-liked-by .is-liked-name:not(:last-child):after {
