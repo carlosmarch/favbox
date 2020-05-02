@@ -517,6 +517,10 @@
   color: var(--interaction);
 }
 
+.bg-white {
+  background: #fff;
+}
+
 .bg-soft-grey {
   background-color: var(--soft-grey-bg);
 }
@@ -737,6 +741,10 @@ main {
   max-width: 800px;
 }
 
+.container-xs {
+  max-width: 600px;
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -946,6 +954,14 @@ a {
   transition: all 0.2s ease 0s;
 }
 
+.button-small {
+  padding: 8px 16px;
+  height: 32px;
+  line-height: 14px;
+  min-width: auto;
+  font-size: 14px;
+}
+
 .button.submitbtn {
   background: var(--interaction);
   transition: all 0.2s ease 0s;
@@ -971,6 +987,12 @@ a {
 .button-outline:hover {
   background-color: var(--dark-green);
   color: #fff;
+}
+
+.button:disabled, .button:disabled:hover {
+  background: var(--grey-soft);
+  color: var(--grey);
+  cursor: not-allowed;
 }
 
 .loader-container {
@@ -3501,6 +3523,7 @@ a.topic-card::before {
   align-items: center;
   justify-content: center;
   background: var(--soft-yellow-bg);
+  background-size: cover;
 }
 
 .profile-user-image-holder svg {
@@ -3510,15 +3533,11 @@ a.topic-card::before {
 
 .profile-user-info {
   margin-left: 32px;
+  width: 100%;
 }
 
 .profile-user-name {
   text-transform: capitalize;
-}
-
-.profile-user-data {
-  margin-top: 16px;
-  margin-bottom: 32px;
 }
 
 .profile-user-data span {
@@ -3671,6 +3690,8 @@ a.topic-card::before {
   height: inherit;
   box-shadow: none;
   border: none;
+  background: #fff;
+  height: 97%;
 }
 
 .create-item-uploader .uploadPicturesWrapper {
@@ -3871,4 +3892,51 @@ a.topic-card::before {
   z-index: 1000;
   position: absolute;
   top: 80px;
+}
+
+.settings_view .fileUploader {
+  width: 50%;
+}
+
+.settings_view .create-item-uploader .fileContainer {
+  height: 250px;
+}
+
+.settings_view .fileContainer .uploadPictureContainer img.uploadPicture {
+  max-height: 230px;
+  width: auto;
+  max-width: 100%;
+}
+
+.user-has-photo-PictureContainer {
+  position: absolute;
+  z-index: 10;
+  width: 250px;
+  display: flex;
+  margin: 0 auto;
+  text-align: center;
+  justify-content: center;
+  padding: 4px;
+}
+
+.user-has-photo-PictureContainer .deleteImage {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #fff;
+  background: var(--dark-green);
+  border-radius: 50%;
+  text-align: center;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 30px;
+  width: 30px;
+  height: 30px;
+}
+
+img.user-has-photo-image {
+  max-height: 246px;
+  top: 1px;
+  max-width: 100%;
 }

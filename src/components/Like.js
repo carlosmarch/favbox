@@ -29,7 +29,7 @@ class Like extends Component {
     const item = e.target.value;
     const userid = userController.getSession()?.id;
     const itemId = this.props.itemId
-
+    
     if ( !userController.isAuthenticated() ){
       history.push({ pathname: '/signup' })
       return

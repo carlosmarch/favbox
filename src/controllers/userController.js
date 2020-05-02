@@ -173,6 +173,32 @@ export const updateUserLikes = (likeArr) => {
 }
 
 
+export const updateUserProfile = (req) => {
+  //console.log('updateUserProfile', req)
+  const { name, description, avatar } = req;
+  const userId = getSession()?.id
+  if (!userId) return;
+  table.update( userId, { name, description, avatar }, function(err, record) {
+      if (err) {
+        console.error(err);
+        return;
+      }
+      record.fields['id'] = record.id
+      setSession(record.fields)
+      history.push({
+        pathname: '/profile',
+        state: {
+          type: 'info',
+          message: 'Profile updated successfully!'
+        }
+      })
+    }
+  );
+
+}
+
+
+
 // @LOCALSTORAGE
 // User Session Helpers
 //

@@ -19,6 +19,7 @@
   align-items: center;
   justify-content: center;
   background: var(--soft-yellow-bg);
+  background-size: cover;
   svg{
     width: 38px;
     height: 38px;
@@ -26,14 +27,13 @@
 }
 .profile-user-info{
   margin-left: 32px;
+  width: 100%;
 }
 .profile-user-name{
   text-transform: capitalize;
 }
 .profile-user-description{}
 .profile-user-data{
-  margin-top: 16px;
-  margin-bottom: 32px;
   span {
     font-size: 14px;
     color: var(--grey);

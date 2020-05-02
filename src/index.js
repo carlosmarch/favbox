@@ -21,6 +21,7 @@ import ExternalProfile from './views/ExternalProfile';
 import Likes from './views/Likes';
 import CreateUrl from './views/CreateUrl';
 import Item from './views/Item';
+import Settings from './views/Settings';
 
 import * as serviceWorker from './serviceWorker';
 const userController = require('./controllers/userController.js');
@@ -69,6 +70,7 @@ const routing = (
         <AuthenticatedRoute path="/create" component={CreateUrl}/>
         <AuthenticatedRoute path="/likes" component={Likes}/>
         <AuthenticatedRoute path="/profile" component={Profile}/>
+        <AuthenticatedRoute path="/settings" component={Settings}/>
 
         <Route component={Notfound} />
 

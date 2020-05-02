@@ -40,6 +40,8 @@ a{
     text-decoration: underline!important;
   }
 }
+
+
 .button {
     text-align: center;
     height: 48px;
@@ -61,6 +63,14 @@ a{
         background-color: darken(#03363d, 10%);
         transition: all 0.2s ease 0s;
     }
+}
+
+.button-small{
+    padding: 8px 16px;
+    height: 32px;
+    line-height: 14px;
+    min-width: auto;
+    font-size: 14px;
 }
 
 .button.submitbtn{
@@ -88,4 +98,10 @@ a{
     background-color: var(--dark-green);
     color:#fff;
   }
+}
+
+.button:disabled, .button:disabled:hover{
+    background: var(--grey-soft);
+    color: var(--grey);
+    cursor: not-allowed;
 }

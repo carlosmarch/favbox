@@ -51,8 +51,7 @@ class CreateUrl extends Component {
   handleSubmit(event) {
     event.preventDefault();
     this.setState({isLoading: true});
-    console.log(this.state)
-    //recommendationController.uploadToCloudinary(this.state, recommendationController.addItem) //Upload to cloudinary, then to airtable
+    recommendationController.uploadToCloudinary(this.state, recommendationController.addItem) //Upload to cloudinary, then to airtable
   }
 
 

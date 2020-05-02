@@ -30,7 +30,8 @@ class Profile extends Component {
       renderItems : [],
       pubItems  : 0,
       likeItems : Helpers.getStorageFavs() ? Helpers.getStorageFavs()?.length : '0',
-      makeConfetti : this.checkConfetti()
+      makeConfetti : this.checkConfetti(),
+      userData : userController.getSession()
     };
     window.scrollTo(0, 0);
   }
@@ -70,7 +71,7 @@ class Profile extends Component {
       }
       if (!userData?.likes) userData.likes = []
 
-      await recommendationController.hydrateUserPubItems(userData)
+      await recommendationController.hydrateUserPubItems(userData)//@TODO Store data?
 
       userController.setLocalStorageFavs(userData.likes)
 
@@ -99,17 +100,26 @@ class Profile extends Component {
             <div className="container container-s">
 
               <div className="profile-user mt-xl">
-                <div className="profile-user-image-holder">
-                  <UserIcon />
-                </div>
+
+                { userController.getSession().avatar ? (
+                  <div className="profile-user-image-holder" style={{backgroundImage: `url(${userController.getSession().avatar})`}}></div>
+                ) : (
+                  <div className="profile-user-image-holder">
+                    <UserIcon />
+                  </div>
+                )}
+
                 <div className="profile-user-info">
                   <div className="profile-user-name"><h3 className="alt-font">{userController.getSession()?.name}</h3></div>
-                  <div className="profile-user-description"><p>{userController.getSession()?.description}</p></div>
-                  <div className="profile-user-data">
-                    <span>{ this.state.likeItems } Likes</span>
-                    <span>{ this.state.pubItems } Published</span>
-                    <span>0 Following</span>
-                    <span>0 Followers</span>
+                  <div className="profile-user-description"><p className="no-m">{userController.getSession()?.description}</p></div>
+                  <div className="profile-user-data flex-justify">
+                    <div>
+                      <span>{ this.state.likeItems } Likes</span>
+                      <span>{ this.state.pubItems } Published</span>
+                      <span>0 Following</span>
+                      <span>0 Followers</span>
+                    </div>
+                    <Link to="/settings" className="button button-outline button-small">Edit Profile</Link>
                   </div>
                 </div>
               </div>

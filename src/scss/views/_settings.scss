@@ -1,0 +1,44 @@
+.settings_view .fileUploader {
+    width: 50%;
+}
+.settings_view .create-item-uploader .fileContainer {
+    height: 250px;
+}
+.settings_view .fileContainer .uploadPictureContainer img.uploadPicture {
+    max-height: 230px;
+    width: auto;
+    max-width: 100%;
+}
+
+
+//When user has photo
+.user-has-photo-PictureContainer{
+  position: absolute;
+  z-index: 10;
+  width: 250px;
+  display: flex;
+  margin: 0 auto;
+  text-align: center;
+  justify-content: center;
+  padding: 4px;
+  .deleteImage {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #fff;
+    background: var(--dark-green);
+    border-radius: 50%;
+    text-align: center;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 30px;
+    width: 30px;
+    height: 30px;
+  }
+}
+img.user-has-photo-image {
+  max-height: 246px;
+  top: 1px;
+  max-width: 100%;
+}
