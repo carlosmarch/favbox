@@ -13,7 +13,6 @@ import {ReactComponent as BackIcon} from '../icons/Back.svg';
 import {ReactComponent as WebIcon} from '../icons/Globe.svg';
 import {ReactComponent as LikedIcon} from '../icons/HeartFull.svg';
 
-const dataController = require('../controllers/dataController.js');
 const userController = require('../controllers/userController.js');
 
 //AIRTABLE HELPERS

@@ -1,12 +1,10 @@
 import React, { Component } from "react";
-import { Link } from 'react-router-dom';
 
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import FavItem from '../components/FavItem';
 import LoadingSpinner from '../components/LoadingSpinner';
 import {ReactComponent as UserIcon} from '../icons/User.svg';
-import {ReactComponent as AddIcon} from '../icons/Plus.svg';
 
 const dataController = require('../controllers/dataController.js');
 const recommendationController = require('../controllers/recommendationController.js');

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
+import * as Helpers from '../Helpers';
 import Like from './Like';
 import Contributor from './Contributor';
 
@@ -14,7 +15,7 @@ class Card extends Component {
         <div className={`card-content ${"is-" + this.props.categories}`}>
           <div className="card-category badge inline">{this.props.categories}</div>
           <h3 className="card-title">{this.props.title}</h3>
-          <div className="card-description no@m">{this.props.description}</div>
+          <div className="card-description no@m">{Helpers.truncateText(this.props.description, 180)}</div>
           <Contributor contributor={this.props.autor[0]?.fields} />
         </div>
       </Link>

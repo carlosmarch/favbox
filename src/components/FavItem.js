@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
+import * as Helpers from '../Helpers';
 import Like from './Like';
 
 //@TODO ITEM ID
@@ -15,7 +16,7 @@ class FavItem extends Component {
           <div className="favitem-description">
             <div className="favitem-category badge inline">{this.props.categories}</div>
             <h6>{this.props.title}</h6>
-            <p className="description">{this.props.description}</p>
+            <p className="description">{Helpers.truncateText(this.props.description, 180)}</p>
           </div>
           <Like itemId={this.props.itemId}/>
         </Link>

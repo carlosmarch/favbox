@@ -67,7 +67,7 @@ class SignUp extends Component {
             <div className="form-container">
               <div className="mb-s text-center">
                 <Link to="/"><img className="logo mb-m no@dkt" src={process.env.PUBLIC_URL + '/logo.svg'} alt="logo"/></Link>
-                <h3 className="centered">Get started</h3>
+                <h3 className="centered alt-font">Get started</h3>
                 <p>Absolutely free.</p>
               </div>
 

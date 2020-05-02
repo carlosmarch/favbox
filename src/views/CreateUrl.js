@@ -51,7 +51,8 @@ class CreateUrl extends Component {
   handleSubmit(event) {
     event.preventDefault();
     this.setState({isLoading: true});
-    recommendationController.uploadToCloudinary(this.state, recommendationController.addItem) //Upload to cloudinary, then to airtable
+    console.log(this.state)
+    //recommendationController.uploadToCloudinary(this.state, recommendationController.addItem) //Upload to cloudinary, then to airtable
   }
 
 
@@ -167,6 +168,7 @@ class CreateUrl extends Component {
                 <p>Tell everyone why it´s awesome.</p>
               </div>
 
+
               <form onSubmit={this.handleSubmit} className="signup-form">
                 <div className="grid">
                         <div className="grid__item width-2/12 width-12/12@m">
@@ -201,6 +203,7 @@ class CreateUrl extends Component {
                            </div>
 
                            <div>
+                             <h6 className="mb-xs">Edit your item</h6>
                              <label>Title</label>
                              <input id="title"
                                name="title"
@@ -243,7 +246,7 @@ class CreateUrl extends Component {
                                onChange={this.categoriesChangeHandler}
                                required
                              >
-                                <option hidden defaultValue value="">Select a category</option>
+                                <option hidden defaultValue value="">Type of resource</option>
                                 {this.state.isLoading ? '' : this.state?.uniqueCategories.map((category, i) => <option key={i} value={category}>{category}</option>)}
                              </select>
                            </div>
@@ -253,7 +256,7 @@ class CreateUrl extends Component {
                                name="temas"
                                onChange={this.topicsChangeHandler}
                              >
-                                <option hidden defaultValue value="">Select a topic</option>
+                                <option hidden defaultValue value="">Any topic for your item?</option>
                                 {this.state.isLoading ? '' :this.state?.uniqueTopics.map((topic, i) => <option key={i} value={topic}>{topic}</option>)}
                              </select>
                            </div>

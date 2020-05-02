@@ -182,7 +182,7 @@ class App extends Component {
                       <BlockTitle
                         title={'What to read'}
                         description={'Articles, newsletters & webs.'}
-                        titleclass="big-title" descriptionclass="big-description" link={'categories/article'}/>
+                        titleclass="big-title" descriptionclass="big-description" />
                       <div className="container">
                         <div className="mt-s">
                             {this.state.isLoading ? <LoadingSpinner /> : Helpers.getCategoryItems(this.state.recommendations,'article', 20).map((records) =>

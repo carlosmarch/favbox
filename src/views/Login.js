@@ -64,7 +64,7 @@ class Login extends Component {
                               <div className="form-container">
                                 <div className="right-pane-text mb-s">
                                   <Link to="/"><img className="logo mb-m" src={process.env.PUBLIC_URL + '/logo.svg'} alt="logo"/></Link>
-                                  <h5 className="big-title">Welcome back.</h5>
+                                  <h5 className="big-title alt-font">Welcome back.</h5>
                                   <p>Enter your details below.</p>
                                 </div>
 
