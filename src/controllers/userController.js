@@ -174,7 +174,6 @@ export const updateUserLikes = (likeArr) => {
 
 
 export const updateUserProfile = (req) => {
-  console.log('updateUserProfile', req)
   const { name, description, avatar } = req;
   const userId = getSession()?.id
   if (!userId) return;

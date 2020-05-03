@@ -70,7 +70,6 @@ class Profile extends Component {
       if (!userData?.likes) userData.likes = []
 
       await recommendationController.hydrateUserPubItems(userData)//@TODO Store data?
-      console.log('userData', userData)
 
       userController.setSession(userData)
       userController.setLocalStorageFavs(userData.likes)

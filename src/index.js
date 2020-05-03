@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, Switch, Redirect } from 'react-router-dom'
+import ReactGA from 'react-ga';
 import history from './history';
 
 
@@ -28,6 +29,14 @@ const userController = require('./controllers/userController.js');
 
 window.$api = 'https://api.airtable.com/v0/'+process.env.REACT_APP_AIRTABLE_BASE_ID+'/recommendations?api_key='+process.env.REACT_APP_AIRTABLE_API_KEY;
 window.$api_contributors = 'https://api.airtable.com/v0/'+process.env.REACT_APP_AIRTABLE_BASE_ID+'/contributors?api_key='+process.env.REACT_APP_AIRTABLE_API_KEY;
+
+//Analytics
+ReactGA.initialize(process.env.REACT_APP_GA_KEY);
+history.listen(location => {
+  ReactGA.set({ page: location.pathname }); // Update the user's current page
+  ReactGA.pageview(location.pathname); // Record a pageview for the given page
+});
+
 
 const AuthenticatedRoute = ({ component: Component, ...rest}) => (
   <Route
