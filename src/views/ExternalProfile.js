@@ -98,7 +98,7 @@ class ExternalProfile extends Component {
                 </div>
               </div>
 
-              <div className="mt-m">
+              <div className="mt-m mb-m">
               { this.state.isLoading
                   ? <LoadingSpinner />
                   : this.state.renderItems && this.state.renderItems.length > 0

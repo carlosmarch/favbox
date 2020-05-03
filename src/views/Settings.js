@@ -67,12 +67,15 @@ class EditProfile extends Component {
   handleSubmit(event) {
     event.preventDefault();
     this.setState({isLoading: true});
-    console.log(this.state)
-    recommendationController.uploadAvatarToCloudinary(this.state, userController.updateUserProfile) //Upload to cloudinary, then upateUser in airtable
+    if(this.state.avatar === userController.getSession()?.avatar){
+      //Dont upload image
+      userController.updateUserProfile(this.state)
+    }else{
+      recommendationController.uploadAvatarToCloudinary(this.state, userController.updateUserProfile) //Upload to cloudinary, then upateUser in airtable
+    }
   }
 
   onDrop(pictureFiles, pictureDataURLs) {
-     console.log('onDrop', pictureFiles[0].name, pictureDataURLs)
      if(pictureFiles[0] === '' || pictureFiles[0] === undefined){
        this.setState({isDisabled: true});
      }

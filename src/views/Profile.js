@@ -124,7 +124,7 @@ class Profile extends Component {
                 </div>
               </div>
 
-              <div className="mt-m">
+              <div className="mt-m mb-m">
               { this.state.isLoading
                   ? <LoadingSpinner />
                   : this.state.renderItems && this.state.renderItems.length > 0
@@ -139,7 +139,7 @@ class Profile extends Component {
                         </div>
               }
               </div>
-              <div className="mt-l mb-xl">
+              <div className="mb-l">
                 <button className="underline grey auto block" onClick={userController.signOut}>Sign Out</button>
               </div>
             </div>

@@ -246,6 +246,7 @@ export const removeStorageFavs = () =>{
 }
 
 //Returns an array of favorite items ID
+//@TODO Clean this inside of an array
 export const  getStorageFavs = () => {
   var archive = [],
       keys = Object.keys(localStorage),
