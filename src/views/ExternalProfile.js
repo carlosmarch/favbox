@@ -77,17 +77,23 @@ class ExternalProfile extends Component {
             <div className="container container-s">
 
               <div className="profile-user mt-xl">
-                <div className="profile-user-image-holder">
-                  <UserIcon />
-                </div>
+
+                { this.state?.userData?.avatar ? (
+                  <div className="profile-user-image-holder" style={{backgroundImage: `url(${this.state.userData.avatar})`}}></div>
+                ) : (
+                  <div className="profile-user-image-holder">
+                    <UserIcon />
+                  </div>
+                )}
+
                 <div className="profile-user-info">
                   <div className="profile-user-name"><h3 className="alt-font">{this.state.urlName}</h3></div>
-                  <div className="profile-user-description"><p>{this.state?.userData?.description}</p></div>
+                  <div className="profile-user-description"><p className="no-m">{this.state?.userData?.description}</p></div>
                   <div className="profile-user-data">
                     <span>{ this.state.likeItems } Likes</span>
                     <span>{ this.state.pubItems } Published</span>
-                    <span>0 Following</span>
-                    <span>0 Followers</span>
+                    <span className="text-disabled">0 Following</span>
+                    <span className="text-disabled">0 Followers</span>
                   </div>
                 </div>
               </div>

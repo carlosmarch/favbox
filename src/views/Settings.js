@@ -162,7 +162,7 @@ class EditProfile extends Component {
                               defaultValue={userController.getSession()?.description}
                             />
                           </div>
-                          <button className="button submitbtn mt-s" type="submit" disabled={this.state.isDisabled}>Save</button>
+                          <button className="button submitbtn mt-s" type="submit" disabled={this.state.isDisabled}>{this.state.isLoading ? 'loading' : 'Save'}</button>
 
                         </div>
                       </div>

@@ -999,6 +999,10 @@ a {
   cursor: not-allowed;
 }
 
+.text-disabled {
+  color: var(--grey-soft) !important;
+}
+
 .loader-container {
   min-height: 400px;
   padding-top: 80px;
@@ -3220,6 +3224,8 @@ a.topic-card::before {
   align-items: center;
   justify-content: center;
   margin-right: 8px;
+  background-size: cover;
+  background-position: center;
 }
 
 .user-badge svg {
@@ -3528,6 +3534,7 @@ a.topic-card::before {
   justify-content: center;
   background: var(--soft-yellow-bg);
   background-size: cover;
+  background-position: center;
 }
 
 .profile-user-image-holder svg {

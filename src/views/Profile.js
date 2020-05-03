@@ -116,8 +116,8 @@ class Profile extends Component {
                     <div>
                       <span>{ this.state.likeItems } Likes</span>
                       <span>{ this.state.pubItems } Published</span>
-                      <span>0 Following</span>
-                      <span>0 Followers</span>
+                      <span className="text-disabled">0 Following</span>
+                      <span className="text-disabled">0 Followers</span>
                     </div>
                     <Link to="/settings" className="edit-profile-button button button-outline button-small">Edit Profile</Link>
                   </div>

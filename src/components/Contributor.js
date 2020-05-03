@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 class Contributor extends Component {
 
   render() {
+    console.log(this.props.contributor)
     if(!this.props.contributor) return(
       <div className="contributor"></div>
     )
@@ -16,9 +17,15 @@ class Contributor extends Component {
     return (
 
       <div className="contributor">
-        <div className="user-badge">
-          <UserIcon />
-        </div>
+
+        { this.props.contributor.avatar ? (
+          <div className="user-badge" style={{backgroundImage: `url(${this.props.contributor.avatar})`}}></div>
+        ) : (
+          <div className="user-badge">
+            <UserIcon />
+          </div>
+        )}
+
         <div className="contributor-info">
           <Link to={`/profile/${this.props.contributor.name}`} className="contributor-name link-inverted">{this.props.contributor.name}</Link>
           <div className="contributor-description">{this.props.contributor.description}</div>

@@ -172,7 +172,7 @@ export const uploadAvatarToCloudinary = (file, next) => {
   var fd = new FormData();
   xhr.open('POST', url, true);
   xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-  fd.append('upload_preset', 'cloudinary_airtable_preset');
+  fd.append('upload_preset', 'cloudinary_airtable_preset_avatar');
   fd.append('tags', 'browser_upload'); // Optional - add tag for image admin in Cloudinary
   fd.append('file', file.avatar);
   xhr.send(fd);
