@@ -144,7 +144,7 @@ export const uploadToCloudinary = (file, next) => {
       var response = JSON.parse(xhr.responseText);
       var url = response.secure_url;
       file.imageUrl = url;
-      next(file)//next function add item
+      next(file)//next function addItem
     }
     if (xhr.status === 400) {
       history.push({
@@ -177,50 +177,17 @@ export const uploadAvatarToCloudinary = (file, next) => {
       var response = JSON.parse(xhr.responseText);
       var url = response.secure_url;
       file.avatar = url;
-      next(file)//next function add item
+      next(file)//next function updateUserProfile
     }
     if (xhr.status === 400) {
       history.push({
         pathname: '/settings',
-        state: { type: 'error', message: 'Something happened when uploading. Please try again.'}
+        state: { type: 'error', message: 'Something happened. Please try again.'}
       })
     }
-    //@TODO Look for errors
-    // history.push({
-    //   pathname: '/create',
-    //   state: { type: 'error', message: 'Something happened when uploading. Please try again.'}
-    // })
 
   }.bind(this);
 }
-
-//MIXES LOCAL STORAGE ITEMS WITH AIRTABLE LIKES PRIORIZING LOCALSTORAGE
-//THEN UPDATES TABLE AND RETURNS LIKES WITH DETAILS
-//@PARAMS Array with like id's
-// export const syncMixLocalwithTableFavs = async (userlikes) => {
-//   //Get storage favs
-//   let storageFavs = Helpers.getStorageFavs()
-//   // if ( Object.keys(storageFavs).length === 0 ){
-//   //   syncSetStorageFavs(userlikes)
-//   //   storageFavs = Helpers.getStorageFavs()
-//   // }
-//   if (!userlikes) userlikes = [];
-//   //Get matching id's
-//   let matchingFavs = userlikes.filter(recommendation => storageFavs.some(favId => recommendation.id === favId))
-//   let matchingIds = [];
-//   matchingFavs.map((item) => matchingIds.push(item.id) )
-//   //Make one array storage + only matching
-//   let union = [...storageFavs, ...matchingIds];
-//   let withoutDuplicates = Array.from(new Set(union));
-//   let withoutDuplicatesWithDetails = [];
-//   for( const id of withoutDuplicates) {
-//     withoutDuplicatesWithDetails.push(await getRecommendationById(id))
-//   }
-//   //UDATE with arr of local + table likes
-//   userController.updateUserLikes(withoutDuplicates)
-//   return withoutDuplicatesWithDetails
-// }
-
 
 
 export const getHydratedFavItems = async (userlikes) => {

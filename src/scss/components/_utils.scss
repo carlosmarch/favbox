@@ -142,7 +142,9 @@ $breakpoint-m: 48em;
 .no-b{
   border: none!important;
 }
-
+.relative{
+  position: relative;
+}
 //Cards
 .card-16{
   box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);

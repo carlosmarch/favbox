@@ -42,3 +42,19 @@ img.user-has-photo-image {
   top: 1px;
   max-width: 100%;
 }
+
+@media (max-width: $breakpoint-m) {
+  .settings-form .grid{
+    width: 100%;
+  }
+  .settings_view .fileUploader {
+    width: 100%;
+  }
+  .submitbtn{
+    width: 100%;
+  }
+  .user-has-photo-PictureContainer{
+    background: #fafafa;
+    width: 100%;
+  }
+}

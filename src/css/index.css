@@ -428,6 +428,10 @@
   border: none !important;
 }
 
+.relative {
+  position: relative;
+}
+
 .card-16 {
   box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
@@ -3584,6 +3588,12 @@ a.topic-card::before {
   .profile-user-info {
     margin-top: 24px;
   }
+  .profile-user-data {
+    display: block;
+  }
+  .edit-profile-button {
+    margin-top: 16px;
+  }
 }
 
 .create-item-step-2 {
@@ -3939,4 +3949,20 @@ img.user-has-photo-image {
   max-height: 246px;
   top: 1px;
   max-width: 100%;
+}
+
+@media (max-width: 48em) {
+  .settings-form .grid {
+    width: 100%;
+  }
+  .settings_view .fileUploader {
+    width: 100%;
+  }
+  .submitbtn {
+    width: 100%;
+  }
+  .user-has-photo-PictureContainer {
+    background: #fafafa;
+    width: 100%;
+  }
 }

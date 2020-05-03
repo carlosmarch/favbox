@@ -119,7 +119,7 @@ class Profile extends Component {
                       <span>0 Following</span>
                       <span>0 Followers</span>
                     </div>
-                    <Link to="/settings" className="button button-outline button-small">Edit Profile</Link>
+                    <Link to="/settings" className="edit-profile-button button button-outline button-small">Edit Profile</Link>
                   </div>
                 </div>
               </div>

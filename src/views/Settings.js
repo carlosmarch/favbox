@@ -98,11 +98,11 @@ class EditProfile extends Component {
   render() {
 
     return (
-    <div className="app_wrapper settings_view">
+    <div className="app_wrapper settings_view bg-soft-grey">
 
       <Header />
 
-      <div className="global bg-soft-grey pb-l">
+      <div className="global pb-l">
             <div className="container container-xs">
 
                 <div className="back-icon" onClick={this.props.history.goBack}><BackIcon className="" /></div>
@@ -115,7 +115,7 @@ class EditProfile extends Component {
 
                     <form onSubmit={this.handleSubmit} className="settings-form flex-justify auto">
 
-                      <div className="grid">
+                      <div className="grid relative">
                         <div className="grid__item width-12/12 width-12/12@m">
                           <h3 className="mb-s">Settings</h3>
                           <h6 className="mb-xs">Profile photo</h6>
