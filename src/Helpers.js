@@ -58,21 +58,6 @@ function truncateText(str, length, ending) {
     }
   }
 
-  //@STORAGE
-  //Returns an array of favorite items ID
-  function getStorageFavs() {
-    var archive = [],
-        keys = Object.keys(localStorage),
-        i = 0, key;
-    for (; key = keys[i]; i++) {
-        archive.push( key );
-    }
-    //REMOVE USER SESSION FROM LIKES
-    const filtered = archive.filter(item => item !== "userSession")
-    const cleanArchive = filtered.filter(function (el) { return el != null; });
-    return cleanArchive;
-  }
-
   //-------------------------//
   //-------------------------//
   //-------------------------//
@@ -131,6 +116,5 @@ function truncateText(str, length, ending) {
      getCategoryItems,
      getTopicItems,
      getCollectionItems,
-     getBlockCategoryItems,
-     getStorageFavs
+     getBlockCategoryItems
   };

@@ -28,10 +28,10 @@ class Profile extends Component {
     this.state = {
       isLoading : true,
       renderItems : [],
-      pubItems  : 0,
-      likeItems : Helpers.getStorageFavs() ? Helpers.getStorageFavs()?.length : '0',
-      makeConfetti : this.checkConfetti(),
-      userData : userController.getSession()
+      userData  : userController.getSession(),
+      pubItems  : userController.getSession().items ? userController.getSession().items.length : '0',
+      likeItems : userController.getSession().likes ? userController.getSession().likes.length : '0',
+      makeConfetti : this.checkConfetti()
     };
     window.scrollTo(0, 0);
   }
@@ -55,7 +55,7 @@ class Profile extends Component {
 
     const userId = userController.getSession()?.id;
     if (!userId) {
-      this.setState({ isLoading: false, renderItems: [] });//WHEN NO SESSION && NO EMAIL
+      this.setState({ isLoading: false, renderItems: [] });//WHEN NO SESSION ID
      return
     }
 
@@ -64,15 +64,15 @@ class Profile extends Component {
         userController.signOut()
         return
       }
-
+      user.fields['id'] = user.id
       const userData = user.fields;
-      if (!userData?.items) {
-        this.setState({ isLoading: false, renderItems: [] });//WHEN SESSION && NO ITEMS
-      }
+      if (!userData?.items) this.setState({ isLoading: false, renderItems: [] });//WHEN SESSION && NO ITEMS
       if (!userData?.likes) userData.likes = []
 
       await recommendationController.hydrateUserPubItems(userData)//@TODO Store data?
+      console.log('userData', userData)
 
+      userController.setSession(userData)
       userController.setLocalStorageFavs(userData.likes)
 
       this.setState({

@@ -25,7 +25,6 @@ class EditProfile extends Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.onDrop = this.onDrop.bind(this);
-    console.log(this.state)
   }
 
 

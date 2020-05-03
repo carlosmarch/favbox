@@ -162,6 +162,11 @@ export const uploadToCloudinary = (file, next) => {
 }
 
 export const uploadAvatarToCloudinary = (file, next) => {
+  if(!file.avatar || file.avatar === 'undefined'){
+    file.avatar = ''
+    next(file)
+    return
+  }
   var url = `https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}/upload/`;
   var xhr = new XMLHttpRequest();
   var fd = new FormData();

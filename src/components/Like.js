@@ -24,12 +24,12 @@ class Like extends Component {
 
 
   handleLike = (e) => {
-    //console.log('handleLike',this.props.itemId)
+    console.log('handleLike',this.props.itemId)
     e.preventDefault();
     const item = e.target.value;
     const userid = userController.getSession()?.id;
     const itemId = this.props.itemId
-    
+
     if ( !userController.isAuthenticated() ){
       history.push({ pathname: '/signup' })
       return

@@ -174,7 +174,7 @@ export const updateUserLikes = (likeArr) => {
 
 
 export const updateUserProfile = (req) => {
-  //console.log('updateUserProfile', req)
+  console.log('updateUserProfile', req)
   const { name, description, avatar } = req;
   const userId = getSession()?.id
   if (!userId) return;
@@ -204,7 +204,7 @@ export const updateUserProfile = (req) => {
 //
 export const setSession = (userRecord) => {
   //Arrives user.fields
-  delete userRecord.password //Don´t store ever encrypted pass
+  delete userRecord.private //Don´t store private key
   localStorage.setItem('userSession', JSON.stringify(userRecord));
 }
 
@@ -245,15 +245,16 @@ export const removeStorageFavs = () =>{
   localStorage.setItem('userSession', JSON.stringify(userSession));
 }
 
-
-
-
-//@LOCALSTORAGE
-//DATA HELPERS
-//NOT USED!!!!!
-export const setStorage = (key, data) => {
-  localStorage.setItem(key, JSON.stringify(data));
-}
-export const getStorage = (key) => {
-  return JSON.parse(localStorage.getItem(key));
+//Returns an array of favorite items ID
+export const  getStorageFavs = () => {
+  var archive = [],
+      keys = Object.keys(localStorage),
+      i = 0, key;
+  for (; key = keys[i]; i++) {
+      archive.push( key );
+  }
+  //REMOVE USER SESSION FROM LIKES
+  const filtered = archive.filter(item => item !== "userSession")
+  const cleanArchive = filtered.filter(function (el) { return el != null; });
+  return cleanArchive;
 }
