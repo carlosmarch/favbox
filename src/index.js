@@ -36,7 +36,7 @@ history.listen(location => {
   ReactGA.set({ page: location.pathname }); // Update the user's current page
   ReactGA.pageview(location.pathname); // Record a pageview for the given page
 });
-
+ReactGA.set({ userId: userController.getSession()?.id })
 
 const AuthenticatedRoute = ({ component: Component, ...rest}) => (
   <Route
