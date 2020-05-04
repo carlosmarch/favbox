@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
 import history from '../history';
-import * as Helpers from '../Helpers';
 
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -9,6 +8,8 @@ import FavItem from '../components/FavItem';
 import LoadingSpinner from '../components/LoadingSpinner';
 import {ReactComponent as UserIcon} from '../icons/User.svg';
 import {ReactComponent as AddIcon} from '../icons/Plus.svg';
+import {ReactComponent as GridIcon} from '../icons/Grid.svg';
+import {ReactComponent as ListIcon} from '../icons/List.svg';
 import Confetti from '../components/Confetti';
 
 const recommendationController = require('../controllers/recommendationController.js');
@@ -31,7 +32,8 @@ class Profile extends Component {
       userData  : userController.getSession(),
       pubItems  : userController.getSession().items ? userController.getSession().items.length : '0',
       likeItems : userController.getSession().likes ? userController.getSession().likes.length : '0',
-      makeConfetti : this.checkConfetti()
+      makeConfetti : this.checkConfetti(),
+      active : 'list'
     };
     window.scrollTo(0, 0);
   }
@@ -85,6 +87,14 @@ class Profile extends Component {
 
   }
 
+  handleLayuout = (e) => {
+      const clicked = Object.assign({}, e).currentTarget.id
+      if(this.state.active === clicked) {
+          this.setState({active: ''});
+      } else {
+          this.setState({active: clicked})
+     }
+  }
 
   render() {
 
@@ -123,12 +133,26 @@ class Profile extends Component {
                 </div>
               </div>
 
-              <div className="mt-m mb-m">
+
+
+              <div className="mb-m">
               { this.state.isLoading
                   ? <LoadingSpinner />
                   : this.state.renderItems && this.state.renderItems.length > 0
-                      ? this.state.renderItems.map( (records, key) => <FavItem {...records} key={key} itemId={records.id} /> )
-                      : <div className="empty-pubrecords">
+
+                      ? (
+                        <div className="tab-view">
+                          <div className="tab-view-tabs mt-s mb-m listview">
+                            <div className={`tab-view-tabs-item ${this.state.active === "list"? 'is-active': ''} `} id="list" onClick={this.handleLayuout}><ListIcon/></div>
+                            <div className={`tab-view-tabs-item ${this.state.active === "grid"? 'is-active': ''} `} id="grid" onClick={this.handleLayuout}><GridIcon/></div>
+                          </div>
+                          <div className={`mb-m grid ${this.state.active}-layout`}>
+                            { this.state.renderItems.map( (records, key) => <FavItem {...records} key={key} itemId={records.id} /> ) }
+                          </div>
+                        </div>
+                      )
+
+                      : <div className="empty-pubrecords mt-m">
                           <Link to="/create" className="link inline-block mb-s"><AddIcon /> Create</Link>
                           <div>
                             Welcome <span role="img" aria-label="welcome">🎉</span>! Now you can share your referents and they will appear here.

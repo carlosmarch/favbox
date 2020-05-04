@@ -6,8 +6,6 @@ import {ReactComponent as SearchIcon} from '../icons/Search.svg';
 import {ReactComponent as DiscoverIcon} from '../icons/Discover.svg';
 import {ReactComponent as AddIcon} from '../icons/Plus.svg';
 
-const userController = require('../controllers/userController.js');
-
 class BottomBar extends Component {
 
   constructor(props) {

@@ -2588,6 +2588,7 @@ a.topic-card::before {
 
 .Promo .grid {
   grid-gap: 8px;
+  align-items: center;
 }
 
 .Promocard {
@@ -3085,6 +3086,7 @@ a.topic-card::before {
 @media (max-width: 48em) {
   .favitem {
     display: flex;
+    padding: 8px 0;
   }
 }
 
@@ -3164,6 +3166,11 @@ a.topic-card::before {
 .icon-primary, .icon-primary svg, .icon-primary path {
   fill: var(--primary);
   fill: var(--primary);
+}
+
+.icon-12 {
+  width: 12px;
+  height: 12px;
 }
 
 .icon-14 {
@@ -3581,6 +3588,68 @@ a.topic-card::before {
   display: flex;
 }
 
+.tab-view-tabs {
+  display: flex;
+}
+
+.tab-view-tabs-item {
+  margin: 0 8px;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.is-active {
+  border: 2px solid var(--interaction);
+}
+
+.is-active svg, .is-active path {
+  fill: var(--interaction);
+}
+
+.grid-layout {
+  grid-gap: 2em;
+}
+
+@media (max-width: 48em) {
+  .grid-layout {
+    grid-gap: 1em;
+  }
+}
+
+.list-layout {
+  grid-gap: 0em;
+}
+
+.grid-layout .favitem {
+  border-top: none;
+  display: block;
+  grid-column: span 4;
+  background: var(--soft-grey-bg);
+}
+
+@media (max-width: 48em) {
+  .grid-layout .favitem {
+    grid-column: span 6;
+  }
+}
+
+.grid-layout .favitem-description {
+  display: none;
+}
+
+.grid-layout .favitem-image-holder {
+  margin: 0 auto;
+}
+
+.grid-layout .favitem .like {
+  top: 4px;
+  right: 4px;
+}
+
 @media (max-width: 48em) {
   .profile-user-info {
     margin-left: 0px;
@@ -3881,6 +3950,7 @@ a.topic-card::before {
 .is-liked-by {
   color: var(--grey);
   margin-bottom: 8px;
+  font-size: 14px;
 }
 
 .is-liked-by svg {
@@ -3890,6 +3960,7 @@ a.topic-card::before {
 .is-liked-by .is-liked-name {
   margin-right: 4px;
   text-transform: capitalize;
+  font-size: 14px;
 }
 
 .is-liked-by .is-liked-name:not(:last-child):after {

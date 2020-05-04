@@ -9,7 +9,6 @@ import { Link } from 'react-router-dom';
 class Contributor extends Component {
 
   render() {
-    console.log(this.props.contributor)
     if(!this.props.contributor) return(
       <div className="contributor"></div>
     )

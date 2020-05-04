@@ -125,7 +125,7 @@ class EditProfile extends Component {
                         {userController.getSession()?.avatar ? (
                             <div class="user-has-photo-PictureContainer">
                               <div class="deleteImage" onClick={this.deleteAvatar}>X</div>
-                              <img className="user-has-photo-image" src={userController.getSession()?.avatar}/>
+                              <img className="user-has-photo-image" src={userController.getSession()?.avatar} alt="user-avatar"/>
                             </div>
                           ) : ''  }
 

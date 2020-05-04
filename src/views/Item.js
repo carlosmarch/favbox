@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
-import history from '../history';
 
 import * as Helpers from '../Helpers';
 
@@ -128,7 +127,7 @@ class Item extends Component {
     if (isLikedArr.length === 0) return
     return (
       <div className="is-liked-by">
-        <LikedIcon className="icon-14 icon-grey"/>
+        <LikedIcon className="icon-12 icon-grey"/>
         {isLikedArr.map((contributor, key) => {
             return (
               <Link to={ '/profile/' + contributor } className="grey underline-hover is-liked-name" key={key}>{contributor}</Link>

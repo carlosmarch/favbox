@@ -5,6 +5,8 @@ import Footer from '../components/Footer';
 import FavItem from '../components/FavItem';
 import LoadingSpinner from '../components/LoadingSpinner';
 import {ReactComponent as UserIcon} from '../icons/User.svg';
+import {ReactComponent as GridIcon} from '../icons/Grid.svg';
+import {ReactComponent as ListIcon} from '../icons/List.svg';
 
 const dataController = require('../controllers/dataController.js');
 const recommendationController = require('../controllers/recommendationController.js');
@@ -28,11 +30,12 @@ class ExternalProfile extends Component {
       likeItems   : 0,
       urlName     : decodeURIComponent(window.location.pathname.split("/").pop()),
       userData    : [],
+      active      : 'list'
     };
 
   }
 
-  getUserPubItems(){
+  componentDidMount() {
     const table = base('contributors');
     const options = { filterByFormula: `{name} = '${this.state.urlName}'` }
 
@@ -57,14 +60,17 @@ class ExternalProfile extends Component {
       .catch(err => {
         console.log( Error(err));
       });
+
   }
 
-
-
-  componentDidMount() {
-    this.getUserPubItems()
+  handleLayuout = (e) => {
+      const clicked = Object.assign({}, e).currentTarget.id
+      if(this.state.active === clicked) {
+          this.setState({active: ''});
+      } else {
+          this.setState({active: clicked})
+     }
   }
-
 
   render() {
 
@@ -102,7 +108,17 @@ class ExternalProfile extends Component {
               { this.state.isLoading
                   ? <LoadingSpinner />
                   : this.state.renderItems && this.state.renderItems.length > 0
-                      ? this.state.renderItems.map( (records, key) => <FavItem {...records} key={key} itemId={records.id} /> )
+                      ? (
+                        <div className="tab-view">
+                          <div className="tab-view-tabs mt-s mb-m listview">
+                            <div className={`tab-view-tabs-item ${this.state.active === "list"? 'is-active': ''} `} id="list" onClick={this.handleLayuout}><ListIcon/></div>
+                            <div className={`tab-view-tabs-item ${this.state.active === "grid"? 'is-active': ''} `} id="grid" onClick={this.handleLayuout}><GridIcon/></div>
+                          </div>
+                          <div className={`mb-m grid ${this.state.active}-layout`}>
+                            { this.state.renderItems.map( (records, key) => <FavItem {...records} key={key} itemId={records.id} /> ) }
+                          </div>
+                        </div>
+                      )
                       : <div className="empty-pubrecords">
                           <h6 className="grey mb-xxs">Nothing here...</h6>
                           <div>{this.state.urlName} has his profile still empty. Tell him to upload his favs!</div>

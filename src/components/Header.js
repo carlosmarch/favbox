@@ -97,6 +97,8 @@ class Header extends Component {
 
       case 'movie':
         return <MovieIcon />
+      default:
+        return ''
     }
   }
 

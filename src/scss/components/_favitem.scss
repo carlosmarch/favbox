@@ -49,9 +49,12 @@
     right: 0px;
 }
 
+
+//MOBILE
 .favitem {
   @media (max-width: $breakpoint-m) {
     display: flex;
+    padding: 8px 0;
   }
 }
 .favitem-image-holder{

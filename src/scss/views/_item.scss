@@ -115,12 +115,14 @@
 .is-liked-by{
   color: var(--grey);
   margin-bottom: 8px;
+  font-size: 14px;
   svg{
     margin-right: 8px;
   }
   .is-liked-name{
     margin-right: 4px;
     text-transform: capitalize;
+    font-size: 14px;
   }
   .is-liked-name:not(:last-child):after {
     content: ' ·';
