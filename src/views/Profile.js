@@ -27,15 +27,14 @@ class Profile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoading : true,
-      renderItems : [],
-      userData  : userController.getSession(),
-      pubItems  : userController.getSession().items ? userController.getSession().items.length : '0',
-      likeItems : userController.getSession().likes ? userController.getSession().likes.length : '0',
+      isLoading    : true,
+      renderItems  : [],
+      userData     : userController.getSession(),
+      pubItems     : userController.getSession().items ? userController.getSession().items.length : '0',
+      likeItems    : userController.getSession().likes ? userController.getSession().likes.length : '0',
       makeConfetti : this.checkConfetti(),
-      active : 'list'
+      active       : 'grid' // grid || list
     };
-    window.scrollTo(0, 0);
   }
 
   checkConfetti(){
@@ -47,6 +46,7 @@ class Profile extends Component {
   }
 
   componentDidMount() {
+    window.scrollTo(0, 0);
     //Clear history state messages
     if (history.location.state && history.location.state.message) {
         let state = { ...history.location.state };

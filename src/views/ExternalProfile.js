@@ -30,12 +30,13 @@ class ExternalProfile extends Component {
       likeItems   : 0,
       urlName     : decodeURIComponent(window.location.pathname.split("/").pop()),
       userData    : [],
-      active      : 'list'
+      active      : 'grid' // grid || list
     };
 
   }
 
   componentDidMount() {
+    window.scrollTo(0, 0);
     const table = base('contributors');
     const options = { filterByFormula: `{name} = '${this.state.urlName}'` }
 

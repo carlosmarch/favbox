@@ -22,7 +22,7 @@ class Search extends Component {
   }
 
   componentDidMount(){
-
+    window.scrollTo(0, 0);
     if(!window.$categories){
       this.setState({ isLoading: true });
       fetch(window.$api)
@@ -80,7 +80,7 @@ class Search extends Component {
           <div className="AllTopics container">
               <div className="Categories mt-l mb-l">
                 {this.state.isLoading ? <LoadingSpinner /> : this.state.categories?.map((category, key) =>
-                  <div className="flex mb-s">
+                  <div className="flex-center mb-s">
                     {Templates.getCategoryIcon(category, 'icon-40 icon-interaction')}
                     <Link to={`categories/${category}`} key={key} className="block-title ml-s">{category}</Link>
                   </div>

@@ -8,7 +8,7 @@ import Footer from './components/Footer';
 import BlockTitle from './components/BlockTitle';
 import LoadingSpinner from './components/LoadingSpinner';
 import Notfound from './views/Notfound';
-
+import {ReactComponent as BackIcon} from './icons/Back.svg';
 
 class Detail extends Component {
 
@@ -20,12 +20,12 @@ class Detail extends Component {
       category: Helpers.getUrlCategory(),
       topic: Helpers.getUrlTopic()
     };
-    window.scrollTo(0, 0);
   }
 
 
 
   componentDidMount() {
+    window.scrollTo(0, 0);
     fetch(window.$api+'&filterByFormula=Find(%22'+this.state.topic+'%22%2C+'+this.state.category+')')
     .then((resp) => resp.json())
     .then(pagedata => {
@@ -100,7 +100,12 @@ class Detail extends Component {
 
                     {!this.state.isLoading && window.$pagedata.length && window.$pagedata.length === 0
                       ? <Notfound/>
-                      : <BlockTitle title={this.state.topic} titleclass="big-title mt-s" descriptionclass="big-description mb-m"/>
+                    : (
+                        <div className="flex-center container">
+                          <div className="back-icon" onClick={this.props.history.goBack}><BackIcon className="" /></div>
+                          <BlockTitle title={this.state.topic} titleclass="big-title mt-s" descriptionclass="big-description mb-m"/>
+                        </div>
+                      )
                     }
 
                     {this.state.isLoading ? <LoadingSpinner /> : this.matchCategoriesWithTemplates(Templates.catTemplate.card) && this.matchCategoriesWithTemplates(Templates.catTemplate.card).length ? (
