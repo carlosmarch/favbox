@@ -31,7 +31,7 @@ class Profile extends Component {
       renderItems  : [],
       userData     : userController.getSession(),
       pubItems     : userController.getSession().items ? userController.getSession().items.length : '0',
-      likeItems    : userController.getStorageFavs() ? userController.getStorageFavs().length : '0',
+      likeItems    : userController.getStorageFavs() ? userController.getStorageFavs().length : '0', //Sessionfavs are updated on time
       makeConfetti : this.checkConfetti(),
       active       : 'grid' // grid || list
     };
@@ -64,8 +64,8 @@ class Profile extends Component {
       if (!userData?.items) this.setState({ isLoading: false, renderItems: [] });//WHEN SESSION && NO ITEMS
       if (!userData?.likes) userData.likes = []
 
-      if (!userController.getSession()?.items[0]?.title || this.props.location.state?.action === 'update' ){
-        //console.log('Update')
+      if (!userController.getSession()?.items[0]?.title || this.props.location.state?.action === 'update' || userData.items.filter(o => !userController.getSession()?.items.find(x => x.id === o)).length ){
+        console.log('Update')
         await recommendationController.hydrateUserPubItems(userData)
 
         userController.setSession(userData)
@@ -79,7 +79,8 @@ class Profile extends Component {
         });
 
       }else{
-        //console.log('Local data')
+        console.log('Local data' )
+
         this.setState({
           isLoading   : false,
           renderItems : userController.getSession()?.items,
