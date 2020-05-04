@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import * as Helpers from '../Helpers';
 
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -45,7 +46,11 @@ class Likes extends Component {
 
       const userData = user?.fields;
       if (!userData?.likes) userData.likes = []
-      userController.setLocalStorageFavs(userData.likes)
+      userController.setLocalStorageFavs(userData.likes)//Set array of ID´s to localStorage
+
+      //check if localstoragelikes && usersession likes are equal. If not -> Update
+      //if( !Helpers.isEqual(userController.getSession().likes, userController.getStorageFavs())  ){ }
+
       let userLikes = await recommendationController.getHydratedFavItems(userData.likes)
 
       this.setState({

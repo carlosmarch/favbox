@@ -1,61 +1,45 @@
-//Stores in window global var unique topics from all the records
-function storeUniqueTopics(records){
-  //store window unique topics
-  var topics = records.map(function(item) {return item.fields.topics;})
-  const mergeAllTopics = Array.prototype.concat.apply([], topics);
-  const uniqueTopics = mergeAllTopics.filter((val,id,array) => array.indexOf(val) === id);
-  //global variable for the dropdown
-  window.$topics = uniqueTopics.filter(function(e){return e}); //remove empty ones
-}
+  //Stores in window global var unique topics from all the records
+  function storeUniqueTopics(records){
+    //store window unique topics
+    var topics = records.map(function(item) {return item.fields.topics;})
+    const mergeAllTopics = Array.prototype.concat.apply([], topics);
+    const uniqueTopics = mergeAllTopics.filter((val,id,array) => array.indexOf(val) === id);
+    //global variable for the dropdown
+    window.$topics = uniqueTopics.filter(function(e){return e}); //remove empty ones
+  }
 
-//Stores in window global var unique categories from all the records
-function storeUniqueCategories(records){
-  //store window unique categories
-  var categories = records.map(function(item) {return item.fields.categories;})
-  const mergeAllCategories = Array.prototype.concat.apply([], categories);
-  const uniqueCategories = mergeAllCategories.filter((val,id,array) => array.indexOf(val) === id);
-  //global variable for the dropdown
-  window.$categories = uniqueCategories.filter(function(e){return e}); //remove empty ones
-}
+  //Stores in window global var unique categories from all the records
+  function storeUniqueCategories(records){
+    //store window unique categories
+    var categories = records.map(function(item) {return item.fields.categories;})
+    const mergeAllCategories = Array.prototype.concat.apply([], categories);
+    const uniqueCategories = mergeAllCategories.filter((val,id,array) => array.indexOf(val) === id);
+    //global variable for the dropdown
+    window.$categories = uniqueCategories.filter(function(e){return e}); //remove empty ones
+  }
 
-//Returns unique categories from all the records
-function getUniqueCategories(records){
-  var categories = records.map(function(item) {return item.fields.categories;})
-  const mergeAllCategories = Array.prototype.concat.apply([], categories);
-  return mergeAllCategories.filter((val,id,array) => array.indexOf(val) === id);
-}
+  //Returns unique categories from all the records
+  function getUniqueCategories(records){
+    var categories = records.map(function(item) {return item.fields.categories;})
+    const mergeAllCategories = Array.prototype.concat.apply([], categories);
+    return mergeAllCategories.filter((val,id,array) => array.indexOf(val) === id);
+  }
 
-//Returns unique topics from all the records
-function getUniqueTopics(records){
-  var topics = records.map(function(item) {return item.fields.topics;})
-  const mergeAllTopics = Array.prototype.concat.apply([], topics);
-  return mergeAllTopics.filter((val,id,array) => array.indexOf(val) === id);
-}
+  //Returns unique topics from all the records
+  function getUniqueTopics(records){
+    var topics = records.map(function(item) {return item.fields.topics;})
+    const mergeAllTopics = Array.prototype.concat.apply([], topics);
+    return mergeAllTopics.filter((val,id,array) => array.indexOf(val) === id);
+  }
 
-//Returns last second part of the url
-function getUrlCategory(){
-  return decodeURIComponent(window.location.pathname.split("/")[1]);
-}
+  //Returns last second part of the url
+  function getUrlCategory(){
+    return decodeURIComponent(window.location.pathname.split("/")[1]);
+  }
 
-//Returns last part of the url
-function getUrlTopic(){
-  return decodeURIComponent(window.location.pathname.split("/").pop());
-}
-
-//@UTILS
-//Truncates text
-function truncateText(str, length, ending) {
-    if (length == null) {
-      length = 20;
-    }
-    if (ending == null) {
-      ending = '...';
-    }
-    if (str.length > length) {
-      return str.substring(0, length - ending.length) + ending;
-    } else {
-      return str;
-    }
+  //Returns last part of the url
+  function getUrlTopic(){
+    return decodeURIComponent(window.location.pathname.split("/").pop());
   }
 
   //-------------------------//
@@ -104,6 +88,31 @@ function truncateText(str, length, ending) {
   }
 
 
+  //@UTILS
+  //Truncates text
+  function truncateText(str, length, ending) {
+    if (length == null) {
+      length = 20;
+    }
+    if (ending == null) {
+      ending = '...';
+    }
+    if (str.length > length) {
+      return str.substring(0, length - ending.length) + ending;
+    } else {
+      return str;
+    }
+  }
+
+  //COMPARES TWO ARRAYS || OBJECTS
+  function isEqual(array1, array2) {
+    if (array1.length === array2.length && array1.sort().every(function(value, index) { return value === array2.sort()[index]})){
+      return true
+    }else{
+      return false
+    }
+  }
+
   export {
      storeUniqueTopics,
      storeUniqueCategories,
@@ -116,5 +125,6 @@ function truncateText(str, length, ending) {
      getCategoryItems,
      getTopicItems,
      getCollectionItems,
-     getBlockCategoryItems
+     getBlockCategoryItems,
+     isEqual
   };

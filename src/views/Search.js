@@ -4,7 +4,6 @@ import * as Helpers from '../Helpers';
 
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import BlockTitle from '../components/BlockTitle';
 import LoadingSpinner from '../components/LoadingSpinner';
 import {ReactComponent as SearchIcon} from '../icons/Search.svg';
 
@@ -82,7 +81,7 @@ class Search extends Component {
                 {this.state.isLoading ? <LoadingSpinner /> : this.state.categories?.map((category, key) =>
                   <div className="flex-center mb-s">
                     {Templates.getCategoryIcon(category, 'icon-40 icon-interaction')}
-                    <Link to={`categories/${category}`} key={key} className="block-title ml-s">{category}</Link>
+                    <Link to={`categories/${category}`} key={key} className="block-title ml-s hv-in">{category}</Link>
                   </div>
                 )}
               </div>

@@ -85,7 +85,8 @@ export const storePassword = (req) => {
           pathname: '/profile',
           state: {
             type: 'success',
-            message: 'Your account has been created!!'
+            message: 'Your account has been created!!',
+            action: 'update'
           }
         })
 
@@ -132,7 +133,8 @@ export const authenticate = (req) => {
                   pathname: '/profile',
                   state: {
                     type: 'info',
-                    message: 'Logged in!'
+                    message: 'Logged in!',
+                    action: 'update'
                   }
                 })
 

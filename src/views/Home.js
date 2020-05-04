@@ -18,7 +18,9 @@ class Home extends Component {
       isAuthenticated: userController.isAuthenticated()
     };
   }
-
+  componentDidMount(){
+    window.scrollTo(0, 0);
+  }
 
   render() {
 

@@ -959,6 +959,10 @@ a {
   text-decoration: underline !important;
 }
 
+.hv-in:hover {
+  color: var(--interaction);
+}
+
 .button {
   text-align: center;
   height: 48px;

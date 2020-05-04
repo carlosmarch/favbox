@@ -120,7 +120,7 @@ export const addItem = async (req) => {
       //Success creating item!
       history.push({
         pathname: '/profile',
-        state: { type: 'success',  message: 'Item created succesfully!' }
+        state: { type: 'success',  message: 'Item created succesfully!', action: 'update' }
       })
     }
   );

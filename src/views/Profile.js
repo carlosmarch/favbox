@@ -31,7 +31,7 @@ class Profile extends Component {
       renderItems  : [],
       userData     : userController.getSession(),
       pubItems     : userController.getSession().items ? userController.getSession().items.length : '0',
-      likeItems    : userController.getSession().likes ? userController.getSession().likes.length : '0',
+      likeItems    : userController.getStorageFavs() ? userController.getStorageFavs().length : '0',
       makeConfetti : this.checkConfetti(),
       active       : 'grid' // grid || list
     };
@@ -47,13 +47,6 @@ class Profile extends Component {
 
   componentDidMount() {
     window.scrollTo(0, 0);
-    //Clear history state messages
-    if (history.location.state && history.location.state.message) {
-        let state = { ...history.location.state };
-        delete state.message
-        delete state.type
-        history.replace({ ...history.location, state });
-    }
 
     const userId = userController.getSession()?.id;
     if (!userId) {
@@ -71,17 +64,37 @@ class Profile extends Component {
       if (!userData?.items) this.setState({ isLoading: false, renderItems: [] });//WHEN SESSION && NO ITEMS
       if (!userData?.likes) userData.likes = []
 
-      await recommendationController.hydrateUserPubItems(userData)//@TODO Store data?
+      if (!userController.getSession()?.items[0]?.title || this.props.location.state?.action === 'update' ){
+        //console.log('Update')
+        await recommendationController.hydrateUserPubItems(userData)
 
-      userController.setSession(userData)
-      userController.setLocalStorageFavs(userData.likes)
+        userController.setSession(userData)
+        userController.setLocalStorageFavs(userData.likes)
 
-      this.setState({
-        isLoading   : false,
-        renderItems : userData?.items,
-        pubItems    : userData?.items?.length ? userData?.items?.length : '0',
-        likeItems   : userData?.likes?.length ? userData?.likes?.length : '0'
-      });
+        this.setState({
+          isLoading   : false,
+          renderItems : userData?.items,
+          pubItems    : userData?.items?.length ? userData?.items?.length : '0',
+          likeItems   : userData?.likes?.length ? userData?.likes?.length : '0'
+        });
+
+      }else{
+        //console.log('Local data')
+        this.setState({
+          isLoading   : false,
+          renderItems : userController.getSession()?.items,
+          pubItems    : userController.getSession()?.items?.length ? userController.getSession()?.items?.length : '0',
+          likeItems   : userController.getStorageFavs()?.length ? userController.getStorageFavs()?.length : '0'
+        });
+      }
+      //Clear history state messages
+      if (history.location.state && history.location.state.message) {
+          let state = { ...history.location.state };
+          delete state.message
+          delete state.type
+          delete state.action
+          history.replace({ ...history.location, state });
+      }
 
     });
 
