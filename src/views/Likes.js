@@ -44,28 +44,21 @@ class Likes extends Component {
         return
       }
 
-      let userData = user?.fields;
+      const userData = user?.fields;
       if (!userData?.likes) userData.likes = []
       userController.setLocalStorageFavs(userData.likes)//Set array of ID´s to localStorage
 
-      //check if localstoragelikes && usersession likes are equal. If not -> Update
-      if (!userController.getSession()?.likes[0]?.title || userData.likes.filter(o => !userController.getSession()?.likes.find(x => x.id === o)).length ){
-        console.log('Update')
-        let updatedSession = userController.getSession()
-        updatedSession.likes = await recommendationController.getHydratedFavItems(userData.likes)
-        userController.setSession(updatedSession)
-        this.setState({
-          isLoading: false,
-          renderItems: updatedSession.likes
-        });
-      }else{
-        console.log('Local data')
-        this.setState({
-          isLoading: false,
-          renderItems: userController.getSession()?.likes
-        });
-      }
+      //if (!userController.getSession()?.likes[0]?.title || userData.likes.filter(o => !userController.getSession()?.likes.find(x => x.id === o)).length ){}
 
+      let updatedSession = userController.getSession()
+      updatedSession.likes = await recommendationController.getHydratedFavItems(userData.likes)
+      userController.setSession(updatedSession)
+
+      this.setState({
+        isLoading: false,
+        renderItems: updatedSession.likes
+      });
+      //console.log('hydratedFavItems',  user.likes, hydratedFavItems)
       return;
     })
 
