@@ -8,6 +8,20 @@ import Articlelist from '../components/Articlelist';
 import Videocard from '../components/Videocard';
 import Appcard from '../components/Appcard';
 
+
+import {ReactComponent as MusicIcon} from '../icons/Album.svg';
+import {ReactComponent as PodcastIcon} from '../icons/Podcast.svg';
+import {ReactComponent as MagazineIcon} from '../icons/Magazine.svg';
+import {ReactComponent as ShowIcon} from '../icons/Show.svg';
+import {ReactComponent as VideoIcon} from '../icons/Video.svg';
+import {ReactComponent as BookIcon} from '../icons/Book.svg';
+import {ReactComponent as ArticleIcon} from '../icons/Article.svg';
+import {ReactComponent as AppIcon} from '../icons/App.svg';
+import {ReactComponent as NewsletterIcon} from '../icons/Newsletter.svg';
+import {ReactComponent as MovieIcon} from '../icons/Movie.svg';
+import {ReactComponent as WebIcon} from '../icons/Globe.svg';
+
+
 import * as Helpers from '../Helpers';
 
 
@@ -20,6 +34,45 @@ export const catTemplate = {
   appcard:      ['app'],
   cinemacard:   ['movie', 'show']
 };
+
+export const getCategoryIcon = (category, classname) => {
+  switch(category){
+    case 'music':
+      return <MusicIcon className={classname} />
+
+    case 'podcast':
+      return <PodcastIcon className={classname} />
+
+    case 'magazine':
+      return <MagazineIcon className={classname} />
+
+    case 'show':
+      return <ShowIcon className={classname} />
+
+    case 'video':
+      return <VideoIcon className={classname} />
+
+    case 'book':
+      return <BookIcon className={classname} />
+
+    case 'article':
+      return <ArticleIcon className={classname} />
+
+    case 'web':
+      return <WebIcon className={classname} />
+
+    case 'app':
+      return <AppIcon className={classname} />
+
+    case 'newsletter':
+      return <NewsletterIcon className={classname} />
+
+    case 'movie':
+      return <MovieIcon className={classname} />
+    default:
+      return ''
+  }
+}
 
 // Render items by Template Blocks
 // First define item types to render in groups

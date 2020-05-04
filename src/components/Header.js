@@ -5,17 +5,7 @@ import {ReactComponent as UserIcon} from '../icons/User.svg';
 import {ReactComponent as LikeIcon} from '../icons/Heart.svg';
 import {ReactComponent as AddIcon} from '../icons/Plus.svg';
 
-import {ReactComponent as MusicIcon} from '../icons/Album.svg';
-import {ReactComponent as PodcastIcon} from '../icons/Podcast.svg';
-import {ReactComponent as MagazineIcon} from '../icons/Magazine.svg';
-import {ReactComponent as ShowIcon} from '../icons/Show.svg';
-import {ReactComponent as VideoIcon} from '../icons/Video.svg';
-import {ReactComponent as BookIcon} from '../icons/Book.svg';
-import {ReactComponent as ArticleIcon} from '../icons/Article.svg';
-import {ReactComponent as AppIcon} from '../icons/App.svg';
-import {ReactComponent as NewsletterIcon} from '../icons/Newsletter.svg';
-import {ReactComponent as MovieIcon} from '../icons/Movie.svg';
-import {ReactComponent as WebIcon} from '../icons/Globe.svg';
+import * as Templates from '../templates/Templates';
 
 
 import * as Helpers from '../Helpers';
@@ -63,45 +53,6 @@ class Header extends Component {
     })
   }
 
-  getCategoryIcon(category){
-    switch(category){
-      case 'music':
-        return <MusicIcon />
-
-      case 'podcast':
-        return <PodcastIcon />
-
-      case 'magazine':
-        return <MagazineIcon />
-
-      case 'show':
-        return <ShowIcon />
-
-      case 'video':
-        return <VideoIcon />
-
-      case 'book':
-        return <BookIcon />
-
-      case 'article':
-        return <ArticleIcon />
-
-      case 'web':
-        return <WebIcon />
-
-      case 'app':
-        return <AppIcon />
-
-      case 'newsletter':
-        return <NewsletterIcon />
-
-      case 'movie':
-        return <MovieIcon />
-      default:
-        return ''
-    }
-  }
-
 
   getUniqueCategories(){
     fetch(window.$api)
@@ -146,7 +97,7 @@ class Header extends Component {
                 <ul>
                   {this.state.categories && this.state.categories.map((category, key) =>
                     <li key={key}>
-                      <Link to={`/categories/${category}`}>{this.getCategoryIcon(category)}{category}</Link>
+                      <Link to={`/categories/${category}`}>{Templates.getCategoryIcon(category)}{category}</Link>
                     </li>
                   )}
                 </ul>

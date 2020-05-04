@@ -52,6 +52,11 @@ $breakpoint-m: 48em;
 .mb-xxs { margin-bottom: 8px;
   @media (max-width: $breakpoint-m){margin-bottom: 4px;}}
 
+.ml-s{ margin-left: 24px;
+  @media (max-width: $breakpoint-m){margin-left: 8px;}}
+.ml-m{ margin-left: 40px;
+  @media (max-width: $breakpoint-m){margin-left: 16px;}}
+
 .p-xl{ padding: 160px;
   @media (max-width: $breakpoint-m){padding: 32px;}}
 .p-l{ padding: 80px;
@@ -121,10 +126,16 @@ $breakpoint-m: 48em;
 }
 .flex{
   display:flex;
+  align-items: center;
 }
 .flex-justify{
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+.flex-center{
+  display: flex;
+  justify-content: center;
   align-items: center;
 }
 .v-center{

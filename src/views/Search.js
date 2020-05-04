@@ -1,10 +1,14 @@
 import React, { Component } from "react";
+import { Link } from 'react-router-dom';
 import * as Helpers from '../Helpers';
+
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import BlockTitle from '../components/BlockTitle';
 import LoadingSpinner from '../components/LoadingSpinner';
 import {ReactComponent as SearchIcon} from '../icons/Search.svg';
+
+import * as Templates from '../templates/Templates';
 
 class Search extends Component {
 
@@ -73,23 +77,27 @@ class Search extends Component {
           </div>
           */}
 
-          <div className="AllTopics">
-              <div className="Categories mt-l">
-                {this.state.isLoading ? <LoadingSpinner /> : this.state.categories?.map((records, key) =>
-                  <BlockTitle title={records} link={`categories/${records}`} key={key}/>
+          <div className="AllTopics container">
+              <div className="Categories mt-l mb-l">
+                {this.state.isLoading ? <LoadingSpinner /> : this.state.categories?.map((category, key) =>
+                  <div className="flex mb-s">
+                    {Templates.getCategoryIcon(category, 'icon-40 icon-interaction')}
+                    <Link to={`categories/${category}`} key={key} className="block-title ml-s">{category}</Link>
+                  </div>
                 )}
               </div>
-
+              {/*
               <div className="Topics mb-l">
-                {this.state.isLoading ? '' : this.state.topics?.map((records, key) =>
-                  <BlockTitle title={records} link={`topics/${records}`} key={key}/>
+                {this.state.isLoading ? '' : this.state.topics?.map((topic, key) =>
+                  <BlockTitle title={topic} link={`topics/${topic}`} key={key}/>
                 )}
               </div>
+              */}
           </div>
         </div>
 
         <Footer/>
-        
+
       </div>
     );
   }

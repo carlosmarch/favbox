@@ -39,10 +39,13 @@ class Home extends Component {
                       <h1 className="main-title">The sharing platform for the <span className="scratch">quarantine</span> people.</h1>
                       <p className="hero-text">We make it easy to find inspiration, references, and grow informed online communities that are built to last.</p>
 
-                      { this.state.isAuthenticated
-                        ? <Link to="/create" className="button">Publish now!</Link>
-                        : <Link to="/signup" className="button">Get Started!</Link>
-                      }
+                    <div className="flex">
+                        { this.state.isAuthenticated
+                          ? <Link to="/create" className="button">Publish now!</Link>
+                          : <Link to="/signup" className="button">Get Started!</Link>
+                        }
+                        <Link to="/feed" className="button button-outline ml-s">Discover</Link>
+                      </div>
 
                     </div>
                     <div className="grid__item width-6/12 no@m">
