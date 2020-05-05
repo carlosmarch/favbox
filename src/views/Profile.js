@@ -61,33 +61,26 @@ class Profile extends Component {
       }
       user.fields['id'] = user.id
       const userData = user.fields;
-      if (!userData?.items) this.setState({ isLoading: false, renderItems: [] });//WHEN SESSION && NO ITEMS
+      if (!userData?.items){
+        userData.items = []
+        this.setState({ isLoading: false, renderItems: [] });//WHEN SESSION && NO ITEMS
+      }
       if (!userData?.likes) userData.likes = []
 
-      if ( typeof userData[0]?.title === 'undefined' || this.props.location.state?.action === 'update' || userData.items.filter(o => !userController.getSession()?.items.find(x => x.id === o)).length ){
-        console.log('Update')
-        await recommendationController.hydrateUserPubItems(userData)
+      console.log('Update')
+      await recommendationController.hydrateUserPubItems(userData)
 
-        userController.setSession(userData)
-        userController.setLocalStorageFavs(userData.likes)
+      userController.setSession(userData)
+      userController.setLocalStorageFavs(userData.likes)
 
-        this.setState({
-          isLoading   : false,
-          renderItems : userData?.items,
-          pubItems    : userData?.items?.length ? userData?.items?.length : '0',
-          likeItems   : userData?.likes?.length ? userData?.likes?.length : '0'
-        });
+      this.setState({
+        isLoading   : false,
+        renderItems : userData?.items,
+        pubItems    : userData?.items?.length ? userData?.items?.length : '0',
+        likeItems   : userData?.likes?.length ? userData?.likes?.length : '0'
+      });
 
-      }else{
-        console.log('Local data' )
-
-        this.setState({
-          isLoading   : false,
-          renderItems : userController.getSession()?.items,
-          pubItems    : userController.getSession()?.items?.length ? userController.getSession()?.items?.length : '0',
-          likeItems   : userController.getStorageFavs()?.length ? userController.getStorageFavs()?.length : '0'
-        });
-      }
+      
       //Clear history state messages
       if (history.location.state && history.location.state.message) {
           let state = { ...history.location.state };

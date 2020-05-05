@@ -129,7 +129,7 @@ class SignUp extends Component {
                   <label className="checkbox">
                     I agree that Favbox is still a beta program.
                     <input type="checkbox" required/>
-                    <span class="checkmark"></span>
+                    <span className="checkmark"></span>
                   </label>
                 </div>
 

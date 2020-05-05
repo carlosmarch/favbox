@@ -52,7 +52,7 @@ class Confetti extends Component {
       });
     }
 
-    for (var i = 0; i < 200; i++) {
+    for (var i = 0; i < 100; i++) {
        create(i);
     }
 
