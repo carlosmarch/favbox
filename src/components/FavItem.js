@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from 'react-router-dom';
 import * as Helpers from '../Helpers';
 import Like from './Like';
+import {ReactComponent as EditIcon} from '../icons/Edit.svg';
 
 //@TODO ITEM ID
 
@@ -19,7 +20,7 @@ class FavItem extends Component {
             <p className="description">{Helpers.truncateText(this.props.description, 180)}</p>
 
             { JSON.stringify(this.props.contribuidor) === JSON.stringify([JSON.parse(localStorage.getItem('userSession'))?.id])
-              ? <Link to={`/edit/${this.props.itemId}`} data-id={this.props.itemId} className="edit-link link underline-hover">Edit item</Link>
+              ? <Link to={`/edit/${this.props.itemId}`} data-id={this.props.itemId} className="edit-link link underline-hover"><EditIcon className="icon-14 icon-interaction"/> Edit</Link>
               : '' }
 
           </div>
