@@ -23,6 +23,7 @@ import Likes from './views/Likes';
 import CreateUrl from './views/CreateUrl';
 import Item from './views/Item';
 import Settings from './views/Settings';
+import EditItem from './views/EditItem';
 
 import * as serviceWorker from './serviceWorker';
 const userController = require('./controllers/userController.js');
@@ -80,6 +81,7 @@ const routing = (
         <AuthenticatedRoute path="/likes" component={Likes}/>
         <AuthenticatedRoute path="/profile" component={Profile}/>
         <AuthenticatedRoute path="/settings" component={Settings}/>
+        <AuthenticatedRoute path="/edit/:id" component={EditItem}/>
 
         <Route component={Notfound} />
 

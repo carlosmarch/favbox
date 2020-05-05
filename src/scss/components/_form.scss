@@ -74,7 +74,8 @@ select option{ color: var(--dark-green); }
   left: 0;
   height: 18px;
   width: 18px;
-  background-color: var(--border);
+  background-color: rgb(252, 253, 253);
+  border: 1px solid rgb(190, 203, 204);
 }
 
 /* On mouse-over, add a grey background color */
@@ -85,6 +86,7 @@ select option{ color: var(--dark-green); }
 /* When the checkbox is checked, add a blue background */
 .checkbox input:checked ~ .checkmark {
   background-color: var(--interaction);
+  border-color: var(--interaction);
 }
 
 /* Create the checkmark/indicator (hidden when not checked) */
@@ -101,8 +103,8 @@ select option{ color: var(--dark-green); }
 
 /* Style the checkmark/indicator */
 .checkbox .checkmark:after {
-  left: 6px;
-  top: 2px;
+  left: 5px;
+  top: 1px;
   width: 4px;
   height: 8px;
   border: solid white;

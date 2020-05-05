@@ -546,6 +546,10 @@
   color: var(--interaction);
 }
 
+.white {
+  color: #fff;
+}
+
 .bg-white {
   background: #fff;
 }
@@ -1129,7 +1133,8 @@ select option {
   left: 0;
   height: 18px;
   width: 18px;
-  background-color: var(--border);
+  background-color: #fcfdfd;
+  border: 1px solid #becbcc;
 }
 
 /* On mouse-over, add a grey background color */
@@ -1140,6 +1145,7 @@ select option {
 /* When the checkbox is checked, add a blue background */
 .checkbox input:checked ~ .checkmark {
   background-color: var(--interaction);
+  border-color: var(--interaction);
 }
 
 /* Create the checkmark/indicator (hidden when not checked) */
@@ -1156,8 +1162,8 @@ select option {
 
 /* Style the checkmark/indicator */
 .checkbox .checkmark:after {
-  left: 6px;
-  top: 2px;
+  left: 5px;
+  top: 1px;
   width: 4px;
   height: 8px;
   border: solid white;
@@ -3177,6 +3183,10 @@ a.topic-card::before {
   right: 0px;
 }
 
+.edit-link {
+  font-size: 14px;
+}
+
 @media (max-width: 48em) {
   .favitem {
     display: flex;
@@ -3445,7 +3455,6 @@ a.topic-card::before {
 
 .left-pane-quote-text {
   position: relative;
-  margin-bottom: 40px;
   font-size: 16px;
   font-style: italic;
   color: #fff;

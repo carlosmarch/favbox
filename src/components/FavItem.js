@@ -17,6 +17,11 @@ class FavItem extends Component {
             <div className="favitem-category badge inline">{this.props.categories}</div>
             <h6>{this.props.title}</h6>
             <p className="description">{Helpers.truncateText(this.props.description, 180)}</p>
+
+            { JSON.stringify(this.props.contribuidor) === JSON.stringify([JSON.parse(localStorage.getItem('userSession'))?.id])
+              ? <Link to={`/edit/${this.props.itemId}`} data-id={this.props.itemId} className="edit-link link underline-hover">Edit item</Link>
+              : '' }
+
           </div>
           <Like itemId={this.props.itemId}/>
         </Link>

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { findDOMNode } from 'react-dom';
 import $ from 'jquery';
 
 class Confetti extends Component {
@@ -52,7 +51,7 @@ class Confetti extends Component {
       });
     }
 
-    for (var i = 0; i < 100; i++) {
+    for (var i = 0; i < 80; i++) {
        create(i);
     }
 

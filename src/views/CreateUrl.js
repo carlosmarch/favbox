@@ -246,7 +246,7 @@ class CreateUrl extends Component {
                                required
                              >
                                 <option hidden defaultValue value="">Type of resource</option>
-                                {this.state.isLoading ? '' : this.state?.uniqueCategories.map((category, i) => <option key={i} value={category}>{category}</option>)}
+                                {this.state.isLoading ? '' : this.state?.uniqueCategories?.map((category, i) => <option key={i} value={category}>{category}</option>)}
                              </select>
                            </div>
                            <div>
@@ -256,7 +256,7 @@ class CreateUrl extends Component {
                                onChange={this.topicsChangeHandler}
                              >
                                 <option hidden defaultValue value="">Any topic for your item?</option>
-                                {this.state.isLoading ? '' :this.state?.uniqueTopics.map((topic, i) => <option key={i} value={topic}>{topic}</option>)}
+                                {this.state.isLoading ? '' :this.state?.uniqueTopics?.map((topic, i) => <option key={i} value={topic}>{topic}</option>)}
                              </select>
                            </div>
 

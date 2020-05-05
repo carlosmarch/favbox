@@ -203,3 +203,27 @@ export const getHydratedFavItems = async (userlikes) => {
   }
   return itemsWithDetails
 }
+
+
+export const updateItem = (req) => {
+  console.log(req)
+  const { title, description, imageUrl, categories, topics } = req;
+  const itemId = req?.itemId
+  if (!itemId) return;
+  table.update( itemId, { title, description, imageUrl, categories, topics }, function(err, record) {
+      if (err) {
+        console.error(err);
+        return;
+      }
+      console.log('Updated', record)
+      history.push({
+        pathname: '/profile',
+        state: {
+          type: 'success',
+          message: 'Item updated successfully!'
+        }
+      })
+    }
+  );
+
+}

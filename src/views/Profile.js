@@ -11,6 +11,7 @@ import {ReactComponent as AddIcon} from '../icons/Plus.svg';
 import {ReactComponent as GridIcon} from '../icons/Grid.svg';
 import {ReactComponent as ListIcon} from '../icons/List.svg';
 import Confetti from '../components/Confetti';
+import Message from '../components/Message';
 
 const recommendationController = require('../controllers/recommendationController.js');
 const userController = require('../controllers/userController.js');
@@ -80,7 +81,7 @@ class Profile extends Component {
         likeItems   : userData?.likes?.length ? userData?.likes?.length : '0'
       });
 
-      
+
       //Clear history state messages
       if (history.location.state && history.location.state.message) {
           let state = { ...history.location.state };
@@ -140,7 +141,9 @@ class Profile extends Component {
                 </div>
               </div>
 
-
+              { history.location.state && this.props.location.state?.message
+                ? <Message type={this.props.location.state.type} message={this.props.location.state.message}/>
+                : '' }
 
               <div className="mb-m">
               { this.state.isLoading

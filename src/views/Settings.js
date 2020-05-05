@@ -123,8 +123,8 @@ class EditProfile extends Component {
                           <h6 className="mb-xs">Profile photo</h6>
 
                         {userController.getSession()?.avatar ? (
-                            <div class="user-has-photo-PictureContainer">
-                              <div class="deleteImage" onClick={this.deleteAvatar}>X</div>
+                            <div className="user-has-photo-PictureContainer">
+                              <div className="deleteImage" onClick={this.deleteAvatar}>X</div>
                               <img className="user-has-photo-image" src={userController.getSession()?.avatar} alt="user-avatar"/>
                             </div>
                           ) : ''  }

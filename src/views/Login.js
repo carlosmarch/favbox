@@ -56,6 +56,13 @@ class Login extends Component {
                       <div className="left-pane-quote-text">
                         I can get inspiration & cultural references from people around the world.
                       </div>
+                      <div className="contributor mb-m">
+                        <div className="user-badge" style={{backgroundImage: `url(https://res.cloudinary.com/dsgddhtwh/image/upload/v1588500756/okghqwp6r7mc9zrdxp0r.png)`}}></div>
+                        <div className="contributor-info">
+                          <Link to={`/profile/Editor%20Picks`} className="contributor-name underline-hover white">Editor Picks</Link>
+                          <div className="contributor-description white">Favbox Staff</div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                   <div className="grid__item width-9/12 width-12/12@m right-pane">
