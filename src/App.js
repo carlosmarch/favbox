@@ -170,9 +170,9 @@ class App extends Component {
                         <BlockTitle title={'Collections'} description={'Collections made to inspire'}/>
                         <div className="container container-xl">
                           <div className="grid mt-s">
-                              <Collectioncard title={'darle al coco'} grid={'width-4/12'} number={Helpers.getCollectionItems(this.state.recommendations, 'darle al coco').length}/>
-                              <Collectioncard title={'mantenerse en forma'} grid={'width-4/12'} number={Helpers.getCollectionItems(this.state.recommendations, 'mantenerse en forma').length} />
-                              <Collectioncard title={'futuros'} grid={'width-4/12'} number={Helpers.getCollectionItems(this.state.recommendations, 'futuros').length} />
+                              <Collectioncard title={'critical thinking'} grid={'width-4/12'} number={Helpers.getCollectionItems(this.state.recommendations, 'critical thinking').length}/>
+                              <Collectioncard title={'keep in fit'} grid={'width-4/12'} number={Helpers.getCollectionItems(this.state.recommendations, 'keep in fit').length} />
+                              <Collectioncard title={'futures'} grid={'width-4/12'} number={Helpers.getCollectionItems(this.state.recommendations, 'futures').length} />
                           </div>
                         </div>
                     </section>

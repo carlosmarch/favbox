@@ -11,7 +11,7 @@ class Collectioncard extends Component {
               {this.props.title}
             </h3>
           </div>
-          <div className="collection-card__number">{this.props.number} Items publicados</div>
+          <div className="collection-card__number">{this.props.number} Items</div>
       </Link>
     );
   }

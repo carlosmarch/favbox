@@ -146,6 +146,7 @@ class CreateUrl extends Component {
          </div>
          <div className="favitem-description">
            <div className="favitem-category badge inline mt-s">{props?.categories ? props?.categories : 'category' }</div>
+           { props?.topics ? props?.topics?.map((topic, key) => { return (<div to={ '/topics/' + topic } className="badge badge-outline ml-xxs" key={key}>#{topic}</div>) }) : ''}
            <h6>{props?.title ? props?.title : 'title'}</h6>
            <p className="description-small">{props?.description ? props?.description : 'description'}</p>
          </div>

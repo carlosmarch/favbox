@@ -38,7 +38,7 @@ class Home extends Component {
               <div className="grid">
                     <div className="grid__item width-6/12 width-12/12@m">
                       <Link to="/"><img className="logo mb-m no@dkt" src={process.env.PUBLIC_URL + '/logo.svg'} alt="logo"/></Link>
-                      <h1 className="main-title">The sharing platform for the <span className="scratch">quarantine</span> people.</h1>
+                      <h1 className="main-title">The sharing platform for the <span className="scratch no@m">quarantine</span> people.</h1>
                       <p className="hero-text">We make it easy to find inspiration, references, and grow informed online communities that are built to last.</p>
 
                     <div className="flex">

@@ -140,7 +140,7 @@ class Profile extends Component {
                   </div>
                 </div>
               </div>
-
+              
               { history.location.state && this.props.location.state?.message
                 ? <Message type={this.props.location.state.type} message={this.props.location.state.message}/>
                 : '' }

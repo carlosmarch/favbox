@@ -4,7 +4,7 @@ class Message extends Component {
   render() {
     return (
 
-        <div className={`message ${this.props.type}`}>{this.props.message}</div>
+        <div className={`message mt-s ${this.props.type}`}>{this.props.message}</div>
 
     );
   }

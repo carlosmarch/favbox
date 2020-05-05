@@ -67,6 +67,9 @@ a{
         background-color: darken(#03363d, 10%);
         transition: all 0.2s ease 0s;
     }
+    @media (max-width: $breakpoint-m) {
+      min-width:168px;
+    }
 }
 
 .button-small{
