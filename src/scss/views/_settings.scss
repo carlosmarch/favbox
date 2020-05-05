@@ -1,3 +1,7 @@
+.settings_view ~ .bottombar,
+.editItem_view ~ .bottombar{
+  display: none;
+}
 .settings_view .fileUploader {
     width: 50%;
 }

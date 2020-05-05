@@ -193,7 +193,7 @@ class EditItem extends Component {
   render() {
 
     return (
-    <div className="app_wrapper settings_view bg-soft-grey">
+    <div className="app_wrapper editItem_view bg-soft-grey">
 
       <Header />
 

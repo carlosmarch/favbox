@@ -59,10 +59,11 @@ class App extends Component {
         recommendations: window.$alldata.sort(() => Math.random() - 0.5),//random order
         contributors: contributors.records}
       );
+      //console.log(this.state.recommendations)
     })
     .catch(err => {
       // Error
-      console.err(err)
+      console.log(err)
     });
   }
 
@@ -82,7 +83,7 @@ class App extends Component {
                         <div className="container container-xl">
                             <div className="grid">
                               {this.state.isLoading ? <LoadingSpinner /> : Helpers.getCategoryItems(this.state.recommendations, 'book', 4).map((records) =>
-                                <Card {...records.fields} key={records.id} itemId={records.id} autor={Helpers.getContributor(this.state.contributors, records.fields.contribuidor)}/>
+                                <Card {...records.fields} key={records.id} itemId={records.id} autor={Helpers.getContributor(this.state.contributors, records.fields.contribuidor)} createdTime={records.createdTime} />
                               )}
                             </div>
                         </div>
@@ -93,10 +94,10 @@ class App extends Component {
                         <div className="container container-xl">
                             <div className="grid">
                               {this.state.isLoading ? <LoadingSpinner /> : Helpers.getCategoryItems(this.state.recommendations, 'movie', 8).map((records) =>
-                                <Card {...records.fields} key={records.id} itemId={records.id} autor={Helpers.getContributor(this.state.contributors, records.fields.contribuidor)}/>
+                                <Card {...records.fields} key={records.id} itemId={records.id} autor={Helpers.getContributor(this.state.contributors, records.fields.contribuidor)} createdTime={records.createdTime}/>
                               )}
                               {this.state.isLoading ? '' : Helpers.getCategoryItems(this.state.recommendations, 'show', 8).map((records) =>
-                                <Card {...records.fields} key={records.id} itemId={records.id} autor={Helpers.getContributor(this.state.contributors, records.fields.contribuidor)}/>
+                                <Card {...records.fields} key={records.id} itemId={records.id} autor={Helpers.getContributor(this.state.contributors, records.fields.contribuidor)} createdTime={records.createdTime}/>
                               )}
                             </div>
                         </div>
@@ -107,7 +108,7 @@ class App extends Component {
                         <div className="container">
                             <div className="grid">
                                 {this.state.isLoading ? <LoadingSpinner /> : Helpers.getCategoryItems(this.state.recommendations,'music', 8).map((records) =>
-                                  <Musiccard {...records.fields} key={records.id} itemId={records.id} autor={Helpers.getContributor(this.state.contributors, records.fields.contribuidor)}/>
+                                  <Musiccard {...records.fields} key={records.id} itemId={records.id} autor={Helpers.getContributor(this.state.contributors, records.fields.contribuidor)} createdTime={records.createdTime}/>
                                 )}
                             </div>
                         </div>
@@ -116,7 +117,7 @@ class App extends Component {
                         <div className="container">
                             <div className="grid mt-s">
                                 {this.state.isLoading ? <LoadingSpinner /> : Helpers.getCategoryItems(this.state.recommendations,'podcast', 4).map((records) =>
-                                  <Podcastcard {...records.fields} key={records.id} itemId={records.id} autor={Helpers.getContributor(this.state.contributors, records.fields.contribuidor)}/>
+                                  <Podcastcard {...records.fields} key={records.id} itemId={records.id} autor={Helpers.getContributor(this.state.contributors, records.fields.contribuidor)} createdTime={records.createdTime}/>
                                 )}
                             </div>
                         </div>
@@ -128,7 +129,7 @@ class App extends Component {
                         <div className="container container-xl">
                           <div className="grid">
                               {this.state.isLoading ? <LoadingSpinner /> : Helpers.getCategoryItems(this.state.recommendations,'magazine', 4).map((records) =>
-                                <Card {...records.fields} key={records.id} itemId={records.id} autor={Helpers.getContributor(this.state.contributors, records.fields.contribuidor)}/>
+                                <Card {...records.fields} key={records.id} itemId={records.id} autor={Helpers.getContributor(this.state.contributors, records.fields.contribuidor)} createdTime={records.createdTime}/>
                               )}
                             <img className="lines" src={process.env.PUBLIC_URL + '/img/dot-3.svg'} alt="lines"/>
                           </div>
@@ -141,7 +142,7 @@ class App extends Component {
                               <div className="grid">
                                     <div className="grid__item width-8/12 width-12/12@m grid">
                                         {this.state.isLoading ? <LoadingSpinner /> : Helpers.getCategoryItems(this.state.recommendations,'app', 8).map((records) =>
-                                          <Appcard {...records.fields} key={records.id} itemId={records.id} autor={Helpers.getContributor(this.state.contributors, records.fields.contribuidor)}/>
+                                          <Appcard {...records.fields} key={records.id} itemId={records.id} autor={Helpers.getContributor(this.state.contributors, records.fields.contribuidor)} createdTime={records.createdTime}/>
                                         )}
                                     </div>
                                     <div className="grid__item width-4/12 width-12/12@m">
@@ -157,7 +158,7 @@ class App extends Component {
                         <div className="container container-xl">
                           <div className="grid">
                               {this.state.isLoading ? <LoadingSpinner /> : Helpers.getCategoryItems(this.state.recommendations,'video', 6).map((records) =>
-                                <Videocard {...records.fields} key={records.id} itemId={records.id} autor={Helpers.getContributor(this.state.contributors, records.fields.contribuidor)}/>
+                                <Videocard {...records.fields} key={records.id} itemId={records.id} autor={Helpers.getContributor(this.state.contributors, records.fields.contribuidor)} createdTime={records.createdTime}/>
                               )}
                           </div>
                         </div>
@@ -186,13 +187,13 @@ class App extends Component {
                       <div className="container">
                         <div className="mt-s">
                             {this.state.isLoading ? <LoadingSpinner /> : Helpers.getCategoryItems(this.state.recommendations,'article', 20).map((records) =>
-                              <Articlelist {...records.fields} key={records.id} itemId={records.id} autor={Helpers.getContributor(this.state.contributors, records.fields.contribuidor)}/>
+                              <Articlelist {...records.fields} key={records.id} itemId={records.id} autor={Helpers.getContributor(this.state.contributors, records.fields.contribuidor)} createdTime={records.createdTime}/>
                             )}
                             {this.state.isLoading ? <LoadingSpinner /> : Helpers.getCategoryItems(this.state.recommendations,'newsletter', 20).map((records) =>
-                              <Articlelist {...records.fields} key={records.id} itemId={records.id} autor={Helpers.getContributor(this.state.contributors, records.fields.contribuidor)}/>
+                              <Articlelist {...records.fields} key={records.id} itemId={records.id} autor={Helpers.getContributor(this.state.contributors, records.fields.contribuidor)} createdTime={records.createdTime}/>
                             )}
                             {this.state.isLoading ? <LoadingSpinner /> : Helpers.getCategoryItems(this.state.recommendations,'web', 20).map((records) =>
-                              <Articlelist {...records.fields} key={records.id} itemId={records.id} autor={Helpers.getContributor(this.state.contributors, records.fields.contribuidor)}/>
+                              <Articlelist {...records.fields} key={records.id} itemId={records.id} autor={Helpers.getContributor(this.state.contributors, records.fields.contribuidor)} createdTime={records.createdTime}/>
                             )}
                         </div>
                       </div>

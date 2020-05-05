@@ -18,7 +18,7 @@
 
 .badge {
   padding: 0px 6px;
-  border-radius: 4px;
+  //border-radius: 4px;
   background-color: var(--soft-blue);
   font-size: 13px;
   line-height: 18px;
@@ -33,4 +33,11 @@
   background-color: transparent;
   border:1px solid var(--border);
   color: var(--grey);
+}
+.new-badge{
+  display: inline-block;
+  padding: 4px 12px;
+  text-transform: uppercase;
+  background: var(--interaction);
+  color: #fff;
 }

@@ -104,13 +104,17 @@
     }
   }
 
-  //COMPARES TWO ARRAYS || OBJECTS
-  function isEqual(array1, array2) {
-    if (array1.length === array2.length && array1.sort().every(function(value, index) { return value === array2.sort()[index]})){
-      return true
-    }else{
-      return false
+  function dayDifference(pubDate){
+    const start = new Date(pubDate) //clone
+    const end = new Date() //clone
+    console.log(start, end)
+    let dayCount = 0
+
+    while (end > start) {
+      dayCount++
+      start.setDate(start.getDate() + 1)
     }
+    return dayCount
   }
 
   export {
@@ -126,5 +130,5 @@
      getTopicItems,
      getCollectionItems,
      getBlockCategoryItems,
-     isEqual
+     dayDifference
   };

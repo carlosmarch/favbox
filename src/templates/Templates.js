@@ -84,7 +84,7 @@ function renderCardItems(recommendations, contributors) {
         <div className="container container-xl">
             <div className="grid">
               {Helpers.getBlockCategoryItems(recommendations, catTemplate.card).map((records) =>
-                <Card {...records.fields} key={records.id} itemId={records.id} autor={Helpers.getContributor(contributors, records.fields.contribuidor)}/>
+                <Card {...records.fields} key={records.id} itemId={records.id} autor={Helpers.getContributor(contributors, records.fields.contribuidor)} createdTime={records.createdTime}/>
               )}
             </div>
         </div>
@@ -99,7 +99,7 @@ function renderMusicItems(recommendations, contributors, pagetype) {
       <div className="container">
           <div className="grid">
               {Helpers.getBlockCategoryItems(recommendations, catTemplate.musiccard).map((records) =>
-                <Musiccard {...records.fields} key={records.id} itemId={records.id} autor={Helpers.getContributor(contributors, records.fields.contribuidor)}/>
+                <Musiccard {...records.fields} key={records.id} itemId={records.id} autor={Helpers.getContributor(contributors, records.fields.contribuidor)} createdTime={records.createdTime}/>
               )}
           </div>
       </div>
@@ -114,7 +114,7 @@ function renderPodcastItems(recommendations, contributors, pagetype){
         <BlockTitle title={pagetype==='categories' ? '' : 'Listen'}/>
         <div className="grid">
             {Helpers.getBlockCategoryItems(recommendations, catTemplate.podcastcard).map((records) =>
-              <Podcastcard {...records.fields} key={records.id} itemId={records.id} autor={Helpers.getContributor(contributors, records.fields.contribuidor)}/>
+              <Podcastcard {...records.fields} key={records.id} itemId={records.id} autor={Helpers.getContributor(contributors, records.fields.contribuidor)} createdTime={records.createdTime}/>
             )}
         </div>
       </div>
@@ -129,7 +129,7 @@ function renderArticleItems(recommendations, contributors, pagetype){
       <div className="container">
         <div className="grid">
             {Helpers.getBlockCategoryItems(recommendations, catTemplate.articlelist).map((records) =>
-              <Articlelist {...records.fields} key={records.id} itemId={records.id} autor={Helpers.getContributor(contributors, records.fields.contribuidor)}/>
+              <Articlelist {...records.fields} key={records.id} itemId={records.id} autor={Helpers.getContributor(contributors, records.fields.contribuidor)} createdTime={records.createdTime}/>
             )}
         </div>
       </div>
@@ -144,7 +144,7 @@ function renderVideoItems(recommendations, contributors, pagetype){
       <div className="container">
         <div className="grid">
             {Helpers.getBlockCategoryItems(recommendations, catTemplate.videocard).map((records) =>
-              <Videocard {...records.fields} key={records.id} itemId={records.id} autor={Helpers.getContributor(contributors, records.fields.contribuidor)}/>
+              <Videocard {...records.fields} key={records.id} itemId={records.id} autor={Helpers.getContributor(contributors, records.fields.contribuidor)} createdTime={records.createdTime}/>
             )}
         </div>
       </div>
@@ -159,7 +159,7 @@ function renderAppItems(recommendations, contributors, pagetype){
         <div className="container">
               <div className="grid">
                   {Helpers.getBlockCategoryItems(recommendations, catTemplate.appcard).map((records) =>
-                    <Appcard {...records.fields} key={records.id} itemId={records.id} autor={Helpers.getContributor(contributors, records.fields.contribuidor)}/>
+                    <Appcard {...records.fields} key={records.id} itemId={records.id} autor={Helpers.getContributor(contributors, records.fields.contribuidor)} createdTime={records.createdTime}/>
                   )}
               </div>
         </div>
@@ -174,7 +174,7 @@ function renderCinemaItems(recommendations, contributors, pagetype) {
         <div className="container container-xl">
             <div className="grid">
               {Helpers.getBlockCategoryItems(recommendations, catTemplate.cinemacard).map((records) =>
-                <Card {...records.fields} key={records.id} itemId={records.id} autor={Helpers.getContributor(contributors, records.fields.contribuidor)}/>
+                <Card {...records.fields} key={records.id} itemId={records.id} autor={Helpers.getContributor(contributors, records.fields.contribuidor)} createdTime={records.createdTime}/>
               )}
             </div>
         </div>

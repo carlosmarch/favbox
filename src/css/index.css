@@ -3373,7 +3373,6 @@ a.topic-card::before {
 
 .badge {
   padding: 0px 6px;
-  border-radius: 4px;
   background-color: var(--soft-blue);
   font-size: 13px;
   line-height: 18px;
@@ -3388,6 +3387,14 @@ a.topic-card::before {
   background-color: transparent;
   border: 1px solid var(--border);
   color: var(--grey);
+}
+
+.new-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  text-transform: uppercase;
+  background: var(--interaction);
+  color: #fff;
 }
 
 .wrapper-confetti {
@@ -4118,6 +4125,11 @@ a.topic-card::before {
   z-index: 1000;
   position: absolute;
   top: 80px;
+}
+
+.settings_view ~ .bottombar,
+.editItem_view ~ .bottombar {
+  display: none;
 }
 
 .settings_view .fileUploader {
