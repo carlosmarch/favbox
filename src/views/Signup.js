@@ -125,6 +125,15 @@ class SignUp extends Component {
                   />
                 </div>
 
+                <div>
+                  <label className="checkbox">
+                    I agree that Favbox is still a beta program.
+                    <input type="checkbox" required/>
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+
+
                 <button className="button submitbtn inline" type="submit">{this.state.isLoading ? 'loading' : 'SignUp'}</button>
               </form>
               <span className="centered">Already have an account? <Link to="/login" className="link">Login</Link></span>

@@ -64,7 +64,7 @@ class Profile extends Component {
       if (!userData?.items) this.setState({ isLoading: false, renderItems: [] });//WHEN SESSION && NO ITEMS
       if (!userData?.likes) userData.likes = []
 
-      if (!userController.getSession()?.items[0]?.title || this.props.location.state?.action === 'update' || userData.items.filter(o => !userController.getSession()?.items.find(x => x.id === o)).length ){
+      if ( typeof userData[0]?.title === 'undefined' || this.props.location.state?.action === 'update' || userData.items.filter(o => !userController.getSession()?.items.find(x => x.id === o)).length ){
         console.log('Update')
         await recommendationController.hydrateUserPubItems(userData)
 

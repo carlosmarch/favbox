@@ -1100,6 +1100,71 @@ select option {
   color: var(--grey-soft);
 }
 
+/* Customize the label (the checkbox) */
+.checkbox {
+  display: block;
+  position: relative;
+  padding-left: 28px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 12px;
+  -webkit-user-select: none;
+  user-select: none;
+  line-height: 18px;
+}
+
+/* Hide the browser's default checkbox */
+.checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 18px;
+  width: 18px;
+  background-color: var(--border);
+}
+
+/* On mouse-over, add a grey background color */
+.checkbox:hover input ~ .checkmark {
+  background-color: var(--border);
+}
+
+/* When the checkbox is checked, add a blue background */
+.checkbox input:checked ~ .checkmark {
+  background-color: var(--interaction);
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.checkbox input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.checkbox .checkmark:after {
+  left: 6px;
+  top: 2px;
+  width: 4px;
+  height: 8px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
 .header {
   width: 100%;
   position: relative;
@@ -2211,8 +2276,8 @@ button.likebutton svg {
   background: #fff;
 }
 
-.is-like-false:hover {
-  color: #666;
+.is-like-false:hover path {
+  fill: #eb4962;
 }
 
 @keyframes size {
@@ -3665,6 +3730,11 @@ a.topic-card::before {
   .grid-layout .favitem {
     grid-column: span 6;
   }
+}
+
+.grid-layout .favitem:hover {
+  background: var(--border);
+  transition: background 0.1s ease-in;
 }
 
 .grid-layout .favitem-description {

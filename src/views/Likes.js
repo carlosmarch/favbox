@@ -48,6 +48,7 @@ class Likes extends Component {
       if (!userData?.likes) userData.likes = []
       userController.setLocalStorageFavs(userData.likes)//Set array of ID´s to localStorage
 
+      //@TODO
       //if (!userController.getSession()?.likes[0]?.title || userData.likes.filter(o => !userController.getSession()?.likes.find(x => x.id === o)).length ){}
 
       let updatedSession = userController.getSession()

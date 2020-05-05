@@ -94,13 +94,17 @@
 
 .grid-layout{
   .favitem {
-      border-top: none;
-      display: block;
-      grid-column: span 4;
-      background: var(--soft-grey-bg);
-      @media (max-width: $breakpoint-m) {
-        grid-column: span 6;
-      }
+    border-top: none;
+    display: block;
+    grid-column: span 4;
+    background: var(--soft-grey-bg);
+    @media (max-width: $breakpoint-m) {
+      grid-column: span 6;
+    }
+    &:hover {
+      background: var(--border);
+      transition: background 0.1s ease-in;
+    }
   }
   .favitem-description {
       display: none;

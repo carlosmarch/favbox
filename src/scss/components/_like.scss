@@ -49,10 +49,11 @@ button.likebutton svg {
 .is-like-false{
   color: #aab8c2;
 	background: #fff;
-	&:hover {
-	  color:#666;
+	&:hover path {
+	    fill: rgb(235, 73, 98);
 	}
 }
+
 
 @keyframes size {
   0% {
