@@ -3480,11 +3480,13 @@ a.topic-card::before {
   align-items: center;
   justify-content: center;
   margin-right: 8px;
+  flex: none;
 }
 
 .random-icon {
   margin-left: auto;
   opacity: 0;
+  flex: none;
 }
 
 .signup_view,
