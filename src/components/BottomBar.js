@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import {ReactComponent as LikeIcon} from '../icons/Heart.svg';
 import {ReactComponent as UserIcon} from '../icons/User.svg';
 import {ReactComponent as SearchIcon} from '../icons/Search.svg';
-import {ReactComponent as DiscoverIcon} from '../icons/Discover.svg';
+import {ReactComponent as DiscoverIcon} from '../icons/Bulb.svg';
 import {ReactComponent as AddIcon} from '../icons/Plus.svg';
 
 class BottomBar extends Component {

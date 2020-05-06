@@ -5,6 +5,7 @@ import $ from 'jquery';
 import * as Helpers from '../Helpers';
 import Header from '../components/Header';
 import Message from '../components/Message';
+import Tip from '../components/Tip';
 
 const recommendationController = require('../controllers/recommendationController.js');
 
@@ -16,7 +17,7 @@ class CreateUrl extends Component {
     this.state = {
       isLoading   : true,//until getting dropdown categories
       isLoadingUrl: false,
-      showForm:false,
+      showForm    : false,
       contribuidor: [JSON.parse(localStorage.getItem('userSession'))?.id]
     };
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -195,7 +196,9 @@ class CreateUrl extends Component {
                           {this.state.isLoadingUrl ? <div className="loader-icon-container"><i className="loader-icon"></i></div> : ''}
                          </div>
 
-                         <div className={`create-item-step-2 ${this.state.showForm ? 'show-form' : ''} `}>
+                         <Tip className= {`${this.state.showForm ? 'hide' : 'show'} `} />
+
+                         <div className={`create-item-step-2 ${this.state.showForm ? 'show' : 'hide'} `}>
 
                            <div className="itemPreview mb-m">
                               <h6>Preview</h6>

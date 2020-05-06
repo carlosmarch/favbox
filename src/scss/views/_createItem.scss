@@ -1,8 +1,11 @@
-.create-item-step-2{
+.create-item-step-2,
+.hide{
   opacity:0;
+  display: none;
 }
-.show-form{
+.show{
   opacity:1;
+  display:block;
 }
 
 .itemPreview .favitem-image-holder{

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import HeaderMkt from '../components/HeaderMkt';
 import Footer from '../components/Footer';
-import {ReactComponent as DiscoverIcon} from '../icons/Discover.svg';
+import {ReactComponent as DiscoverIcon} from '../icons/Bulb.svg';
 import {ReactComponent as LikeIcon} from '../icons/Heart.svg';
 import {ReactComponent as GlobeIcon} from '../icons/Globe.svg';
 import Promocard from '../components/Promocard';

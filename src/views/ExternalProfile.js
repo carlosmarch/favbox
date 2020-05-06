@@ -7,6 +7,7 @@ import LoadingSpinner from '../components/LoadingSpinner';
 import {ReactComponent as UserIcon} from '../icons/User.svg';
 import {ReactComponent as GridIcon} from '../icons/Grid.svg';
 import {ReactComponent as ListIcon} from '../icons/List.svg';
+import {ReactComponent as VerifiedIcon} from '../icons/Verified.svg';
 
 const dataController = require('../controllers/dataController.js');
 const recommendationController = require('../controllers/recommendationController.js');
@@ -95,7 +96,7 @@ class ExternalProfile extends Component {
 
                 <div className="profile-user-info">
                   <div className="profile-user-name"><h3 className="alt-font">{this.state.urlName}</h3></div>
-                  <div className="profile-user-description"><p className="no-m">{this.state?.userData?.description}</p></div>
+                  <div className="profile-user-description"><p className="no-m flex-center">{this.state.pubItems > 50 ? <VerifiedIcon className="icon-20 icon-interaction mr-xxs" alt="Verified User"/> : ''} {this.state?.userData?.description}</p></div>
                   <div className="profile-user-data">
                     <span>{ this.state.likeItems } Likes</span>
                     <span>{ this.state.pubItems } Published</span>
