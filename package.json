@@ -24,6 +24,7 @@
     "react-ga": "^2.7.0",
     "react-images-upload": "^1.2.8",
     "react-native-dotenv": "^0.2.0",
+    "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",
     "use-global-hook": "^0.1.12"
   },

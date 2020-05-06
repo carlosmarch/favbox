@@ -156,7 +156,7 @@ class EditProfile extends Component {
                             />
                           </div>
                           <div>
-                            <label>Description</label>
+                            <label>Tell us about you</label>
                             <textarea
                               name="description"
                               type="text"
