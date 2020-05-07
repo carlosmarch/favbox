@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import * as Helpers from '../Helpers';
 import Like from './Like';
 import Contributor from './Contributor';
+import NewBadge from './NewBadge';
 
 class Podcastcard extends Component {
   render() {
@@ -15,6 +16,7 @@ class Podcastcard extends Component {
           <div className="podcastcard-album-contents">
             <img className="play" src={process.env.PUBLIC_URL + '/img/play.svg'} alt="play"/>
           </div>
+          <NewBadge createdTime={this.props.createdTime} />
           <img className="podcastcard-album-img" src={this.props.imageUrl} alt="cover"/>
         </div>
         <Like itemId={this.props.itemId}/>

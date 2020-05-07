@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import * as Helpers from '../Helpers';
 import Like from './Like';
 import Contributor from './Contributor';
+import NewBadge from './NewBadge';
 
 class Videocard extends Component {
   render() {
@@ -11,6 +12,7 @@ class Videocard extends Component {
       <Link to={`/item/${this.props.itemId}`} data-id={this.props.itemId} className="videocard width-4/12 width-6/12@m">
         <Like itemId={this.props.itemId}/>
         <div className="videocard-cover">
+          <NewBadge createdTime={this.props.createdTime} />
           <img className="play" src={process.env.PUBLIC_URL + '/img/play.svg'} alt="play"/>
           <img className="videocard-cover-img" src={this.props.imageUrl} alt="cover"/>
         </div>

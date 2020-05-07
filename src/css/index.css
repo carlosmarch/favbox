@@ -2725,7 +2725,7 @@ a.topic-card::before {
   opacity: 0;
   transition: .2s ease-out;
   background-color: var(--default-color);
-  z-index: 0;
+  z-index: 10;
 }
 
 .musiccard-album-contents:hover {
@@ -3436,6 +3436,15 @@ a.topic-card::before {
   text-transform: uppercase;
   background: var(--interaction);
   color: #fff;
+}
+
+.musiccard .new-badge,
+.podcastcard .new-badge,
+.videocard .new-badge {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 0;
 }
 
 .wrapper-confetti {

@@ -6,7 +6,7 @@ class NewBadge extends Component {
   render() {
     return (
 
-          this.props?.createdTime && Helpers.dayDifference(this.props?.createdTime) < 7
+          this.props?.createdTime && Helpers.dayDifference(this.props?.createdTime) < 3
           ? (<div className="new-badge">New</div>)
           : ''
 

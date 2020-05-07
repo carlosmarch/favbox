@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from 'react-router-dom';
 import Like from './Like';
 import Contributor from './Contributor';
+import NewBadge from './NewBadge';
 
 class Musiccard extends Component {
   render() {
@@ -15,6 +16,7 @@ class Musiccard extends Component {
             <img className="play" src={process.env.PUBLIC_URL + '/img/play.svg'} alt="play"/>
             <Contributor contributor={this.props.autor[0]?.fields}/>
           </div>
+          <NewBadge createdTime={this.props.createdTime} />
           <img className="musiccard-album-img" src={this.props.imageUrl} alt="cover"/>
         </div>
         <h6 className="musiccard-title">{this.props.title}</h6>
