@@ -3421,6 +3421,7 @@ a.topic-card::before {
   text-transform: none;
   display: inline-block;
   margin-bottom: 8px;
+  color: var(--interaction);
 }
 
 .badge-outline {
