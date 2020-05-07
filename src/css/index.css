@@ -2308,7 +2308,7 @@ button, input[type="submit"], input[type="reset"] {
   text-align: right;
   top: 12px;
   right: 12px;
-  z-index: 1;
+  z-index: 10;
   display: inline-block;
 }
 
@@ -2725,7 +2725,7 @@ a.topic-card::before {
   opacity: 0;
   transition: .2s ease-out;
   background-color: var(--default-color);
-  z-index: 10;
+  z-index: 1;
 }
 
 .musiccard-album-contents:hover {
@@ -3894,6 +3894,9 @@ a.topic-card::before {
   }
   .edit-profile-button {
     margin-top: 16px;
+  }
+  .profile-user-description p {
+    justify-content: center;
   }
 }
 

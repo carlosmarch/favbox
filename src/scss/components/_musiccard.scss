@@ -32,7 +32,7 @@
   opacity: 0;
   transition: .2s ease-out;
   background-color: var(--default-color);
-  z-index: 10;
+  z-index: 1;
   &:hover{
     opacity: 1;
     transition: .2s ease-out;
