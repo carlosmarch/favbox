@@ -42,7 +42,7 @@ class Tip extends Component {
         <div className="tip" onClick={this.getRandomMessage }>
           <div className="tip-icon"><BulbIcon className="icon-16"/></div>
           <div className="tip-message"><strong>Tip:</strong> {this.state.message}</div>
-          <RandomIcon className="icon-16 random-icon"/>
+          <RandomIcon id="randomIcon" className="icon-16 random-icon"/>
         </div>
       </div>
     );

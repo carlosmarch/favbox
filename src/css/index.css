@@ -3497,6 +3497,7 @@ a.topic-card::before {
   margin-left: auto;
   opacity: 0;
   flex: none;
+  transition: all 0.1s ease-in;
 }
 
 .signup_view,
@@ -3683,6 +3684,32 @@ a.topic-card::before {
   position: absolute;
 }
 
+.top-1 {
+  width: 70%;
+  position: absolute;
+  z-index: 10 !important;
+  right: 0;
+  height: 100%;
+}
+
+.top-2 {
+  position: absolute;
+  top: 15%;
+  width: 90%;
+  height: 100%;
+}
+
+.line-home {
+  position: absolute;
+  z-index: 11;
+}
+
+.reveal, .reveal-bottom {
+  display: block;
+  z-index: 0;
+  overflow: hidden;
+}
+
 .reveal::before {
   content: '';
   display: block;
@@ -3692,6 +3719,21 @@ a.topic-card::before {
   height: 100%;
   position: absolute;
   transition: all ease-in;
+}
+
+.reveal-bottom::before {
+  background: var(--soft-grey-bg);
+  width: 100%;
+  content: '';
+  display: block;
+  animation-name: reveal-bottom;
+  animation-duration: 1.4s;
+  z-index: 100;
+  height: 100%;
+  position: absolute;
+  transition: all ease-in;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
 }
 
 .scale {
@@ -3733,6 +3775,24 @@ a.topic-card::before {
   }
   to {
     transform: scale(1);
+  }
+}
+
+@-webkit-keyframes reveal-bottom {
+  from {
+    height: 100%;
+  }
+  to {
+    height: 0%;
+  }
+}
+
+@keyframes reveal-bottom {
+  from {
+    height: 100%;
+  }
+  to {
+    height: 0%;
   }
 }
 

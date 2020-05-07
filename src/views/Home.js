@@ -64,7 +64,7 @@ class Home extends Component {
             <div className="container">
                 <div className="grid">
                     <div className="grid__item width-7/12 width-12/12@m">
-                      <picture className="">
+                      <picture className="reveal-bottom">
                         <img className="img-fit" src={process.env.PUBLIC_URL + '/img/hero-img.png'} alt="international person"/>
                       </picture>
                     </div>
@@ -103,9 +103,9 @@ class Home extends Component {
                       <h2 className="alt-font">Let people inspire you.</h2>
                       <p className="hero-text">Imagine to know what your industry leaders are reading or watching? Now it's possible.</p>
                     </div>
-                    <div className="grid__item width-6/12 width-12/12@m">
+                    <div className="grid__item width-6/12 width-12/12@m p-m bg-brown">
                       <picture className="">
-                        <img className="img-fit" src={process.env.PUBLIC_URL + '/img/hero-img-girl.png'} alt="international person"/>
+                        <img className="img-fit" src={process.env.PUBLIC_URL + '/img/home-ui.png'} alt="international person"/>
                       </picture>
                     </div>
                 </div>
