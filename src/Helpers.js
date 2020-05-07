@@ -107,7 +107,6 @@
   function dayDifference(pubDate){
     const start = new Date(pubDate) //clone
     const end = new Date() //clone
-    console.log(start, end)
     let dayCount = 0
 
     while (end > start) {

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import * as Helpers from '../Helpers';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import FavItem from '../components/FavItem';
@@ -64,7 +64,6 @@ class ExternalProfile extends Component {
       });
 
   }
-
   handleLayuout = (e) => {
       const clicked = Object.assign({}, e).currentTarget.id
       if(this.state.active === clicked) {
