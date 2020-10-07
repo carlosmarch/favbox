@@ -76,7 +76,7 @@ class Profile extends Component {
 
       this.setState({
         isLoading   : false,
-        renderItems : userData?.items,
+        renderItems : userData?.items.reverse(),
         pubItems    : userData?.items?.length ? userData?.items?.length : '0',
         likeItems   : userData?.likes?.length ? userData?.likes?.length : '0'
       });
@@ -140,7 +140,7 @@ class Profile extends Component {
                   </div>
                 </div>
               </div>
-              
+
               { history.location.state && this.props.location.state?.message
                 ? <Message type={this.props.location.state.type} message={this.props.location.state.message}/>
                 : '' }

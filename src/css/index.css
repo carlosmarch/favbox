@@ -2990,6 +2990,7 @@ a.topic-card::before {
   width: 112px;
   height: 112px;
   display: block;
+  object-fit: cover;
 }
 
 @media (max-width: 48em) {

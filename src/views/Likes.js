@@ -56,7 +56,7 @@ class Likes extends Component {
 
       this.setState({
         isLoading: false,
-        renderItems: updatedSession.likes
+        renderItems: updatedSession.likes.reverse()
       });
       //console.log('hydratedFavItems',  user.likes, hydratedFavItems)
       return;

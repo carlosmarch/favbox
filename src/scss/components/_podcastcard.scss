@@ -68,6 +68,7 @@
   width: 112px;
   height: 112px;
   display: block;
+  object-fit: cover;
   @media (max-width: $breakpoint-m) {
     width: 72px;
     height: 72px;

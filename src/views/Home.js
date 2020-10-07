@@ -76,7 +76,7 @@ class Home extends Component {
             </div>
           </section>
 
-          <section className="bg-soft-grey">
+          <section className="bg-soft-grey pb-m">
             <div className="container">
                 <div className="grid">
                     <div className="grid__item width-4/12 width-12/12@m">
@@ -96,7 +96,7 @@ class Home extends Component {
           </section>
 
 
-          <section className="block bg-soft-grey">
+          <section className="bg-soft-grey">
             <div className="container">
                 <div className="grid">
                     <div className="grid__item width-5/12 width-12/12@m v-center">
@@ -116,7 +116,6 @@ class Home extends Component {
           <section className="block bg-soft-grey no@m">
             <Promocard />
           </section>
-
 
         </div>
 
