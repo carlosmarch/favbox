@@ -158,7 +158,7 @@ export const uploadToCloudinary = (file, next) => {
     //   state: { type: 'error', message: 'Something happened when uploading. Please try again.'}
     // })
 
-  }.bind(this);
+  }
 }
 
 export const uploadAvatarToCloudinary = (file, next) => {
@@ -191,7 +191,7 @@ export const uploadAvatarToCloudinary = (file, next) => {
       })
     }
 
-  }.bind(this);
+  }
 }
 
 
