@@ -89,7 +89,6 @@ class Header extends Component {
             <li><Link to="/"><img className="logo" src={process.env.PUBLIC_URL + '/logo.svg'} alt="logo"/></Link></li>
 
             <li><Link to="/feed">Discover</Link></li>
-            { userController.isAuthenticated() ? (
             <li id="menuitem-categorias" className={ this.state.isHoveredCategories ? "hoverstate" : "" } onMouseEnter={this.handleHoverCategories} onMouseLeave={this.handleHoverCategories}>
               <div>Feel like?</div>
               <svg viewBox="0 0 30 30" className="chevron"><polygon points="15,17.4 4.8,7 2,9.8 15,23 28,9.8 25.2,7 "></polygon></svg>
@@ -103,7 +102,6 @@ class Header extends Component {
                 </ul>
               </div>
             </li>
-            ) : '' }
             { userController.isAuthenticated() ? (
             <li id="menuitem-temas" className={ this.state.isHoveredTopics ? "hoverstate" : "" } onMouseEnter={this.handleHoverTopics} onMouseLeave={this.handleHoverTopics}>
               <div>Topics</div>

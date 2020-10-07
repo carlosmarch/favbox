@@ -70,7 +70,7 @@ class App extends Component {
   render() {
 
           return (
-            <div className={ userController.isAuthenticated() ? 'app_wrapper app_view' : 'app_wrapper app-view-not-logged' }>
+            <div className={ userController.isAuthenticated() ? 'app_wrapper app_view' : 'app_wrapper app_view' }> {/*To hide content add class app-view-not-logged */}
 
               <Header />
 
