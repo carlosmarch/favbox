@@ -5,7 +5,7 @@ import * as Helpers from '../Helpers';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import LoadingSpinner from '../components/LoadingSpinner';
-import {ReactComponent as SearchIcon} from '../icons/Search.svg';
+//import {ReactComponent as SearchIcon} from '../icons/Search.svg';
 
 import * as Templates from '../templates/Templates';
 

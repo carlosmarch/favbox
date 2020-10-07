@@ -68,7 +68,7 @@ class Profile extends Component {
       }
       if (!userData?.likes) userData.likes = []
 
-      console.log('Update')
+      //console.log('Update')
       await recommendationController.hydrateUserPubItems(userData)
 
       userController.setSession(userData)

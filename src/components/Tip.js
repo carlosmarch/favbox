@@ -14,22 +14,16 @@ class Tip extends Component {
     switch(r){
       case 0:
         return 'You can share a book that you loved in the past';
-        break;
       case 1:
         return 'You can share a movie that made you think';
-        break;
       case 2:
         return 'You can share a podcast that helps you in the morning';
-        break;
       case 3:
         return 'You can share an album that made you jump';
-        break;
       case 4:
         return 'You can share a magazine that opened your eyes';
-        break;
       default:
         return 'You can share a book that you loved in the past';
-        break;
     }
   }
   getRandomMessage = () => {

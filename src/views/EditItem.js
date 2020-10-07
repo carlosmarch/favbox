@@ -7,7 +7,6 @@ import Footer from '../components/Footer';
 import Message from '../components/Message';
 import {ReactComponent as BackIcon} from '../icons/Back.svg';
 
-const userController = require('../controllers/userController.js');
 const recommendationController = require('../controllers/recommendationController.js');
 
 //AIRTABLE HELPERS
