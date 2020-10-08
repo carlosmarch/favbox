@@ -9,6 +9,7 @@ import {ReactComponent as EditIcon} from '../icons/Edit.svg';
 class FavItem extends Component {
 
   render() {
+      console.log(this.props.contribuidor)
       return (
         <Link to={`/item/${this.props.itemId}`} data-id={this.props.itemId} className="favitem">
           <div className="favitem-image-holder">

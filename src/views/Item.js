@@ -11,6 +11,7 @@ import Contributor from '../components/Contributor';
 import {ReactComponent as BackIcon} from '../icons/Back.svg';
 import {ReactComponent as WebIcon} from '../icons/Globe.svg';
 import {ReactComponent as LikedIcon} from '../icons/HeartFull.svg';
+import {ReactComponent as EditIcon} from '../icons/Edit.svg';
 
 const userController = require('../controllers/userController.js');
 
@@ -48,13 +49,14 @@ class Item extends Component {
           console.error(err)
           return
         }
-
         const contributorData = contributor?.fields;
+        const contributorId = contributor?.id;
         this.setState({
           isLoading        : false,
           itemData         : itemData,
           contributorData  : contributorData,
-          isLikedBy        : this.state.itemData.isLikedBy
+          isLikedBy        : this.state.itemData.isLikedBy,
+          contributorId    : contributor.id
         });
 
       });
@@ -102,6 +104,11 @@ class Item extends Component {
                         <Contributor contributor={this.state.contributorData} className="no-m"/>
                         <p className="hero-text">{this.state.itemData?.description}</p>
                         {this.state.itemData?.isLikedBy ? this.getIsLikedBy() : ''}
+
+                        { JSON.stringify(this.state.contributorId) === JSON.stringify([JSON.parse(localStorage.getItem('userSession'))?.id])
+                          ? <Link to={`/edit/${this.state.urlItemId}`} data-id={this.state.urlItemId} className="edit-link link underline-hover mt-s"><EditIcon className="icon-14 icon-interaction"/> Edit</Link>
+                          : '' }
+
                       </div>
 
                       <div className="item-content-bottom">
