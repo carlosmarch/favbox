@@ -120,7 +120,6 @@ class Item extends Component {
                           </div>
                         </a>
                       </div>
-
                   </div>
                 </div>
             </div>
