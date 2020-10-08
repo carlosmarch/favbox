@@ -6,6 +6,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Message from '../components/Message';
 import {ReactComponent as BackIcon} from '../icons/Back.svg';
+import Modal from '../components/Modal';
 
 const recommendationController = require('../controllers/recommendationController.js');
 
@@ -29,8 +30,19 @@ class EditItem extends Component {
       itemId          : decodeURIComponent(window.location.pathname.split("/").pop())
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
+  showModal = e => {
+    this.setState({
+      show: !this.state.show
+    });
+  };
+
+  onClose = e => {
+    console.log('app close')
+    this.props.show = false;
+  };
 
   titleChangeHandler = (event) => {
     if(event.target.value !== this.state?.itemData.title){
@@ -86,6 +98,10 @@ class EditItem extends Component {
 
   handleError(){
     history.push({ pathname: `/item/${this.state.itemId}`, state: { type: 'error', message: 'Can´t edit this item' } })
+  }
+
+  handleDelete(){
+    recommendationController.deleteItem(this.state)
   }
 
   componentDidMount() {
@@ -194,6 +210,17 @@ class EditItem extends Component {
     return (
     <div className="app_wrapper editItem_view bg-soft-grey">
 
+
+      <Modal onClose={this.showModal} show={this.state.show}>
+        <h5 className="mb-s">¿Estás seguro?</h5>
+        <p>Cuando se elimina un item, la acción no se puede deshacer.</p>
+        <div className="actions mt-s flex-evenly">
+          <div className="button button-outline mt-s" onClick={this.showModal}>Cancelar</div>
+          <div className="button submitbtn mt-s fl-r" onClick={this.handleDelete}>Eliminar</div>
+        </div>
+      </Modal>
+
+
       <Header />
 
       <div className="global pb-l">
@@ -276,8 +303,8 @@ class EditItem extends Component {
                                     {this.state.isLoading ? '' :this.state?.uniqueTopics?.map((topic, i) => <option key={i} value={topic}>{topic}</option>)}
                                  </select>
                                </div>
-
-                               <button className="button submitbtn inline mt-s" type="submit" disabled={this.state.isDisabled}>{this.state.isLoading ? 'loading' : 'Save'}</button>
+                               <div className="button mt-s" onClick={e => { this.showModal(); }}>Delete</div>
+                               <button className="button submitbtn mt-s fl-r" type="submit" disabled={this.state.isDisabled}>{this.state.isLoading ? 'loading' : 'Save'}</button>
 
                              </div>
                       </div>

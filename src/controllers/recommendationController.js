@@ -219,8 +219,33 @@ export const updateItem = (req) => {
       history.push({
         pathname: '/profile',
         state: {
-          type: 'success',
+          type: 'info',
           message: 'Item updated successfully!'
+        }
+      })
+    }
+  );
+
+}
+
+
+
+export const deleteItem = (req) => {
+  const { title, description, imageUrl, categories, topics } = req;
+  const itemId = req?.itemId
+  //console.log(req, itemId)
+  if (!itemId) return;
+  table.destroy( itemId, function(err, record) {
+      if (err) {
+        console.error(err);
+        return;
+      }
+      console.log('Updated', record)
+      history.push({
+        pathname: '/profile',
+        state: {
+          type: 'info',
+          message: 'Item deleted.'
         }
       })
     }

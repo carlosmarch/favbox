@@ -6,7 +6,7 @@ Dummy project to learn react, modern css techniques & connecting to airtable as 
 
 http://favbox.herokuapp.com/
 
-Built with React, Airtable && Heroku
+Built with React, Airtable && Netliffy
 
 
 #covid19
