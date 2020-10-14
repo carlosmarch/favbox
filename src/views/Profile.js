@@ -98,7 +98,7 @@ class Profile extends Component {
   handleLayuout = (e) => {
       const clicked = Object.assign({}, e).currentTarget.id
       if(this.state.active === clicked) {
-          this.setState({active: ''});
+          //this.setState({active: ''});
       } else {
           this.setState({active: clicked})
      }

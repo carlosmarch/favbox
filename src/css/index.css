@@ -3555,17 +3555,27 @@ a.topic-card::before {
 
 /* The Close Button */
 .close {
-  color: #aaa;
+  color: var(--grey);
   float: right;
   font-size: 28px;
-  font-weight: bold;
+  font-weight: 700;
+  top: 16px;
+  right: 16px;
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  display: flex;
 }
 
 .close:hover,
 .close:focus {
-  color: black;
+  color: var(--dark-green);
   text-decoration: none;
   cursor: pointer;
+  background: var(--border);
+  border-radius: 50%;
 }
 
 .signup_view,
