@@ -215,8 +215,8 @@ class EditItem extends Component {
         <h5 className="mb-s">¿Estás seguro?</h5>
         <p>Cuando se elimina un item, la acción no se puede deshacer.</p>
         <div className="actions mt-s flex-evenly">
-          <div className="button button-outline mt-s" onClick={this.showModal}>Cancelar</div>
-          <div className="button submitbtn mt-s fl-r" onClick={this.handleDelete}>Eliminar</div>
+          <div className="button button-outline mt-s" onClick={this.showModal}>Cancel</div>
+          <div className="button submitbtn mt-s fl-r" onClick={this.handleDelete}>Delete</div>
         </div>
       </Modal>
 
