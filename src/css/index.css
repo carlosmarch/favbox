@@ -4291,6 +4291,10 @@ a.topic-card::before {
   overflow-wrap: anywhere;
 }
 
+a.link-box:hover svg path {
+  fill: var(--interaction);
+}
+
 @media (max-width: 48em) {
   .app_wrapper.item_view {
     padding-bottom: 48px;

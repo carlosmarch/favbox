@@ -76,7 +76,7 @@ class Profile extends Component {
 
       this.setState({
         isLoading   : false,
-        renderItems : userData?.items.reverse(),
+        renderItems : userData?.items?.reverse(),
         pubItems    : userData?.items?.length ? userData?.items?.length : '0',
         likeItems   : userData?.likes?.length ? userData?.likes?.length : '0'
       });

@@ -82,6 +82,10 @@
     }
 }
 
+a.link-box:hover svg path {
+    fill: var(--interaction);
+}
+
 @media (max-width: $breakpoint-m){
   .app_wrapper.item_view {
     padding-bottom: 48px;
