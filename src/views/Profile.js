@@ -90,7 +90,7 @@ class Profile extends Component {
           delete state.action
           history.replace({ ...history.location, state });
       }
-
+      
     });
 
   }
